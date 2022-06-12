@@ -1,0 +1,26 @@
+{
+  "development": {
+    "database": "u742297579_shapearts_DB",
+    "host": "sql836.main-hosting.eu",
+    "port": "3306",
+    "username": "u742297579_root",
+    "password": "ShapeArts_BDD_01",
+    "dialect": "mysql"
+  },
+  "test": {
+    "database": "u742297579_shapearts_DB",
+    "host": "sql836.main-hosting.eu",
+    "port": "3306",
+    "username": "u742297579_root",
+    "password": "ShapeArts_BDD_01",
+    "dialect": "mysql"
+  },
+  "production": {
+    "database": "u742297579_shapearts_DB",
+    "host": "sql836.main-hosting.eu",
+    "port": "3306",
+    "username": "u742297579_root",
+    "password": "ShapeArts_BDD_01",
+    "dialect": "mysql"
+  }
+}
