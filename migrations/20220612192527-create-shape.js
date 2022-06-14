@@ -30,36 +30,77 @@ module.exports = {
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING,
+        defaultValue: "round",
+        type: Sequelize.ENUM("round", "square", "triangle", "star"),
+        validate: {
+          isAlpha: true,
+          isLowercase: true,
+          notEmpty: true,
+        },
       },
       pos_x: {
         allowNull: false,
         defaultValue: 0,
         type: Sequelize.INTEGER,
+        validate: {
+          isNumeric: true,
+          notNull: true,
+          min: -20,
+          max: 903,
+          len: [1, 3],
+        },
       },
       pos_y: {
         defaultValue: 0,
         allowNull: false,
         type: Sequelize.INTEGER,
+        validate: {
+          isNumeric: true,
+          notNull: true,
+          min: -20,
+          max: 708,
+          len: [1, 3],
+        },
       },
       size: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        validate: {
+          isDecimal: true,
+          notNull: true,
+          min: 1.1,
+          max: 1.7,
+        },
       },
       rotation: {
         defaultValue: 0,
         allowNull: true,
         type: Sequelize.INTEGER,
+        validate: {
+          isNumeric: true,
+          min: -720,
+          max: 720,
+          len: [1, 3],
+        },
       },
       opacity: {
         defaultValue: 100,
         allowNull: true,
         type: Sequelize.INTEGER,
+        validate: {
+          isNumeric: true,
+          min: 0,
+          max: 100,
+          len: [1, 3],
+        },
       },
       color: {
-        defaultValue: "#000",
+        defaultValue: "#164d80",
         allowNull: true,
         type: Sequelize.STRING,
+        validate: {
+          notEmpty: true,
+        },
       },
       createdAt: {
         allowNull: false,

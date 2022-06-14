@@ -1,14 +1,18 @@
 // Imports
 require("dotenv").config();
 const app = require("express")();
-const { createServer } = require("http");
+const http = require("http");
 const { Server } = require("socket.io");
 
+const cors = require("cors");
+app.use(cors());
 // Instantiate server
-const httpServer = createServer(app);
-const io = new Server(httpServer, {
+const server = http.createServer(app);
+const io = new Server(server, {
   cors: {
-    origin: [process.env.CLIENT_HOST, process.env.SOCKET_UI_HOST],
+    // origin: [process.env.CLIENT_HOST, process.env.SOCKET_UI_HOST],
+    methods: ["GET", "POST"],
+    origin: "http://localhost:3000",
     credentials: true,
   },
   // serveClient: false,
@@ -23,6 +27,16 @@ app.get("/", (req, res) => {
   res.sendFile(`${__dirname}/public/index.html`);
 });
 
+io.use((socket, next) => {
+  const clientKey = socket.handshake.auth.key;
+  if (clientKey !== process.env.CLIENT_KEY) {
+    console.log("APP UNKNOW", clientKey);
+    socket.emit("connect_error", { error: new Error("APP NOT REGISTER") });
+    next(console.log("APP NOT REGISTER"));
+  }
+  next();
+});
+
 // Controllers socket
 const onConnection = (socket) => {
   console.log(socket.id, socket.rooms);
@@ -32,6 +46,6 @@ const onConnection = (socket) => {
 io.on("connection", onConnection);
 
 // Listener server
-httpServer.listen(process.env.SERVER_PORT, () => {
+server.listen(process.env.SERVER_PORT, () => {
   console.log(`SERVER listen => ${process.env.SERVER_PORT}`);
 });
