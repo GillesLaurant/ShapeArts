@@ -29,6 +29,7 @@
   @include button;
   @include flex-center;
   fill: $primary;
+  color: $primary;
   font-size: calc(1vmin + 15px);
 
   & svg {

@@ -34,8 +34,21 @@ export const shapeSlice = createSlice({
       // User select "Round" || "Square" || "Triangle" || "Star"
       state.name = action.payload;
     },
-    decrement: (state) => {
-      state.value -= 1;
+    toggleLayout: (state, action) => {
+      console.log(action);
+      if (
+        action.payload.op === "add" &&
+        state.pos_X < 904 &&
+        state.pos_Y < 709
+      ) {
+        state[action.payload.pos] += 1;
+      } else if (
+        action.payload.op === "sub" &&
+        state.pos_X > -20 &&
+        state.pos_Y > -20
+      ) {
+        state[action.payload.pos] -= 1;
+      }
     },
     incrementByAmount: (state, action) => {
       state.value += action.payload;
@@ -53,7 +66,8 @@ export const shapeSlice = createSlice({
   },
 });
 
-export const { selectShape, decrement, incrementByAmount } = shapeSlice.actions;
+export const { selectShape, toggleLayout, incrementByAmount } =
+  shapeSlice.actions;
 
 export const shapeState = (state) => state.shape;
 

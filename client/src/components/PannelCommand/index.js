@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import SelectShape from "./SelectShape";
+import ConfigLayout from "./ConfigShapeLayout";
 import { toggleWindows } from "../../features/app/app.slice";
 import "./style.scss";
 
@@ -23,6 +24,7 @@ const PannelCommand = (props) => {
         </button>
       </div>
       <SelectShape />
+      <ConfigLayout />
     </section>
   );
 };

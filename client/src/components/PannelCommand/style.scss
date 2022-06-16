@@ -10,6 +10,8 @@
   background-color: rgba($color: #801201, $alpha: 0.5);
   transition: transform 0.5s;
   padding: 0.5%;
+  font-family: "Quicksand";
+  color: $primary;
   border: 1px solid rgb(128, 9, 0);
   border-radius: 25px 0 0 25px;
 
@@ -35,8 +37,44 @@
   border: 1px solid blue;
 
   &-buttons {
-    // display: block;
     width: 50%;
     margin: 0 auto 2%;
   }
+}
+
+// CONFIG LAYOUT
+.configLayout {
+  width: 100%;
+  @include flex-mix(space-around, center);
+  padding: 1%;
+  border: 1px solid red;
+
+  &-containers {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+
+    & label {
+      width: 100%;
+      flex-grow: 5;
+      text-align: center;
+      margin-bottom: 5%;
+    }
+    & button {
+      width: 40%;
+      flex-grow: 1;
+    }
+  }
+}
+
+.pos-live {
+  font-weight: bold;
+}
+
+.pos_add {
+  border-right: 0.5px solid $primary;
+  border-radius: 5px 0 0 5px;
+}
+.pos_sub {
+  border-radius: 0 5px 5px 0;
 }
