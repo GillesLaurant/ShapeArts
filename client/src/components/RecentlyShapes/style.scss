@@ -1,0 +1,72 @@
+@import "../../../scss/styles.scss";
+
+.recentlyShapes {
+  width: 100%;
+  min-height: 50%;
+  text-align: center;
+  border: 1px solid blue;
+}
+
+.recentlyShapes-title {
+  font-family: "Biryani";
+}
+
+.recentTable {
+  width: 100%;
+
+  &-head {
+    font-family: "Exo";
+
+    & th {
+      padding: 1%;
+      border-bottom: 1px solid white;
+    }
+    &-player {
+      width: 60%;
+      border-right: 1px solid white;
+    }
+    &-shape {
+      width: 40%;
+    }
+  }
+}
+
+.recentBody {
+  &-rows {
+    position: relative;
+  }
+  &-player {
+    border-bottom: 0.5px solid white;
+    border-right: 0.5px solid white;
+    padding: 1%;
+    z-index: 5;
+  }
+  &-shape {
+    border-bottom: 0.5px solid white;
+    padding: 1%;
+    z-index: 5;
+  }
+}
+
+.recentBody tr:nth-last-child(1) td {
+  border-bottom: none;
+}
+
+.timeBuble {
+  position: absolute;
+  transform: translateX(65%);
+  opacity: 0;
+  padding: 1%;
+  background-color: aqua;
+  z-index: 3;
+  transition: opacity 0.5s, transform 0.3s;
+}
+
+.recentBody-rows:hover {
+  background-color: rgb(1, 74, 15);
+}
+
+.recentBody-rows:hover .timeBuble {
+  // transform: translateX(65%);
+  opacity: 1;
+}

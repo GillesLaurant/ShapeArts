@@ -1,0 +1,23 @@
+@import "../../../scss/styles.scss";
+
+.pannelUser {
+  width: 25%;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  transform: translateX(-100%);
+  z-index: 1000;
+  background-color: rgba($color: #018025, $alpha: 0.5);
+  transition: transform 0.5s;
+  border: 1px solid green;
+  border-radius: 0 25px 25px 0;
+
+  &-head {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.pannelUser_open {
+  transform: translateX(0%);
+}

@@ -1,0 +1,44 @@
+.App {
+  background: -webkit-gradient(linear, left top, left bottom, from(#fae332), to(#f79401));
+  background: linear-gradient(#fae332, #f79401);
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    -webkit-animation: App-logo-float infinite 3s ease-in-out;
+            animation: App-logo-float infinite 3s ease-in-out;
+  }
+}
+
+@-webkit-keyframes App-logo-float {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@keyframes App-logo-float {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+  100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+/*# sourceMappingURL=App.css.map */

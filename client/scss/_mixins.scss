@@ -1,0 +1,21 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button {
+  @include flex-center;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  padding: 1% 2%;
+  font-family: $text-pannel;
+  font-size: calc(2vmin + 15px);
+}
+
+@mixin flex-mix($just, $align) {
+  display: flex;
+  justify-content: $just;
+  align-items: $align;
+}

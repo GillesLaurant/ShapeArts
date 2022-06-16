@@ -1,29 +1,25 @@
+@import "../../../scss/styles.scss";
+
 .App {
-  text-align: center;
+  @include flex-mix(space-around, center);
+  width: 100%;
+  position: relative;
+  // background: linear-gradient($main-light, $main-dark);
+  height: 100vh;
+  overflow-y: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.round1 {
+  fill: blue;
+}
+.round2 {
+  fill: red;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-float infinite 3s ease-in-out;
   }
-}
-
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.App-link {
-  color: rgb(112, 76, 182);
 }
 
 @keyframes App-logo-float {
