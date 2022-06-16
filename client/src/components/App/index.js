@@ -1,5 +1,6 @@
 import React from "react";
 import PannelUser from "../PannelUser";
+import PannelCommand from "../PannelCommand";
 import MainContainer from "../MainContainer";
 import { ButtonWindows } from "../../features/buttons/ButtonWindows";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,6 +26,7 @@ function App() {
       />
       <PannelUser />
       <MainContainer />
+      <PannelCommand />
     </div>
   );
 }

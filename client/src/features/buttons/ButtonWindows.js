@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleWindows } from "../app/app.slice";
 import "./buttons.scss";
 
-export const ButtonWindows = ({ nameClass, svg, name }) => {
+export const ButtonWindows = ({ nameClass, name }) => {
   const dispatch = useDispatch();
 
   const handleWindows = (ev) => {

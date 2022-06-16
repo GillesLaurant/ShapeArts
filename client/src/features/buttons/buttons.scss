@@ -8,7 +8,8 @@
   position: absolute;
   top: 0;
   background-color: rgba($color: #000000, $alpha: 0);
-  fill: $primary;
+  color: $primary;
+  font-size: calc(2vmin + 15px);
 }
 
 .toggleUser {
@@ -16,10 +17,21 @@
 }
 .toggleCommand {
   right: 0;
-  font-size: calc(2vmin + 15px);
   transform: rotate(90deg) scale(2 0.5);
 }
 
 .svg_model {
   @include flex-center;
+}
+
+// SELECT SHAPES
+.selectShape-buttons {
+  @include button;
+  @include flex-center;
+  fill: $primary;
+  font-size: calc(1vmin + 15px);
+
+  & svg {
+    pointer-events: none;
+  }
 }

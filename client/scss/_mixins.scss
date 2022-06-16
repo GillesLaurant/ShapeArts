@@ -8,10 +8,10 @@
   @include flex-center;
   text-align: center;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 1% 2%;
   font-family: $text-pannel;
-  font-size: calc(2vmin + 15px);
+  min-height: 20px;
 }
 
 @mixin flex-mix($just, $align) {
