@@ -1,0 +1,22 @@
+@import "../../../scss/styles.scss";
+
+.error-section {
+  @include flex-mix(space-around, center);
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  font-family: "DS_Digi";
+  color: red;
+  padding: 2% 0;
+  background: linear-gradient(to top, rgb(38, 0, 0), rgb(80, 0, 0));
+  border-radius: 10px;
+  border: 1px solid red;
+
+  &-title {
+    @include font(1vmin, 12px);
+  }
+
+  &-msg {
+    @include font(1vmin, 9px);
+  }
+}

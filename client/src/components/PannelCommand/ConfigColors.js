@@ -59,12 +59,30 @@ const ConfigColors = () => {
             transform: shape.selector_gradient && "translateX(-100%)",
           }}
         >
+          <div className="containerNormal-opacity">
+            {/* PRIMARY OPACITY */}
+            <label className="normal-label-opacity">Opacité</label>
+            <input
+              type="range"
+              name="primary_opacity"
+              className="normal-range-opacity"
+              min={0}
+              max={100}
+              step={1}
+              value={shape.primary_opacity}
+              onChange={handleColors}
+            />
+          </div>
+
           <input
             type="color"
             name="color_primary"
             className="normal-color-input"
             value={shape.color_primary}
             onChange={handleColors}
+            style={{
+              opacity: `${shape.primary_opacity}%`,
+            }}
           />
         </div>
 
@@ -144,6 +162,9 @@ const ConfigColors = () => {
                 className="gradient-color-input primary-color"
                 value={shape.color_primary}
                 onChange={handleColors}
+                style={{
+                  opacity: `${shape.primary_opacity}%`,
+                }}
               />
             </div>
 
@@ -170,6 +191,9 @@ const ConfigColors = () => {
                 className="gradient-color-input secondary-color"
                 value={shape.color_secondary}
                 onChange={handleColors}
+                style={{
+                  opacity: `${shape.secondary_opacity}%`,
+                }}
               />
             </div>
           </div>

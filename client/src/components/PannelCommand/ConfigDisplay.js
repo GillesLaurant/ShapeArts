@@ -34,10 +34,10 @@ const ConfigDisplay = (props) => {
       step: 1,
     },
     {
-      name: "opacity",
-      label: "Opacité",
+      name: "rotation_Y",
+      label: "Rotation Y",
       min: 0,
-      max: 100,
+      max: 360,
       step: 1,
     },
   ];

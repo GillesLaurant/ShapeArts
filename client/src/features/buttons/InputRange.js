@@ -18,7 +18,7 @@ const InputRange = ({ name, label, min, max, step }) => {
         {label}
       </label>
 
-      {/* INPUT */}
+      {/* RANGE */}
       <input
         type="range"
         className="configDisplay-range"

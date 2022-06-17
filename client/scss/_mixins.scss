@@ -20,6 +20,10 @@
   background: linear-gradient(to bottom, $col1, $col2);
 }
 
+@mixin font($vmin, $px) {
+  font-size: calc($vmin + $px);
+}
+
 @mixin inputRange {
   appearance: none;
   outline: none;

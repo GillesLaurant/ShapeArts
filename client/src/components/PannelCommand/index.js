@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
+import ErrorSection from "../../features/error/ErrorSection";
 import SelectShape from "./SelectShape";
 import ConfigLayout from "./ConfigLayout";
 import ConfigDisplay from "./ConfigDisplay";
@@ -26,6 +27,7 @@ const PannelCommand = (props) => {
           Fermer
         </button>
       </div>
+      <ErrorSection />
       <SelectShape />
       <ConfigLayout />
       <ConfigDisplay />

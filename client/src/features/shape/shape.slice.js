@@ -9,7 +9,7 @@ const initialState = {
   size: 10,
   rotation: 0,
   rotation_X: 0,
-  opacity: 100,
+  rotation_Y: 0,
   // CONFIG COLOR
   color_primary: "#164e80",
   color_secondary: "#00b4cc",
