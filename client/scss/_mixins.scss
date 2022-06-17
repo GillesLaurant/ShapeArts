@@ -6,12 +6,43 @@
 
 @mixin button {
   @include flex-center;
+  appearance: none;
   text-align: center;
   border: none;
   border-radius: 5px;
-  padding: 1% 2%;
+  padding: 2% 2%;
   font-family: $text-pannel;
   min-height: 20px;
+  cursor: pointer;
+}
+
+@mixin buttonAction($col1, $col2) {
+  background: linear-gradient(to bottom, $col1, $col2);
+}
+
+@mixin inputRange {
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: transparent;
+}
+
+@mixin rangeTrack($height, $radius, $color1, $color2) {
+  height: $height;
+  border-radius: $radius;
+  background: linear-gradient(to right, $color1, $color2);
+}
+
+@mixin rangeThumb($size, $bSize, $bColor, $color) {
+  width: $size;
+  height: $size;
+  border-width: $bSize;
+  border-style: solid;
+  border-color: $bColor;
+  border-radius: 50%;
+  background: $color;
 }
 
 @mixin flex-mix($just, $align) {

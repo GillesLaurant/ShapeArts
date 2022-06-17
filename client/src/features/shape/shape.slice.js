@@ -1,14 +1,29 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  //  CONFIG SHAPE
   name: "round",
   pos_X: 450,
   pos_Y: 350,
-  size: 1.5,
+  pos_Z: 0,
+  size: 10,
   rotation: 0,
+  rotation_X: 0,
   opacity: 100,
-  color_primary: "#EEEEE",
-  color_secondary: "#EEEEE",
+  // CONFIG COLOR
+  color_primary: "#164e80",
+  color_secondary: "#00b4cc",
+  // TOGGLE NORMAL || GRADIENT
+  selector_gradient: true,
+  // TOGGLE LINEAR || RADIAL
+  selector_linear: true,
+  // OREINTATION LINEAR
+  gradient_orientation: 0,
+  // RAYON RADIAL
+  gradient_rayon: 1,
+  // GRADIENT OPACITYS
+  primary_opacity: 100,
+  secondary_opacity: 100,
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -30,12 +45,12 @@ export const shapeSlice = createSlice({
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
+    // Input select "Round" || "Square" || "Triangle" || "Star"
     selectShape: (state, action) => {
-      // User select "Round" || "Square" || "Triangle" || "Star"
       state.name = action.payload;
     },
+    // Input toggle X < -20 - 903 > Y < -20 - 709 >
     toggleLayout: (state, action) => {
-      console.log(action);
       if (
         action.payload.op === "add" &&
         state.pos_X < 904 &&
@@ -50,8 +65,32 @@ export const shapeSlice = createSlice({
         state[action.payload.pos] -= 1;
       }
     },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+    // Ranges "pos_Z" ||" size" || "rotation" || "rotation_X" || "opacity"
+    toggleDisplay: (state, action) => {
+      state[action.payload.name] = action.payload.value;
+    },
+    // Input toggle color "normal" || "gradient"
+    toggleGradient: (state) => {
+      state.selector_gradient = !state.selector_gradient;
+    },
+    toggleGradientType: (state) => {
+      state.selector_linear = !state.selector_linear;
+    },
+    resetShape: (state) => {
+      state.name = "round";
+      state.pos_X = 450;
+      state.pos_Y = 350;
+      state.pos_Z = 0;
+      state.size = 10;
+      state.rotation = 0;
+      state.rotation_X = 0;
+      state.opacity = 100;
+      state.color_primary = "#164e80";
+      state.color_secondary = "#00b4cc";
+      state.gradient_orientation = 0;
+      state.gradient_rayon = 1;
+      state.primary_opacity = 100;
+      state.secondary_opacity = 100;
     },
   },
   extraReducers: (builder) => {
@@ -66,8 +105,14 @@ export const shapeSlice = createSlice({
   },
 });
 
-export const { selectShape, toggleLayout, incrementByAmount } =
-  shapeSlice.actions;
+export const {
+  selectShape,
+  toggleLayout,
+  toggleDisplay,
+  toggleGradient,
+  toggleGradientType,
+  resetShape,
+} = shapeSlice.actions;
 
 export const shapeState = (state) => state.shape;
 

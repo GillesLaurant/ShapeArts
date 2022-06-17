@@ -2,7 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import SelectShape from "./SelectShape";
-import ConfigLayout from "./ConfigShapeLayout";
+import ConfigLayout from "./ConfigLayout";
+import ConfigDisplay from "./ConfigDisplay";
+import ConfigColors from "./ConfigColors";
+import ValidShape from "./ValidShape";
 import { toggleWindows } from "../../features/app/app.slice";
 import "./style.scss";
 
@@ -25,6 +28,9 @@ const PannelCommand = (props) => {
       </div>
       <SelectShape />
       <ConfigLayout />
+      <ConfigDisplay />
+      <ConfigColors />
+      <ValidShape />
     </section>
   );
 };

@@ -2,10 +2,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { toggleLayout } from "../../features/shape/shape.slice";
-import ButtonSelectShape from "../../features/buttons/ButtonSelectShape";
 import "./style.scss";
 
-const ConfigLayout = (props) => {
+const ConfigLayout = () => {
   const dispatch = useDispatch();
   const { pos_X, pos_Y } = useSelector((state) => state.shape);
 
@@ -30,16 +29,6 @@ const ConfigLayout = (props) => {
         {/* POSITION X */}
         <label className="pos-live">{pos_X}</label>
 
-        {/* BUTTON ADD X */}
-        <button
-          type="button"
-          className="pos_add selectShape-buttons"
-          name="pos_X_add"
-          onClick={handleLayout}
-        >
-          +
-        </button>
-
         {/* BUTTON SUB X  */}
         <button
           type="button"
@@ -48,6 +37,16 @@ const ConfigLayout = (props) => {
           onClick={handleLayout}
         >
           -
+        </button>
+
+        {/* BUTTON ADD X */}
+        <button
+          type="button"
+          className="pos_add selectShape-buttons"
+          name="pos_X_add"
+          onClick={handleLayout}
+        >
+          +
         </button>
       </div>
 
@@ -62,16 +61,6 @@ const ConfigLayout = (props) => {
           {pos_Y}
         </label>
 
-        {/* BUTTON ADD Y */}
-        <button
-          type="button"
-          className="pos_add selectShape-buttons"
-          name="pos_Y_add"
-          onClick={handleLayout}
-        >
-          +
-        </button>
-
         {/* BUTTON SUB Y */}
         <button
           type="button"
@@ -80,6 +69,16 @@ const ConfigLayout = (props) => {
           onClick={handleLayout}
         >
           -
+        </button>
+
+        {/* BUTTON ADD Y */}
+        <button
+          type="button"
+          className="pos_add selectShape-buttons"
+          name="pos_Y_add"
+          onClick={handleLayout}
+        >
+          +
         </button>
       </div>
     </section>

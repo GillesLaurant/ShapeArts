@@ -33,11 +33,20 @@
   grid-template-columns: repeat(auto-fill, 45%);
   justify-content: center;
   gap: 5%;
-  padding: 1% 0;
+  padding: 3% 0;
   border: 1px solid blue;
 
   &-buttons {
-    width: 50%;
+    @include button;
+    @include flex-center;
+    width: 70%;
+    fill: $primary;
+    color: $primary;
+    font-size: calc(1vmin + 15px);
+
+    & svg {
+      pointer-events: none;
+    }
     margin: 0 auto 2%;
   }
 }
@@ -72,9 +81,226 @@
 }
 
 .pos_add {
+  border-radius: 0 5px 5px 0;
+}
+.pos_sub {
   border-right: 0.5px solid $primary;
   border-radius: 5px 0 0 5px;
 }
-.pos_sub {
-  border-radius: 0 5px 5px 0;
+
+// CONFIG DISPLAY
+.configDisplay-inputs {
+  width: 100%;
+  @include flex-mix(center, space-between);
+  flex-direction: column;
+  text-align: center;
+  padding: 2% 10%;
+  border: 1px solid green;
+}
+
+.configDisplay-label {
+  font-size: calc(1vmin + 13px);
+  margin-bottom: 3%;
+}
+
+#{$rangeInput}.configDisplay-range#{$rangeTrack} {
+  @include rangeTrack(50%, 25px, rgba(152, 235, 250, 0.208), rgb(0, 47, 142));
+}
+
+.configDisplay-range#{$rangeThumb} {
+  @include rangeThumb(20px, 0.5px, red, $primary);
+}
+
+// CONFIG COLORS
+.configColors {
+  width: 100%;
+  border-bottom: none;
+  padding: 1% 0;
+  border: 1px solid yellow;
+
+  &-label {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: calc(1vmin + 13px);
+    margin-bottom: 1%;
+
+    & span {
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+  }
+  // TOGGLE NORMAL // GRADIENT
+  &-head {
+    @include flex-mix(space-between, center);
+    width: 100%;
+  }
+  // TOGGLE NORMAL // GRADIENT
+  &-toggle {
+    color: white;
+    font-family: $text-pannel;
+    width: 50%;
+    cursor: pointer;
+    font-size: calc(1vmin + 10px);
+    padding: 1% 2%;
+    background: transparent;
+    border: 1px solid $primary;
+    border-bottom: none;
+    margin: 0;
+    border-radius: 10px 10px 0 0;
+    transition: all 0.5s;
+  }
+
+  &-containers {
+    position: relative;
+    overflow: hidden;
+    // border: 1px solid yellow;
+  }
+}
+// TOGGLE LINEAR // RADIAL DISABLED
+.toggle_color_disab {
+  color: $primary;
+  opacity: 0.6;
+  background: rgba($color: #300700, $alpha: 0.7);
+  border: none;
+  border-bottom: 1px solid $primary;
+}
+
+// COLOR NORMAL
+.containerNormal {
+  width: 100%;
+  height: 100%;
+  @include flex-center;
+  position: absolute;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.5s;
+}
+
+// NORMAL COLOR INPUT
+.normal-color-input {
+  width: 70%;
+  height: 25%;
+  background-color: transparent;
+  border: none;
+}
+
+// SWATCH NORMAL COLOR INPUT
+#{$colorInput}.normal-color-input#{$colorSwatch} {
+  border-radius: 15px;
+}
+
+// COLOR GRADIENT
+.containerGradient {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1%;
+  opacity: 1;
+  transform: translateX(100%);
+  transition: all 0.5s;
+}
+// CONTAINER GRADIENT SELECTOR
+.gradient-selector {
+  @include flex-mix(space-around, center);
+}
+
+.gradient-selector-toggle {
+  font-size: calc(1vmin + 9px);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.selector_toggle_disab {
+  font-weight: 300;
+  //   color: #787676;
+  opacity: 0.5;
+}
+
+// CONTAINER RANGE ORIENTATION || RAYON
+.gradient-orientation {
+  @include flex-center;
+  flex-direction: column;
+  margin-bottom: 2%;
+
+  &-label {
+    font-size: calc(1vmin + 10px);
+    transition: all 0.3s;
+    margin-bottom: 2%;
+  }
+  // RANGE ORIENTATION || RAYON
+  &-input {
+    @include inputRange;
+  }
+}
+// TRACK RANGE ORIENTATION || RAYON
+#{$rangeInput}.gradient-orientation-input#{$rangeTrack} {
+  @include rangeTrack(10px, 10px, rgb(251, 255, 0), rgb(126, 0, 0));
+}
+// THUMB RANGE ORIENTATION || RAYON
+#{$rangeInput}.gradient-orientation-input#{$rangeThumb} {
+  @include rangeThumb(10px, 0, "", $primary);
+}
+
+// CONTAINER 2 COLORS INPUTS
+.gradient-inputs {
+  @include flex-mix(center, center);
+
+  // CONTAINER 1 COLOR
+  &-colors {
+    @include flex-center;
+    flex-direction: column;
+  }
+}
+
+// RANGES OPACITY
+.gradient-range-opacity {
+  width: 60%;
+  margin: 8% 0;
+}
+// TRACK RANGES OPACITY
+#{$rangeInput}.gradient-range-opacity#{$rangeTrack} {
+  @include rangeTrack(10px, 10px, rgba(0, 0, 0, 0.601), rgb(255, 255, 255));
+}
+
+// THUMB RANGES OPACITY
+#{$rangeInput}.gradient-range-opacity#{$rangeThumb} {
+  @include rangeThumb(10px, 0, "", $primary);
+}
+
+// INPUTS COLORS
+.gradient-color-input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  margin: 4% 0;
+}
+
+// SWATCH PRIMARY COLOR
+#{$colorInput}.primary-color#{$colorSwatch} {
+  border-radius: 15px 0 0 15px;
+}
+// SWATCH SECONDARY COLOR
+#{$colorInput}.secondary-color#{$colorSwatch} {
+  border-radius: 0 15px 15px 0;
+}
+
+.validShape {
+  @include flex-mix(space-around, center);
+  padding: 10% 0;
+
+  &-buttons {
+    @include button;
+    width: 40%;
+    color: white;
+    font-size: calc(1vmin + 15px);
+    padding: 2% 0;
+  }
+  &-reset {
+    @include buttonAction(rgb(246, 112, 112), rgb(206, 36, 36));
+  }
+  &-submit {
+    @include buttonAction(rgb(53, 233, 74), rgb(0, 118, 16));
+  }
 }
