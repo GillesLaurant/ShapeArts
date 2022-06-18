@@ -1,5 +1,5 @@
 import React from "react";
-import InputRange from "../../features/buttons/InputRange";
+import InputRange from "../../features/buttons&inputs/InputRange";
 import PropTypes from "prop-types";
 
 const ConfigDisplay = (props) => {

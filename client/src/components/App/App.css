@@ -1,8 +1,29 @@
+/*******    MIXINS    *******/
+/*******    DISPLAY    *******/
+/*******    BUTTONS     *******/
+/*******    INPUTS     *******/
+/*******    FONTS     *******/
 .App {
-  background: -webkit-gradient(linear, left top, left bottom, from(#fae332), to(#f79401));
-  background: linear-gradient(#fae332, #f79401);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  position: relative;
   height: 100vh;
-  overflow-y: hidden;
+  overflow: hidden;
+}
+
+.round1 {
+  fill: blue;
+}
+
+.round2 {
+  fill: red;
 }
 
 @media (prefers-reduced-motion: no-preference) {

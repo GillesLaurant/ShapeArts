@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import RecentlyShapes from "../RecentlyShapes";
+import UserSection from "./UserSection";
+import RecentlyShapes from "./RecentlyShapes";
 import { toggleWindows } from "../../features/app/app.slice";
 import "./style.scss";
 
@@ -22,6 +23,8 @@ const PannelUser = (props) => {
           Fermer
         </button>
       </div>
+
+      <UserSection />
       <RecentlyShapes />
     </section>
   );

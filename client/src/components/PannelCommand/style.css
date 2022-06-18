@@ -1,0 +1,590 @@
+/*******    MIXINS    *******/
+/*******    DISPLAY    *******/
+/*******    BUTTONS     *******/
+/*******    INPUTS     *******/
+/*******    FONTS     *******/
+/*******    PANNEL COMMAND     *******/
+.pannelCommand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 25%;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  z-index: 1000;
+  background-color: #a29f9f;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  padding: 0.5%;
+  font-family: "Quicksand";
+  color: #164e80;
+  border: 1px solid #800900;
+  border-radius: 25px 0 0 25px;
+}
+
+.pannelCommand-head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.pannelCommand_open {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+/*******    SELECT SHAPE     *******/
+.selectShape {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (45%)[auto-fill];
+      grid-template-columns: repeat(auto-fill, 45%);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 5%;
+  padding: 3% 0;
+  border: 1px solid blue;
+}
+
+.selectShape-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  padding: 2% 2%;
+  font-family: "Quicksand";
+  word-wrap: none;
+  min-height: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #164e80;
+  width: 70%;
+  fill: #164e80;
+  color: #164e80;
+  margin: 0 auto 2%;
+}
+
+.selectShape-buttons svg {
+  pointer-events: none;
+}
+
+/*******    CONFIG LAYOUT     *******/
+.configLayout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding: 1%;
+  border: 1px solid red;
+}
+
+.configLayout-containers {
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.configLayout-containers label {
+  width: 100%;
+  -webkit-box-flex: 5;
+      -ms-flex-positive: 5;
+          flex-grow: 5;
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+.configLayout-containers button {
+  width: 40%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.pos-live {
+  font-weight: bold;
+}
+
+.pos_add {
+  border-radius: 0 5px 5px 0;
+}
+
+.pos_sub {
+  border-right: 0.5px solid #164e80;
+  border-radius: 5px 0 0 5px;
+}
+
+/*******    CONFIG DISPLAY     *******/
+.configDisplay {
+  width: 100%;
+}
+
+.configDisplay-inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  padding: 2% 10%;
+  border: 1px solid green;
+}
+
+.configDisplay-label {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #164e80;
+  margin-bottom: 3%;
+}
+
+.configDisplay-range {
+  width: 100%;
+}
+
+input[type=range].configDisplay-range::-webkit-slider-runnable-track {
+  height: 50%;
+  border-radius: 25px;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(152, 235, 250, 0.208)), to(#002f8e));
+  background: linear-gradient(to right, rgba(152, 235, 250, 0.208), #002f8e);
+}
+
+.configDisplay-range::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: red;
+  border-radius: 50%;
+  background: #164e80;
+}
+
+/*******    CONFIG COLORS     *******/
+.configColors {
+  width: 100%;
+  border-bottom: none;
+  padding: 1% 0;
+  border: 1px solid yellow;
+}
+
+.configColors-label {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #164e80;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  margin-bottom: 1%;
+}
+
+.configColors-label span {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+.configColors-head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.configColors-toggle {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #164e80;
+  color: white;
+  font-family: "Quicksand";
+  width: 50%;
+  cursor: pointer;
+  padding: 1% 2%;
+  background: transparent;
+  border: 1px solid #164e80;
+  border-bottom: none;
+  margin: 0;
+  border-radius: 10px 10px 0 0;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.configColors-containers {
+  position: relative;
+  overflow: hidden;
+}
+
+.toggle_color_disab {
+  color: #164e80;
+  opacity: 0.6;
+  background: rgba(48, 7, 0, 0.7);
+  border: none;
+  border-bottom: 1px solid #164e80;
+}
+
+/*******    NORMAL COLOR     *******/
+.containerNormal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 1;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.containerNormal-opacity {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.normal-label-opacity {
+  margin-bottom: 3%;
+}
+
+input[type=range].normal-range-opacity::-webkit-slider-runnable-track {
+  height: 50%;
+  border-radius: 25px;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(217, 245, 250, 0.208)), to(#000001));
+  background: linear-gradient(to right, rgba(217, 245, 250, 0.208), #000001);
+}
+
+.normal-range-opacity::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 50%;
+  background: white;
+}
+
+.normal-color-input {
+  width: 70%;
+  height: 25%;
+  background-color: transparent;
+  border: none;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+input[type=color].normal-color-input::-webkit-color-swatch {
+  border-radius: 15px;
+}
+
+/*******    GRADIENT COLORS     *******/
+.containerGradient {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1%;
+  opacity: 1;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.gradient-selector {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.gradient-selector-toggle {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #164e80;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.selector_toggle_disab {
+  font-weight: 300;
+  opacity: 0.5;
+}
+
+.gradient-orientation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 2%;
+}
+
+.gradient-orientation-label {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #164e80;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  margin-bottom: 2%;
+}
+
+.gradient-orientation-input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: transparent;
+}
+
+input[type=range].gradient-orientation-input::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 10px;
+  background: -webkit-gradient(linear, left top, right top, from(#fbff00), to(#7e0000));
+  background: linear-gradient(to right, #fbff00, #7e0000);
+}
+
+input[type=range].gradient-orientation-input::-webkit-slider-thumb {
+  width: 10px;
+  height: 10px;
+  border-width: 0;
+  border-style: solid;
+  border-color: "";
+  border-radius: 50%;
+  background: #164e80;
+}
+
+.gradient-inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.gradient-inputs-colors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.gradient-range-opacity {
+  width: 60%;
+  margin: 8% 0;
+}
+
+input[type=range].gradient-range-opacity::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 10px;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.601)), to(white));
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.601), white);
+}
+
+input[type=range].gradient-range-opacity::-webkit-slider-thumb {
+  width: 10px;
+  height: 10px;
+  border-width: 0;
+  border-style: solid;
+  border-color: "";
+  border-radius: 50%;
+  background: #164e80;
+}
+
+.gradient-color-input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  margin: 4% 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+input[type=color].primary-color::-webkit-color-swatch {
+  border-radius: 15px 0 0 15px;
+}
+
+input[type=color].secondary-color::-webkit-color-swatch {
+  border-radius: 0 15px 15px 0;
+}
+
+/*******    VALID SHAPE     *******/
+.validShape {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding: 10% 0;
+}
+
+.validShape-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  padding: 2% 2%;
+  font-family: "Quicksand";
+  word-wrap: none;
+  min-height: 20px;
+  cursor: pointer;
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #164e80;
+  width: 40%;
+  color: white;
+  padding: 2% 0;
+}
+
+.validShape-reset {
+  background: -webkit-gradient(linear, left bottom, left top, from(#f67070), to(#ce2424));
+  background: linear-gradient(to top, #f67070, #ce2424);
+}
+
+.validShape-submit {
+  background: -webkit-gradient(linear, left bottom, left top, from(#35e94a), to(#007610));
+  background: linear-gradient(to top, #35e94a, #007610);
+}
+/*# sourceMappingURL=style.css.map */

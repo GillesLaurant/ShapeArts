@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Svg from "../svg/generatorSVG";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleWindows } from "../app/app.slice";
-import "./buttons.scss";
+import "./style.scss";
 
 export const ButtonWindows = ({ nameClass, name }) => {
   const dispatch = useDispatch();

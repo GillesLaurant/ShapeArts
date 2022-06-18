@@ -1,12 +1,12 @@
-@import "../../../scss/styles.scss";
+@import "../../../scss/mixins";
+@import "../../../scss/variables";
 
 .error-section {
   @include flex-mix(space-around, center);
   display: none;
   width: 100%;
   flex-direction: column;
-  font-family: "DS_Digi";
-  color: red;
+  font-family: $text-time;
   padding: 2% 0;
   background: linear-gradient(to top, rgb(38, 0, 0), rgb(80, 0, 0));
   border-radius: 10px;
@@ -14,9 +14,11 @@
 
   &-title {
     @include font(1vmin, 12px);
+    color: red;
   }
 
   &-msg {
     @include font(1vmin, 9px);
+    color: red;
   }
 }

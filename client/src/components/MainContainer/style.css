@@ -1,19 +1,26 @@
-@import "../../../scss/_mixins";
-@import "../../../scss/_variables";
-
+/*******    MIXINS    *******/
+/*******    DISPLAY    *******/
+/*******    BUTTONS     *******/
+/*******    INPUTS     *******/
+/*******    FONTS     *******/
 /*******    MAIN     *******/
-
-// Container cloths components
 .mainContainer {
-  @include flex-mix;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
   height: 100%;
   max-width: 1100px;
   min-width: 950px;
-  color: $primary;
-  // border: 1px solid red;
+  color: #164e80;
 }
-// Title component
+
 .titleApp {
   width: 100%;
   position: absolute;
@@ -25,7 +32,7 @@
   line-height: calc(2vmin + 30px);
   margin-top: 2%;
 }
-// Text component
+
 .textApp {
   width: 100%;
   position: absolute;
@@ -36,3 +43,4 @@
   line-height: calc(1.5vmin + 15px);
   margin-bottom: 1%;
 }
+/*# sourceMappingURL=style.css.map */

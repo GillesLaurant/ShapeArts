@@ -43,7 +43,6 @@ const initialState = {
 export const shapeSlice = createSlice({
   name: "shape",
   initialState,
-  // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     // Input select "Round" || "Square" || "Triangle" || "Star"
     selectShape: (state, action) => {

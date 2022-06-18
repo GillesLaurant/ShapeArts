@@ -1,4 +1,5 @@
-@import "../../../scss/styles.scss";
+@import "../../../scss/_mixins";
+@import "../../../scss/_variables";
 
 .App {
   @include flex-mix(space-around, center);

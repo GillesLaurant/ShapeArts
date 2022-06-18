@@ -3,7 +3,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   pannelUser_open: false,
   pannelCommand_open: false,
-  status: "idle",
+  userLoggin: false,
+  pwdEdited: false,
 };
 
 // The function below is called a thunk and allows us to perform async logic. It

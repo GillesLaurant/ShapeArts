@@ -1,4 +1,5 @@
-@import "../../../scss/styles.scss";
+@import "../../../scss/mixins";
+@import "../../../scss/variables";
 
 /*******    PANNEL COMMAND     *******/
 
@@ -44,7 +45,7 @@
 
   &-buttons {
     @include button;
-    @include flex-center;
+    @include flex-mix;
     @include font(1vmin, 15px);
     width: 70%;
     fill: $primary;
@@ -201,7 +202,7 @@
 
   // container range opacity
   &-opacity {
-    @include flex-center;
+    @include flex-mix;
     flex-direction: column;
   }
 }
@@ -264,7 +265,7 @@
 
 // Container range "Orientation" || "Rayon"
 .gradient-orientation {
-  @include flex-center;
+  @include flex-mix;
   flex-direction: column;
   margin-bottom: 2%;
 
@@ -293,7 +294,7 @@
 
   // Containers 1 color & opacity
   &-colors {
-    @include flex-center;
+    @include flex-mix;
     flex-direction: column;
   }
 }
@@ -347,10 +348,10 @@
   }
   // Button reset
   &-reset {
-    @include buttonAction(rgb(246, 112, 112), rgb(206, 36, 36));
+    @include buttonColor(rgb(246, 112, 112), rgb(206, 36, 36));
   }
   // Button submit
   &-submit {
-    @include buttonAction(rgb(53, 233, 74), rgb(0, 118, 16));
+    @include buttonColor(rgb(53, 233, 74), rgb(0, 118, 16));
   }
 }

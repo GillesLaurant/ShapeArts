@@ -1,0 +1,71 @@
+@import "../../../../scss/mixins";
+@import "../../../../scss/variables";
+@import "../../../../scss/reset";
+
+.userSection {
+  @include flex-mix(center, center);
+  flex-direction: column;
+  flex-grow: 1;
+  border: 1px solid blue;
+}
+/*******    PANNEL USER     *******/
+
+.pannelStart {
+  @include flex-mix(space-evenly, center);
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: center;
+  border: 1px solid red;
+
+  &-head {
+    &-title {
+      @include titleUser;
+    }
+
+    &-text {
+      @include textUser;
+    }
+  }
+
+  &-nav {
+    @include flex-mix(space-between, center);
+    flex-direction: column;
+    width: 100%;
+    padding: 3% 2%;
+  }
+}
+
+/*******    PANNEL REGISTER     *******/
+
+.pannelRegister {
+  @include flex-mix(space-evenly, center);
+  flex-direction: column;
+  flex-grow: 1;
+
+  &-head {
+    @include textUser;
+  }
+
+  &-footer {
+    @include flex-mix;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+/*******    PANNEL REGISTER     *******/
+
+.pannelLoggin {
+  @extend .pannelRegister;
+  width: 100%;
+
+  &-head {
+    @include textUser;
+  }
+
+  &-footer {
+    @include flex-mix;
+    flex-direction: column;
+    width: 100%;
+  }
+}
