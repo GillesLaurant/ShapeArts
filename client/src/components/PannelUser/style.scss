@@ -4,8 +4,7 @@
 /*******    PANNEL USER     *******/
 
 .pannelUser {
-  @include flex-mix(space-between, none);
-  flex-direction: column;
+  @include flex-mix(space-between, none, column);
   width: 25%;
   height: 100vh;
   position: absolute;
@@ -19,12 +18,23 @@
   border-radius: 0 25px 25px 0;
 
   &-head {
+    position: relative;
     display: flex;
     justify-content: space-between;
     padding: 0 1% 1%;
+    min-height: 2.5%;
+
+    &-buttonWindow {
+      position: absolute;
+      right: 3%;
+    }
   }
 }
 
 .pannelUser_open {
   transform: translateX(0%);
+}
+
+.back_undefined {
+  display: none;
 }

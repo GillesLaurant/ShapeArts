@@ -1,6 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { register, loggin } from "../app/user.slice";
+import {
+  register,
+  loggin,
+  editUsername,
+  editMail,
+  editPwd,
+} from "../app/user.slice";
 import { setError } from "../error/error.slice";
 import "./style.scss";
 
@@ -9,50 +15,56 @@ const ButtonAction = ({ nameButton }) => {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.error);
   const inputsUser = useSelector((state) => state.user);
-  const listButtons = [
-    {
+  const listButtons = {
+    register: {
       name: "register",
       content: "S'inscrire",
       inputs: ["username", "mail", "password"],
     },
-    {
+    loggin: {
       name: "loggin",
       content: "Se connecter",
       inputs: ["mail", "password"],
     },
-    {
+    editUsername: {
       name: "editUsername",
-      content: "Se connecter",
-      inputs: ["mail", "password"],
+      content: "Modifer",
+      inputs: ["usernameEdited"],
     },
-    {
-      name: "loggin",
-      content: "Se connecter",
-      inputs: ["mail", "password"],
+    editMail: {
+      name: "editMail",
+      content: "Modifier",
+      inputs: ["mailEdited"],
     },
-    {
-      name: "loggin",
-      content: "Se connecter",
-      inputs: ["mail", "password"],
+    editPwd: {
+      name: "editPwd",
+      content: "Modifier",
+      inputs: ["holdPwd", "newPwd"],
     },
-  ];
-
-  // Config button
-  const sortButton = () => {
-    const button = listButtons.filter(
-      (button) => button.name === nameButton
-    )[0];
-    return button;
+    loggout: {
+      name: "loggout",
+      content: "Se déconnecter",
+      inputs: [],
+    },
+    delete: {
+      name: "delete",
+      content: "Se désinscrire",
+      inputs: [],
+    },
   };
 
   // Check validity form
   const checkValidity = (ev) => {
     ev.preventDefault();
-    const button = sortButton();
+    const button = listButtons[nameButton];
     const regex = {
       username: /^[A-Za-z0-9_-]{3,15}$/,
+      usernameEdited: /^[A-Za-z0-9_-]{3,15}$/,
       mail: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+      mailEdited: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
       password: /^[A-Za-z0-9_-]{4,15}$/,
+      holdPwd: /^[A-Za-z0-9_-]{4,15}$/,
+      newPwd: /^[A-Za-z0-9_-]{4,15}$/,
     };
 
     let failed = [];
@@ -78,7 +90,7 @@ const ButtonAction = ({ nameButton }) => {
 
   const handleRegister = (ev) => {
     ev.preventDefault();
-    const button = sortButton();
+    const button = listButtons[nameButton];
     let echec = false;
 
     // If empty input => seterror & filter errors inputs
@@ -103,6 +115,15 @@ const ButtonAction = ({ nameButton }) => {
         case "loggin":
           dispatch(loggin({ test: "test" }));
           break;
+        case "editUsername":
+          dispatch(editUsername({ test: "test" }));
+          break;
+        case "editMail":
+          dispatch(editMail({ test: "test" }));
+          break;
+        case "editPwd":
+          dispatch(editPwd({ test: "test" }));
+          break;
 
         default:
           break;
@@ -124,7 +145,7 @@ const ButtonAction = ({ nameButton }) => {
       onMouseEnter={checkValidity}
       onClick={handleRegister}
     >
-      {sortButton().content}
+      {listButtons[nameButton].content}
     </button>
   );
 };

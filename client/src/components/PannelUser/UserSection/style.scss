@@ -3,69 +3,247 @@
 @import "../../../../scss/reset";
 
 .userSection {
-  @include flex-mix(center, center);
-  flex-direction: column;
+  @include flex-mix(center, center, column);
   flex-grow: 1;
   border: 1px solid blue;
+  animation: fadeIn 0.5s forwards;
 }
 /*******    PANNEL USER     *******/
 
 .pannelStart {
-  @include flex-mix(space-evenly, center);
-  flex-direction: column;
-  flex-grow: 1;
-  text-align: center;
+  @include displayUser;
   border: 1px solid red;
 
-  &-head {
-    &-title {
-      @include titleUser;
-    }
-
-    &-text {
-      @include textUser;
-    }
+  &-head-title {
+    @include titleUser;
+  }
+  &-head-text {
+    @include textUser;
   }
 
-  &-nav {
-    @include flex-mix(space-between, center);
-    flex-direction: column;
-    width: 100%;
-    padding: 3% 2%;
+  &-footer {
+    @include displayFooterUser(space-between, center);
   }
 }
 
 /*******    PANNEL REGISTER     *******/
 
 .pannelRegister {
-  @include flex-mix(space-evenly, center);
-  flex-direction: column;
-  flex-grow: 1;
+  @include displayUser;
 
   &-head {
     @include textUser;
   }
 
   &-footer {
-    @include flex-mix;
-    flex-direction: column;
-    width: 100%;
+    @include displayFooterUser(space-between, center);
   }
 }
 
-/*******    PANNEL REGISTER     *******/
+/*******    PANNEL LOGGIN     *******/
 
 .pannelLoggin {
-  @extend .pannelRegister;
-  width: 100%;
+  @include displayUser;
 
   &-head {
     @include textUser;
   }
 
   &-footer {
-    @include flex-mix;
-    flex-direction: column;
+    @include displayFooterUser(space-between, center);
+  }
+}
+/*******    PANNEL RULES     *******/
+
+.pannelRules {
+  @include displayUser;
+
+  &-head {
+    @include textUser;
+
+    &-user {
+      text-transform: capitalize;
+    }
+  }
+
+  &-content {
+    padding: 1% 1% 0;
+    &-text {
+      @include textUser;
+      @include font(1vmin, 8px);
+    }
+  }
+
+  &-footer {
+    @include displayFooterUser(space-between, center);
+  }
+}
+
+/*******    PANNEL TIMING     *******/
+
+.pannelTiming {
+  @include displayUser;
+
+  &-head {
+    @include textUser;
+
+    &-user {
+      text-transform: capitalize;
+    }
+  }
+
+  &-content {
+    padding: 1% 1% 0;
+    &-text {
+      @include textUser;
+      @include font(1vmin, 8px);
+    }
+  }
+
+  &-footer {
+    @include displayFooterUser(space-between, center);
+  }
+}
+
+.timer {
+  @include flex-mix;
+  margin: 2% 0;
+
+  &-text {
+    // @include textUser;
+    @include font(1vmin, 17px);
+    padding: 3% 4%;
+    font-family: $text-time;
+    color: red;
+    background-color: #000;
+    border-radius: 5px;
+    // border: 1px solid red;
+  }
+}
+
+/*******    PANNEL ACCOUNT     *******/
+
+.pannelAccount {
+  @include displayUser;
+
+  &-head {
+    @include textUser;
+  }
+
+  &-content {
+    @include flex-mix(space-around, _, column);
     width: 100%;
+    flex-grow: 1;
+    padding: 1% 1% 0;
+
+    &-text {
+      @include textUser;
+      @include font(1vmin, 8px);
+      text-transform: capitalize;
+    }
+  }
+
+  &-footer {
+    @include displayFooterUser(space-around, center);
+
+    & button {
+      margin: 2%;
+    }
+  }
+}
+
+.account-data-mail {
+  text-transform: none;
+}
+.account-data-pwd {
+  color: green;
+}
+
+/*******    PANNEL NAV EDIT     *******/
+
+.pannelNavEdit {
+  @include displayUser;
+
+  &-head {
+    @include textUser;
+  }
+
+  &-content {
+    @include flex-mix(space-between, center, column);
+    width: 100%;
+    // flex-grow: 1;
+    padding: 1% 10%;
+
+    & button {
+      width: 100%;
+      padding: 2% 3%;
+      margin: 3%;
+    }
+  }
+
+  &-footer {
+    @include displayFooterUser;
+  }
+}
+
+/*******    PANNEL EDIT USERNAME & MAIL & PASSWORD    *******/
+
+.pannelEdit {
+  @include displayUser;
+
+  &-head {
+    @include textUser;
+    padding: 2% 0;
+
+    &-user {
+      text-transform: capitalize;
+      margin-top: 5%;
+    }
+  }
+
+  &-footer {
+    @include displayFooterUser(space-between, center);
+  }
+}
+
+/*******    PANNEL NAV EDIT     *******/
+
+.pannelDelete {
+  @include displayUser;
+
+  &-head {
+    @include textUser;
+    @include font(1vmin, 8px);
+  }
+
+  &-content {
+    @include flex-mix(space-between, center, column);
+    width: 100%;
+    // flex-grow: 1;
+    padding: 1% 5%;
+
+    &-text {
+      @include textUser;
+      @include font(1vmin, 8px);
+    }
+
+    & button {
+      width: 100%;
+      padding: 2% 3%;
+      margin: 3%;
+    }
+  }
+
+  &-footer {
+    @include displayFooterUser;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

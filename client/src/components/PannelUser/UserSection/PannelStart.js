@@ -1,6 +1,8 @@
 import React from "react";
 import ButtonUserNav from "../../../features/buttons&inputs/ButtonUserNav";
 
+/*******    PANNEL START     *******/
+
 const PannelStart = () => {
   return (
     <div className="pannelStart">
@@ -12,13 +14,13 @@ const PannelStart = () => {
         </h4>
       </header>
 
-      <div className="pannelStart-nav">
-        {/* BUTTON REGISTER NAV */}
+      <footer className="pannelStart-footer">
+        {/* REGISTER NAV */}
         <ButtonUserNav nav={"nav_SignIn"} />
 
-        {/* BUTTON LOGGIN NAV */}
+        {/* LOGGIN NAV */}
         <ButtonUserNav nav={"nav_SignUp"} />
-      </div>
+      </footer>
     </div>
   );
 };

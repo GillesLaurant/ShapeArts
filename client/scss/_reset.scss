@@ -41,7 +41,7 @@ form {
 }
 input[type="text"] {
   @include resetInputs;
-  @include font(1vmin, 13px);
+  @include font(1vmin, 11px);
 }
 
 input[type="text"]::-webkit-input-placeholder {

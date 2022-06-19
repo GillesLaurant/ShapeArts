@@ -2,10 +2,25 @@
 
 /*******    DISPLAY    *******/
 
-@mixin flex-mix($just: center, $align: center) {
+@mixin flex-mix($just: center, $align: center, $flex: row) {
   display: flex;
   justify-content: $just;
   align-items: $align;
+  flex-direction: $flex;
+}
+
+@mixin displayUser($justify: space-evenly, $align: center, $flex: column) {
+  @include flex-mix($justify, $align, $flex);
+  flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 0.3s forwards;
+}
+
+@mixin displayFooterUser($navJustify: center, $navAlign: center) {
+  @include flex-mix($navJustify, $navAlign, column);
+  width: 100%;
+  padding: 3% 2%;
 }
 
 /*******    BUTTONS     *******/
@@ -65,7 +80,6 @@
 
 @mixin placeholder($col1: rgb(74, 72, 72), $font: $text-pannel) {
   appearance: none;
-  text-transform: capitalize;
   color: $col1;
   font-family: $font;
 }

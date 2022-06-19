@@ -17,9 +17,13 @@ const initialState = {
   },
   errorMsg: {},
   listMsg: {
-    username: "Veuillez entrer un username entre 3 et 15 charactères.",
+    username: "Veuillez entrer un pseudo entre 3 et 15 charactères.",
+    usernameEdited: "Veuillez entrer un pseudo entre 3 et 15 charactères.",
     mail: "Veuillez entrer une adresse mail valide.",
-    password: "Doit contenir entre 3 et 15 charactères.",
+    mailEdited: "Veuillez entrer une adresse mail valide.",
+    password: "Doit contenir entre 4 et 15 charactères.",
+    holdPwd: "Doit contenir entre 4 et 15 charactères.",
+    newPwd: "Doit contenir entre 4 et 15 charactères.",
   },
 };
 

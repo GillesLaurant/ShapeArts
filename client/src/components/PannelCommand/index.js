@@ -10,7 +10,7 @@ import ValidShape from "./ValidShape";
 import { toggleWindows } from "../../features/app/app.slice";
 import "./style.scss";
 
-const PannelCommand = (props) => {
+const PannelCommand = () => {
   const dispatch = useDispatch();
   const windowCommand = useSelector((state) => state.app.pannelCommand_open);
 
@@ -19,6 +19,7 @@ const PannelCommand = (props) => {
     ev.preventDefault();
     dispatch(toggleWindows(ev.target.name));
   };
+
   return (
     <section
       className={`pannelCommand ${windowCommand && "pannelCommand_open"}`}

@@ -45,7 +45,9 @@
   @include buttonColor(rgb(41, 77, 160), rgb(69, 145, 252));
 }
 
-.button_edit {
+.button_editUsername,
+.button_editMail,
+.button_editPwd {
   @include buttonColor(rgb(10, 57, 101), rgb(33, 112, 186));
 }
 

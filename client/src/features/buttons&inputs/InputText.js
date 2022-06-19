@@ -5,50 +5,47 @@ import { changeFields } from "../app/user.slice";
 import "./style.scss";
 
 const InputText = ({ nameInput }) => {
-  const USERNAME_REGEX = /^[A-Za-z_-]/;
   const dispatch = useDispatch();
   const valueField = useSelector((state) => state.user[nameInput]);
   const status = useSelector((state) => state.error);
 
-  // Initialize config
-  const fieldConfigs = [
-    {
+  // List fields config
+  const fieldConfigs = {
+    username: {
       type: "text",
-      placholder: "pseudo",
+      placholder: "Pseudo",
       max: 15,
     },
-    {
+    mail: {
       type: "mail",
       placholder: "Email",
       max: 50,
     },
-    {
+    password: {
       type: "password",
       placholder: "Mot de passe",
       max: 15,
     },
-  ];
-
-  // Sort config / input
-  const returnContrains = () => {
-    switch (nameInput) {
-      // username
-      case "username":
-      case "usernameEdited":
-        return fieldConfigs[0];
-      // mail
-      case "mail":
-      case "mailEdited":
-        return fieldConfigs[1];
-      // password
-      case "password":
-      case "holdPwd":
-      case "newPwd":
-        return fieldConfigs[2];
-
-      default:
-        return fieldConfigs[0];
-    }
+    usernameEdited: {
+      type: "text",
+      placholder: "Nouveau pseudo",
+      max: 15,
+    },
+    mailEdited: {
+      type: "mail",
+      placholder: "Nouvelle adresse mail",
+      max: 50,
+    },
+    holdPwd: {
+      type: "password",
+      placholder: "Ancien mot de passe",
+      max: 15,
+    },
+    newPwd: {
+      type: "password",
+      placholder: "Nouveau mot de passe",
+      max: 15,
+    },
   };
 
   // Control fields
@@ -61,14 +58,14 @@ const InputText = ({ nameInput }) => {
     <div className={status.error[nameInput] ? "inputUser_error" : "inputUser"}>
       {/* INPUT */}
       <input
-        type={returnContrains().type}
+        type={fieldConfigs[nameInput].type}
         className={
           !status.error[nameInput]
             ? "inputUser-input"
             : "inputUser-input_invalid"
         }
         name={nameInput}
-        placeholder={returnContrains().placholder}
+        placeholder={fieldConfigs[nameInput].placholder}
         value={valueField}
         onChange={handleField}
         required

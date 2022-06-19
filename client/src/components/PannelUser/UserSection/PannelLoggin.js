@@ -3,26 +3,25 @@ import ButtonAction from "../../../features/buttons&inputs/ButtonAction";
 import ButtonUserNav from "../../../features/buttons&inputs/ButtonUserNav";
 import InputText from "../../../features/buttons&inputs/InputText";
 
+/*******    PANNEL LOGGIN     *******/
+
 const PannelLoggin = () => {
-  // List inputs
-  const formRegister = ["mail", "password"];
   return (
     <div className="pannelLoggin">
       <header className="pannelLoggin-head">
         <h3 className="pannelLoggin-head-text">Ravis de vous revoir !</h3>
       </header>
 
-      {/* FORM LOGGIN */}
+      {/* FORM LOGGIN with MAIL & PASSWORD inputs */}
       <form className="form form-register">
-        {formRegister.map((input) => (
-          <InputText key={input} nameInput={input} />
-        ))}
+        <InputText nameInput={"mail"} />
+        <InputText nameInput={"password"} />
 
         <footer className="pannelLoggin-footer">
-          {/* BUTTON LOGGIN ACTION */}
+          {/* LOGGIN ACTION */}
           <ButtonAction nameButton={"loggin"} />
 
-          {/* BUTTON BACK NAV */}
+          {/* BACK START */}
           <ButtonUserNav nav={"back_SignUp"} />
         </footer>
       </form>

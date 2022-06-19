@@ -21,9 +21,23 @@ export const userSlice = createSlice({
     },
     register: (state, action) => {
       console.log(action);
+      state.id = 7;
     },
     loggin: (state, action) => {
+      state.id = 7;
       console.log(action);
+    },
+    editUsername: (state, action) => {
+      state.username = state.usernameEdited;
+      state.usernameEdited = "";
+    },
+    editMail: (state, action) => {
+      state.mail = state.mailEdited;
+      state.mailEdited = "";
+    },
+    editPwd: (state, action) => {
+      state.holdPwd = "";
+      state.newPwd = "";
     },
     registerSuccess: (state, action) => {
       for (const item of state) {
@@ -37,7 +51,14 @@ export const userSlice = createSlice({
   },
 });
 
-export const { changeFields, register, loggin, registerSuccess } =
-  userSlice.actions;
+export const {
+  changeFields,
+  register,
+  loggin,
+  editUsername,
+  editMail,
+  editPwd,
+  registerSuccess,
+} = userSlice.actions;
 
 export default userSlice.reducer;
