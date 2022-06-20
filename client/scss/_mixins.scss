@@ -1,0 +1,126 @@
+/*******    MIXINS    *******/
+
+/*******    DISPLAY    *******/
+
+@mixin flex-mix($just: center, $align: center, $flex: row) {
+  display: flex;
+  justify-content: $just;
+  align-items: $align;
+  flex-direction: $flex;
+}
+
+@mixin displayUser($justify: space-evenly, $align: center, $flex: column) {
+  @include flex-mix($justify, $align, $flex);
+  flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 0.3s forwards;
+}
+
+@mixin displayFooterUser($navJustify: center, $navAlign: center) {
+  @include flex-mix($navJustify, $navAlign, column);
+  width: 100%;
+  padding: 3% 2%;
+}
+
+/*******    BUTTONS     *******/
+@mixin button {
+  @include flex-mix;
+  flex-wrap: nowrap;
+  appearance: none;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  padding: 2% 2%;
+  font-family: $text-pannel;
+
+  word-wrap: none;
+  min-height: 20px;
+  cursor: pointer;
+}
+
+@mixin buttonColor($col1, $col2) {
+  background: linear-gradient(to top, $col1, $col2);
+}
+
+/*******    INPUTS     *******/
+@mixin inputRange {
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: transparent;
+}
+
+@mixin rangeTrack($height, $radius, $color1, $color2) {
+  height: $height;
+  border-radius: $radius;
+  background: linear-gradient(to right, $color1, $color2);
+}
+
+@mixin rangeThumb($size, $bSize, $bColor, $color) {
+  width: $size;
+  height: $size;
+  border-width: $bSize;
+  border-style: solid;
+  border-color: $bColor;
+  border-radius: 50%;
+  background: $color;
+}
+
+@mixin resetInputs {
+  appearance: none;
+  width: 100%;
+  padding: 3% 3%;
+  border: none;
+  border-radius: 0.4em;
+  outline: 0;
+}
+
+@mixin placeholder($col1: rgb(74, 72, 72), $font: $text-pannel) {
+  appearance: none;
+  color: $col1;
+  font-family: $font;
+}
+
+/*******    FONTS     *******/
+@mixin font($vmin, $px) {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: $primary;
+}
+
+@mixin titleUser {
+  @include font(1.5vmin, 20px);
+  font-family: $title-app;
+}
+@mixin subtitleUser {
+  @include font(1.5vmin, 15px);
+  font-family: $text-pannel;
+}
+@mixin textUser {
+  @include font(1.2vmin, 10px);
+  font-family: $text-pannel;
+}
+
+@mixin formNoValid($x: 10px) {
+  @keyframes formNoValid {
+    0% {
+      transform: translateX(-10px);
+    }
+    25% {
+      transform: translateX(10px);
+    }
+    50% {
+      transform: translateX(-10px);
+    }
+    75% {
+      transform: translateX(10px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+}

@@ -1,0 +1,40 @@
+@import "../../../scss/mixins";
+@import "../../../scss/variables";
+
+/*******    PANNEL USER     *******/
+
+.pannelUser {
+  @include flex-mix(space-between, none, column);
+  width: 25%;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  transform: translateX(-100%);
+  z-index: 1000;
+  background-color: rgba($color: #b8b4b4, $alpha: 1);
+  transition: transform 0.5s;
+  padding: 0.5% 0 0;
+  border: 1px solid green;
+  border-radius: 0 25px 25px 0;
+
+  &-head {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1% 1%;
+    min-height: 2.5%;
+
+    &-buttonWindow {
+      position: absolute;
+      right: 3%;
+    }
+  }
+}
+
+.pannelUser_open {
+  transform: translateX(0%);
+}
+
+.back_undefined {
+  display: none;
+}

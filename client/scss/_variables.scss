@@ -1,0 +1,34 @@
+/*******    VARIABLES     *******/
+
+// APP BACKGROUNDS
+$main-light: rgb(250, 227, 50);
+$main-dark: rgb(247, 148, 1);
+
+$pan-user-light: rgb(51, 172, 142);
+$pan-user-dark: rgb(251, 217, 50);
+
+// COLORS
+$primary: #164e80;
+$--bs-primary: #164e81;
+
+// COMPONENTS
+
+// FONTS
+$title-app: "Biryani";
+$subtitle-pannel: "Exo";
+$text-pannel: "Quicksand";
+$text-time: "DS_Digi";
+
+// INPUTS RANGE
+$rangeInput: "input[type=" range "]";
+$rangeTrack: "::-webkit-slider-runnable-track";
+$rangeThumb: "::-webkit-slider-thumb";
+
+// INPUTS COLOR
+$colorInput: "input[type=" color "]";
+$colorWrapper: "::-webkit-color-swatch-wrapper";
+$colorSwatch: "::-webkit-color-swatch";
+
+// COLORS BUTTONS
+$nav_SignIn: rgb(70, 221, 199), rgb(7, 114, 124);
+$nav_SignUp: rgb(69, 145, 252), rgb(41, 77, 160);
