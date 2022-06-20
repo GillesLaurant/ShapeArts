@@ -1,17 +1,15 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import UserSection from "./UserSection";
 import RecentlyShapes from "./RecentlyShapes";
-import { toggleWindows } from "../../features/app/app.slice";
-import "./style.scss";
 import ButtonUserNav from "../../features/buttons&inputs/ButtonUserNav";
+import { toggleWindows } from "../../features/app/app.slice";
 import { navigate } from "../../features/app/navUser.slice";
+import "./style.scss";
 
 const PannelUser = () => {
   const dispatch = useDispatch();
   const { app, nav } = useSelector((state) => state);
-  // const pannels = useSelector((state) => state.nav);
 
   const filterPannel = () => {
     let pannelOpened = [];
@@ -23,7 +21,6 @@ const PannelUser = () => {
     }
     if (pannelOpened.length > 0) {
       pannelOpened = pannelOpened[0].split("_")[1];
-      // console.log("test", pannelOpened);
       return pannelOpened;
     }
   };

@@ -2,14 +2,16 @@ import React from "react";
 import InputRange from "../../features/buttons&inputs/InputRange";
 import PropTypes from "prop-types";
 
+/*******    CONFIG DISPLAY SHAPE     *******/
+
 const ConfigDisplay = (props) => {
-  // INPUTS LIST
+  // List inputs pos_z & size & rotation & rotation_x & rotation_y
   const inputs = [
     {
       name: "pos_Z",
       label: "Profondeur",
       min: 0,
-      max: 500,
+      max: 200,
       step: 1,
     },
     {
@@ -41,6 +43,7 @@ const ConfigDisplay = (props) => {
       step: 1,
     },
   ];
+
   return (
     <section className="configDisplay">
       {inputs.map((input) => (

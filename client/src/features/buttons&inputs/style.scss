@@ -1,6 +1,8 @@
 @import "../../../scss/mixins";
 @import "../../../scss/variables";
 
+/*******    BUTTONS & INPUTS     *******/
+
 // Buttons open windows "User" & "Command"
 .toggleContainerPannel {
   @include button;

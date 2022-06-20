@@ -1,15 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ClothPrevious from "../ClothsContainer/clothPrevious";
 import TitleApp from "./TitleApp";
+import ClothsContainer from "../ClothsContainer";
 import TextApp from "./TextApp";
 import "./style.scss";
+
+/*******    MAIN APP     *******/
 
 const MainContainer = (props) => {
   return (
     <div className="mainContainer">
       <TitleApp />
-      <ClothPrevious />
+      <ClothsContainer />
       <TextApp />
     </div>
   );

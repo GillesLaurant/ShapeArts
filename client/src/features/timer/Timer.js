@@ -2,6 +2,8 @@ import React, { useState, useLayoutEffect } from "react";
 import dayjs from "dayjs";
 import { useSelector } from "react-redux";
 
+/*******    TIMER     *******/
+
 const Timer = () => {
   //   const shapeTimeCreated = useSelector((state) => state.shape);
   const shapeTimeCreated = Date();

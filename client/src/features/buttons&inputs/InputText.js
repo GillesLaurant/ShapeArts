@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeFields } from "../app/user.slice";
-
 import "./style.scss";
+
+/*******    TEXT INPUTS     *******/
 
 const InputText = ({ nameInput }) => {
   const dispatch = useDispatch();
@@ -55,10 +56,12 @@ const InputText = ({ nameInput }) => {
   };
 
   return (
+    // Set :error div
     <div className={status.error[nameInput] ? "inputUser_error" : "inputUser"}>
       {/* INPUT */}
       <input
         type={fieldConfigs[nameInput].type}
+        // Set :invald input
         className={
           !status.error[nameInput]
             ? "inputUser-input"

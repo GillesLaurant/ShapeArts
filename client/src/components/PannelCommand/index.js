@@ -10,11 +10,13 @@ import ValidShape from "./ValidShape";
 import { toggleWindows } from "../../features/app/app.slice";
 import "./style.scss";
 
+/*******    PANNEL CONFIG SHAPE     *******/
+
 const PannelCommand = () => {
   const dispatch = useDispatch();
   const windowCommand = useSelector((state) => state.app.pannelCommand_open);
 
-  // TOGGLE OPEN || CLOSE WINDOW
+  // Handle Open || Close pannel
   const handleWindows = (ev) => {
     ev.preventDefault();
     dispatch(toggleWindows(ev.target.name));

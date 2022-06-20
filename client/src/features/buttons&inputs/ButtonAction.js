@@ -10,11 +10,15 @@ import {
 import { setError } from "../error/error.slice";
 import "./style.scss";
 
+/*******    ACTION BUTTONS     *******/
+
 const ButtonAction = ({ nameButton }) => {
   const buttonTarget = useRef();
   const dispatch = useDispatch();
   const error = useSelector((state) => state.error);
   const inputsUser = useSelector((state) => state.user);
+
+  // List buttons
   const listButtons = {
     register: {
       name: "register",

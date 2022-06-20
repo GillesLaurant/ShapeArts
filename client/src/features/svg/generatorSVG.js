@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+/*******    PANNEL MAIL EDIT     *******/
+
 const GeneratorSVG = ({ nameSvg }) => {
   const returnPath = (svg) => {
     switch (svg) {

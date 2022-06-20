@@ -1,3 +1,4 @@
+/*******    RESET     *******/
 * {
   margin: 0;
   padding: 0;
@@ -19,6 +20,10 @@ input[type="range"]::-webkit-slider-runnable-track {
 input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   border-style: solid;
+}
+
+#thumb {
+  transition: all 3s;
 }
 
 // WRAPPER NORMAL COLOR INPUT

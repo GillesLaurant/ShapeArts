@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { register, loggin, editUsername } from "./user.slice";
 
+/*******    APP     *******/
+
 const initialState = {
   pannelUser_open: false,
   pannelCommand_open: false,

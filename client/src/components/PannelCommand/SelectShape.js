@@ -5,8 +5,11 @@ import { selectShape } from "../../features/shape/shape.slice";
 import GeneratorSVG from "../../features/svg/generatorSVG";
 import "./style.scss";
 
+/*******    SELECT SHAPE     *******/
+
 const SelectShape = () => {
   const dispatch = useDispatch();
+  // List shapes
   const allShapes = ["round", "square", "triangle", "star"];
 
   const handleShape = (ev) => {

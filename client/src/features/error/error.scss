@@ -1,6 +1,8 @@
 @import "../../../scss/mixins";
 @import "../../../scss/variables";
 
+/*******    ERROR     *******/
+
 .error-section {
   @include flex-mix(space-around, center);
   display: none;

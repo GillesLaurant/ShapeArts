@@ -4,11 +4,13 @@ import PropTypes from "prop-types";
 import { toggleLayout } from "../../features/shape/shape.slice";
 import "./style.scss";
 
+/*******    CONFIG LAYOUT SHAPE     *******/
+
 const ConfigLayout = () => {
   const dispatch = useDispatch();
   const { pos_X, pos_Y } = useSelector((state) => state.shape);
 
-  // HANDLE
+  // Handle psoition with inputs
   const handleLayout = (ev) => {
     ev.preventDefault();
     const option = {

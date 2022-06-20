@@ -7,21 +7,26 @@ import {
 } from "../../features/shape/shape.slice";
 import "./style.scss";
 
+/*******    CONFIG COLORS SHAPE     *******/
+
 const ConfigColors = () => {
   const dispatch = useDispatch();
+  // Shape
   const shape = useSelector((state) => state.shape);
-  //   console.log(shape);
 
+  // Handle type Normal || Gradient colors
   const handleColorsType = (ev) => {
     ev.preventDefault();
     dispatch(toggleGradient());
   };
 
+  // Handle Linear || Radial gradient colors
   const handleGradients = (ev) => {
     ev.preventDefault();
     dispatch(toggleGradientType());
   };
 
+  // Handle colors
   const handleColors = (ev) => {
     ev.preventDefault();
     dispatch(toggleDisplay({ name: ev.target.name, value: ev.target.value }));
@@ -67,8 +72,8 @@ const ConfigColors = () => {
               name="primary_opacity"
               className="normal-range-opacity"
               min={0}
-              max={100}
-              step={1}
+              max={1}
+              step={0.01}
               value={shape.primary_opacity}
               onChange={handleColors}
             />
@@ -81,7 +86,7 @@ const ConfigColors = () => {
             value={shape.color_primary}
             onChange={handleColors}
             style={{
-              opacity: `${shape.primary_opacity}%`,
+              opacity: `${shape.primary_opacity}`,
             }}
           />
         </div>
@@ -134,7 +139,8 @@ const ConfigColors = () => {
               }
               onChange={handleColors}
               min={0}
-              max={shape.selector_linear ? 360 : 100}
+              max={shape.selector_linear ? 360 : 1}
+              step={shape.selector_linear ? 1 : 0.001}
             />
           </div>
 
@@ -149,8 +155,8 @@ const ConfigColors = () => {
                 name="primary_opacity"
                 className="gradient-range-opacity"
                 min={0}
-                max={100}
-                step={1}
+                max={1}
+                step={0.01}
                 value={shape.primary_opacity}
                 onChange={handleColors}
               />
@@ -163,7 +169,7 @@ const ConfigColors = () => {
                 value={shape.color_primary}
                 onChange={handleColors}
                 style={{
-                  opacity: `${shape.primary_opacity}%`,
+                  opacity: `${shape.primary_opacity}`,
                 }}
               />
             </div>
@@ -178,8 +184,8 @@ const ConfigColors = () => {
                 name="secondary_opacity"
                 className="gradient-range-opacity"
                 min={0}
-                max={100}
-                step={1}
+                max={1}
+                step={0.01}
                 value={shape.secondary_opacity}
                 onChange={handleColors}
               />
@@ -192,7 +198,7 @@ const ConfigColors = () => {
                 value={shape.color_secondary}
                 onChange={handleColors}
                 style={{
-                  opacity: `${shape.secondary_opacity}%`,
+                  opacity: `${shape.secondary_opacity}`,
                 }}
               />
             </div>

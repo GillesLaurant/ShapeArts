@@ -1,13 +1,15 @@
 @import "../../../scss/_mixins";
 @import "../../../scss/_variables";
 
+/*******    APP     *******/
+
 .App {
   @include flex-mix(space-around, center);
   width: 100%;
   position: relative;
   // background: linear-gradient($main-light, $main-dark);
   height: 100vh;
-  overflow: hidden;
+  overflow: AUTO;
 }
 
 .round1 {

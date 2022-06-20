@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+/*******     SHAPE     *******/
+
 const initialState = {
   //  CONFIG SHAPE
   name: "round",
@@ -12,7 +14,7 @@ const initialState = {
   rotation_Y: 0,
   // CONFIG COLOR
   color_primary: "#164e80",
-  color_secondary: "#00b4cc",
+  color_secondary: "#FD4E83",
   // TOGGLE NORMAL || GRADIENT
   selector_gradient: true,
   // TOGGLE LINEAR || RADIAL
@@ -22,8 +24,8 @@ const initialState = {
   // RAYON RADIAL
   gradient_rayon: 1,
   // GRADIENT OPACITYS
-  primary_opacity: 100,
-  secondary_opacity: 100,
+  primary_opacity: 1,
+  secondary_opacity: 1,
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -44,6 +46,11 @@ export const shapeSlice = createSlice({
   name: "shape",
   initialState,
   reducers: {
+    // Toggle shape position with mouse event
+    togglePosition: (state, action) => {
+      state.pos_X = action.payload.posX;
+      state.pos_Y = action.payload.posY;
+    },
     // Input select "Round" || "Square" || "Triangle" || "Star"
     selectShape: (state, action) => {
       state.name = action.payload;
@@ -64,9 +71,16 @@ export const shapeSlice = createSlice({
         state[action.payload.pos] -= 1;
       }
     },
-    // Ranges "pos_Z" ||" size" || "rotation" || "rotation_X" || "opacity"
+    // Ranges "pos_Z" ||" size" || "rotation" || "rotation_X" || "opacity" || "colors"
     toggleDisplay: (state, action) => {
-      state[action.payload.name] = action.payload.value;
+      if (
+        action.payload.name === "color_primary" ||
+        action.payload.name === "color_secondary"
+      ) {
+        state[action.payload.name] = action.payload.value;
+      } else {
+        state[action.payload.name] = parseFloat(action.payload.value);
+      }
     },
     // Input toggle color "normal" || "gradient"
     toggleGradient: (state) => {
@@ -83,6 +97,7 @@ export const shapeSlice = createSlice({
       state.size = 10;
       state.rotation = 0;
       state.rotation_X = 0;
+      state.rotation_Y = 0;
       state.opacity = 100;
       state.color_primary = "#164e80";
       state.color_secondary = "#00b4cc";
@@ -105,6 +120,7 @@ export const shapeSlice = createSlice({
 });
 
 export const {
+  togglePosition,
   selectShape,
   toggleLayout,
   toggleDisplay,

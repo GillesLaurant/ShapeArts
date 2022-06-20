@@ -1,6 +1,8 @@
 import React from "react";
 import "./error.scss";
 
+/*******    SECTION ERROR     *******/
+
 const ErrorSection = () => {
   return (
     <section className="error-section">

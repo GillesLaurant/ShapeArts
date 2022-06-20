@@ -1,6 +1,8 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { navigate } from "../app/navUser.slice";
+
+/*******    NAV BUTTONS     *******/
 
 const ButtonUserNav = ({ nav }) => {
   const dispatch = useDispatch();

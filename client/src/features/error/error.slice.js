@@ -5,6 +5,8 @@ const PWD_REGEX = /^[A-Za-z0-9_-]{4,15}$/;
 const USERNAME_REGEX = /^[A-Za-z0-9_-]{3,15}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
+/*******    ERROR     *******/
+
 const initialState = {
   error: {
     username: false,
@@ -16,6 +18,7 @@ const initialState = {
     newPwd: false,
   },
   errorMsg: {},
+  // List error messages for inputs
   listMsg: {
     username: "Veuillez entrer un pseudo entre 3 et 15 charactères.",
     usernameEdited: "Veuillez entrer un pseudo entre 3 et 15 charactères.",
@@ -31,6 +34,7 @@ export const errorSlice = createSlice({
   name: "error",
   initialState,
   reducers: {
+    // Set errors
     setError: (state, action) => {
       state.error[action.payload.nameError] = action.payload.status;
       state.errorMsg[action.payload.nameError] = action.payload.msgError;
@@ -43,47 +47,51 @@ export const errorSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(navigate, (state) => {
-      for (const item in state.error) {
-        state.error[item] = false;
-      }
-      state.errorMsg = {};
-    });
-    builder.addCase(changeFields, (state, action) => {
-      const input = action.payload.name;
-      const value = action.payload.value;
+    // Navigate reset all errors
+    builder
+      .addCase(navigate, (state) => {
+        for (const item in state.error) {
+          state.error[item] = false;
+        }
+        state.errorMsg = {};
+      })
 
-      switch (input) {
-        case "username":
-        case "usernameEdited":
-          state.error[input] = !USERNAME_REGEX.test(value) ? true : false;
-          state.errorMsg[input] = !USERNAME_REGEX.test(value)
-            ? state.listMsg.username
-            : null;
+      // Change inputs errors
+      .addCase(changeFields, (state, action) => {
+        const input = action.payload.name;
+        const value = action.payload.value;
 
-          break;
-        case "mail":
-        case "mailEdited":
-          state.error[input] = !EMAIL_REGEX.test(value) ? true : false;
-          state.errorMsg[input] = !EMAIL_REGEX.test(value)
-            ? state.listMsg.mail
-            : null;
+        switch (input) {
+          case "username":
+          case "usernameEdited":
+            state.error[input] = !USERNAME_REGEX.test(value) ? true : false;
+            state.errorMsg[input] = !USERNAME_REGEX.test(value)
+              ? state.listMsg.username
+              : null;
 
-          break;
-        case "password":
-        case "holdPwd":
-        case "newPwd":
-          state.error[input] = !PWD_REGEX.test(value) ? true : false;
-          state.errorMsg[input] = !PWD_REGEX.test(value)
-            ? state.listMsg.password
-            : null;
+            break;
+          case "mail":
+          case "mailEdited":
+            state.error[input] = !EMAIL_REGEX.test(value) ? true : false;
+            state.errorMsg[input] = !EMAIL_REGEX.test(value)
+              ? state.listMsg.mail
+              : null;
 
-          break;
+            break;
+          case "password":
+          case "holdPwd":
+          case "newPwd":
+            state.error[input] = !PWD_REGEX.test(value) ? true : false;
+            state.errorMsg[input] = !PWD_REGEX.test(value)
+              ? state.listMsg.password
+              : null;
 
-        default:
-          break;
-      }
-    });
+            break;
+
+          default:
+            break;
+        }
+      });
   },
 });
 

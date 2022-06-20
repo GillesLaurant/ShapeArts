@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleDisplay } from "../shape/shape.slice";
 
+/*******    RANGE INPUTS     *******/
+
 const InputRange = ({ name, label, min, max, step }) => {
   const dispatch = useDispatch();
   const valueInput = useSelector((state) => state.shape[name]);

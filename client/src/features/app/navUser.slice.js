@@ -7,7 +7,7 @@ import {
   editPwd,
 } from "./user.slice";
 
-// NAVIGATION USER PANNELS
+/*******    NAVIGATION PANNELS     *******/
 
 const initialState = {
   nav_SignIn: false,
