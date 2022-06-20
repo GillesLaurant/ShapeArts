@@ -1,0 +1,29 @@
+/*******    CLOTHS     *******/
+.clothsContainer {
+  position: relative;
+  border: 1px solid red;
+}
+
+.userCloth {
+  position: absolute;
+  width: 900px;
+  height: 700px;
+  overflow: hidden;
+  z-index: 5;
+
+  &-container-shape {
+    width: 100%;
+    height: 100%;
+    // position: relative;
+    perspective: 500px;
+    z-index: 10;
+  }
+}
+
+.serverCloth {
+  width: 900px;
+  height: 700px;
+  position: relative;
+  background-color: transparent;
+  z-index: 0;
+}

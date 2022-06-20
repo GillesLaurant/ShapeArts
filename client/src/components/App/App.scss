@@ -1,0 +1,38 @@
+@import "../../../scss/_mixins";
+@import "../../../scss/_variables";
+
+/*******    APP     *******/
+
+.App {
+  @include flex-mix(space-around, center);
+  width: 100%;
+  position: relative;
+  // background: linear-gradient($main-light, $main-dark);
+  height: 100vh;
+  overflow: AUTO;
+}
+
+.round1 {
+  fill: blue;
+}
+.round2 {
+  fill: red;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-float infinite 3s ease-in-out;
+  }
+}
+
+@keyframes App-logo-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
