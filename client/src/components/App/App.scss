@@ -12,27 +12,23 @@
   overflow: AUTO;
 }
 
-.round1 {
-  fill: blue;
-}
-.round2 {
-  fill: red;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+.progressBar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 1%;
+  // background: linear-gradient(to right, red, blue);
+  animation: timeOut 300s linear;
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
+@keyframes timeOut {
+  from {
+    background: linear-gradient(to right, red 100%, rgba(0, 0, 0, 0) 101%);
+    width: 100%;
   }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
+  to {
+    background: linear-gradient(to right, red 0%, rgba(0, 0, 0, 0) 1%);
+    width: 0%;
   }
 }

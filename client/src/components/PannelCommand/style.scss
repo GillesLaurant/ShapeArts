@@ -335,23 +335,20 @@
 /*******    VALID SHAPE     *******/
 // Container valid shape
 .validShape {
-  @include flex-mix(space-around, center);
+  @include flex-mix(space-around, center, column);
   width: 100%;
-  padding: 10% 0;
+  // padding: 10% 0;
 
   &-buttons {
     @include button;
-    @include font(1vmin, 15px);
-    width: 40%;
+    @include font(1vmin, 10px);
+    width: 65%;
     color: white;
     padding: 2% 0;
+    margin: 4%;
   }
   // Button reset
   &-reset {
     @include buttonColor(rgb(246, 112, 112), rgb(206, 36, 36));
-  }
-  // Button submit
-  &-submit {
-    @include buttonColor(rgb(53, 233, 74), rgb(0, 118, 16));
   }
 }

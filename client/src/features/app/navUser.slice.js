@@ -53,7 +53,7 @@ export const navSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(register, (state, action) => {
-        state.nav_SignIn = false;
+        // state.nav_SignIn = false;
       })
       .addCase(loggin, (state, action) => {
         state.nav_SignUp = false;

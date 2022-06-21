@@ -72,3 +72,56 @@ input[type="password"] {
 input[type="password"]::-webkit-input-placeholder {
   @include placeholder;
 }
+
+// @keyframes pulse_SignIn {
+//   from {
+//     box-shadow: 0 0 0 -10px rgb(70, 221, 199);
+//   }
+//   to {
+//     box-shadow: 0 0 0 10px rgba(70, 221, 199, 0.01);
+//   }
+// }
+
+// @keyframes pulse_SignUp {
+//   from {
+//     box-shadow: 0 0 0 -10px rgb(69, 145, 252);
+//   }
+//   to {
+//     box-shadow: 0 0 0 10px rgba(69, 145, 252, 0.01);
+//   }
+// }
+
+// @keyframes pulse_LoggOut {
+//   from {
+//     box-shadow: 0 0 0 -10px rgb(190, 121, 255);
+//   }
+//   to {
+//     box-shadow: 0 0 0 10px rgba(190, 121, 255, 0.01);
+//   }
+// }
+
+// @keyframes pulse_Delete {
+//   from {
+//     box-shadow: 0 0 0 -10px rgb(246, 62, 155);
+//   }
+//   to {
+//     box-shadow: 0 0 0 10px rgba(246, 62, 155, 0.01);
+//   }
+// }
+// @keyframes pulse_Valid {
+//   from {
+//     box-shadow: 0 0 0 -10px rgb(53, 233, 74);
+//   }
+//   to {
+//     box-shadow: 0 0 0 10px rgba(53, 233, 74, 0.01);
+//   }
+// }
+
+// @keyframes pulse_Edit {
+//   from {
+//     box-shadow: 0 0 0 -10px rgb(10, 88, 202);
+//   }
+//   to {
+//     box-shadow: 0 0 0 10px rgba(10, 88, 202, 0.01);
+//   }
+// }

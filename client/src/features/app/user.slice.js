@@ -41,6 +41,9 @@ export const userSlice = createSlice({
       state.holdPwd = "";
       state.newPwd = "";
     },
+    deleteAccount: (state, action) => {
+      console.log("delete");
+    },
     registerSuccess: (state, action) => {
       for (const item of state) {
         console.log(item);
@@ -60,6 +63,7 @@ export const {
   editUsername,
   editMail,
   editPwd,
+  deleteAccount,
   registerSuccess,
 } = userSlice.actions;
 

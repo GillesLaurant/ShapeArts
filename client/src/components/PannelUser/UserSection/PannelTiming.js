@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Timer from "../../../features/timer/Timer";
+import Timer from "../../../features/timing/Timer";
 import ButtonUserNav from "../../../features/buttons&inputs/ButtonUserNav";
 import ButtonAction from "../../../features/buttons&inputs/ButtonAction";
 

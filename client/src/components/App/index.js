@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleWindows } from "../../features/app/app.slice";
 
 import "./App.scss";
+import ProgressBar from "../../features/timing/ProgressBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,8 @@ function App() {
         svg={"pannelCommand"}
         name={"pannelCommand"}
       />
+
+      <ProgressBar />
       <PannelUser />
       <MainContainer />
       <PannelCommand />

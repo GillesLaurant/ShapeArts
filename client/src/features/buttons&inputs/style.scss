@@ -40,26 +40,26 @@
   @extend .buttonUser;
 }
 
-.button_register {
-  @include buttonColor(rgb(41, 77, 160), rgb(70, 221, 199));
-}
-.button_loggin {
-  @include buttonColor(rgb(41, 77, 160), rgb(69, 145, 252));
-}
+// .button_register {
+//   @include buttonColor(rgb(41, 77, 160), rgb(70, 221, 199));
+// }
+// .button_loggin {
+//   @include buttonColor(rgb(41, 77, 160), rgb(69, 145, 252));
+// }
 
-.button_editUsername,
-.button_editMail,
-.button_editPwd {
-  @include buttonColor(rgb(10, 57, 101), rgb(33, 112, 186));
-}
+// .button_editUsername,
+// .button_editMail,
+// .button_editPwd {
+//   @include buttonColor(rgb(10, 57, 101), rgb(33, 112, 186));
+// }
 
-.button_loggout {
-  @include buttonColor(rgb(95, 1, 183), rgb(190, 121, 255));
-}
+// .button_loggout {
+//   @include buttonColor(rgb(95, 1, 183), rgb(190, 121, 255));
+// }
 
-.button_delete {
-  @include buttonColor(rgb(147, 27, 83), rgb(246, 62, 155));
-}
+// .button_delete {
+//   @include buttonColor(rgb(147, 27, 83), rgb(246, 62, 155));
+// }
 
 // INPUTS TEXT
 .inputUser {
@@ -116,6 +116,34 @@
   animation: formNoValid 1.8s linear forwards;
 }
 
+/*******    SPINNER BUTTON     *******/
+.spinnerButton {
+  height: 30px;
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 auto;
+
+  &-spinner {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    animation: loaderButton 1s linear infinite;
+  }
+}
+
+.spinner1 {
+  animation-delay: 0.1s;
+}
+.spinner2 {
+  animation-delay: 0.2s;
+}
+.spinner3 {
+  animation-delay: 0.3s;
+}
+
 // @keyframes formNoValid {
 //   0% {
 //     transform: translateX(-10px);
@@ -133,3 +161,14 @@
 //     transform: translateX(0px);
 //   }
 // }
+@keyframes loaderButton {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

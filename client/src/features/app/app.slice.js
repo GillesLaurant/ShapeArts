@@ -47,7 +47,7 @@ export const appSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(register, (state) => {
-        state.userLoggin = true;
+        // state.userLoggin = true;
       })
       .addCase(loggin, (state) => {
         state.userLoggin = true;
