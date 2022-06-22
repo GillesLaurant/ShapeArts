@@ -6,6 +6,7 @@ import ButtonUserNav from "../../features/buttons&inputs/ButtonUserNav";
 import { toggleWindows } from "../../features/app/app.slice";
 import { navigate } from "../../features/app/navUser.slice";
 import "./style.scss";
+import GeneratorSVG from "../../features/svg/GeneratorSVG";
 
 const PannelUser = () => {
   const dispatch = useDispatch();
@@ -40,20 +41,20 @@ const PannelUser = () => {
     >
       <div className="pannelUser-head">
         <button
-          className={`back_Pannel`}
+          className={`back_pannel`}
           name={`nav_${filterPannel()}`}
           onClick={backNav}
         >
-          retour
+          <GeneratorSVG nameSvg={"backNav"} />
         </button>
 
         <button
           type="button"
-          className="pannelUser-head-buttonWindow"
+          className="buttonsWindow button_closeUser"
           name="pannelUser"
           onClick={handleWindows}
         >
-          Fermer
+          <GeneratorSVG nameSvg={"closeWindows"} />
         </button>
       </div>
 

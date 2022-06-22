@@ -7,9 +7,15 @@
   @include flex-mix(space-around, center);
   width: 100%;
   position: relative;
-  // background: linear-gradient($main-light, $main-dark);
   height: 100vh;
-  overflow: AUTO;
+  // background: #000;
+  background-image: radial-gradient(
+    circle 610px at 5.2% 51.6%,
+    #050872 0%,
+    rgba(7, 3, 53, 1) 97.5%
+  );
+  padding: 1%;
+  overflow: hidden;
 }
 
 .progressBar {

@@ -9,6 +9,7 @@ import ConfigColors from "./ConfigColors";
 import ValidShape from "./ValidShape";
 import { toggleWindows } from "../../features/app/app.slice";
 import "./style.scss";
+import GeneratorSVG from "../../features/svg/GeneratorSVG";
 
 /*******    PANNEL CONFIG SHAPE     *******/
 
@@ -28,8 +29,13 @@ const PannelCommand = () => {
     >
       {/* HEAD SECTION & BUTTON CLOSE WINDOW */}
       <div className="pannelCommand-head">
-        <button type="button" name="pannelCommand" onClick={handleWindows}>
-          Fermer
+        <button
+          type="button"
+          className=" buttonsWindow button_closeCommand"
+          name="pannelCommand"
+          onClick={handleWindows}
+        >
+          <GeneratorSVG nameSvg={"closeWindows"} />
         </button>
       </div>
       {/* ERROR EVENT */}

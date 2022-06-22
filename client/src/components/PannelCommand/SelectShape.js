@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { selectShape } from "../../features/shape/shape.slice";
-import GeneratorSVG from "../../features/svg/generatorSVG";
+import GeneratorSVG from "../../features/svg/GeneratorSVG";
 import "./style.scss";
 
 /*******    SELECT SHAPE     *******/

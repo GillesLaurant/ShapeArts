@@ -21,10 +21,14 @@
   top: 0;
   text-align: center;
   font-family: "Biryani";
-  font-size: calc(2vmin + 25px);
-  font-weight: normal;
-  line-height: calc(2vmin + 30px);
-  margin-top: 2%;
+  font-size: calc(2vmin + 55px);
+  font-weight: 200;
+  // line-height: calc(2vmin + 30px);
+  // margin-top: 2%;
+  background: linear-gradient(to top, rgb(140, 0, 255) 30%, cyan);
+  background-clip: text;
+  color: transparent;
+  // padding: 1%;
 }
 // Text component
 .textApp {
@@ -36,4 +40,7 @@
   font-size: calc(1.2vmin + 12px);
   line-height: calc(1.5vmin + 15px);
   margin-bottom: 1%;
+  background: linear-gradient(to top, rgb(140, 0, 255) 10%, cyan);
+  background-clip: text;
+  color: transparent;
 }

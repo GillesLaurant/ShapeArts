@@ -24,23 +24,60 @@
 }
 
 /*******    BUTTONS     *******/
-@mixin button {
+@mixin button($rad: 5px, $pad: 2%, $hei: 20px) {
   @include flex-mix;
   flex-wrap: nowrap;
   appearance: none;
   text-align: center;
   border: none;
-  border-radius: 5px;
-  padding: 2% 2%;
+  border-radius: $rad;
+  padding: $pad;
   font-family: $text-pannel;
-
   word-wrap: none;
-  min-height: 20px;
+  min-height: $hei;
   cursor: pointer;
 }
 
-@mixin buttonColor($col1, $col2) {
-  background: linear-gradient(to top, $col1, $col2);
+@mixin buttonColor($deg: 0deg, $col1: #000, $col2: #fff) {
+  background: linear-gradient($deg, $col1, $col2);
+}
+
+@mixin buttonWindow(
+  $color: gray,
+  $fontV: 2vmin,
+  $fontPx: 15px,
+  $pad: 1%,
+  $marg: 1% 0 0 0,
+  $deg: 200deg,
+  $col1: #000,
+  $col2: #fff
+) {
+  @include font($fontV, $fontPx);
+  appearance: none;
+  position: absolute;
+  top: 0;
+  color: $color;
+  background: transparent;
+  padding: $pad;
+  // box-shadow: 0 0 10px 1px $color;
+  border-radius: 5px;
+  margin: $marg;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s, border none;
+
+  &:hover {
+    // @include buttonColor($deg, $col1, $col2);
+    box-shadow: 0 0 10px 1px $color;
+    // color: rgba(5, 8, 114, 1);
+  }
+
+  &:active {
+    color: $color;
+    box-shadow: 0 0 10px 3px $color;
+    background: transparent;
+    // border: 0.5px solid #000;
+  }
 }
 
 /*******    INPUTS     *******/
@@ -85,11 +122,11 @@
 }
 
 /*******    FONTS     *******/
-@mixin font($vmin, $px) {
+@mixin font($vmin: 2vmin, $px: 15px) {
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: $primary;
+  color: $secondary-light;
 }
 
 @mixin titleUser {

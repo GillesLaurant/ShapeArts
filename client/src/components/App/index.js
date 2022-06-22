@@ -15,18 +15,10 @@ function App() {
 
   return (
     <div className="App ">
-      <ButtonWindows
-        nameClass={"toggleContainerPannel toggleUser"}
-        svg={"pannelCommand"}
-        name={"pannelUser"}
-      />
-      <ButtonWindows
-        nameClass={"toggleContainerPannel toggleCommand"}
-        svg={"pannelCommand"}
-        name={"pannelCommand"}
-      />
+      <ButtonWindows name={"pannelUser"} />
+      <ButtonWindows name={"pannelCommand"} />
 
-      <ProgressBar />
+      {/* <ProgressBar /> */}
       <PannelUser />
       <MainContainer />
       <PannelCommand />

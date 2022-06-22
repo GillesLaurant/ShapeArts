@@ -18,8 +18,8 @@ const ButtonAction = ({ nameButton }) => {
   const dispatch = useDispatch();
   const { error, user, loader } = useSelector((state) => state);
   const colorsEdit = {
-    col1: "rgb(10, 57, 101)",
-    col2: "rgb(33, 112, 186)",
+    col1: "#30cdf0",
+    col2: "#330867",
     col3: "rgba(10, 57, 101, 0.01)",
   };
 
@@ -29,16 +29,16 @@ const ButtonAction = ({ nameButton }) => {
       name: "register",
       content: "S'inscrire",
       inputs: ["username", "mail", "password"],
-      col1: "rgb(41, 77, 160)",
-      col2: "rgb(70, 221, 199)",
+      col1: "#007adf",
+      col2: "#00ecbc",
       col3: "rgb(41, 77, 160, 0.01)",
     },
     loggin: {
       name: "loggin",
       content: "Se connecter",
       inputs: ["mail", "password"],
-      col1: "rgb(41, 77, 160)",
-      col2: "rgb(69, 145, 252)",
+      col1: "#6a11cb",
+      col2: "#2575fc",
       col3: "rgb(41, 77, 160, 0.01)",
     },
     editUsername: {
@@ -69,24 +69,24 @@ const ButtonAction = ({ nameButton }) => {
       name: "loggout",
       content: "Se déconnecter",
       inputs: [],
-      col1: "rgb(95, 1, 183)",
-      col2: "rgb(190, 121, 255)",
+      col1: "#9b23ea",
+      col2: "#5f72bd",
       col3: "rgb(95, 1, 183, 0.01)",
     },
     delete: {
       name: "deleteAccount",
       content: "Se désinscrire",
       inputs: [],
-      col1: "rgb(147, 27, 83)",
-      col2: "rgb(246, 62, 155)",
+      col1: "#6713d2",
+      col2: "#cc208e",
       col3: "rgb(147, 27, 83, 0.01)",
     },
     validShape: {
       name: "validShape",
       content: "Valider",
       inputs: [],
-      col1: "rgb(0, 118, 16)",
-      col2: "rgb(53, 233, 74)",
+      col1: "#b3ffab",
+      col2: "#12fff7",
       col3: "rgba(0, 118, 16, 0.01)",
     },
   };
