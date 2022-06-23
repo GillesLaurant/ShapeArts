@@ -8,13 +8,6 @@ const ConfigDisplay = (props) => {
   // List inputs pos_z & size & rotation & rotation_x & rotation_y
   const inputs = [
     {
-      name: "pos_Z",
-      label: "Profondeur",
-      min: 0,
-      max: 200,
-      step: 1,
-    },
-    {
       name: "size",
       label: "Taille",
       min: 10,

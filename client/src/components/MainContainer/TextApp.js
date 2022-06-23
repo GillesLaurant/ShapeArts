@@ -6,8 +6,7 @@ import PropTypes from "prop-types";
 const TextApp = (props) => {
   return (
     <p className="textApp">
-      Une toile où chacun peut laisser la forme de son choix pour créer ensemble
-      un chef-d'oeuvre !
+      Une toile où tout le monde peut y laisser son Art !
     </p>
   );
 };

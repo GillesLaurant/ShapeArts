@@ -26,13 +26,6 @@ const ValidShape = () => {
 
       {/* VALID SHAPE ACTION */}
       <ButtonAction nameButton={"validShape"} />
-      {/* <button
-        type="submit"
-        className="validShape-buttons validShape-submit"
-        onClick={handleClick}
-      >
-        Envoyer
-      </button> */}
     </section>
   );
 };

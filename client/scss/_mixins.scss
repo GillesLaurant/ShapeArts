@@ -36,6 +36,20 @@
   word-wrap: none;
   min-height: $hei;
   cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    filter: brightness(130%) drop-shadow(0px 0px 5px $primary);
+
+    &:disabled {
+      filter: brightness(90%) drop-shadow(0px 0px 1px $primary);
+      pointer-events: none;
+    }
+  }
+
+  &:active {
+    box-shadow: inset 0px 0px 5px 1px rgb(249, 249, 250);
+  }
 }
 
 @mixin buttonColor($deg: 0deg, $col1: #000, $col2: #fff) {
@@ -90,13 +104,33 @@
   background: transparent;
 }
 
-@mixin rangeTrack($height, $radius, $color1, $color2) {
+@mixin rangeTrack(
+  $height: 50%,
+  $radius: 20px,
+  $color1: rgba(152, 235, 250, 0.208),
+  $color2: rgb(0, 47, 142)
+) {
   height: $height;
   border-radius: $radius;
   background: linear-gradient(to right, $color1, $color2);
+
+  &:hover {
+    filter: brightness(130%);
+    // drop-shadow(0px 0px 3px $violet);
+  }
 }
 
-@mixin rangeThumb($size, $bSize, $bColor, $color) {
+@mixin rangeThumb(
+  $size: 20px,
+  $bSize: 0px,
+  $bColor: rgba(0, 0, 0, 0),
+  $color:
+    radial-gradient(
+      circle farthest-corner at 10% 20%,
+      rgba(0, 221, 214, 1) 0%,
+      rgba(51, 102, 255, 1) 90%
+    )
+) {
   width: $size;
   height: $size;
   border-width: $bSize;
@@ -104,11 +138,20 @@
   border-color: $bColor;
   border-radius: 50%;
   background: $color;
+
+  &:hover {
+    background-color: $secondary-light;
+  }
+
+  &:active {
+    filter: brightness(130%);
+    box-shadow: inset 0px 0px 5px 2px rgb(12, 12, 101);
+  }
 }
 
 @mixin resetInputs {
   appearance: none;
-  width: 100%;
+  width: 70%;
   padding: 3% 3%;
   border: none;
   border-radius: 0.4em;
@@ -142,25 +185,25 @@
   font-family: $text-pannel;
 }
 
-@mixin formNoValid($x: 10px) {
-  @keyframes formNoValid {
-    0% {
-      transform: translateX(0px);
-    }
-    25% {
-      transform: translateX(10px);
-    }
-    50% {
-      transform: translateX(-10px);
-    }
-    75% {
-      transform: translateX(10px);
-    }
-    100% {
-      transform: translateX(0px);
-    }
-  }
-}
+// @mixin formNoValid($x: 10px) {
+//   @keyframes formNoValid {
+//     0% {
+//       transform: translateX(0px);
+//     }
+//     25% {
+//       transform: translateX(10px);
+//     }
+//     50% {
+//       transform: translateX(-10px);
+//     }
+//     75% {
+//       transform: translateX(10px);
+//     }
+//     100% {
+//       transform: translateX(0px);
+//     }
+//   }
+// }
 
 @mixin pulse($button, $col1, $col2) {
   @keyframes #{$button} {
@@ -172,3 +215,16 @@
     }
   }
 }
+
+@mixin hoverText($light: 130%, $spread: 1px, $color: $dark) {
+  filter: brightness($light) drop-shadow(0px 0px $spread $color);
+}
+
+// -webkit-box-reflect: below -5px -webkit-gradient(
+//         linear,
+//         left top,
+//         left bottom,
+//         from(transparent),
+//         color-stop(20%, transparent),
+//         to(rgba(255, 255, 255, 1))
+//       );

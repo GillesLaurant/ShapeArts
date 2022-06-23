@@ -85,8 +85,8 @@ const ButtonAction = ({ nameButton }) => {
       name: "validShape",
       content: "Valider",
       inputs: [],
-      col1: "#b3ffab",
-      col2: "#12fff7",
+      col2: "rgba(96,221,142,1)",
+      col1: "rgba(24,138,141,1)",
       col3: "rgba(0, 118, 16, 0.01)",
     },
   };
@@ -124,29 +124,38 @@ const ButtonAction = ({ nameButton }) => {
         return failed.push(false);
       }
     });
-    if (failed.length === 0) {
-      console.log(failed);
-    }
+
     // If errors add animation else remove animation class
     if (failed.every((item) => !item)) {
       buttonTarget.current.classList.remove("formNoValid");
+      if (!loader[nameButton]) {
+        buttonTarget.current.disabled = false;
+      }
+      // buttonTarget.current.style.boxShadow = "unset";
     } else {
-      buttonTarget.current.animate(
-        [
-          { transform: "translateX(-10px)" },
-          { transform: "translateX(10px)" },
-          { transform: "translateX(-10px)" },
-          { transform: "translateX(10px)" },
-          { transform: "translateX(0px)" },
-        ],
-        {
-          duration: 1800,
-          // iterations: Infinity,
-          easing: "linear",
-          // fillMode: Forwards
-        }
-      );
-      buttonTarget.current.classList.add("formNoValid");
+      // If not animate
+      const classList = [];
+      buttonTarget.current.classList.forEach((item) => {
+        classList.push(item);
+      });
+      if (classList.every((classValid) => classValid !== "formNoValid")) {
+        buttonTarget.current.animate(
+          [
+            { transform: "translateX(-10px)" },
+            { transform: "translateX(10px)" },
+            { transform: "translateX(-10px)" },
+            { transform: "translateX(10px)" },
+            { transform: "translateX(0px)" },
+          ],
+          {
+            duration: 1800,
+            easing: "linear",
+          }
+        );
+
+        buttonTarget.current.classList.add("formNoValid");
+        buttonTarget.current.disabled = true;
+      }
     }
   };
 

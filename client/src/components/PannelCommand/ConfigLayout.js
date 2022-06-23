@@ -34,7 +34,7 @@ const ConfigLayout = () => {
         {/* BUTTON SUB X  */}
         <button
           type="button"
-          className="pos_sub selectShape-buttons"
+          className="configLayout-buttons pos_sub "
           name="pos_X_sub"
           onClick={handleLayout}
         >
@@ -44,7 +44,7 @@ const ConfigLayout = () => {
         {/* BUTTON ADD X */}
         <button
           type="button"
-          className="pos_add selectShape-buttons"
+          className="configLayout-buttons pos_add "
           name="pos_X_add"
           onClick={handleLayout}
         >
@@ -66,7 +66,7 @@ const ConfigLayout = () => {
         {/* BUTTON SUB Y */}
         <button
           type="button"
-          className="pos_sub selectShape-buttons"
+          className="configLayout-buttons pos_sub "
           name="pos_Y_sub"
           onClick={handleLayout}
         >
@@ -76,7 +76,7 @@ const ConfigLayout = () => {
         {/* BUTTON ADD Y */}
         <button
           type="button"
-          className="pos_add selectShape-buttons"
+          className="configLayout-buttons pos_add "
           name="pos_Y_add"
           onClick={handleLayout}
         >

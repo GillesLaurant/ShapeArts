@@ -9,6 +9,12 @@
   }
   & button {
     transition: all 0.3s;
+
+    &:disabled {
+      opacity: 0.5;
+      color: $dark;
+      pointer-events: inherit;
+    }
   }
 }
 
@@ -78,4 +84,8 @@ input[type="password"] {
 
 input[type="password"]::-webkit-input-placeholder {
   @include placeholder;
+  fill: #2cd8d5;
+  fill: #6b8dd6;
+  fill: #2cd8d5;
 }
+// background-image: linear-gradient(to right, #00dbde 0%, #fc00ff 100%);
