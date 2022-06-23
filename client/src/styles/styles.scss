@@ -2,6 +2,13 @@
 @import "../../scss/mixins";
 @import "../../scss/placeholders";
 
+html,
+body,
 #root {
-  height: 100%;
+  height: auto;
+  background-color: yellow;
+  position: fixed;
+}
+
+#root {
 }

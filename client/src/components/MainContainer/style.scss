@@ -6,41 +6,13 @@
 // Container cloths components
 .mainContainer {
   @include flex-mix;
-  position: relative;
-  height: 100%;
-  max-width: 1100px;
+  // position: fixed;
+  height: 100vh;
+  max-width: 750px;
   min-width: 950px;
   color: $primary;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0 auto;
   // border: 1px solid red;
-}
-// Title component
-.titleApp {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  text-align: center;
-  font-family: "Biryani";
-  font-size: calc(2vmin + 55px);
-  font-weight: 200;
-  // line-height: calc(2vmin + 30px);
-  // margin-top: 2%;
-  background: linear-gradient(to top, rgb(140, 0, 255) 30%, cyan);
-  background-clip: text;
-  color: transparent;
-  // padding: 1%;
-}
-// Text component
-.textApp {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  font-family: "Quicksand";
-  font-size: calc(1.2vmin + 12px);
-  line-height: calc(1.5vmin + 15px);
-  margin-bottom: 1%;
-  background: linear-gradient(to top, rgb(140, 0, 255) 10%, cyan);
-  background-clip: text;
-  color: transparent;
 }

@@ -5,13 +5,13 @@
 
 // Pannel command closed
 .pannelCommand {
-  @include flex-mix(space-between, baseline);
-  flex-direction: column;
-  width: 25%;
-  height: 100vh;
-  position: absolute;
-  right: 0;
-  transform: translateX(100%);
+  @include flex-mix(space-between, center, column);
+  width: 100%;
+  height: 25%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  transform: translateY(100%);
   z-index: 1000;
   background-image: linear-gradient(
     180deg,
@@ -22,18 +22,19 @@
   padding: 0.5%;
   font-family: "Quicksand";
   color: $secondary-light;
-  border-radius: 25px 0 0 25px;
+  border-radius: 25px 25px 0 0;
+  overflow-y: auto;
 
   &-head {
     width: 100%;
-    // display: flex;
-    // justify-content: flex-start;
   }
 }
 
 // Pannel command opened
 .pannelCommand_open {
+  @extend .pannelCommand;
   transform: translateX(0%);
+  box-shadow: -3px 0px 10px 5px rgb(79, 65, 231);
 }
 
 /*******    SELECT SHAPE     *******/
@@ -43,17 +44,17 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, 45%);
   justify-content: center;
-  gap: 5%;
+  gap: 10%;
   padding: 3% 0;
   // border: 1px solid blue;
 
   &-buttons {
     @include button;
     @include flex-mix;
-    @include font(1vmin, 15px);
+    @include font(1vmin, 17px);
     width: 70%;
-    fill: $dark;
-    // color: $primary;
+    fill: $primary;
+    min-height: 35px;
 
     // svg button
     & svg {
@@ -80,7 +81,7 @@
 .configLayout {
   @include flex-mix(space-around, center);
   width: 100%;
-  padding: 1%;
+  padding: 3% 0;
   // border: 1px solid red;
 
   // Containers inputs
@@ -98,18 +99,18 @@
   }
 
   &-buttons {
-    width: 40%;
-    flex-grow: 1;
     @include button;
     @include flex-mix;
-    @include font(1vmin, 15px);
+    @include font(1vmin, 19px);
+    width: 40%;
+    min-height: 35px;
+    flex-grow: 1;
     fill: $dark;
   }
 }
 // state positions X & Y
 .pos-live {
-  @include font(1vmin, 10px);
-  font-weight: bold;
+  @include font(1.2vmin, 17px);
   font-family: $text-time;
 }
 // buttons add
@@ -143,13 +144,13 @@
     @include flex-mix(center, center);
     flex-direction: column;
     text-align: center;
-    padding: 2% 10%;
+    padding: 2% 7%;
     // border: 1px solid green;
   }
 
   &-label {
-    @include font(1vmin, 13px);
-    margin-bottom: 3%;
+    @include font(1.2vmin, 15px);
+    margin-bottom: 4%;
   }
 
   &-range {
@@ -172,14 +173,14 @@
   width: 100%;
   border-bottom: none;
   padding: 1% 5%;
+  @include font(1.2vmin, 15px);
   // border: 1px solid yellow;
   // title color
   &-label {
-    @include font(1vmin, 13px);
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-bottom: 1%;
+    margin-bottom: 4%;
 
     // title "s"
     & span {
@@ -194,7 +195,7 @@
   }
   // Buttons toggle "normal" // "gradient"
   &-toggle {
-    @include font(1vmin, 10px);
+    @include font(1.1vmin, 15px);
     font-family: $text-pannel;
     color: $violet;
     width: 50%;
@@ -209,7 +210,6 @@
 
     &:hover {
       filter: brightness(130%);
-      // drop-shadow(10px 0px 10px $violet);
       box-shadow: 0px -5px 5px $violet;
     }
   }
@@ -223,13 +223,12 @@
 }
 // Buttons toggle "normal" // "gradient" disabled
 .toggle_color_disab {
-  opacity: 0.6;
+  opacity: 0.7;
   background: rgba($color: #300700, $alpha: 0.7);
   border: none;
   border-bottom: 1px solid $violet;
   &:hover {
     filter: brightness(110%);
-    // drop-shadow(10px 0px 10px $violet);
     box-shadow: 0px -5px 8px $violet;
   }
 }
@@ -269,14 +268,13 @@
 }
 // Range thumb opacity
 .normal-range-opacity#{$rangeThumb} {
-  // @include rangeThumb(20px, 0.5px, black, white);
   @include rangeThumb(20px);
 }
 
 // Input normal color
 .normal-color-input {
   width: 70%;
-  height: 25%;
+  // height: 25%;
   background-color: transparent;
   border: none;
   transition: opacity 0.5s;
@@ -285,6 +283,7 @@
 // Input normal color swatch
 #{$colorInput}.normal-color-input#{$colorSwatch} {
   border-radius: 15px;
+  min-height: 35px;
 
   &:hover {
   }
@@ -296,7 +295,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 1%;
+  padding: 4% 1% 1%;
   opacity: 1;
   transform: translateX(100%);
   transition: all 0.5s;
@@ -304,10 +303,11 @@
 // Container toggle gradient selector
 .gradient-selector {
   @include flex-mix(space-around, center);
+  margin-bottom: 3%;
 }
 // Button gradient selector actived
 .gradient-selector-toggle {
-  @include font(1vmin, 9px);
+  @include font(1.2vmin, 13px);
   font-weight: bold;
   cursor: pointer;
   color: $purple;
@@ -321,7 +321,6 @@
 // Buttongradient selector disabled
 .selector_toggle_disab {
   font-weight: 300;
-  //   color: #787676;
   opacity: 0.5;
 }
 
@@ -329,13 +328,13 @@
 .gradient-orientation {
   @include flex-mix;
   flex-direction: column;
-  margin-bottom: 2%;
+  margin-bottom: 5%;
 
   &-label {
-    @include font(1vmin, 10px);
+    @include font(1.1vmin, 15px);
     color: $violet;
     transition: all 0.3s;
-    margin-bottom: 2%;
+    margin-bottom: 4%;
   }
   // Range "Orientation" || "Rayon"
   &-input {
@@ -344,11 +343,11 @@
 }
 // Range track "Orientation" || "Rayon"
 #{$rangeInput}.gradient-orientation-input#{$rangeTrack} {
-  @include rangeTrack(10px, 10px);
+  @include rangeTrack(20px, 10px);
 }
 // Range thumb "Orientation" || "Rayon"
 #{$rangeInput}.gradient-orientation-input#{$rangeThumb} {
-  @include rangeThumb(10px);
+  @include rangeThumb(20px);
 }
 
 // Containers inputs colors & opacity
@@ -372,27 +371,28 @@
   // Ranges opacity
   &-range-opacity {
     width: 60%;
-    margin: 8% 0;
+    margin: 8% 0 15%;
   }
 }
 
 // Range opacity tracks
 #{$rangeInput}.gradient-range-opacity#{$rangeTrack} {
-  @include rangeTrack(10px, 10px, rgba(255, 255, 255, 0.5), rgb(0, 0, 0));
+  @include rangeTrack(15px, 10px, rgba(255, 255, 255, 0.5), rgb(0, 0, 0));
 }
 
 // Range opacity thumbs
 #{$rangeInput}.gradient-range-opacity#{$rangeThumb} {
-  @include rangeThumb(10px);
+  @include rangeThumb(15px);
 }
 
 // Inputs color
 .gradient-color-input {
   width: 100%;
+  min-height: 30px;
   background-color: transparent;
   border: none;
-  margin: 4% 0;
-  transition: opacity 0.5s;
+  margin: 8% 0;
+  transition: opacity 0.3s;
 }
 
 // Input swatch primary color
@@ -414,13 +414,15 @@
     @include button;
     @include font(1vmin, 10px);
     width: 45%;
-    color: white;
-    padding: 2% 0;
-    margin: 2%;
+
+    // padding: 2% 0;
+    // margin: 2%;
   }
   // Button reset
   &-reset {
+    @include button;
     @include buttonColor(to bottom, #ffb199, #ff0844);
+    color: white;
 
     &:hover {
       filter: brightness(110%) drop-shadow(0px 0px 5px rgb(249, 109, 135));

@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import TitleApp from "./TitleApp";
+import { ButtonWindows } from "../../features/buttons&inputs/ButtonWindows";
+import TitleApp from "../App/TitleApp";
 import ClothsContainer from "../ClothsContainer";
-import TextApp from "./TextApp";
+import TextApp from "../App/TextApp";
 import "./style.scss";
 
 /*******    MAIN APP     *******/
@@ -10,9 +11,9 @@ import "./style.scss";
 const MainContainer = (props) => {
   return (
     <div className="mainContainer">
-      <TitleApp />
+      {/* <TitleApp /> */}
       <ClothsContainer />
-      <TextApp />
+      {/* <TextApp /> */}
     </div>
   );
 };

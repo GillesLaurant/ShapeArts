@@ -50,42 +50,24 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 form {
+  appearance: none;
   width: 100%;
   @include flex-mix(space-evenly, center);
   flex-direction: column;
   flex-grow: 1;
-  border: 1px solid cyan;
-  appearance: none;
-}
-input[type="text"] {
-  @include resetInputs;
-  @include font(1vmin, 11px);
+  margin: 2% 0;
+  // border: 1px solid cyan;
 }
 
-input[type="text"]::-webkit-input-placeholder {
-  @include placeholder;
-  // z-index: 10;
-}
-
-input[type="mail"] {
-  @include resetInputs;
-  @include font(1vmin, 13px);
-  // z-index: 10;
-}
-
-input[type="mail"]::-webkit-input-placeholder {
-  @include placeholder;
-}
-
+input[type="text"],
+input[type="mail"],
 input[type="password"] {
   @include resetInputs;
   @include font(1vmin, 13px);
+  // color: $dark;
 }
-
+input[type="text"]::-webkit-input-placeholder,
+input[type="mail"]::-webkit-input-placeholder,
 input[type="password"]::-webkit-input-placeholder {
   @include placeholder;
-  fill: #2cd8d5;
-  fill: #6b8dd6;
-  fill: #2cd8d5;
 }
-// background-image: linear-gradient(to right, #00dbde 0%, #fc00ff 100%);

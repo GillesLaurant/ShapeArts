@@ -4,62 +4,58 @@
 .recentlyShapes {
   width: 100%;
   height: 60%;
-  position: relative;
+  // position: relative;
   text-align: center;
-  border: 1px solid blue;
+  // border: 1px solid blue;
+  overflow-y: auto;
 }
 
 .recentlyShapes-title {
-  @include font(2vmin, 15px);
-  line-height: calc(2vmin + 25px);
+  @include font(2vmin, 20px);
+  line-height: calc(2vmin + 30px);
   font-family: "Biryani";
-  font-weight: 200;
-  height: 8%;
+  font-weight: 300;
+  // height: 8%;
 }
 
 .recentTable {
   width: 100%;
   border-collapse: collapse;
-  overflow-y: auto;
 
   &-head {
-    font-family: "Exo";
-
+    position: relative;
+    height: 8%;
     & th {
-      padding: 1%;
       border-bottom: 2px solid $secondary;
 
       & svg {
         margin: 0 auto;
-        // opacity: 0.5;
         fill: $secondary;
+        filter: contrast(40%);
       }
     }
     &-player {
       width: 60%;
-      @include font(1.5vmin, 18px);
+      @include font(1.5vmin, 23px);
       border-right: 1px solid $secondary;
     }
     &-shape {
       width: 40%;
-      @include font(1.5vmin, 15px);
+      @include font(1.5vmin, 20px);
     }
   }
 }
 
 .recentBody {
-  position: relative;
-  border: 1px solid red;
   width: 100%;
-  height: 100%;
 
   &-rows {
-    @include font(1vmin, 10px);
+    @include font(1.2vmin, 15px);
     position: relative;
     color: $secondary-light;
     font-family: $subtitle-pannel;
     overflow: hidden;
-    transition: all 0.5s;
+    transition: all 1s;
     perspective: 100px;
   }
 }
@@ -112,7 +108,7 @@
 
 .row-time {
   @include flex-mix;
-  @include font(0.8vmin, 7px);
+  @include font(1vmin, 10px);
   position: absolute;
   width: 60%;
   height: 100%;

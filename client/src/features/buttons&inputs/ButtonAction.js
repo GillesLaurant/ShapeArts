@@ -31,7 +31,7 @@ const ButtonAction = ({ nameButton }) => {
       inputs: ["username", "mail", "password"],
       col1: "#007adf",
       col2: "#00ecbc",
-      col3: "rgb(41, 77, 160, 0.01)",
+      col3: "rgb(41, 77, 160, 0.1)",
     },
     loggin: {
       name: "loggin",
@@ -233,7 +233,7 @@ const ButtonAction = ({ nameButton }) => {
         }
       );
     }
-  }, [loader]);
+  }, [loader, error]);
 
   return (
     <button

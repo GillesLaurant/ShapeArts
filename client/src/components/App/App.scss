@@ -4,9 +4,9 @@
 /*******    APP     *******/
 
 .App {
-  @include flex-mix(space-around, center);
+  @include flex-mix(flex-start, center);
   width: 100%;
-  position: relative;
+  position: fixed;
   height: 100vh;
   // background: #000;
   background-image: radial-gradient(
@@ -15,7 +15,39 @@
     rgba(7, 3, 53, 1) 97.5%
   );
   padding: 1%;
-  overflow: hidden;
+  overflow: auto;
+  overflow-y: hidden;
+}
+
+// Title component
+.titleApp {
+  @include font(3vmin, 35px);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  text-align: center;
+  font-family: "Biryani";
+  font-weight: 200;
+  background: linear-gradient(to top, rgb(140, 0, 255) 30%, cyan);
+  background-clip: text;
+  color: transparent;
+  margin: 0 auto;
+  // padding: 1%;
+}
+// Text component
+.textApp {
+  @include font(1.5vmin, 15px);
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  font-family: "Quicksand";
+  line-height: calc(1.5vmin + 15px);
+  margin-bottom: 1%;
+  background: linear-gradient(to top, rgb(140, 0, 255) 10%, cyan);
+  background-clip: text;
+  color: transparent;
+  margin: 0 auto 3%;
 }
 
 .progressBar {

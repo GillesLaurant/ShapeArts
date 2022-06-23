@@ -8,6 +8,8 @@ import { toggleWindows } from "../../features/app/app.slice";
 
 import "./App.scss";
 import ProgressBar from "../../features/timing/ProgressBar";
+import TitleApp from "./TitleApp";
+import TextApp from "./TextApp";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,9 +17,10 @@ function App() {
 
   return (
     <div className="App ">
+      <TitleApp />
       <ButtonWindows name={"pannelUser"} />
       <ButtonWindows name={"pannelCommand"} />
-
+      <TextApp />
       {/* <ProgressBar /> */}
       <PannelUser />
       <MainContainer />

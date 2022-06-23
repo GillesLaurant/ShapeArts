@@ -9,6 +9,7 @@
   @include font(1vmin);
   background-color: transparent;
   margin: 0 1%;
+  z-index: 1000;
 }
 
 .button_closeUser {
@@ -46,7 +47,7 @@
     transform: scale(1.1);
   }
 }
-// Button window user
+// Button window user on main
 .button_pannelUser {
   left: 0;
 
@@ -54,8 +55,8 @@
     rgb(204, 38, 254),
     2vmin,
     15px,
-    0.2% 0.4%,
-    1% 0 0 1%,
+    1%,
+    3% 0 0 2%,
     150deg,
     rgba(183, 86, 248, 0.396),
     rgba(174, 0, 255, 0.703)
@@ -63,17 +64,17 @@
 }
 // Button window command
 .button_pannelCommand {
+  right: 0;
   @include buttonWindow(
     rgba(2, 222, 204, 0.792),
     2vmin,
     15px,
-    0.2% 0.4%,
-    1% 1% 0 0,
+    1%,
+    3% 2% 0 0,
     230deg,
     rgba(1, 99, 164, 0.407),
     rgba(0, 255, 255, 0.341)
   );
-  right: 0;
 }
 
 .svg_window {
@@ -96,9 +97,9 @@
 // Buttons nav user
 .buttonUser {
   @include button;
-  @include font(1vmin, 10px);
+  // @include font(1.2vmin, 13px);
   width: 65%;
-  margin: 4% 0;
+  margin: 2% 0;
   color: white;
 
   &:hover {
@@ -108,9 +109,9 @@
 
 .buttonAction {
   @include button;
-  @include font(1vmin, 10px);
+  // @include font(1.5vmin, 10px);
   width: 65%;
-  margin: 4% 0;
+  margin: 2% 0;
   color: white;
 
   &:hover {
@@ -124,50 +125,56 @@
 
 // INPUTS TEXT
 .inputUser {
-  @include flex-mix(flex-start);
+  // @include flex-mix(flex-start);
   flex-direction: column;
   position: relative;
   width: 100%;
-  // padding: 3% 5%;
+  color: $dark;
+  padding: 1% 0%;
   transition: all 0.3s;
-  border: 1px solid black;
+  // border: 1px solid black;
+  margin: 2% 0;
 
   &_error {
     @extend .inputUser;
-    padding-bottom: 15%;
+    // padding-bottom: 15%;
   }
 
   &-input_invalid {
-    background: #000000;
+    background: #fa99999e;
+    color: rgb(192, 0, 0) !important;
   }
 
   &-input:valid {
-    background: green;
+    background: rgb(207, 253, 207);
+    color: rgb(37, 162, 148) !important;
   }
 
   &-input {
     // width: 70%;
     // margin-bottom: 2%;
+    border: 1px solid blue;
     transition: all 0.3s;
   }
   &-error {
     width: 90%;
-    position: absolute;
     font-family: $subtitle-pannel;
-    background: rgba(0, 0, 0, 0);
     text-align: center;
-    // border: 1px solid red;
-    color: red;
+    background: linear-gradient(to bottom, rgb(122, 30, 26), rgb(151, 53, 0));
+    background-clip: text;
+    color: transparent;
     z-index: 3;
     border-radius: 0 0 5px 5px;
     opacity: 0;
     margin: 0 auto;
     transition: all 0.3s;
+    transform: translateY(-100%);
 
     &_visible {
       @extend .inputUser-error;
       opacity: 1;
-      transform: translateY(100%);
+      transform: translateY(0%);
+      margin-top: 1%;
     }
   }
 }

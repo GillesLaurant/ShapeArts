@@ -8,17 +8,17 @@
   // border: 1px solid blue;
   animation: fadeIn 0.5s forwards;
 }
-/*******    PANNEL USER     *******/
+/*******    PANNEL START     *******/
 
 .pannelStart {
   @include displayUser;
-  border: 1px solid red;
+  // border: 1px solid red;
 
   &-head-title {
     @include titleUser;
   }
   &-head-text {
-    @include textUser;
+    @include subtitleUser;
   }
 
   &-footer {
@@ -70,7 +70,7 @@
     padding: 1% 1% 0;
     &-text {
       @include textUser;
-      @include font(1vmin, 8px);
+      @include font(1.2vmin, 10px);
     }
   }
 
@@ -93,11 +93,7 @@
   }
 
   &-content {
-    padding: 1% 1% 0;
-    &-text {
-      @include textUser;
-      @include font(1vmin, 8px);
-    }
+    @extend .pannelRules-content;
   }
 
   &-footer {
@@ -131,14 +127,14 @@
   }
 
   &-content {
-    @include flex-mix(space-around, _, column);
-    width: 100%;
+    @include flex-mix(space-around, start, column);
+    width: auto;
     flex-grow: 1;
-    padding: 1% 1% 0;
+    @extend .pannelRules-content;
 
     &-text {
-      @include textUser;
-      @include font(1vmin, 8px);
+      @extend .pannelRules-content-text;
+      margin-bottom: 5px;
       text-transform: capitalize;
     }
   }
@@ -151,10 +147,15 @@
     }
   }
 }
-
-.account-data-mail {
+.account-item {
+  font-family: $subtitle-pannel;
+  font-weight: 600;
+}
+.account-data-mail,
+.account-item-shapes {
   text-transform: none;
 }
+
 .account-data-pwd {
   color: green;
 }
@@ -172,7 +173,7 @@
     @include flex-mix(space-between, center, column);
     width: 100%;
     // flex-grow: 1;
-    padding: 1% 10%;
+    padding: 1% 15%;
 
     & button {
       width: 100%;
@@ -219,18 +220,10 @@
   &-content {
     @include flex-mix(space-between, center, column);
     width: 100%;
-    // flex-grow: 1;
     padding: 1% 5%;
 
     &-text {
-      @include textUser;
-      @include font(1vmin, 8px);
-    }
-
-    & button {
-      width: 100%;
-      padding: 2% 3%;
-      margin: 3%;
+      @extend .pannelRules-content-text;
     }
   }
 

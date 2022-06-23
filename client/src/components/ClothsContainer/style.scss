@@ -1,6 +1,11 @@
 /*******    CLOTHS     *******/
 .clothsContainer {
   position: relative;
+  height: 70%;
+  border: 2px solid red;
+  overflow: auto;
+  // margin-bottom: 8%;
+  transition: all 0.5s;
 }
 
 .userCloth {
