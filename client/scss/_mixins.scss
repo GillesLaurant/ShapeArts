@@ -1,7 +1,6 @@
 /*******    MIXINS    *******/
 
-/*******    DISPLAY    *******/
-
+/*******    FLEX    *******/
 @mixin flex-mix($just: center, $align: center, $flex: row) {
   display: flex;
   justify-content: $just;
@@ -9,6 +8,7 @@
   flex-direction: $flex;
 }
 
+/*******    DISPLAY PANNELS USER     *******/
 @mixin displayUser($justify: space-evenly, $align: center, $flex: column) {
   @include flex-mix($justify, $align, $flex);
   flex-grow: 1;
@@ -17,16 +17,18 @@
   animation: fadeIn 0.3s forwards;
 }
 
+/*******    FOOTER PANNELS USER     *******/
 @mixin displayFooterUser($navJustify: center, $navAlign: center) {
   @include flex-mix($navJustify, $navAlign, column);
   width: 100%;
-  padding: 3% 2%;
+  padding: 0 25%;
 }
 
 /*******    BUTTONS     *******/
 @mixin button($rad: 5px, $pad: 2%, $hei: 30px) {
   @include flex-mix;
   @include font(1.2vmin, 13px);
+  width: 100%;
   flex-wrap: nowrap;
   appearance: none;
   text-align: center;
@@ -57,46 +59,7 @@
   background: linear-gradient($deg, $col1, $col2);
 }
 
-@mixin buttonWindow(
-  $color: gray,
-  $fontV: 2vmin,
-  $fontPx: 15px,
-  $pad: 1%,
-  $marg: 1% 0 0 0,
-  $deg: 200deg,
-  $col1: #000,
-  $col2: #fff
-) {
-  @include flex-mix;
-  @include font($fontV, $fontPx);
-  appearance: none;
-  position: fixed;
-  top: 0;
-  color: $color;
-  background: transparent;
-  padding: $pad;
-  // box-shadow: 0 0 10px 1px $color;
-  border-radius: 50%;
-  margin: $marg;
-  cursor: pointer;
-  border: none;
-  transition: all 0.3s, border none;
-
-  &:hover {
-    // @include buttonColor($deg, $col1, $col2);
-    box-shadow: 0 0 10px 1px $color;
-    // color: rgba(5, 8, 114, 1);
-  }
-
-  &:active {
-    color: $color;
-    box-shadow: 0 0 10px 3px $color;
-    background: transparent;
-    // border: 0.5px solid #000;
-  }
-}
-
-/*******    INPUTS     *******/
+/*******    RANGE INPUTS     *******/
 @mixin inputRange {
   appearance: none;
   outline: none;
@@ -106,6 +69,7 @@
   background: transparent;
 }
 
+/*******    RANGE INPUTS TRACKS    *******/
 @mixin rangeTrack(
   $height: 50%,
   $radius: 20px,
@@ -118,10 +82,10 @@
 
   &:hover {
     filter: brightness(130%);
-    // drop-shadow(0px 0px 3px $violet);
   }
 }
 
+/*******    RANGE INPUTS THUMBS    *******/
 @mixin rangeThumb(
   $size: 20px,
   $bSize: 0px,
@@ -151,6 +115,7 @@
   }
 }
 
+/*******    RESET TEXT INPUTS     *******/
 @mixin resetInputs {
   appearance: none;
   width: 70%;
@@ -160,6 +125,7 @@
   outline: 0;
 }
 
+/*******    PLACEHOLDER INPUTS     *******/
 @mixin placeholder($col1: rgb(58, 56, 56), $font: $text-pannel) {
   appearance: none;
   color: $col1;
@@ -174,19 +140,23 @@
   color: $secondary-light;
 }
 
+/*******    TITLE PANNELS USER     *******/
 @mixin titleUser {
   @include font(1.8vmin, 25px);
   font-family: $title-app;
 }
+/*******    SUBTITLE PANNELS USER     *******/
 @mixin subtitleUser {
   @include font(1.5vmin, 15px);
   font-family: $text-pannel;
 }
+/*******    TEXT PANNELS USER     *******/
 @mixin textUser {
   @include font(1.2vmin, 13px);
   font-family: $text-pannel;
 }
 
+/*******    BUTTON ANIMATION LOADER     *******/
 @mixin pulse($button, $col1, $col2) {
   @keyframes #{$button} {
     from {

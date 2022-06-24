@@ -1,27 +1,28 @@
 @import "../../../../scss/mixins";
 @import "../../../../scss/variables";
 
+/*******    RECENTLY SHAPES     *******/
 .recentlyShapes {
   width: 100%;
   height: 60%;
-  // position: relative;
   text-align: center;
-  // border: 1px solid blue;
   overflow-y: auto;
 }
 
+// Title table
 .recentlyShapes-title {
   @include font(2vmin, 20px);
   line-height: calc(2vmin + 30px);
   font-family: "Biryani";
   font-weight: 300;
-  // height: 8%;
 }
 
+// Table
 .recentTable {
   width: 100%;
   border-collapse: collapse;
 
+  // Table head
   &-head {
     position: relative;
     height: 8%;
@@ -34,11 +35,13 @@
         filter: contrast(40%);
       }
     }
+    // Player head column
     &-player {
       width: 60%;
       @include font(1.5vmin, 23px);
       border-right: 1px solid $secondary;
     }
+    // Shape head column
     &-shape {
       width: 40%;
       @include font(1.5vmin, 20px);
@@ -46,6 +49,7 @@
   }
 }
 
+// Table body
 .recentBody {
   width: 100%;
 
@@ -60,23 +64,24 @@
   }
 }
 
+// First row
 .recentBody tr:nth-last-child(1) td {
   border-bottom: none;
-}
-
-.recentBody-rows:nth-child(even) {
-  background-color: rgba(38, 38, 181, 0.147);
 }
 .recentBody-rows:nth-child(1) {
   animation: newArrivate 1.2s ease-out;
 }
 
+.recentBody-rows:nth-child(even) {
+  background-color: rgba(38, 38, 181, 0.147);
+}
+
+// Players column
 .row-player {
   width: 60%;
   border-bottom: 0.5px solid $secondary;
   border-right: 0.5px solid $secondary;
   padding: 1%;
-  // z-index: 5;
   text-transform: capitalize;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -84,13 +89,12 @@
   transform-style: preserve-3d;
 }
 
+// Shapes column
 .row-shape {
   position: relative;
   width: 40%;
   border-bottom: 0.5px solid $secondary;
   padding: 1%;
-  // z-index: 5;
-  // backface-visibility: hidden;
 
   & svg {
     margin: 0 auto;
@@ -106,6 +110,7 @@
   // background-color: rgba(17, 172, 167, 0.524);
 }
 
+//
 .row-time {
   @include flex-mix;
   @include font(1vmin, 10px);
@@ -120,6 +125,7 @@
   transform-style: preserve-3d;
 }
 
+/*******    ANIMATION     *******/
 @keyframes newArrivate {
   from {
     transform: translateY(-50%);
@@ -128,5 +134,26 @@
   to {
     transform: translateY(0%);
     opacity: 1;
+  }
+}
+
+/*******    RESPONSIVE > 1200px     *******/
+@media #{$laptop} {
+  .recentlyShapes-title {
+    font-size: calc(1.5vmin + 17px);
+  }
+  .recentTable-head {
+    &-player {
+      font-size: calc(1.5vmin + 20px);
+    }
+    &-shape {
+      font-size: calc(1.5vmin + 17px);
+    }
+  }
+  .recentBody-rows {
+    font-size: calc(1vmin + 10px);
+  }
+  .row-time {
+    font-size: calc(1vmin + 8px);
   }
 }

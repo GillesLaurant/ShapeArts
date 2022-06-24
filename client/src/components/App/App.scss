@@ -8,7 +8,6 @@
   width: 100%;
   position: fixed;
   height: 100vh;
-  // background: #000;
   background-image: radial-gradient(
     circle 610px at 5.2% 51.6%,
     #050872 0%,
@@ -19,7 +18,8 @@
   overflow-y: hidden;
 }
 
-// Title component
+/*******    TITLE APP     *******/
+
 .titleApp {
   @include font(3vmin, 35px);
   width: 100%;
@@ -32,9 +32,10 @@
   background-clip: text;
   color: transparent;
   margin: 0 auto;
-  // padding: 1%;
 }
-// Text component
+
+/*******    TEXT APP     *******/
+
 .textApp {
   @include font(1.5vmin, 15px);
   width: 100%;
@@ -50,15 +51,18 @@
   margin: 0 auto 3%;
 }
 
+/*******    PROGRESS BAR     *******/
+
 .progressBar {
   position: absolute;
   top: 0;
   right: 0;
   width: 100%;
   height: 1%;
-  // background: linear-gradient(to right, red, blue);
   animation: timeOut 300s linear;
 }
+
+/*******    ANIMATION     *******/
 
 @keyframes timeOut {
   from {
@@ -68,5 +72,34 @@
   to {
     background: linear-gradient(to right, red 0%, rgba(0, 0, 0, 0) 1%);
     width: 0%;
+  }
+}
+
+/*******    RESPONSIVE > 1200px     *******/
+@media #{$laptop} {
+  .App {
+    @include flex-mix(flex-end);
+    left: 50%;
+    margin: 0 auto;
+    transform: translateX(-50%);
+  }
+  .titleApp {
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: calc(2.5vmin + 35px);
+  }
+  .textApp {
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: calc(1.2vmin + 15px);
+    margin-bottom: 1.5%;
+  }
+}
+
+/*******    RESPONSIVE > 1600px     *******/
+
+@media #{$large} {
+  .App {
+    @include flex-mix(space-around, center);
   }
 }

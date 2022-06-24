@@ -12,24 +12,6 @@ const PannelUser = () => {
   const dispatch = useDispatch();
   const { app, nav } = useSelector((state) => state);
 
-  const filterPannel = () => {
-    let pannelOpened = [];
-    for (const pannel in nav) {
-      nav[pannel] && pannelOpened.push(pannel);
-    }
-    if (pannelOpened.length > 1) {
-      console.log("SUP OPENED PANNELS", pannelOpened);
-    }
-    if (pannelOpened.length > 0) {
-      pannelOpened = pannelOpened[0].split("_")[1];
-      return pannelOpened;
-    }
-  };
-  const backNav = (ev) => {
-    ev.preventDefault();
-    dispatch(navigate(ev.target.name));
-  };
-
   const handleWindows = (ev) => {
     ev.preventDefault();
     dispatch(toggleWindows(ev.target.name));
@@ -40,14 +22,6 @@ const PannelUser = () => {
       className={`pannelUser ${app.pannelUser_open && "pannelUser_open"}`}
     >
       <div className="pannelUser-head">
-        <button
-          className={`back_pannel`}
-          name={`nav_${filterPannel()}`}
-          onClick={backNav}
-        >
-          <GeneratorSVG nameSvg={"backNav"} />
-        </button>
-
         <button
           type="button"
           className="buttonsWindow button_closeUser"

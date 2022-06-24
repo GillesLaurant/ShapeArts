@@ -26,10 +26,13 @@ $colorWrapper: "::-webkit-color-swatch-wrapper";
 $colorSwatch: "::-webkit-color-swatch";
 
 // RESPONSIVE
-$smart: 576px;
-$smartMax: 768px;
-$tablett: 992px;
-$laptop: 1501px;
-$large: 1500px;
+// $smart: 576px;
+// $smartMax: 768px;
+// $tablett: 992px;
+// $laptop: 1501px;
+// $large: 1500px;
 
-$media: "only screen and (min-width:#{$smart})";
+$smart: "only screen and (min-width:768px)";
+$tablett: "only screen and (min-width:992px)";
+$laptop: "only screen and (min-width:1201px)";
+$large: "only screen and (min-width:1600px)";

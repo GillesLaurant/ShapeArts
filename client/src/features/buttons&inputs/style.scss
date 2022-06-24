@@ -1,17 +1,19 @@
 @import "../../../scss/mixins";
 @import "../../../scss/variables";
 
-/*******    BUTTONS & INPUTS     *******/
+/*******    BUTTONS     *******/
 
 // Buttons close windows "User" & "Command"
 .buttonsWindow {
   @include button;
   @include font(1vmin);
+  width: auto;
   background-color: transparent;
   margin: 0 1%;
   z-index: 1000;
 }
 
+// Button close user window
 .button_closeUser {
   fill: $secondary;
   border-radius: 50%;
@@ -23,6 +25,8 @@
     transform: scale(1.1);
   }
 }
+
+// Button colse command window
 .button_closeCommand {
   fill: $primary;
   &:hover {
@@ -34,49 +38,51 @@
   }
 }
 
-.back_pannel {
-  @include button;
-  @include font(1vmin);
-  fill: $secondary;
-  background-color: transparent;
-  &:hover {
-    fill: $primary;
-  }
-  &:active {
-    fill: rgb(144, 27, 180);
-    transform: scale(1.1);
-  }
+// Buttons Open windows
+.buttons_windows {
+  @include flex-mix;
+  @include font(2vmin, 15px);
+  appearance: none;
+  position: fixed;
+  top: 0;
+  background: transparent;
+  padding: 1%;
+  border-radius: 50%;
+  margin: 3% 0 0 0;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s, border none;
 }
 // Button window user on main
 .button_pannelUser {
+  color: rgb(204, 38, 254);
   left: 0;
+  margin-left: 2%;
 
-  @include buttonWindow(
-    rgb(204, 38, 254),
-    2vmin,
-    15px,
-    1%,
-    3% 0 0 2%,
-    150deg,
-    rgba(183, 86, 248, 0.396),
-    rgba(174, 0, 255, 0.703)
-  );
+  &:hover {
+    box-shadow: 0 0 10px 1px rgb(204, 38, 254);
+  }
+  &:active {
+    color: rgb(204, 38, 254);
+    box-shadow: 0 0 10px 3px rgb(204, 38, 254);
+    background: transparent;
+  }
 }
 // Button window command
 .button_pannelCommand {
+  color: rgba(2, 222, 204, 0.792);
   right: 0;
-  @include buttonWindow(
-    rgba(2, 222, 204, 0.792),
-    2vmin,
-    15px,
-    1%,
-    3% 2% 0 0,
-    230deg,
-    rgba(1, 99, 164, 0.407),
-    rgba(0, 255, 255, 0.341)
-  );
+  margin-right: 2%;
+  &:hover {
+    box-shadow: 0 0 10px 1px rgba(2, 222, 204, 0.792);
+  }
+  &:active {
+    color: rgba(2, 222, 204, 0.792);
+    box-shadow: 0 0 10px 3px rgba(2, 222, 204, 0.792);
+    background: transparent;
+  }
 }
-
+// SVG button window
 .svg_window {
   width: 1em;
   height: 1em;
@@ -91,15 +97,12 @@
 // Container SVG_Generator
 .svg_model {
   @include flex-mix;
-  color: blue;
 }
 
 // Buttons nav user
 .buttonUser {
   @include button;
-  // @include font(1.2vmin, 13px);
-  width: 65%;
-  margin: 2% 0;
+  margin: 3% 0;
   color: white;
 
   &:hover {
@@ -107,10 +110,9 @@
   }
 }
 
+// Buttons action socket
 .buttonAction {
   @include button;
-  // @include font(1.5vmin, 10px);
-  width: 65%;
   margin: 2% 0;
   color: white;
 
@@ -123,21 +125,22 @@
   }
 }
 
-// INPUTS TEXT
+/*******    INPUTS     *******/
+
+// Inputs text container
 .inputUser {
-  // @include flex-mix(flex-start);
   flex-direction: column;
   position: relative;
   width: 100%;
   color: $dark;
   padding: 1% 0%;
   transition: all 0.3s;
-  // border: 1px solid black;
   margin: 2% 0;
 
+  // Input with error msg
   &_error {
     @extend .inputUser;
-    // padding-bottom: 15%;
+    margin: 0;
   }
 
   &-input_invalid {
@@ -151,11 +154,10 @@
   }
 
   &-input {
-    // width: 70%;
-    // margin-bottom: 2%;
-    border: 1px solid blue;
     transition: all 0.3s;
   }
+
+  // Message error
   &-error {
     width: 90%;
     font-family: $subtitle-pannel;
@@ -170,6 +172,7 @@
     transition: all 0.3s;
     transform: translateY(-100%);
 
+    // Message error visible
     &_visible {
       @extend .inputUser-error;
       opacity: 1;
@@ -179,14 +182,16 @@
   }
 }
 
+/*******    ANIMATIONS BUTTON     *******/
+
+// Animation button form no Valide
 .formNoValid {
   filter: none !important;
   color: $secondary !important;
-  // @include formNoValid;
   animation: formNoValid 1.8s linear forwards;
 }
 
-/*******    SPINNER BUTTON     *******/
+// Loader button
 .spinnerButton {
   height: 30px;
   width: 50%;
@@ -215,14 +220,69 @@
   animation-delay: 0.3s;
 }
 
-@keyframes loaderButton {
-  from {
-    opacity: 0;
+/*******    RESPONSIVE FIRST MOBIL     *******/
+@media #{$smart} {
+  // Buttons close windows "User" & "Command"
+  .buttonsWindow {
+    padding: 1%;
   }
-  50% {
-    opacity: 1;
+  // Buttons Open windows
+  .buttons_windows {
+    margin-top: 2%;
   }
-  to {
-    opacity: 0;
+  // Buttons nav user & button socket action
+  .buttonUser,
+  .buttonAction {
+    margin: 4% 0;
+    padding: 3%;
+  }
+  // Inputs text container
+  .inputUser {
+    margin: 1% 0;
+  }
+}
+
+/*******    RESPONSIVE TABLETT     *******/
+@media #{$tablett} {
+  // Buttons Open windows
+  .buttons_windows {
+    margin-top: 1%;
+  }
+  // Button window user on main
+  .button_pannelUser {
+    margin-left: 1%;
+  }
+  // Button window command
+  .button_pannelCommand {
+    margin-right: 1%;
+  }
+}
+
+/*******    RESPONSIVE > 1200px     *******/
+@media #{$laptop} {
+  // Button window user & window command
+  .button_pannelCommand,
+  .button_closeCommand {
+    display: none;
+  }
+  // Buttons nav user & button socket action
+  .buttonUser,
+  .buttonAction {
+    margin: 3% 0;
+    padding: 2%;
+    font-size: calc(1vmin + 11px);
+  }
+  // Inputs text container
+  .inputUser {
+    padding: 1% 5%;
+  }
+}
+
+/*******    RESPONSIVE > 1600px     *******/
+@media #{$large} {
+  // Button window user & window command
+  .button_pannelUser,
+  .button_closeUser {
+    display: none;
   }
 }

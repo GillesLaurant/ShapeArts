@@ -1,5 +1,6 @@
 /*******    RESET     *******/
 * {
+  appearance: none;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -15,6 +16,14 @@
       color: $dark;
       pointer-events: inherit;
     }
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    appearance: none;
+    font-weight: normal;
   }
 }
 
@@ -71,3 +80,18 @@ input[type="mail"]::-webkit-input-placeholder,
 input[type="password"]::-webkit-input-placeholder {
   @include placeholder;
 }
+
+@media #{$smart} {
+  input[type="text"],
+  input[type="mail"],
+  input[type="password"] {
+    width: 90%;
+  }
+}
+@media #{$laptop} {
+  input[type="text"],
+  input[type="mail"],
+  input[type="password"] {
+    font-size: calc(1vmin + 11px);
+  }
+} ;

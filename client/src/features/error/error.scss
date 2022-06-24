@@ -15,7 +15,7 @@
 
   &-title {
     @include font(1.5vmin, 17px);
-    background: linear-gradient(to top, rgb(206, 0, 0), rgb(248, 104, 51));
+    background: linear-gradient(to bottom, rgb(206, 0, 0), rgb(248, 104, 51));
     background-clip: text;
     color: transparent;
     transition: all 0.3s;
@@ -24,11 +24,7 @@
 
   &-msg {
     @include font(1vmin, 15px);
-    background: linear-gradient(
-      to bottom,
-      rgb(237, 0, 0) 30%,
-      rgb(248, 104, 51)
-    );
+    background: linear-gradient(to top, rgb(237, 0, 0) 30%, rgb(248, 104, 51));
     background-clip: text;
     color: transparent;
     animation: textError 0.8s;
@@ -41,5 +37,27 @@
   }
   to {
     transform: translateY(0%);
+  }
+}
+
+@media #{$smart} {
+  .error-section {
+    &-title {
+      font-size: calc(1.3vmin + 15px);
+    }
+    &-msg {
+      font-size: calc(1vmin + 12px);
+    }
+  }
+}
+@media #{$tablett} {
+  .error-section {
+    margin: 0 0 2%;
+    &-title {
+      font-size: calc(1.3vmin + 15px);
+    }
+    &-msg {
+      font-size: calc(1vmin + 12px);
+    }
   }
 }

@@ -23,7 +23,7 @@
   &-head {
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 0 1% 1%;
     min-height: 2.5%;
   }
@@ -36,4 +36,36 @@
 
 .back_undefined {
   display: none;
+}
+
+@media #{$smart} {
+  .pannelUser {
+    width: 40%;
+  }
+  .pannelUser_open {
+    box-shadow: 3px 0px 7px 2px rgb(0, 134, 139);
+  }
+}
+
+@media #{$tablett} {
+  .pannelUser {
+    width: 33%;
+  }
+}
+@media #{$laptop} {
+  .pannelUser {
+    width: 22%;
+  }
+}
+
+@media #{$large} {
+  .pannelUser {
+    position: relative;
+    transform: none;
+    width: 20%;
+    max-width: 300px;
+    height: 100%;
+    border-radius: 20px;
+    margin-right: 2%;
+  }
 }

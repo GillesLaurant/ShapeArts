@@ -13,19 +13,20 @@
   bottom: 0;
   transform: translateY(100%);
   z-index: 1000;
+  font-family: "Quicksand";
+  color: $secondary-light;
   background-image: linear-gradient(
     180deg,
     rgba(21, 13, 107, 1) 1.1%,
     rgba(188, 16, 80, 1) 130.5%
   );
-  transition: transform 0.5s;
   padding: 0.5%;
-  font-family: "Quicksand";
-  color: $secondary-light;
   border-radius: 25px 25px 0 0;
   overflow-y: auto;
+  transition: transform 0.5s;
 
   &-head {
+    @include flex-mix(flex-start);
     width: 100%;
   }
 }
@@ -44,34 +45,38 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, 45%);
   justify-content: center;
-  gap: 10%;
-  padding: 3% 0;
-  // border: 1px solid blue;
+  column-gap: 5%;
+  row-gap: 15%;
+  padding: 3%;
 
   &-buttons {
     @include button;
     @include flex-mix;
     @include font(1vmin, 17px);
-    width: 70%;
-    fill: $primary;
+    width: 90%;
     min-height: 35px;
+    fill: $primary;
+    margin: 0 auto;
 
     // svg button
     & svg {
       pointer-events: none;
     }
-    margin: 0 auto 2%;
   }
 }
+// Round button
 .selectShape-buttons:nth-child(1) {
   background-image: linear-gradient(144deg, #af40ff, #5b42f3 55%, #00ddeb);
 }
+// Square button
 .selectShape-buttons:nth-child(2) {
   background-image: linear-gradient(210deg, #af40ff, #5b42f3 55%, #00ddeb);
 }
+// Triangle
 .selectShape-buttons:nth-child(3) {
   background-image: linear-gradient(40deg, #af40ff, #5b42f3 55%, #00ddeb);
 }
+// Star
 .selectShape-buttons:nth-child(4) {
   background-image: linear-gradient(320deg, #af40ff, #5b42f3 55%, #00ddeb);
 }
@@ -82,7 +87,6 @@
   @include flex-mix(space-around, center);
   width: 100%;
   padding: 3% 0;
-  // border: 1px solid red;
 
   // Containers inputs
   &-containers {
@@ -105,7 +109,6 @@
     width: 40%;
     min-height: 35px;
     flex-grow: 1;
-    fill: $dark;
   }
 }
 // state positions X & Y
@@ -125,27 +128,27 @@
 }
 // buttons subtract
 .pos_sub {
+  border-right: 0.5px solid #00b0eb;
+  border-radius: 5px 0 0 5px;
   background-image: radial-gradient(
     circle at right,
     #00b0eb 5%,
     #5b42f3 30%,
     #8913dd 80%
   );
-  border-right: 0.5px solid #00b0eb;
-  border-radius: 5px 0 0 5px;
 }
 
 /*******    CONFIG DISPLAY     *******/
 // container containers ranges
 .configDisplay {
   width: 100%;
+
   // Containers range
   &-inputs {
     @include flex-mix(center, center);
     flex-direction: column;
     text-align: center;
     padding: 2% 7%;
-    // border: 1px solid green;
   }
 
   &-label {
@@ -170,11 +173,11 @@
 /*******    CONFIG COLORS     *******/
 // Config colors container
 .configColors {
+  @include font(1.2vmin, 15px);
   width: 100%;
   border-bottom: none;
   padding: 1% 5%;
-  @include font(1.2vmin, 15px);
-  // border: 1px solid yellow;
+
   // title color
   &-label {
     display: flex;
@@ -193,6 +196,7 @@
     @include flex-mix(space-between, center);
     width: 100%;
   }
+
   // Buttons toggle "normal" // "gradient"
   &-toggle {
     @include font(1.1vmin, 15px);
@@ -218,7 +222,6 @@
   &-containers {
     position: relative;
     overflow: hidden;
-    // border: 1px solid yellow;
   }
 }
 // Buttons toggle "normal" // "gradient" disabled
@@ -227,6 +230,7 @@
   background: rgba($color: #300700, $alpha: 0.7);
   border: none;
   border-bottom: 1px solid $violet;
+
   &:hover {
     filter: brightness(110%);
     box-shadow: 0px -5px 8px $violet;
@@ -274,7 +278,6 @@
 // Input normal color
 .normal-color-input {
   width: 70%;
-  // height: 25%;
   background-color: transparent;
   border: none;
   transition: opacity 0.5s;
@@ -284,12 +287,10 @@
 #{$colorInput}.normal-color-input#{$colorSwatch} {
   border-radius: 15px;
   min-height: 35px;
-
-  &:hover {
-  }
 }
 
 /*******    GRADIENT COLORS     *******/
+
 // Container gradient color "Linear" || "Radial"
 .containerGradient {
   width: 100%;
@@ -300,11 +301,13 @@
   transform: translateX(100%);
   transition: all 0.5s;
 }
+
 // Container toggle gradient selector
 .gradient-selector {
   @include flex-mix(space-around, center);
   margin-bottom: 3%;
 }
+
 // Button gradient selector actived
 .gradient-selector-toggle {
   @include font(1.2vmin, 13px);
@@ -318,6 +321,7 @@
     filter: brightness(150%);
   }
 }
+
 // Buttongradient selector disabled
 .selector_toggle_disab {
   font-weight: 300;
@@ -336,11 +340,13 @@
     transition: all 0.3s;
     margin-bottom: 4%;
   }
+
   // Range "Orientation" || "Rayon"
   &-input {
     @include inputRange;
   }
 }
+
 // Range track "Orientation" || "Rayon"
 #{$rangeInput}.gradient-orientation-input#{$rangeTrack} {
   @include rangeTrack(20px, 10px);
@@ -413,16 +419,15 @@
   &-buttons {
     @include button;
     @include font(1vmin, 10px);
-    width: 45%;
-
-    // padding: 2% 0;
-    // margin: 2%;
   }
+
   // Button reset
   &-reset {
     @include button;
     @include buttonColor(to bottom, #ffb199, #ff0844);
+    width: 45%;
     color: white;
+    padding: 2%;
 
     &:hover {
       filter: brightness(110%) drop-shadow(0px 0px 5px rgb(249, 109, 135));
@@ -440,4 +445,172 @@
   &:hover {
     filter: brightness(110%) drop-shadow(0px 0px 5px rgb(189, 254, 242));
   }
+}
+
+/*******    RESPONSIVE MOBIL FIRST     *******/
+@media #{$smart} {
+  // Pannel command closed
+  .pannelCommand {
+    bottom: initial;
+    left: initial;
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 100vh;
+    transform: translate(100%, 0%);
+    border-radius: 25px 0 0 25px;
+  }
+
+  // Pannel command opened
+  .pannelCommand_open {
+    transform: translate(0%, 0%);
+    box-shadow: -3px 0px 7px 2px rgb(79, 65, 231);
+  }
+  // Select shape container
+  .selectShape {
+    column-gap: 10%;
+    row-gap: 15%;
+    padding: 0 1%;
+  }
+  // Container valid shape
+  .validShape {
+    margin-bottom: 4%;
+  }
+}
+/*******    RESPONSIVE TABLETT     *******/
+@media #{$tablett} {
+  // Pannel command closed
+  .pannelCommand {
+    width: 33%;
+  }
+  // Select shape buttons
+  .selectShape-buttons {
+    width: 80%;
+    min-height: 30px;
+    @include font(1vmin, 15px);
+  }
+  // Config layout buttons + & -
+  .configLayout-buttons {
+    min-height: 30px;
+    padding: 0;
+  }
+  .configDisplay {
+    // range labels
+    &-label {
+      @include font(1vmin, 13px);
+      margin-bottom: 2%;
+    }
+    // Ranges inputs
+    &-inputs {
+      padding: 0 7%;
+    }
+  }
+  // Ranges height tracks
+  #{$rangeInput}.configDisplay-range#{$rangeTrack} {
+    @include rangeTrack(15px);
+  }
+  // Ranges height thumbs
+  .configDisplay-range#{$rangeThumb} {
+    @include rangeThumb(15px);
+  }
+  .configColors {
+    @include font(1vmin, 13px);
+    // Title colors
+    &-label {
+      margin-bottom: 3%;
+    }
+    // Toggle Normal || Gradient
+    &-toggle {
+      font-size: calc(1vmin + 11px);
+    }
+    &-containers {
+      padding-top: 2%;
+    }
+  }
+  // Container Normal & Container Gradient
+  .containerGradient {
+    padding: 1%;
+  }
+  // Containers selectors gradient & label orientation || rayon
+  .gradient-selector,
+  .gradient-orientation {
+    margin-bottom: 1%;
+  }
+  // Labels selector Linear || Gradient
+  .gradient-selector-toggle {
+    font-size: calc(1vmin + 10px);
+  }
+  // Range height normal opacity track
+  #{$rangeInput}.normal-range-opacity#{$rangeTrack} {
+    @include rangeTrack(15px);
+  }
+  // Range height normal opacity thumb
+  .normal-range-opacity#{$rangeThumb} {
+    @include rangeThumb(15px);
+  }
+  // Label orientation || rayon
+  .gradient-orientation-label {
+    font-size: calc(1vmin + 10px);
+  }
+  // Range height orientation || rayon track
+  #{$rangeInput}.gradient-orientation-input#{$rangeTrack} {
+    @include rangeTrack(15px, 10px);
+  }
+  // Range height thumb "Orientation" || "Rayon"
+  #{$rangeInput}.gradient-orientation-input#{$rangeThumb} {
+    @include rangeThumb(15px);
+  }
+  // Range height opacity tracks
+  #{$rangeInput}.gradient-range-opacity#{$rangeTrack} {
+    @include rangeTrack(10px, 10px, rgba(255, 255, 255, 0.5), rgb(0, 0, 0));
+  }
+  // Range height opacity thumbs
+  #{$rangeInput}.gradient-range-opacity#{$rangeThumb} {
+    @include rangeThumb(10px);
+  }
+  // Color inputs
+  .gradient-color-input {
+    margin: 0;
+  }
+  .validShape {
+    // ValidShape buttons
+    &-buttons {
+      margin: 0;
+    }
+    // Button reset
+    &-reset {
+      padding: 2%;
+    }
+  }
+  // Button submit
+  .button_validShape {
+    margin: 0;
+    padding: 2%;
+  }
+}
+/*******    RESPONSIVE > 1200px     *******/
+@media #{$laptop} {
+  // Pannel command closed
+  .pannelCommand {
+    position: relative;
+    transform: none;
+    width: 23%;
+    max-width: 300px;
+    height: 100%;
+    border-radius: 20px;
+  }
+  // Ranges inputs
+  .configDisplay-inputs {
+    padding: 1.5% 7%;
+  }
+
+  .validShape {
+    // ValidShape buttons
+    & button {
+      font-size: calc(1vmin + 11px);
+    }
+  }
+}
+/*******    RESPONSIVE > 1600px    *******/
+@media #{$large} {
 }

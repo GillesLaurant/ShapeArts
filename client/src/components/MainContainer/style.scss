@@ -14,5 +14,13 @@
   overflow-x: auto;
   overflow-y: hidden;
   margin: 0 auto;
-  // border: 1px solid red;
+  // border: 1px solid yellow;
+}
+
+/*******    RESPONSIVE > 1200px     *******/
+@media #{$laptop} {
+  .mainContainer {
+    margin: 0;
+    // min-width: 1000px;
+  }
 }
