@@ -1,19 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ButtonWindows } from "../../features/buttons&inputs/ButtonWindows";
-import TitleApp from "../App/TitleApp";
 import ClothsContainer from "../ClothsContainer";
-import TextApp from "../App/TextApp";
 import "./style.scss";
+import { useSelector } from "react-redux";
 
 /*******    MAIN APP     *******/
 
 const MainContainer = (props) => {
+  const windowCommand = useSelector((state) => state.app.pannelCommand_open);
+
   return (
-    <div className="mainContainer">
-      {/* <TitleApp /> */}
+    <div
+      className="mainContainer"
+      style={{
+        marginRight:
+          window.innerWidth > 576 && window.innerWidth < 1200
+            ? windowCommand
+              ? "35%"
+              : "auto"
+            : 0,
+      }}
+    >
       <ClothsContainer />
-      {/* <TextApp /> */}
     </div>
   );
 };

@@ -129,7 +129,7 @@
   }
 
   &-content {
-    @include flex-mix(space-around, start, column);
+    @include flex-mix(space-around, flex-start, column);
     width: auto;
     flex-grow: 1;
     @extend .pannelRules-content;
@@ -280,6 +280,11 @@
       font-weight: 200;
     }
     // Container buttons rules
+    &-footer {
+      padding: 0 15%;
+    }
+  }
+  .pannelTiming {
     &-footer {
       padding: 0 15%;
     }

@@ -17,13 +17,13 @@ const UserCloth = (props) => {
     // If click on SVG
     if (ev.target.nodeName === "path" || ev.target.nodeName === "svg") {
       position = {
-        posX: pos_X - 12 + ev.nativeEvent.layerX,
-        posY: pos_Y - 12 + ev.nativeEvent.layerY,
+        posX: pos_X - 12 + ev.nativeEvent.offsetX,
+        posY: pos_Y - 12 + ev.nativeEvent.offsetY,
       };
     } else {
       position = {
-        posX: ev.nativeEvent.layerX,
-        posY: ev.nativeEvent.layerY,
+        posX: ev.nativeEvent.offsetX,
+        posY: ev.nativeEvent.offsetY,
       };
     }
     dispatch(togglePosition(position));

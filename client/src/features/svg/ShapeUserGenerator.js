@@ -74,9 +74,7 @@ const ShapeUserGenerator = () => {
         position: "absolute",
         left: `${shape.pos_X - 12}`,
         top: `${shape.pos_Y - 12}`,
-        transform: `scale(1.${shape.size}) rotate(${shape.rotation}deg) rotateX(${shape.rotation_X}deg) rotateY(${shape.rotation_Y}deg) translateZ(-${shape.pos_Z}px)`,
-        transformStyle: "preserve-3d",
-        transformOrigin: "center",
+        transform: `scale(1.${shape.size}) rotate(${shape.rotation}deg) rotateX(${shape.rotation_X}deg) rotateY(${shape.rotation_Y}deg)`,
         transition: "all 0.3s",
         zIndex: 3,
       }}
@@ -125,12 +123,12 @@ const ShapeUserGenerator = () => {
             stopColor={
               shape.selector_gradient
                 ? shape.color_secondary
-                : shape.color_secondary
+                : shape.color_primary
             }
             stopOpacity={
               shape.selector_gradient
                 ? shape.secondary_opacity
-                : shape.secondary_opacity
+                : shape.primary_opacity
             }
           />
         </radialGradient>
