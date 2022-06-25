@@ -8,19 +8,56 @@
   display: none;
   width: 100%;
   flex-direction: column;
-  font-family: $text-time;
-  padding: 2% 0;
-  background: linear-gradient(to top, rgb(38, 0, 0), rgb(80, 0, 0));
+  font-family: $subtitle-pannel;
   border-radius: 10px;
-  border: 1px solid red;
+  margin: 1% 0 3%;
+  // border: 1px solid red;
 
   &-title {
-    @include font(1vmin, 12px);
-    color: red;
+    @include font(1.5vmin, 17px);
+    background: linear-gradient(to bottom, rgb(206, 0, 0), rgb(248, 104, 51));
+    background-clip: text;
+    color: transparent;
+    transition: all 0.3s;
+    animation: textError 0.8s;
   }
 
   &-msg {
-    @include font(1vmin, 9px);
-    color: red;
+    @include font(1vmin, 15px);
+    background: linear-gradient(to top, rgb(237, 0, 0) 30%, rgb(248, 104, 51));
+    background-clip: text;
+    color: transparent;
+    animation: textError 0.8s;
+  }
+}
+
+@keyframes textError {
+  from {
+    transform: translateY(-300%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@media #{$smart} {
+  .error-section {
+    &-title {
+      font-size: calc(1.3vmin + 15px);
+    }
+    &-msg {
+      font-size: calc(1vmin + 12px);
+    }
+  }
+}
+@media #{$tablett} {
+  .error-section {
+    margin: 0 0 2%;
+    &-title {
+      font-size: calc(1.3vmin + 15px);
+    }
+    &-msg {
+      font-size: calc(1vmin + 12px);
+    }
   }
 }

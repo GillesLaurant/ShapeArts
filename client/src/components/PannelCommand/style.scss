@@ -5,31 +5,37 @@
 
 // Pannel command closed
 .pannelCommand {
-  @include flex-mix(space-between, baseline);
-  flex-direction: column;
-  width: 25%;
-  height: 100vh;
-  position: absolute;
-  right: 0;
-  transform: translateX(100%);
+  @include flex-mix(space-between, center, column);
+  width: 100%;
+  height: 25%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  transform: translateY(100%);
   z-index: 1000;
-  background-color: rgba($color: #a29f9f, $alpha: 1);
-  transition: transform 0.5s;
-  padding: 0.5%;
   font-family: "Quicksand";
-  color: $primary;
-  border: 1px solid rgb(128, 9, 0);
-  border-radius: 25px 0 0 25px;
+  color: $secondary-light;
+  background-image: linear-gradient(
+    180deg,
+    rgba(21, 13, 107, 1) 1.1%,
+    rgba(188, 16, 80, 1) 130.5%
+  );
+  padding: 0.5%;
+  border-radius: 25px 25px 0 0;
+  overflow-y: auto;
+  transition: transform 0.5s;
 
   &-head {
-    display: flex;
-    justify-content: flex-start;
+    @include flex-mix(flex-start);
+    width: 100%;
   }
 }
 
 // Pannel command opened
 .pannelCommand_open {
+  @extend .pannelCommand;
   transform: translateX(0%);
+  box-shadow: -3px 0px 10px 5px rgb(79, 65, 231);
 }
 
 /*******    SELECT SHAPE     *******/
@@ -39,23 +45,40 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, 45%);
   justify-content: center;
-  gap: 5%;
-  padding: 3% 0;
-  border: 1px solid blue;
+  column-gap: 5%;
+  row-gap: 15%;
+  padding: 3%;
 
   &-buttons {
     @include button;
     @include flex-mix;
-    @include font(1vmin, 15px);
-    width: 70%;
+    @include font(1vmin, 17px);
+    width: 90%;
+    min-height: 35px;
     fill: $primary;
-    color: $primary;
+    margin: 0 auto;
+
     // svg button
     & svg {
       pointer-events: none;
     }
-    margin: 0 auto 2%;
   }
+}
+// Round button
+.selectShape-buttons:nth-child(1) {
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 55%, #00ddeb);
+}
+// Square button
+.selectShape-buttons:nth-child(2) {
+  background-image: linear-gradient(210deg, #af40ff, #5b42f3 55%, #00ddeb);
+}
+// Triangle
+.selectShape-buttons:nth-child(3) {
+  background-image: linear-gradient(40deg, #af40ff, #5b42f3 55%, #00ddeb);
+}
+// Star
+.selectShape-buttons:nth-child(4) {
+  background-image: linear-gradient(320deg, #af40ff, #5b42f3 55%, #00ddeb);
 }
 
 /*******    CONFIG LAYOUT     *******/
@@ -63,8 +86,7 @@
 .configLayout {
   @include flex-mix(space-around, center);
   width: 100%;
-  padding: 1%;
-  border: 1px solid red;
+  padding: 3% 0;
 
   // Containers inputs
   &-containers {
@@ -78,42 +100,60 @@
       text-align: center;
       margin-bottom: 5%;
     }
-    & button {
-      width: 40%;
-      flex-grow: 1;
-    }
+  }
+
+  &-buttons {
+    @include button;
+    @include flex-mix;
+    @include font(1vmin, 19px);
+    width: 40%;
+    min-height: 35px;
+    flex-grow: 1;
   }
 }
 // state positions X & Y
 .pos-live {
-  font-weight: bold;
+  @include font(1.2vmin, 17px);
+  font-family: $text-time;
 }
 // buttons add
 .pos_add {
   border-radius: 0 5px 5px 0;
+  background-image: radial-gradient(
+    circle at left,
+    #00b0eb 5%,
+    #5b42f3 30%,
+    #8913dd 80%
+  );
 }
 // buttons subtract
 .pos_sub {
-  border-right: 0.5px solid $primary;
+  border-right: 0.5px solid #00b0eb;
   border-radius: 5px 0 0 5px;
+  background-image: radial-gradient(
+    circle at right,
+    #00b0eb 5%,
+    #5b42f3 30%,
+    #8913dd 80%
+  );
 }
 
 /*******    CONFIG DISPLAY     *******/
 // container containers ranges
 .configDisplay {
   width: 100%;
+
   // Containers range
   &-inputs {
     @include flex-mix(center, center);
     flex-direction: column;
     text-align: center;
-    padding: 2% 10%;
-    border: 1px solid green;
+    padding: 2% 7%;
   }
 
   &-label {
-    @include font(1vmin, 13px);
-    margin-bottom: 3%;
+    @include font(1.2vmin, 15px);
+    margin-bottom: 4%;
   }
 
   &-range {
@@ -123,27 +163,27 @@
 
 // range track
 #{$rangeInput}.configDisplay-range#{$rangeTrack} {
-  @include rangeTrack(50%, 25px, rgba(152, 235, 250, 0.208), rgb(0, 47, 142));
+  @include rangeTrack;
 }
 // range thumb
 .configDisplay-range#{$rangeThumb} {
-  @include rangeThumb(20px, 0.5px, red, $primary);
+  @include rangeThumb;
 }
 
 /*******    CONFIG COLORS     *******/
 // Config colors container
 .configColors {
+  @include font(1.2vmin, 15px);
   width: 100%;
   border-bottom: none;
-  padding: 1% 0;
-  border: 1px solid yellow;
+  padding: 1% 5%;
+
   // title color
   &-label {
-    @include font(1vmin, 13px);
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-bottom: 1%;
+    margin-bottom: 4%;
 
     // title "s"
     & span {
@@ -156,43 +196,51 @@
     @include flex-mix(space-between, center);
     width: 100%;
   }
+
   // Buttons toggle "normal" // "gradient"
   &-toggle {
-    @include font(1vmin, 10px);
-    color: white;
+    @include font(1.1vmin, 15px);
     font-family: $text-pannel;
+    color: $violet;
     width: 50%;
     cursor: pointer;
     padding: 1% 2%;
     background: transparent;
-    border: 1px solid $primary;
+    border: 1px solid $violet;
     border-bottom: none;
     margin: 0;
     border-radius: 10px 10px 0 0;
     transition: all 0.5s;
+
+    &:hover {
+      filter: brightness(130%);
+      box-shadow: 0px -5px 5px $violet;
+    }
   }
 
   // Containers with 2 containers "Normal" || "Gradient"
   &-containers {
     position: relative;
     overflow: hidden;
-    // border: 1px solid yellow;
   }
 }
 // Buttons toggle "normal" // "gradient" disabled
 .toggle_color_disab {
-  color: $primary;
-  opacity: 0.6;
+  opacity: 0.7;
   background: rgba($color: #300700, $alpha: 0.7);
   border: none;
-  border-bottom: 1px solid $primary;
+  border-bottom: 1px solid $violet;
+
+  &:hover {
+    filter: brightness(110%);
+    box-shadow: 0px -5px 8px $violet;
+  }
 }
 
 /*******    NORMAL COLOR     *******/
 // Container normal color
 .containerNormal {
-  @include flex-mix(space-evenly, center);
-  flex-direction: column;
+  @include flex-mix(space-evenly, center, column);
   width: 100%;
   height: 100%;
   position: absolute;
@@ -208,22 +256,28 @@
 }
 
 .normal-label-opacity {
-  margin-bottom: 3%;
+  margin-bottom: 10%;
+  color: $primary;
+}
+
+.normal-range-opacity {
+  &:hover {
+    border: none;
+  }
 }
 
 // Range track opacity
 #{$rangeInput}.normal-range-opacity#{$rangeTrack} {
-  @include rangeTrack(50%, 25px, rgba(217, 245, 250, 0.208), rgb(0, 0, 1));
+  @include rangeTrack(50%, 25px, rgba(255, 255, 255, 0.5), rgb(0, 0, 0));
 }
 // Range thumb opacity
 .normal-range-opacity#{$rangeThumb} {
-  @include rangeThumb(20px, 0.5px, black, white);
+  @include rangeThumb(20px);
 }
 
 // Input normal color
 .normal-color-input {
   width: 70%;
-  height: 25%;
   background-color: transparent;
   border: none;
   transition: opacity 0.5s;
@@ -232,34 +286,45 @@
 // Input normal color swatch
 #{$colorInput}.normal-color-input#{$colorSwatch} {
   border-radius: 15px;
+  min-height: 35px;
 }
 
 /*******    GRADIENT COLORS     *******/
+
 // Container gradient color "Linear" || "Radial"
 .containerGradient {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 1%;
+  padding: 4% 1% 1%;
   opacity: 1;
   transform: translateX(100%);
   transition: all 0.5s;
 }
+
 // Container toggle gradient selector
 .gradient-selector {
   @include flex-mix(space-around, center);
+  margin-bottom: 3%;
 }
+
 // Button gradient selector actived
 .gradient-selector-toggle {
-  @include font(1vmin, 9px);
+  @include font(1.2vmin, 13px);
   font-weight: bold;
   cursor: pointer;
+  color: $purple;
   transition: all 0.3s;
+
+  &:hover {
+    color: $primary;
+    filter: brightness(150%);
+  }
 }
+
 // Buttongradient selector disabled
 .selector_toggle_disab {
   font-weight: 300;
-  //   color: #787676;
   opacity: 0.5;
 }
 
@@ -267,60 +332,73 @@
 .gradient-orientation {
   @include flex-mix;
   flex-direction: column;
-  margin-bottom: 2%;
+  margin-bottom: 5%;
 
   &-label {
-    @include font(1vmin, 10px);
+    @include font(1.1vmin, 15px);
+    color: $violet;
     transition: all 0.3s;
-    margin-bottom: 2%;
+    margin-bottom: 4%;
   }
+
   // Range "Orientation" || "Rayon"
   &-input {
     @include inputRange;
   }
 }
+
 // Range track "Orientation" || "Rayon"
 #{$rangeInput}.gradient-orientation-input#{$rangeTrack} {
-  @include rangeTrack(10px, 10px, rgb(251, 255, 0), rgb(126, 0, 0));
+  @include rangeTrack(20px, 10px);
 }
 // Range thumb "Orientation" || "Rayon"
 #{$rangeInput}.gradient-orientation-input#{$rangeThumb} {
-  @include rangeThumb(10px, 0, "", $primary);
+  @include rangeThumb(20px);
 }
 
 // Containers inputs colors & opacity
-.gradient-inputs {
-  @include flex-mix(center, center);
+.gradient {
+  &-inputs {
+    @include flex-mix(center, center);
 
-  // Containers 1 color & opacity
-  &-colors {
-    @include flex-mix;
-    flex-direction: column;
+    // Containers 1 color & opacity
+    &-colors {
+      @include flex-mix;
+      flex-direction: column;
+    }
+  }
+
+  // Mabels opacity
+  &-label-opacity {
+    color: $primary;
+    font-weight: 300;
+  }
+
+  // Ranges opacity
+  &-range-opacity {
+    width: 60%;
+    margin: 8% 0 15%;
   }
 }
 
-// Ranges opacity
-.gradient-range-opacity {
-  width: 60%;
-  margin: 8% 0;
-}
 // Range opacity tracks
 #{$rangeInput}.gradient-range-opacity#{$rangeTrack} {
-  @include rangeTrack(10px, 10px, rgba(0, 0, 0, 0.601), rgb(255, 255, 255));
+  @include rangeTrack(15px, 10px, rgba(255, 255, 255, 0.5), rgb(0, 0, 0));
 }
 
 // Range opacity thumbs
 #{$rangeInput}.gradient-range-opacity#{$rangeThumb} {
-  @include rangeThumb(10px, 0, "", $primary);
+  @include rangeThumb(15px);
 }
 
 // Inputs color
 .gradient-color-input {
   width: 100%;
+  min-height: 30px;
   background-color: transparent;
   border: none;
-  margin: 4% 0;
-  transition: opacity 0.5s;
+  margin: 8% 0;
+  transition: opacity 0.3s;
 }
 
 // Input swatch primary color
@@ -337,21 +415,202 @@
 .validShape {
   @include flex-mix(space-around, center);
   width: 100%;
-  padding: 10% 0;
 
   &-buttons {
     @include button;
-    @include font(1vmin, 15px);
-    width: 40%;
-    color: white;
-    padding: 2% 0;
+    @include font(1vmin, 10px);
   }
+
   // Button reset
   &-reset {
-    @include buttonColor(rgb(246, 112, 112), rgb(206, 36, 36));
+    @include button;
+    @include buttonColor(to bottom, #ffb199, #ff0844);
+    width: 45%;
+    color: white;
+    padding: 2%;
+
+    &:hover {
+      filter: brightness(110%) drop-shadow(0px 0px 5px rgb(249, 109, 135));
+    }
+
+    &:active {
+      box-shadow: inset 0px 0px 5px 1px rgb(77, 1, 1);
+    }
+  }
+}
+
+.button_validShape {
+  width: 45%;
+
+  &:hover {
+    filter: brightness(110%) drop-shadow(0px 0px 5px rgb(189, 254, 242));
+  }
+}
+
+/*******    RESPONSIVE MOBIL FIRST     *******/
+@media #{$smart} {
+  // Pannel command closed
+  .pannelCommand {
+    bottom: initial;
+    left: initial;
+    top: 0;
+    right: 0;
+    width: 35%;
+    height: 100vh;
+    transform: translate(100%, 0%);
+    border-radius: 25px 0 0 25px;
+  }
+
+  // Pannel command opened
+  .pannelCommand_open {
+    transform: translate(0%, 0%);
+    box-shadow: -3px 0px 7px 2px rgb(79, 65, 231);
+  }
+  // Select shape container
+  .selectShape {
+    column-gap: 10%;
+    row-gap: 15%;
+    padding: 0 1%;
+  }
+  // Container valid shape
+  .validShape {
+    margin-bottom: 4%;
+  }
+}
+/*******    RESPONSIVE TABLETT     *******/
+@media #{$tablett} {
+  // Pannel command closed
+  .pannelCommand {
+    width: 33%;
+  }
+  // Select shape buttons
+  .selectShape-buttons {
+    width: 80%;
+    min-height: 30px;
+    @include font(1vmin, 15px);
+  }
+  // Config layout buttons + & -
+  .configLayout-buttons {
+    min-height: 30px;
+    padding: 0;
+  }
+  .configDisplay {
+    // range labels
+    &-label {
+      @include font(1vmin, 13px);
+      margin-bottom: 2%;
+    }
+    // Ranges inputs
+    &-inputs {
+      padding: 0 7%;
+    }
+  }
+  // Ranges height tracks
+  #{$rangeInput}.configDisplay-range#{$rangeTrack} {
+    @include rangeTrack(15px);
+  }
+  // Ranges height thumbs
+  .configDisplay-range#{$rangeThumb} {
+    @include rangeThumb(15px);
+  }
+  .configColors {
+    @include font(1vmin, 13px);
+    // Title colors
+    &-label {
+      margin-bottom: 3%;
+    }
+    // Toggle Normal || Gradient
+    &-toggle {
+      font-size: calc(1vmin + 11px);
+    }
+    &-containers {
+      padding-top: 2%;
+    }
+  }
+  // Container Normal & Container Gradient
+  .containerGradient {
+    padding: 1%;
+  }
+  // Containers selectors gradient & label orientation || rayon
+  .gradient-selector,
+  .gradient-orientation {
+    margin-bottom: 1%;
+  }
+  // Labels selector Linear || Gradient
+  .gradient-selector-toggle {
+    font-size: calc(1vmin + 10px);
+  }
+  // Range height normal opacity track
+  #{$rangeInput}.normal-range-opacity#{$rangeTrack} {
+    @include rangeTrack(15px);
+  }
+  // Range height normal opacity thumb
+  .normal-range-opacity#{$rangeThumb} {
+    @include rangeThumb(15px);
+  }
+  // Label orientation || rayon
+  .gradient-orientation-label {
+    font-size: calc(1vmin + 10px);
+  }
+  // Range height orientation || rayon track
+  #{$rangeInput}.gradient-orientation-input#{$rangeTrack} {
+    @include rangeTrack(15px, 10px);
+  }
+  // Range height thumb "Orientation" || "Rayon"
+  #{$rangeInput}.gradient-orientation-input#{$rangeThumb} {
+    @include rangeThumb(15px);
+  }
+  // Range height opacity tracks
+  #{$rangeInput}.gradient-range-opacity#{$rangeTrack} {
+    @include rangeTrack(10px, 10px, rgba(255, 255, 255, 0.5), rgb(0, 0, 0));
+  }
+  // Range height opacity thumbs
+  #{$rangeInput}.gradient-range-opacity#{$rangeThumb} {
+    @include rangeThumb(10px);
+  }
+  // Color inputs
+  .gradient-color-input {
+    margin: 0;
+  }
+  .validShape {
+    // ValidShape buttons
+    &-buttons {
+      margin: 0;
+    }
+    // Button reset
+    &-reset {
+      padding: 2%;
+    }
   }
   // Button submit
-  &-submit {
-    @include buttonColor(rgb(53, 233, 74), rgb(0, 118, 16));
+  .button_validShape {
+    margin: 0;
+    padding: 2%;
   }
+}
+/*******    RESPONSIVE > 1200px     *******/
+@media #{$laptop} {
+  // Pannel command closed
+  .pannelCommand {
+    position: relative;
+    transform: none;
+    width: 23%;
+    max-width: 300px;
+    height: 100%;
+    border-radius: 20px;
+  }
+  // Ranges inputs
+  .configDisplay-inputs {
+    padding: 1.5% 7%;
+  }
+
+  .validShape {
+    // ValidShape buttons
+    & button {
+      font-size: calc(1vmin + 11px);
+    }
+  }
+}
+/*******    RESPONSIVE > 1600px    *******/
+@media #{$large} {
 }

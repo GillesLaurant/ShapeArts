@@ -37,8 +37,10 @@ const PannelAccount = () => {
 
         {/* COUNT SHAPES */}
         <p className="pannelAccount-content-text">
-          <span className="account-item">Formes crées : </span>
-          <span className="account-data">{user.countShapes}</span>
+          <span className="account-item account-item-shapes">
+            Formes crées :{" "}
+          </span>
+          <span className="account-data ">{user.countShapes}</span>
         </p>
       </div>
 

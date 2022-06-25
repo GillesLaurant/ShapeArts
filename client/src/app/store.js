@@ -4,6 +4,7 @@ import shapeReducer from "../features/shape/shape.slice";
 import navReducer from "../features/app/navUser.slice";
 import userReducer from "../features/app/user.slice";
 import errorReducer from "../features/error/error.slice";
+import loaderReducer from "../features/app/loader.slice";
 
 /*******    STORE     *******/
 
@@ -14,5 +15,6 @@ export const store = configureStore({
     nav: navReducer,
     user: userReducer,
     error: errorReducer,
+    loader: loaderReducer,
   },
 });

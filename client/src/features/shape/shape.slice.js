@@ -7,7 +7,6 @@ const initialState = {
   name: "round",
   pos_X: 450,
   pos_Y: 350,
-  pos_Z: 0,
   size: 10,
   rotation: 0,
   rotation_X: 0,
@@ -16,7 +15,7 @@ const initialState = {
   color_primary: "#164e80",
   color_secondary: "#FD4E83",
   // TOGGLE NORMAL || GRADIENT
-  selector_gradient: true,
+  selector_gradient: false,
   // TOGGLE LINEAR || RADIAL
   selector_linear: true,
   // OREINTATION LINEAR
@@ -93,7 +92,6 @@ export const shapeSlice = createSlice({
       state.name = "round";
       state.pos_X = 450;
       state.pos_Y = 350;
-      state.pos_Z = 0;
       state.size = 10;
       state.rotation = 0;
       state.rotation_X = 0;

@@ -6,28 +6,11 @@ import ButtonUserNav from "../../features/buttons&inputs/ButtonUserNav";
 import { toggleWindows } from "../../features/app/app.slice";
 import { navigate } from "../../features/app/navUser.slice";
 import "./style.scss";
+import GeneratorSVG from "../../features/svg/GeneratorSVG";
 
 const PannelUser = () => {
   const dispatch = useDispatch();
   const { app, nav } = useSelector((state) => state);
-
-  const filterPannel = () => {
-    let pannelOpened = [];
-    for (const pannel in nav) {
-      nav[pannel] && pannelOpened.push(pannel);
-    }
-    if (pannelOpened.length > 1) {
-      console.log("SUP OPENED PANNELS", pannelOpened);
-    }
-    if (pannelOpened.length > 0) {
-      pannelOpened = pannelOpened[0].split("_")[1];
-      return pannelOpened;
-    }
-  };
-  const backNav = (ev) => {
-    ev.preventDefault();
-    dispatch(navigate(ev.target.name));
-  };
 
   const handleWindows = (ev) => {
     ev.preventDefault();
@@ -40,20 +23,12 @@ const PannelUser = () => {
     >
       <div className="pannelUser-head">
         <button
-          className={`back_Pannel`}
-          name={`nav_${filterPannel()}`}
-          onClick={backNav}
-        >
-          retour
-        </button>
-
-        <button
           type="button"
-          className="pannelUser-head-buttonWindow"
+          className="buttonsWindow button_closeUser"
           name="pannelUser"
           onClick={handleWindows}
         >
-          Fermer
+          <GeneratorSVG nameSvg={"closeWindows"} />
         </button>
       </div>
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Timer from "../../../features/timer/Timer";
+import Timer from "../../../features/timing/Timer";
 import ButtonUserNav from "../../../features/buttons&inputs/ButtonUserNav";
 import ButtonAction from "../../../features/buttons&inputs/ButtonAction";
 
@@ -21,10 +21,12 @@ const PannelTiming = () => {
       {/* TEXT TIMER */}
       <div className="pannelTiming-content">
         <p className="pannelTiming-content-text">Vous devez attendre</p>
+
         {/* TIMER */}
         <div className="timer">
           <Timer />
         </div>
+
         <p className="pannelTiming-content-text">
           avant de placer une autre forme.
         </p>

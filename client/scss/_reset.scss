@@ -1,8 +1,30 @@
 /*******    RESET     *******/
 * {
+  appearance: none;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  & svg {
+    pointer-events: none;
+  }
+  & button {
+    transition: all 0.3s;
+
+    &:disabled {
+      opacity: 0.5;
+      color: $dark;
+      pointer-events: inherit;
+    }
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    appearance: none;
+    font-weight: normal;
+  }
 }
 
 @font-face {
@@ -37,38 +59,39 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 form {
+  appearance: none;
   width: 100%;
   @include flex-mix(space-evenly, center);
   flex-direction: column;
   flex-grow: 1;
-  border: 1px solid cyan;
-  appearance: none;
-}
-input[type="text"] {
-  @include resetInputs;
-  @include font(1vmin, 11px);
+  margin: 2% 0;
+  // border: 1px solid cyan;
 }
 
-input[type="text"]::-webkit-input-placeholder {
-  @include placeholder;
-  // z-index: 10;
-}
-
-input[type="mail"] {
-  @include resetInputs;
-  @include font(1vmin, 13px);
-  // z-index: 10;
-}
-
-input[type="mail"]::-webkit-input-placeholder {
-  @include placeholder;
-}
-
+input[type="text"],
+input[type="mail"],
 input[type="password"] {
   @include resetInputs;
   @include font(1vmin, 13px);
+  // color: $dark;
 }
-
+input[type="text"]::-webkit-input-placeholder,
+input[type="mail"]::-webkit-input-placeholder,
 input[type="password"]::-webkit-input-placeholder {
   @include placeholder;
 }
+
+@media #{$smart} {
+  input[type="text"],
+  input[type="mail"],
+  input[type="password"] {
+    width: 90%;
+  }
+}
+@media #{$laptop} {
+  input[type="text"],
+  input[type="mail"],
+  input[type="password"] {
+    font-size: calc(1vmin + 11px);
+  }
+} ;

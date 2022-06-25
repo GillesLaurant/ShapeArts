@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleWindows } from "../../features/app/app.slice";
 
 import "./App.scss";
+import ProgressBar from "../../features/timing/ProgressBar";
+import TitleApp from "./TitleApp";
+import TextApp from "./TextApp";
 
 function App() {
   const dispatch = useDispatch();
@@ -14,16 +17,11 @@ function App() {
 
   return (
     <div className="App ">
-      <ButtonWindows
-        nameClass={"toggleContainerPannel toggleUser"}
-        svg={"pannelCommand"}
-        name={"pannelUser"}
-      />
-      <ButtonWindows
-        nameClass={"toggleContainerPannel toggleCommand"}
-        svg={"pannelCommand"}
-        name={"pannelCommand"}
-      />
+      <TitleApp />
+      <ButtonWindows name={"pannelUser"} />
+      <ButtonWindows name={"pannelCommand"} />
+      <TextApp />
+      {/* <ProgressBar /> */}
       <PannelUser />
       <MainContainer />
       <PannelCommand />

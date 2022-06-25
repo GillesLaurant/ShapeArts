@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetShape } from "../../features/shape/shape.slice";
+import ButtonAction from "../../features/buttons&inputs/ButtonAction";
 
 /*******    CONFIRM SHAPE     *******/
 
@@ -24,13 +25,7 @@ const ValidShape = () => {
       </button>
 
       {/* VALID SHAPE ACTION */}
-      <button
-        type="submit"
-        className="validShape-buttons validShape-submit"
-        onClick={handleClick}
-      >
-        Envoyer
-      </button>
+      <ButtonAction nameButton={"validShape"} />
     </section>
   );
 };
