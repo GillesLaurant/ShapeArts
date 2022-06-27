@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { changeFields } from "../app/user.slice";
-import { navigate } from "../app/navUser.slice";
+import { changeFields } from "../user/user.slice";
+import { navigate } from "../user/nav.slice";
 const PWD_REGEX = /^[A-Za-z0-9_-]{4,15}$/;
 const USERNAME_REGEX = /^[A-Za-z0-9_-]{3,15}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;

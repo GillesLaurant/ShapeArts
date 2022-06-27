@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeFields } from "../app/user.slice";
+import { changeFields } from "../user/user.slice";
 import "./style.scss";
 
 /*******    TEXT INPUTS     *******/

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Svg from "../svg/GeneratorSVG";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleWindows } from "../app/app.slice";
+import { toggleWindows } from "../user/nav.slice";
 import "./style.scss";
 
 /*******    WINDOW TOGGLE BUTTONS     *******/

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { navigate } from "../app/navUser.slice";
+import { navigate } from "../user/nav.slice";
 
 /*******    NAV BUTTONS     *******/
 

@@ -7,7 +7,7 @@ import {
   editUsername,
   editMail,
   editPwd,
-} from "../app/user.slice";
+} from "../user/user.slice";
 import { setError } from "../error/error.slice";
 import "./style.scss";
 

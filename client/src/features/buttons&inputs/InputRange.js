@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleDisplay } from "../shape/shape.slice";
+import { toggleDisplay } from "../PannelShape/shape.slice";
 
 /*******    RANGE INPUTS     *******/
 
