@@ -2,14 +2,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { setError } from "../error/error.slice";
 import {
   registerSuccess,
-  loggin,
-  editUsername,
-  editMail,
-  editPwd,
-  deleteAccount,
   logginSuccess,
+  loggoutSuccess,
+  deleteSuccess,
+  editSuccess,
 } from "../user/user.slice";
 
+/*******    LOADER     *******/
+
+// State
 const initialState = {
   register: false,
   loggin: false,
@@ -20,6 +21,7 @@ const initialState = {
   validShape: false,
 };
 
+// Slice
 export const loaderSlice = createSlice({
   name: "loader",
   initialState,
@@ -30,6 +32,7 @@ export const loaderSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // IF error stop loader
       .addCase(setError, (state) => {
         for (const [key] of Object.entries(state)) {
           state[key] = false;
@@ -39,29 +42,46 @@ export const loaderSlice = createSlice({
       .addCase(registerSuccess, (state, action) => {
         state.register = false;
       })
-      // Logginloader stop
+      // Loggin loader stop
       .addCase(logginSuccess, (state, action) => {
-        state[action.payload] = false;
+        state.loggin = false;
       })
-      .addCase(editUsername, (state, action) => {
-        state[action.payload] = true;
+      // Loggout loader stop
+      .addCase(loggoutSuccess, (state, action) => {
+        state.loggout = false;
       })
-      .addCase(editMail, (state, action) => {
-        state[action.payload] = true;
+      // Delete loader stop
+      .addCase(deleteSuccess, (state, action) => {
+        state.deleteAccount = false;
       })
-      .addCase(editPwd, (state, action) => {
-        state[action.payload] = true;
-      })
-      .addCase(deleteAccount, (state, action) => {
-        state[action.payload] = true;
+      // All edits loader stop
+      .addCase(editSuccess, (state, action) => {
+        switch (action.payload.newEdited) {
+          case "username":
+            state.editUsername = false;
+            break;
+
+          case "mail":
+            state.editMail = false;
+            break;
+
+          case "pwd":
+            state.editPwd = false;
+            break;
+
+          default:
+            break;
+        }
       });
   },
 });
 
+// Actions
 export const { toggleLoader } = loaderSlice.actions;
 
 export const loaderButton = (state, nameButton) => {
   return state[nameButton];
 };
 
+// Reducer
 export default loaderSlice.reducer;

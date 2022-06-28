@@ -8,17 +8,15 @@ import TitleApp from "./features/main/TitleApp";
 import TextApp from "./features/main/TextApp";
 import { ButtonWindows } from "./features/buttons&inputs/ButtonWindows";
 import { connectSocket } from "./features/socket/socket.slice";
-import { requestCloth } from "./features/cloth/cloth.slice";
 import "./styles/styles.scss";
 
 function App() {
   const dispatch = useDispatch();
   const socket = useSelector((state) => state.socket.socket_connected);
 
-  console.log("test", socket);
   useEffect(() => {
     !socket && dispatch(connectSocket());
-  }, []);
+  }, [dispatch, socket]);
 
   return (
     <div className="App ">

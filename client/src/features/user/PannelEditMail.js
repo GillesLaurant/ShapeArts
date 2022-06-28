@@ -15,7 +15,7 @@ const PannelEditMail = () => {
       <header className="pannelEdit-head">
         <h3 className="pannelEdit-head-text">Modifer</h3>
 
-        <h4 className="pannelEdit-head-user">{user}</h4>
+        <h4 className="pannelEdit-head-mail">{user}</h4>
       </header>
 
       {/* FORM EDIT MAIL */}

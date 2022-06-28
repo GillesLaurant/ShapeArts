@@ -21,7 +21,7 @@ const PannelDelete = () => {
 
       <footer className="pannelDelete-footer">
         {/* DELETE ACTION */}
-        <ButtonAction nameButton={"delete"} />
+        <ButtonAction nameButton={"deleteAccount"} />
 
         {/* BACK DELETE */}
         <ButtonUserNav nav={"back_Delete"} />

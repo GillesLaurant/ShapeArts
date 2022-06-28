@@ -1,14 +1,13 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import {
   registerSuccess,
   logginSuccess,
-  editUsername,
-  editMail,
-  editPwd,
+  editSuccess,
 } from "../user/user.slice";
 
 /*******    NAVIGATION PANNELS     *******/
 
+// State
 const initialState = {
   nav_SignIn: false,
   nav_SignUp: false,
@@ -24,6 +23,7 @@ const initialState = {
   },
 };
 
+// Slice
 export const navSlice = createSlice({
   name: "nav",
   initialState,
@@ -70,21 +70,17 @@ export const navSlice = createSlice({
       .addCase(logginSuccess, (state) => {
         state.nav_SignUp = false;
       })
-      .addCase(editUsername, (state, action) => {
+      .addCase(editSuccess, (state, action) => {
         state.nav_EditUsername = false;
-        state.nav_Account = true;
-      })
-      .addCase(editMail, (state, action) => {
         state.nav_EditMail = false;
-        state.nav_Account = true;
-      })
-      .addCase(editPwd, (state, action) => {
         state.nav_EditPwd = false;
         state.nav_Account = true;
       });
   },
 });
 
+// Actions
 export const { toggleWindows, navigate } = navSlice.actions;
 
+// Reducer
 export default navSlice.reducer;

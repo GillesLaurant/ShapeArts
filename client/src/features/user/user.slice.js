@@ -3,6 +3,7 @@ import { navigate } from "./nav.slice";
 
 /*******    USER     *******/
 
+// State
 const initialState = {
   id: -1,
   username: "",
@@ -17,6 +18,7 @@ const initialState = {
   successPWDEdited: false,
 };
 
+// Slice
 export const userSlice = createSlice({
   name: "user",
   initialState,
@@ -41,47 +43,44 @@ export const userSlice = createSlice({
       state.username = action.payload.username;
       state.countShapes = action.payload.counterShapes;
     },
+    // Loggout actions
     loggout: () => {},
-    loggoutSuccess: (state, action) => {
+    loggoutSuccess: (state) => {
+      state.id = -1;
+      state.username = "";
+      state.mail = "";
+      state.password = "";
+      state.countShapes = 0;
+      state.isLoggin = false;
+    },
+    // Delete actions
+    deleteAccount: () => {},
+    deleteSuccess: (state) => {
       state.password = "";
       state.isLoggin = false;
       state.id = -1;
       state.username = "";
       state.mail = "";
-
       state.countShapes = 0;
     },
-    delete: () => {},
-    deleteSuccess: (state, action) => {
-      state.password = "";
-      state.isLoggin = false;
-      state.id = -1;
-      state.username = "";
-      state.countShapes = 0;
+    // Edit actions
+    edit: () => {},
+    editSuccess: (state, action) => {
+      // Success edit username || mail
+      if (action.payload.newEdited !== "pwd") {
+        state[action.payload.newEdited] = state[action.payload.resetEdited];
+        state[action.payload.resetEdited] = "";
+      }
+      // Success edit password
+      else {
+        state.successPWDEdited = true;
+        state.holdPwd = "";
+        state.newPwd = "";
+      }
     },
-    editUsername: (state, action) => {
-      state.username = state.usernameEdited;
-      state.usernameEdited = "";
-    },
-    editMail: (state, action) => {
-      state.mail = state.mailEdited;
-      state.mailEdited = "";
-    },
-    editPwd: (state, action) => {
-      state.holdPwd = "";
-      state.newPwd = "";
-    },
-    deleteAccount: (state, action) => {
-      console.log("delete");
-    },
-    // registerSuccess: (state, action) => {
-    //   for (const item of state) {
-    //     console.log(item);
-    //   }
-    //   state.id = action.payload;
-    // },
   },
   extraReducers: (builder) => {
+    // On back edit
     builder.addCase(navigate, (state, action) => {
       if (
         action.payload === "nav_EditUsername" ||
@@ -93,22 +92,27 @@ export const userSlice = createSlice({
         state.holdPwd = "";
         state.newPwd = "";
       }
+      if (state.successPWDEdited) {
+        state.successPWDEdited = false;
+      }
     });
   },
 });
 
+// Actions
 export const {
   changeFields,
   register,
+  registerSuccess,
   loggin,
   logginSuccess,
   loggout,
   loggoutSuccess,
-  editUsername,
-  editMail,
-  editPwd,
   deleteAccount,
-  registerSuccess,
+  deleteSuccess,
+  edit,
+  editSuccess,
 } = userSlice.actions;
 
+// Reducer
 export default userSlice.reducer;

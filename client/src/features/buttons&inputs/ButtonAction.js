@@ -5,7 +5,9 @@ import SpinnerButton from "./SpinnerButton";
 import {
   register,
   loggin,
-  editUsername,
+  loggout,
+  deleteAccount,
+  edit,
   editMail,
   editPwd,
 } from "../user/user.slice";
@@ -77,7 +79,7 @@ const ButtonAction = ({ nameButton }) => {
       col2: "#5f72bd",
       col3: "rgb(95, 1, 183, 0.01)",
     },
-    delete: {
+    deleteAccount: {
       name: "deleteAccount",
       content: "Se désinscrire",
       inputs: [],
@@ -175,7 +177,10 @@ const ButtonAction = ({ nameButton }) => {
         dispatch(
           setError({
             nameError: input,
-            msgError: error.listMsg[input],
+            msgError:
+              error.errorMsg[input] !== null
+                ? error.errorMsg[input]
+                : error.listMsg[input],
           })
         );
         echec = true;
@@ -190,17 +195,16 @@ const ButtonAction = ({ nameButton }) => {
         case "loggin":
           dispatch(loggin(nameButton));
           break;
-        case "editUsername":
-          dispatch(editUsername(nameButton));
-          break;
-        case "editMail":
-          dispatch(editMail(nameButton));
-          break;
-        case "editPwd":
-          dispatch(editPwd(nameButton));
+        case "loggout":
+          dispatch(loggout(nameButton));
           break;
         case "deleteAccount":
-          dispatch(editPwd(nameButton));
+          dispatch(deleteAccount(nameButton));
+          break;
+        case "editUsername":
+        case "editMail":
+        case "editPwd":
+          dispatch(edit(nameButton));
           break;
 
         default:
@@ -216,16 +220,22 @@ const ButtonAction = ({ nameButton }) => {
   }, []);
 
   useEffect(() => {
-    console.log(loader);
     // Add pulsing animation loader
     if (!loader[nameButton]) {
-      // buttonTarget.current.classList.remove(`pulse_${nameButton}`);
+      console.log(loader[nameButton]);
+      // Remove pulsing animation loader
+      buttonTarget.current.animate(
+        [
+          { boxShadow: "0 0 0 0px rgba(0, 0, 0, 0)" },
+          { boxShadow: "0 0 0 0px rgba(0, 0, 0, 0)" },
+        ],
+        {
+          duration: 1000,
+          iterations: Infinity,
+        }
+      );
       buttonTarget.current.disabled = false;
-    }
-    // Remove pulsing animation loader
-
-    if (loader[nameButton]) {
-      // buttonTarget.current.classList.add(`pulse_${nameButton}`);
+    } else if (loader[nameButton]) {
       buttonTarget.current.disabled = true;
       buttonTarget.current.animate(
         [
@@ -244,15 +254,12 @@ const ButtonAction = ({ nameButton }) => {
     <button
       ref={buttonTarget}
       type="button"
-      className={`buttonAction button_${nameButton} pulse_${
-        loader[nameButton] ? nameButton : "out"
-      }`}
+      className={`buttonAction button_${nameButton} `}
       name={nameButton}
       onMouseEnter={checkValidity}
       onClick={handleClick}
       style={{
         background: `linear-gradient(to top, ${listButtons[nameButton].col1}, ${listButtons[nameButton].col2})`,
-        animation: `pulse_${nameButton} 1s infinite`,
       }}
     >
       {/* CONTENT BUTTON */}

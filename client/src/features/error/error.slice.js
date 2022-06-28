@@ -7,6 +7,7 @@ const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
 /*******    ERROR     *******/
 
+// State
 const initialState = {
   error: {
     username: false,
@@ -30,6 +31,7 @@ const initialState = {
   },
 };
 
+// Slice
 export const errorSlice = createSlice({
   name: "error",
   initialState,
@@ -95,6 +97,8 @@ export const errorSlice = createSlice({
   },
 });
 
+// Actions
 export const { setError, registerError } = errorSlice.actions;
 
+// Reducer
 export default errorSlice.reducer;
