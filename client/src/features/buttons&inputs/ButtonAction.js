@@ -10,13 +10,16 @@ import {
 } from "../user/user.slice";
 import { setError } from "../error/error.slice";
 import "./style.scss";
+import { loaderButton, toggleLoader } from "../loaders/loader.slice";
 
 /*******    ACTION BUTTONS     *******/
 
 const ButtonAction = ({ nameButton }) => {
   const buttonTarget = useRef();
   const dispatch = useDispatch();
-  const { error, user, loader } = useSelector((state) => state);
+  const user = useSelector((state) => state.user);
+  const error = useSelector((state) => state.error);
+  const loader = useSelector((state) => state.loader);
   const colorsEdit = {
     col1: "#30cdf0",
     col2: "#330867",
@@ -171,7 +174,6 @@ const ButtonAction = ({ nameButton }) => {
         dispatch(
           setError({
             nameError: input,
-            status: true,
             msgError: error.listMsg[input],
           })
         );
@@ -203,6 +205,7 @@ const ButtonAction = ({ nameButton }) => {
         default:
           break;
       }
+      dispatch(toggleLoader(nameButton));
     }
   };
 
@@ -212,6 +215,7 @@ const ButtonAction = ({ nameButton }) => {
   }, []);
 
   useEffect(() => {
+    console.log(loader);
     // Add pulsing animation loader
     if (!loader[nameButton]) {
       // buttonTarget.current.classList.remove(`pulse_${nameButton}`);

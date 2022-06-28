@@ -13,14 +13,11 @@ import "./styles/styles.scss";
 
 function App() {
   const dispatch = useDispatch();
-  const socket = useSelector((state) => state.socket.status);
+  const socket = useSelector((state) => state.socket.socket_connected);
 
-  console.log(
-    "test",
-    useSelector((state) => state)
-  );
+  console.log("test", socket);
   useEffect(() => {
-    socket === "idle" && dispatch(connectSocket());
+    !socket && dispatch(connectSocket());
   }, []);
 
   return (

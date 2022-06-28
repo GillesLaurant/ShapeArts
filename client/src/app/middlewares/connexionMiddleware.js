@@ -1,31 +1,42 @@
 import { getCloth } from "../../features/cloth/cloth.slice";
+import { setError } from "../../features/error/error.slice";
+import { successConnect } from "../../features/socket/socket.slice";
 
 export default function socketMiddleware(socket) {
   return ({ dispatch, getState }) =>
     (next) =>
     (action) => {
-      console.log("action", typeof action, action);
+      // console.log("action", action);
 
-      if (typeof action === "function") {
-        console.log("NOT");
-        return action(dispatch, getState);
-      }
+      switch (action.type) {
+        case "socket/connectSocket":
+          socket
+            .connect()
+            .then(() => {
+              if (socket.socket.connected) {
+                dispatch(successConnect());
+                socket.emit("connexion", {});
+              } else {
+                console.log("ERR NOT CONNECT");
+              }
 
-      const { promise, type, types, ...rest } = action;
+              socket.on("sendCloth", (res) => {
+                console.log(res);
+                dispatch(getCloth(res));
+              });
 
-      // if (type !== "socket" || !promise) {
-      //   return next(action);
-      // }
+              socket.on("error_server", (err) => {
+                console.log("ERROR", err);
+                dispatch(setError(err));
+              });
+            })
+            .catch((errorConnect) => {
+              console.log(errorConnect);
+            });
+          break;
 
-      console.log("yes", types);
-      if (action.type === "socket/connectSocket") {
-        socket.connect().then(() => {
-          socket.emit("connection", {});
-          socket.on("sendCloth", (res) => {
-            console.log(res);
-            dispatch(getCloth(res));
-          });
-        });
+        default:
+          break;
       }
 
       return next(action);

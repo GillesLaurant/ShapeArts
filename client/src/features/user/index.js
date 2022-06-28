@@ -18,7 +18,8 @@ import "./style.scss";
 
 const UserSection = () => {
   // Nav & userLoggin & shapeCreated
-  const { nav, user } = useSelector((state) => state);
+  const nav = useSelector((state) => state.nav);
+  const user = useSelector((state) => state.user);
 
   return (
     <section className="userSection">
@@ -26,22 +27,18 @@ const UserSection = () => {
       <ErrorSection />
 
       {/* PANNEL START GAME */}
-      {!user.userLoggin && !nav.nav_SignIn && !nav.nav_SignUp && (
-        <PannelStart />
-      )}
+      {!user.isLoggin && !nav.nav_SignIn && !nav.nav_SignUp && <PannelStart />}
 
       {/* PANNEL REGISTER USER */}
-      {!user.userLoggin && nav.nav_SignIn && !nav.nav_SignUp && (
+      {!user.isLoggin && nav.nav_SignIn && !nav.nav_SignUp && (
         <PannelRegister />
       )}
 
       {/* PANNEL LOGGIN USER */}
-      {!user.userLoggin && !nav.nav_SignIn && nav.nav_SignUp && (
-        <PannelLoggin />
-      )}
+      {!user.isLoggin && !nav.nav_SignIn && nav.nav_SignUp && <PannelLoggin />}
 
       {/* PANNEL RULES GAME */}
-      {user.userLoggin &&
+      {user.isLoggin &&
         !user.timeShapecreated &&
         !nav.nav_Account &&
         !nav.nav_EditToggle &&
@@ -51,7 +48,7 @@ const UserSection = () => {
         !nav.nav_Delete && <PannelRules />}
 
       {/* PANNEL TIMING PLAY */}
-      {user.userLoggin &&
+      {user.isLoggin &&
         user.timeShapecreated &&
         !nav.nav_Account &&
         !nav.nav_EditToggle &&
@@ -61,22 +58,22 @@ const UserSection = () => {
         !nav.nav_Delete && <PannelTiming />}
 
       {/* PANNEL ACCOUNT */}
-      {user.userLoggin && nav.nav_Account && <PannelAccount />}
+      {user.isLoggin && nav.nav_Account && <PannelAccount />}
 
       {/* PANNEL NAV EDIT */}
-      {user.userLoggin && nav.nav_EditToggle && <PannelNavEdit />}
+      {user.isLoggin && nav.nav_EditToggle && <PannelNavEdit />}
 
       {/* PANNEL EDIT PSEUDO */}
-      {user.userLoggin && nav.nav_EditUsername && <PannelEditPseudo />}
+      {user.isLoggin && nav.nav_EditUsername && <PannelEditPseudo />}
 
       {/* PANNEL EDIT MAIL */}
-      {user.userLoggin && nav.nav_EditMail && <PannelEditMail />}
+      {user.isLoggin && nav.nav_EditMail && <PannelEditMail />}
 
       {/* PANNEL EDIT PASSWORD */}
-      {user.userLoggin && nav.nav_EditPwd && <PannelEditPwd />}
+      {user.isLoggin && nav.nav_EditPwd && <PannelEditPwd />}
 
       {/* PANNEL DELETE */}
-      {user.userLoggin && nav.nav_Delete && <PannelDelete />}
+      {user.isLoggin && nav.nav_Delete && <PannelDelete />}
     </section>
   );
 };

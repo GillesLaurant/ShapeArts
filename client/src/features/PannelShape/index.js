@@ -15,7 +15,9 @@ import GeneratorSVG from "../../features/svg/GeneratorSVG";
 
 const PannelCommand = () => {
   const dispatch = useDispatch();
-  const windowCommand = useSelector((state) => state.nav.pannelCommand_open);
+  const windowCommand = useSelector(
+    (state) => state.nav.windows.pannelCommand_open
+  );
 
   // Handle Open || Close pannel
   const handleWindows = (ev) => {

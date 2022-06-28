@@ -9,7 +9,7 @@ import GeneratorSVG from "../svg/GeneratorSVG";
 
 const PannelUser = () => {
   const dispatch = useDispatch();
-  const pannelUser = useSelector((state) => state.nav.pannelUser_open);
+  const pannelUser = useSelector((state) => state.nav.windows.pannelUser_open);
 
   const handleWindows = (ev) => {
     ev.preventDefault();

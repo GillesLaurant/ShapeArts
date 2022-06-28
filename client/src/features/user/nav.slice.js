@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
-  register,
+  registerSuccess,
   loggin,
   editUsername,
   editMail,
@@ -18,8 +18,10 @@ const initialState = {
   nav_EditMail: false,
   nav_EditPwd: false,
   nav_Delete: false,
-  pannelUser_open: false,
-  pannelCommand_open: false,
+  windows: {
+    pannelUser_open: false,
+    pannelCommand_open: false,
+  },
 };
 
 export const navSlice = createSlice({
@@ -28,12 +30,14 @@ export const navSlice = createSlice({
   reducers: {
     toggleWindows: (state, action) => {
       // Open or close windows
-      state[`${action.payload}_open`] = !state[`${action.payload}_open`];
+      state.windows[`${action.payload}_open`] =
+        !state.windows[`${action.payload}_open`];
     },
     navigate: (state, action) => {
       // Close other all pannels
       for (const [key, value] of Object.entries(state)) {
-        if (value && key !== action.payload) {
+        console.log(key, value);
+        if (value && key !== action.payload && key !== "windows") {
           state[key] = false;
         }
       }
@@ -58,8 +62,8 @@ export const navSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(register, (state, action) => {
-        // state.nav_SignIn = false;
+      .addCase(registerSuccess, (state, action) => {
+        state.nav_SignIn = false;
       })
       .addCase(loggin, (state, action) => {
         state.nav_SignUp = false;

@@ -9,6 +9,7 @@ import socketReducer from "../features/socket/socket.slice";
 
 import connectionMiddleware from "./middlewares/connexionMiddleware";
 import socketAPI from "../features/socket/socketAPI";
+import userMiddleware from "./middlewares/userMiddleware";
 
 /*******    STORE     *******/
 
@@ -26,7 +27,10 @@ export default configureStore({
     socket: socketReducer,
   },
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat([connectionMiddleware(socketClient)]);
+    return getDefaultMiddleware().concat([
+      connectionMiddleware(socketClient),
+      userMiddleware(socketClient),
+    ]);
   },
   // middleware: [connectionMiddleware(socketClient)],
 });

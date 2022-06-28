@@ -4,8 +4,7 @@ import { io } from "socket.io-client";
 /*******    SOCKET     *******/
 
 const initialState = {
-  socket: null,
-  status: "idle",
+  socket_connected: false,
   error: null,
 };
 
@@ -32,6 +31,9 @@ export const socketSlice = createSlice({
       console.log("z", state);
       //   state.error = "test";
     },
+    successConnect: (state, action) => {
+      state.socket_connected = true;
+    },
   },
   extraReducers(builder) {
     // builder
@@ -48,6 +50,6 @@ export const socketSlice = createSlice({
   },
 });
 
-export const { connectSocket } = socketSlice.actions;
+export const { connectSocket, successConnect } = socketSlice.actions;
 
 export default socketSlice.reducer;

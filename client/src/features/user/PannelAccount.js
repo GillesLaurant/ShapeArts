@@ -6,7 +6,9 @@ import ButtonUserNav from "../buttons&inputs/ButtonUserNav";
 
 const PannelAccount = () => {
   // Username & mail & count shapes & notif edit password success
-  const { user, app } = useSelector((state) => state);
+  const { username, mail, successPWDEdited, countShapes } = useSelector(
+    (state) => state.user
+  );
 
   return (
     <div className="pannelAccount">
@@ -18,17 +20,17 @@ const PannelAccount = () => {
       <div className="pannelAccount-content">
         <p className="pannelAccount-content-text">
           <span className="account-item">pseudo : </span>
-          <span className="account-data">{user.username}</span>
+          <span className="account-data">{username}</span>
         </p>
 
         {/* MAIL */}
         <p className="pannelAccount-content-text">
           <span className="account-item">email : </span>
-          <span className="account-data account-data-mail">{user.mail}</span>
+          <span className="account-data account-data-mail">{mail}</span>
         </p>
 
         {/* NOTIF PASSWORD EDITED SUCCESS */}
-        {app.pwdEdited && (
+        {successPWDEdited && (
           <p className="pannelAccount-content-text">
             <span className="account-item">Mot de passe : </span>
             <span className="account-data account-data-pwd">modifié</span>
@@ -40,7 +42,7 @@ const PannelAccount = () => {
           <span className="account-item account-item-shapes">
             Formes crées :{" "}
           </span>
-          <span className="account-data ">{user.countShapes}</span>
+          <span className="account-data ">{countShapes}</span>
         </p>
       </div>
 

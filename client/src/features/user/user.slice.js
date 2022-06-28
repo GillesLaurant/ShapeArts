@@ -13,6 +13,7 @@ const initialState = {
   holdPwd: "",
   newPwd: "",
   isLoggin: false,
+  successPWDEdited: false,
 };
 
 export const userSlice = createSlice({
@@ -22,9 +23,11 @@ export const userSlice = createSlice({
     changeFields: (state, action) => {
       state[action.payload.name] = action.payload.value;
     },
-    register: (state, action) => {
-      console.log(action);
-      state.id = 7;
+    register: () => {},
+    registerSuccess: (state, action) => {
+      state.password = "";
+      state.id = action.payload.id;
+      state.isLoggin = true;
     },
     loggin: (state, action) => {
       state.id = 7;
@@ -45,12 +48,12 @@ export const userSlice = createSlice({
     deleteAccount: (state, action) => {
       console.log("delete");
     },
-    registerSuccess: (state, action) => {
-      for (const item of state) {
-        console.log(item);
-      }
-      state.id = action.payload;
-    },
+    // registerSuccess: (state, action) => {
+    //   for (const item of state) {
+    //     console.log(item);
+    //   }
+    //   state.id = action.payload;
+    // },
   },
   extraReducers: (builder) => {
     // builder.addCase(register, )
