@@ -21,7 +21,7 @@ export default function socketMiddleware(socket) {
               }
 
               socket.on("sendCloth", (res) => {
-                console.log(res);
+                console.log("cloth", res);
                 dispatch(getCloth(res));
               });
 

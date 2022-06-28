@@ -13,7 +13,7 @@ export const clothSlice = createSlice({
   initialState,
   reducers: {
     getCloth: (state, action) => {
-      state.content.push(action.payload.cloth);
+      state.content = action.payload.cloth;
       state.count = action.payload.count;
       state.newShape = action.payload.newShape;
       console.log(action);

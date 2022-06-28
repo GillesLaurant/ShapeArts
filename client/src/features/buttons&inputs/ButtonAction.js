@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SpinnerButton from "./SpinnerButton";
@@ -237,7 +238,7 @@ const ButtonAction = ({ nameButton }) => {
         }
       );
     }
-  }, [loader, error]);
+  }, [loader, error, nameButton, listButtons]);
 
   return (
     <button
@@ -258,7 +259,7 @@ const ButtonAction = ({ nameButton }) => {
       {!loader[nameButton] && listButtons[nameButton].content}
 
       {/* SPINNER BUTTON */}
-      {!!loader[nameButton] && <SpinnerButton />}
+      {loader[nameButton] && <SpinnerButton />}
     </button>
   );
 };

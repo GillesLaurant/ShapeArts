@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { navigate } from "./nav.slice";
 
 /*******    USER     *******/
 
@@ -20,18 +21,43 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    // Input controll
     changeFields: (state, action) => {
       state[action.payload.name] = action.payload.value;
     },
+    // Register actions
     register: () => {},
     registerSuccess: (state, action) => {
       state.password = "";
-      state.id = action.payload.id;
       state.isLoggin = true;
+      state.id = action.payload.id;
     },
-    loggin: (state, action) => {
-      state.id = 7;
-      console.log(action);
+    // Loggin actions
+    loggin: () => {},
+    logginSuccess: (state, action) => {
+      state.password = "";
+      state.isLoggin = true;
+      state.id = action.payload.id;
+      state.username = action.payload.username;
+      state.countShapes = action.payload.counterShapes;
+    },
+    loggout: () => {},
+    loggoutSuccess: (state, action) => {
+      state.password = "";
+      state.isLoggin = false;
+      state.id = -1;
+      state.username = "";
+      state.mail = "";
+
+      state.countShapes = 0;
+    },
+    delete: () => {},
+    deleteSuccess: (state, action) => {
+      state.password = "";
+      state.isLoggin = false;
+      state.id = -1;
+      state.username = "";
+      state.countShapes = 0;
     },
     editUsername: (state, action) => {
       state.username = state.usernameEdited;
@@ -56,7 +82,18 @@ export const userSlice = createSlice({
     // },
   },
   extraReducers: (builder) => {
-    // builder.addCase(register, )
+    builder.addCase(navigate, (state, action) => {
+      if (
+        action.payload === "nav_EditUsername" ||
+        action.payload === "nav_EditMail" ||
+        action.payload === "nav_EditPwd"
+      ) {
+        state.usernameEdited = "";
+        state.mailEdited = "";
+        state.holdPwd = "";
+        state.newPwd = "";
+      }
+    });
   },
 });
 
@@ -64,6 +101,9 @@ export const {
   changeFields,
   register,
   loggin,
+  logginSuccess,
+  loggout,
+  loggoutSuccess,
   editUsername,
   editMail,
   editPwd,

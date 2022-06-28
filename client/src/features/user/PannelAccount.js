@@ -10,6 +10,8 @@ const PannelAccount = () => {
     (state) => state.user
   );
 
+  console.log(username);
+
   return (
     <div className="pannelAccount">
       <header className="pannelAccount-head">

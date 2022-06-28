@@ -7,6 +7,7 @@ import {
   editMail,
   editPwd,
   deleteAccount,
+  logginSuccess,
 } from "../user/user.slice";
 
 const initialState = {
@@ -29,16 +30,18 @@ export const loaderSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(setError, (state, action) => {
-        for (const [key, value] of Object.entries(state)) {
+      .addCase(setError, (state) => {
+        for (const [key] of Object.entries(state)) {
           state[key] = false;
         }
       })
+      // Register loader stop
       .addCase(registerSuccess, (state, action) => {
         state.register = false;
       })
-      .addCase(loggin, (state, action) => {
-        state[action.payload] = true;
+      // Logginloader stop
+      .addCase(logginSuccess, (state, action) => {
+        state[action.payload] = false;
       })
       .addCase(editUsername, (state, action) => {
         state[action.payload] = true;

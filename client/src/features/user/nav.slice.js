@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   registerSuccess,
-  loggin,
+  logginSuccess,
   editUsername,
   editMail,
   editPwd,
@@ -62,10 +62,12 @@ export const navSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(registerSuccess, (state, action) => {
+      // Close register pannel
+      .addCase(registerSuccess, (state) => {
         state.nav_SignIn = false;
       })
-      .addCase(loggin, (state, action) => {
+      // Close loggin pannel
+      .addCase(logginSuccess, (state) => {
         state.nav_SignUp = false;
       })
       .addCase(editUsername, (state, action) => {
