@@ -9,6 +9,7 @@ import "./style.scss";
 
 const SelectShape = () => {
   const dispatch = useDispatch();
+  const logged = useSelector((state) => state.user.isLoggin);
   // List shapes
   const allShapes = ["round", "square", "triangle", "star"];
 
@@ -24,7 +25,7 @@ const SelectShape = () => {
           type="button"
           className="selectShape-buttons"
           name={shape}
-          onClick={handleShape}
+          onClick={logged ? handleShape : () => {}}
         >
           <GeneratorSVG nameSvg={shape} />
         </button>

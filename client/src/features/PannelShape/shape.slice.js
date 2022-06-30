@@ -1,9 +1,10 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 /*******     SHAPE     *******/
 
+// State
 const initialState = {
-  //  CONFIG SHAPE
+  //  Config shape
   name: "round",
   pos_X: 450,
   pos_Y: 350,
@@ -11,36 +12,26 @@ const initialState = {
   rotation: 0,
   rotation_X: 0,
   rotation_Y: 0,
-  // CONFIG COLOR
-  color_primary: "#164e80",
-  color_secondary: "#FD4E83",
-  // TOGGLE NORMAL || GRADIENT
+  // Config color
+  color_primary: "#00b4cc",
+  color_secondary: "#e30fe6",
+  // Toggle "Normal" || "Gradient"
   selector_gradient: false,
-  // TOGGLE LINEAR || RADIAL
+  // Toggle "Linear" || "Gradient"
   selector_linear: true,
-  // OREINTATION LINEAR
+  // Linear orientation
   gradient_orientation: 0,
-  // RAYON RADIAL
+  // Rayon radial
   gradient_rayon: 1,
-  // GRADIENT OPACITYS
+  // Opacitys
   primary_opacity: 1,
   secondary_opacity: 1,
+  // Active shape
+  is_active: false,
+  dateCreated: false,
 };
 
-// The function below is called a thunk and allows us to perform async logic. It
-// can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// will call the thunk with the `dispatch` function as the first argument. Async
-// code can then be executed and other actions can be dispatched. Thunks are
-// typically used to make async requests.
-// export const incrementAsync = createAsyncThunk(
-//   'counter/fetchCount',
-//   async (amount) => {
-//     const response = await fetchCount(amount);
-//     // The value we return becomes the `fulfilled` action payload
-//     return response.data;
-//   }
-// );
-
+// Slice
 export const shapeSlice = createSlice({
   name: "shape",
   initialState,
@@ -49,10 +40,16 @@ export const shapeSlice = createSlice({
     togglePosition: (state, action) => {
       state.pos_X = action.payload.posX;
       state.pos_Y = action.payload.posY;
+      if (!state.is_active) {
+        state.is_active = true;
+      }
     },
     // Input select "Round" || "Square" || "Triangle" || "Star"
     selectShape: (state, action) => {
       state.name = action.payload;
+      if (!state.is_active) {
+        state.is_active = true;
+      }
     },
     // Input toggle X < -20 - 903 > Y < -20 - 709 >
     toggleLayout: (state, action) => {
@@ -68,6 +65,9 @@ export const shapeSlice = createSlice({
         state.pos_Y > -20
       ) {
         state[action.payload.pos] -= 1;
+      }
+      if (!state.is_active) {
+        state.is_active = true;
       }
     },
     // Ranges "pos_Z" ||" size" || "rotation" || "rotation_X" || "opacity" || "colors"
@@ -85,9 +85,11 @@ export const shapeSlice = createSlice({
     toggleGradient: (state) => {
       state.selector_gradient = !state.selector_gradient;
     },
+    // Toggle "Linear" || "Radial"
     toggleGradientType: (state) => {
       state.selector_linear = !state.selector_linear;
     },
+    // Reset config shape
     resetShape: (state) => {
       state.name = "round";
       state.pos_X = 450;
@@ -97,12 +99,44 @@ export const shapeSlice = createSlice({
       state.rotation_X = 0;
       state.rotation_Y = 0;
       state.opacity = 100;
-      state.color_primary = "#164e80";
-      state.color_secondary = "#00b4cc";
+      state.color_primary = "#00b4cc";
+      state.color_secondary = "#e30fe6";
       state.gradient_orientation = 0;
       state.gradient_rayon = 1;
       state.primary_opacity = 100;
       state.secondary_opacity = 100;
+    },
+    // Send new shape to server
+    validShape: () => {},
+    // Receiv timing & reset shape
+    createTiming: (state, action) => {
+      state.dateCreated = action.payload;
+      state.is_active = false;
+      state.name = "round";
+      state.pos_X = 450;
+      state.pos_Y = 350;
+      state.size = 10;
+      state.rotation = 0;
+      state.rotation_X = 0;
+      state.rotation_Y = 0;
+      state.opacity = 100;
+      state.color_primary = "#00b4cc";
+      state.color_secondary = "#e30fe6";
+      state.gradient_orientation = 0;
+      state.gradient_rayon = 1;
+      state.primary_opacity = 100;
+      state.secondary_opacity = 100;
+    },
+    // Receiv timing for cheeters
+    rememberTiming: (state, action) => {
+      if (!state.dateCreated) {
+        state.is_active = false;
+        state.dateCreated = action.payload.date;
+      }
+    },
+    // End timing reset time
+    resetTiming: (state) => {
+      state.dateCreated = false;
     },
   },
   extraReducers: (builder) => {
@@ -117,6 +151,7 @@ export const shapeSlice = createSlice({
   },
 });
 
+// Actions
 export const {
   togglePosition,
   selectShape,
@@ -125,9 +160,13 @@ export const {
   toggleGradient,
   toggleGradientType,
   resetShape,
+  validShape,
+  createTiming,
+  rememberTiming,
+  resetTiming,
 } = shapeSlice.actions;
 
-export const shapeState = (state) => state.shape;
+// export const shapeState = (state) => state.shape;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.
@@ -138,4 +177,5 @@ export const shapeState = (state) => state.shape;
 //   }
 // };
 
+// Reducer
 export default shapeSlice.reducer;

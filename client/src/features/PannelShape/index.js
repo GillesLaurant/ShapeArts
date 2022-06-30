@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import ErrorSection from "../../features/error/ErrorSection";
 import SelectShape from "./SelectShape";
@@ -41,7 +40,7 @@ const PannelCommand = () => {
         </button>
       </div>
       {/* ERROR EVENT */}
-      <ErrorSection />
+      <ErrorSection errorTarget={"shape"} />
 
       {/* 4 BUTTONS SELECTED SHAPE */}
       <SelectShape />

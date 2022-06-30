@@ -11,7 +11,7 @@ export default class socketAPI {
       auth: {
         key: "ShApEsArTsSeRvEr",
       },
-      reconnectionAttempts: 2,
+      reconnectionAttempts: 5,
     });
     // console.log(this.socket);
     return new Promise((resolve, reject) => {

@@ -12,6 +12,7 @@ export default function userMiddleware(socket) {
   return ({ dispatch, getState }) =>
     (next) =>
     (action) => {
+      // console.log("test2");
       // User state
       const user = getState().user;
 

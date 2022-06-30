@@ -3,12 +3,14 @@ import ShapeUserGenerator from "../svg/ShapeUserGenerator";
 import "./style.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { togglePosition } from "../PannelShape/shape.slice";
+import { toggleWindows } from "../user/nav.slice";
 
 /*******    CLOTH USER SHAPE     *******/
 
 const UserCloth = (props) => {
   const dispatch = useDispatch();
   const { pos_X, pos_Y } = useSelector((state) => state.shape);
+  const logged = useSelector((state) => state.user.isLoggin);
 
   // Set position shape
   const handleLayout = (ev) => {
@@ -31,7 +33,16 @@ const UserCloth = (props) => {
 
   return (
     <div className="userCloth">
-      <div className="userCloth-container-shape" onClick={handleLayout}>
+      <div
+        className="userCloth-container-shape"
+        onClick={
+          logged
+            ? handleLayout
+            : () => {
+                dispatch(toggleWindows("pannelUser"));
+              }
+        }
+      >
         <ShapeUserGenerator />
       </div>
     </div>

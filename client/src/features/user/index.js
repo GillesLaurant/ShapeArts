@@ -20,11 +20,12 @@ const UserSection = () => {
   // Nav & userLoggin & shapeCreated
   const nav = useSelector((state) => state.nav);
   const user = useSelector((state) => state.user);
+  const dateShape = useSelector((state) => state.shape.dateCreated);
 
   return (
     <section className="userSection">
       {/* ERROR SECTION MESSAGE */}
-      <ErrorSection />
+      <ErrorSection errorTarget={"server"} />
 
       {/* PANNEL START GAME */}
       {!user.isLoggin && !nav.nav_SignIn && !nav.nav_SignUp && <PannelStart />}
@@ -39,23 +40,23 @@ const UserSection = () => {
 
       {/* PANNEL RULES GAME */}
       {user.isLoggin &&
-        !user.timeShapecreated &&
         !nav.nav_Account &&
         !nav.nav_EditToggle &&
         !nav.nav_EditUsername &&
         !nav.nav_EditMail &&
         !nav.nav_EditPwd &&
-        !nav.nav_Delete && <PannelRules />}
+        !nav.nav_Delete &&
+        !dateShape && <PannelRules />}
 
       {/* PANNEL TIMING PLAY */}
       {user.isLoggin &&
-        user.timeShapecreated &&
         !nav.nav_Account &&
         !nav.nav_EditToggle &&
         !nav.nav_EditUsername &&
         !nav.nav_EditMail &&
         !nav.nav_EditPwd &&
-        !nav.nav_Delete && <PannelTiming />}
+        !nav.nav_Delete &&
+        dateShape && <PannelTiming />}
 
       {/* PANNEL ACCOUNT */}
       {user.isLoggin && nav.nav_Account && <PannelAccount />}

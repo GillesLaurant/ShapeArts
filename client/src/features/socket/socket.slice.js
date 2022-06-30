@@ -1,38 +1,24 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { io } from "socket.io-client";
-// import socketAPI from "./socketAPI";
+import { createSlice } from "@reduxjs/toolkit";
+
 /*******    SOCKET     *******/
 
+// STATE
 const initialState = {
   socket_connected: false,
-  error: null,
+  connectAttemps: 0,
 };
 
-// export const connectSocket = createAsyncThunk(
-//   "socket/connectSocket",
-//   async () => {
-//     try {
-//       const socket = new socketAPI();
-//       socket.connect();
-//       return socket;
-//     } catch (error) {
-//       console.log("errorSocket", error);
-//     }
-//   }
-// );
-
+// SLICE
 export const socketSlice = createSlice({
   name: "socket",
   initialState,
   reducers: {
     connectSocket: (state) => {
-      state.status = "loading";
-      //   state.content.push(action.payload.cloth);
-      console.log("z", state);
-      //   state.error = "test";
+      state.connectAttemps += 1;
     },
     successConnect: (state, action) => {
       state.socket_connected = true;
+      state.connectAttemps = 0;
     },
   },
   extraReducers(builder) {
@@ -50,6 +36,8 @@ export const socketSlice = createSlice({
   },
 });
 
+// ACTIONS
 export const { connectSocket, successConnect } = socketSlice.actions;
 
+// REDUCER
 export default socketSlice.reducer;

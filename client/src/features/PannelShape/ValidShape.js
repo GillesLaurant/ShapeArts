@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { resetShape } from "./shape.slice";
 import ButtonAction from "../buttons&inputs/ButtonAction";
 
@@ -8,10 +8,11 @@ import ButtonAction from "../buttons&inputs/ButtonAction";
 const ValidShape = () => {
   const dispatch = useDispatch();
 
-  // Handle Reset || Valid
-  const handleClick = (ev) => {
+  // Handle Reset
+  const handleReset = (ev) => {
     ev.preventDefault();
-    ev.target.type === "reset" && dispatch(resetShape());
+
+    dispatch(resetShape());
   };
   return (
     <section className="validShape">
@@ -19,7 +20,7 @@ const ValidShape = () => {
       <button
         type="reset"
         className="validShape-buttons validShape-reset"
-        onClick={handleClick}
+        onClick={handleReset}
       >
         Reset
       </button>

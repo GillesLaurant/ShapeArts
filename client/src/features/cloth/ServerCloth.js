@@ -1,25 +1,24 @@
 import React, { useEffect } from "react";
+import { render, hydrateRoot } from "react-dom";
+import { createRoot } from "react-dom/client";
 import PropTypes from "prop-types";
 import "./style.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getCloth } from "./cloth.slice";
+import ShapeServerGenerator from "../svg/ShapesServer";
 
 /*******    SERVER CLOTH     *******/
 
 const ServerCloth = () => {
-  const dispatch = useDispatch();
-  const cloth = useSelector((state) => state.cloth.status);
-  const socket = useSelector((state) => state.socket.socket);
+  const cloth = useSelector((state) => state.cloth);
 
-  useEffect(() => {
-    console.log("cloth", socket);
-    if (socket) {
-      // dispatch(requestCloth());
-      // dispatch(getCloth());
-    }
-  }, [socket, cloth, dispatch]);
-
-  return <div className="serverCloth" />;
+  return (
+    <div id="serverCloth" className="serverCloth">
+      {cloth.content.map((shape, index) => (
+        <ShapeServerGenerator key={index} shape={shape} count={cloth.count} />
+      ))}
+    </div>
+  );
 };
 
 ServerCloth.propTypes = {};

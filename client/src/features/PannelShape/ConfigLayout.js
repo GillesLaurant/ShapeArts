@@ -9,10 +9,14 @@ import "./style.scss";
 const ConfigLayout = () => {
   const dispatch = useDispatch();
   const { pos_X, pos_Y } = useSelector((state) => state.shape);
+  const logged = useSelector((state) => state.user.isLoggin);
 
   // Handle psoition with inputs
   const handleLayout = (ev) => {
     ev.preventDefault();
+    if (!logged) {
+      return;
+    }
     const option = {
       pos: ev.target.name.slice(0, 5),
       op: ev.target.name.slice(6, 9),

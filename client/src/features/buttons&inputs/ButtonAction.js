@@ -8,12 +8,11 @@ import {
   loggout,
   deleteAccount,
   edit,
-  editMail,
-  editPwd,
 } from "../user/user.slice";
 import { setError } from "../error/error.slice";
 import "./style.scss";
 import { loaderButton, toggleLoader } from "../loaders/loader.slice";
+import { validShape } from "../PannelShape/shape.slice";
 
 /*******    ACTION BUTTONS     *******/
 
@@ -45,7 +44,7 @@ const ButtonAction = ({ nameButton }) => {
       inputs: ["mail", "password"],
       col1: "#6a11cb",
       col2: "#2575fc",
-      col3: "rgb(41, 77, 160, 0.01)",
+      col3: "rgb(255, 255, 242, 0.01)",
     },
     editUsername: {
       name: "editUsername",
@@ -206,6 +205,12 @@ const ButtonAction = ({ nameButton }) => {
         case "editPwd":
           dispatch(edit(nameButton));
           break;
+        case "validShape":
+          console.log("valid", user.isLoggin, nameButton);
+          if (user.isLoggin === true) {
+            dispatch(validShape());
+          }
+          break;
 
         default:
           break;
@@ -222,7 +227,7 @@ const ButtonAction = ({ nameButton }) => {
   useEffect(() => {
     // Add pulsing animation loader
     if (!loader[nameButton]) {
-      console.log(loader[nameButton]);
+      // console.log(loader[nameButton]);
       // Remove pulsing animation loader
       buttonTarget.current.animate(
         [
@@ -239,7 +244,8 @@ const ButtonAction = ({ nameButton }) => {
       buttonTarget.current.disabled = true;
       buttonTarget.current.animate(
         [
-          { boxShadow: `0 0 0 -10px ${listButtons[nameButton].col1}` },
+          // { boxShadow: `0 0 0 -10px ${listButtons[nameButton].col3}` },
+          { boxShadow: `0 0 0 -10px rgba(255, 255, 255)` },
           { boxShadow: `0 0 0 10px ${listButtons[nameButton].col3}` },
         ],
         {

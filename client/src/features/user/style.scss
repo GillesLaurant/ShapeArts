@@ -97,6 +97,11 @@
 
   &-content {
     @extend .pannelRules-content;
+
+    &-text {
+      @extend .pannelRules-content-text;
+      margin-bottom: 5px;
+    }
   }
   // Container buttons
   &-footer {

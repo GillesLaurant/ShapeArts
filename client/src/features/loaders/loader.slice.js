@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { addShape } from "../cloth/cloth.slice";
 import { setError } from "../error/error.slice";
+import { rememberTiming } from "../PannelShape/shape.slice";
 import {
   registerSuccess,
   logginSuccess,
@@ -14,10 +16,11 @@ import {
 const initialState = {
   register: false,
   loggin: false,
+  loggout: false,
+  deleteAccount: false,
   editUsername: false,
   editMail: false,
   editPwd: false,
-  deleteAccount: false,
   validShape: false,
 };
 
@@ -39,19 +42,19 @@ export const loaderSlice = createSlice({
         }
       })
       // Register loader stop
-      .addCase(registerSuccess, (state, action) => {
+      .addCase(registerSuccess, (state) => {
         state.register = false;
       })
       // Loggin loader stop
-      .addCase(logginSuccess, (state, action) => {
+      .addCase(logginSuccess, (state) => {
         state.loggin = false;
       })
       // Loggout loader stop
-      .addCase(loggoutSuccess, (state, action) => {
+      .addCase(loggoutSuccess, (state) => {
         state.loggout = false;
       })
       // Delete loader stop
-      .addCase(deleteSuccess, (state, action) => {
+      .addCase(deleteSuccess, (state) => {
         state.deleteAccount = false;
       })
       // All edits loader stop
@@ -72,6 +75,13 @@ export const loaderSlice = createSlice({
           default:
             break;
         }
+      })
+      // Valid shape loader stop
+      .addCase(addShape, (state) => {
+        state.validShape = false;
+      })
+      .addCase(rememberTiming, (state) => {
+        state.validShape = false;
       });
   },
 });

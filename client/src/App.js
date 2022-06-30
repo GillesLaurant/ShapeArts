@@ -24,7 +24,7 @@ function App() {
       <ButtonWindows name={"pannelUser"} />
       <ButtonWindows name={"pannelCommand"} />
       <TextApp />
-      {/* <ProgressBar /> */}
+      <ProgressBar />
       <PannelUser />
       <MainContainer />
       <PannelCommand />

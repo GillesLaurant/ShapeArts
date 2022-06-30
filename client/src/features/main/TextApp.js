@@ -1,11 +1,18 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { closeAllWindows } from "../user/nav.slice";
 
 /*******    TEXT APP     *******/
 
-const TextApp = (props) => {
+const TextApp = () => {
+  const dispatch = useDispatch();
+
+  const handleClick = (ev) => {
+    ev.preventDefault();
+    dispatch(closeAllWindows());
+  };
   return (
-    <p className="textApp">
+    <p className="textApp" onClick={handleClick}>
       Une toile où tout le monde peut y laisser son Art !
     </p>
   );

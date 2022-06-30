@@ -1,8 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
-import socketAPI from "./features/socket/socketAPI";
 import store from "./app/store";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";

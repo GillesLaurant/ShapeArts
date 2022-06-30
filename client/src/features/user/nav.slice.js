@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  createTiming,
+  rememberTiming,
+  togglePosition,
+} from "../PannelShape/shape.slice";
+import {
   registerSuccess,
   logginSuccess,
   editSuccess,
@@ -33,10 +38,13 @@ export const navSlice = createSlice({
       state.windows[`${action.payload}_open`] =
         !state.windows[`${action.payload}_open`];
     },
+    closeAllWindows: (state) => {
+      state.windows.pannelCommand_open = false;
+      state.windows.pannelUser_open = false;
+    },
     navigate: (state, action) => {
       // Close other all pannels
       for (const [key, value] of Object.entries(state)) {
-        console.log(key, value);
         if (value && key !== action.payload && key !== "windows") {
           state[key] = false;
         }
@@ -75,12 +83,24 @@ export const navSlice = createSlice({
         state.nav_EditMail = false;
         state.nav_EditPwd = false;
         state.nav_Account = true;
+      })
+      .addCase(togglePosition, (state) => {
+        if (!state.windows.pannelCommand_open) {
+          state.windows.pannelCommand_open = true;
+        }
+      })
+      // On receiv timing
+      .addCase(createTiming, (state) => {
+        state.windows.pannelCommand_open = false;
+      })
+      .addCase(rememberTiming, (state) => {
+        // state.windows.pannelCommand_open = false;
       });
   },
 });
 
 // Actions
-export const { toggleWindows, navigate } = navSlice.actions;
+export const { toggleWindows, closeAllWindows, navigate } = navSlice.actions;
 
 // Reducer
 export default navSlice.reducer;
