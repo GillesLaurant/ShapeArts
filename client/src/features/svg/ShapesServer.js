@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 /*******    GENERATOR SHAPES CLOTH     *******/
 
-const ShapeServerGenerator = ({ shape, count }) => {
+const ShapeServerGenerator = ({ num, shape, count, newCloth }) => {
   const svgTarget = useRef();
   const {
     id,
@@ -29,12 +29,12 @@ const ShapeServerGenerator = ({ shape, count }) => {
     round: {
       path: (
         <path
+          id={`recent_${id}`}
           fill={
             gradient_linear
               ? `url(#gradientLinear_${id})`
               : `url(#gradientRadial_${id})`
           }
-          id="roundSVG"
           d="M256 464c-114.69 0-208-93.31-208-208S141.31 48 256 48s208 93.31 208 208-93.31 208-208 208z"
         ></path>
       ),
@@ -43,6 +43,7 @@ const ShapeServerGenerator = ({ shape, count }) => {
     square: {
       path: (
         <path
+          id={`recent_${id}`}
           fill={
             gradient_linear
               ? `url(#gradientLinear_${id})`
@@ -56,6 +57,7 @@ const ShapeServerGenerator = ({ shape, count }) => {
     triangle: {
       path: (
         <path
+          id={`recent_${id}`}
           fill={
             gradient_linear
               ? `url(#gradientLinear_${id})`
@@ -69,6 +71,7 @@ const ShapeServerGenerator = ({ shape, count }) => {
     star: {
       path: (
         <path
+          id={`recent_${id}`}
           fill={
             gradient_linear
               ? `url(#gradientLinear_${id})`
@@ -84,26 +87,49 @@ const ShapeServerGenerator = ({ shape, count }) => {
     const randomRotation = () => {
       return Math.floor(Math.random() * id * (720 - 50 + 1)) + 50;
     };
-    svgTarget.current.animate(
-      [
+    if (!newCloth) {
+      svgTarget.current.animate(
+        [
+          {
+            left: "450px",
+            top: "350px",
+            transform: `scale(0.1) rotate(${randomRotation()}deg) rotateX(${randomRotation()}deg) rotateY(${randomRotation()}deg)`,
+          },
+          {
+            left: `${pos_x - 12}px`,
+            top: `${pos_y - 12}px`,
+            transform: `scale(1.${size}) rotate(${rotation}deg) rotateX(${rotation_x}deg) rotateY(${rotation_y}deg)`,
+          },
+        ],
         {
-          left: "450px",
-          top: "350px",
-          transform: `scale(0.1) rotate(${randomRotation()}deg) rotateX(${randomRotation()}deg) rotateY(${randomRotation()}deg)`,
-        },
+          duration: (3000 / count) * id,
+          delay: id,
+          fill: "forwards",
+          easing: "cubic-bezier(0.12, 0.61, 1, 0.64)",
+        }
+      );
+    } else if (newCloth && num === count - 1) {
+      console.log(count, num);
+      svgTarget.current.animate(
+        [
+          {
+            left: "450px",
+            top: "350px",
+            transform: `scale(2.5) rotate(${randomRotation()}deg) rotateX(${randomRotation()}deg) rotateY(${randomRotation()}deg)`,
+          },
+          {
+            left: `${pos_x - 12}px`,
+            top: `${pos_y - 12}px`,
+            transform: `scale(1.${size}) rotate(${rotation}deg) rotateX(${rotation_x}deg) rotateY(${rotation_y}deg)`,
+          },
+        ],
         {
-          left: `${pos_x - 12}px`,
-          top: `${pos_y - 12}px`,
-          transform: `scale(1.${size}) rotate(${rotation}deg) rotateX(${rotation_x}deg) rotateY(${rotation_y}deg)`,
-        },
-      ],
-      {
-        duration: (6000 / count) * id,
-        delay: id * 100,
-        fill: "forwards",
-        easing: "cubic-bezier(0.6, 0.04, 0.98, 0.335)",
-      }
-    );
+          duration: 2000,
+          fill: "forwards",
+          easing: "cubic-bezier(0, 1, 0, 1.02)",
+        }
+      );
+    }
   }, [
     id,
     name,
@@ -122,6 +148,8 @@ const ShapeServerGenerator = ({ shape, count }) => {
     gradient_selector,
     gradient_linear,
     count,
+    newCloth,
+    num,
   ]);
 
   return (
@@ -137,6 +165,7 @@ const ShapeServerGenerator = ({ shape, count }) => {
         left: "450px",
         top: "350px",
         transform: `scale(0.${size}) rotate(${rotation}deg) rotateX(${rotation_x}deg) rotateY(${rotation_y}deg)`,
+        transition: "all 0.3s easeOut",
         zIndex: `${id}`,
       }}
     >

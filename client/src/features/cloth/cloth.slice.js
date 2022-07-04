@@ -41,6 +41,7 @@ export const clothSlice = createSlice({
 
 // Actions
 export const { getCloth, addShape } = clothSlice.actions;
+export const getRecently = (state) => state;
 
 // Reducer
 export default clothSlice.reducer;

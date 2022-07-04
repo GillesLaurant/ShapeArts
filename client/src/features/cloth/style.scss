@@ -4,7 +4,6 @@
 /*******    CLOTHS     *******/
 .clothsContainer {
   position: relative;
-  // border: 2px solid red;
   overflow: auto;
   transition: all 0.5s;
 }
@@ -27,6 +26,7 @@
   width: 900px;
   height: 700px;
   position: relative;
+  overflow: hidden;
   background-color: #fff;
   z-index: 0;
 }
@@ -38,6 +38,7 @@
 }
 @media #{$laptop} {
   .clothsContainer {
-    height: 100%;
+    @include flex-mix;
+    // height: 100% !important;
   }
 }

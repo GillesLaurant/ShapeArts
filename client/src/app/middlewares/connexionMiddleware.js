@@ -20,6 +20,7 @@ export default function socketMiddleware(socket) {
           socket
             .connect()
             .then(() => {
+              console.log("connect");
               // IF socket connected get cloth
               if (socket.socket.connected) {
                 dispatch(successConnect());

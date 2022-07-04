@@ -111,10 +111,6 @@ const ButtonAction = ({ nameButton }) => {
     };
     let failed = [];
 
-    // if (nameButton === "validShape") {
-    //   return console.log("validShape");
-    // }
-
     // If empty input => seterror
     button.inputs.forEach((input) => {
       if (!regex[input].test(user[input])) {
@@ -136,7 +132,6 @@ const ButtonAction = ({ nameButton }) => {
       if (!loader[nameButton]) {
         buttonTarget.current.disabled = false;
       }
-      // buttonTarget.current.style.boxShadow = "unset";
     } else {
       // If not animate
       const classList = [];

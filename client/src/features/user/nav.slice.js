@@ -84,6 +84,7 @@ export const navSlice = createSlice({
         state.nav_EditPwd = false;
         state.nav_Account = true;
       })
+      // Open shape window for play
       .addCase(togglePosition, (state) => {
         if (!state.windows.pannelCommand_open) {
           state.windows.pannelCommand_open = true;

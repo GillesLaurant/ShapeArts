@@ -5,7 +5,8 @@ import { useSelector } from "react-redux";
 const ProgressBar = () => {
   const progressBar = useRef();
   const dateShape = useSelector((state) => state.shape.dateCreated);
-  // CALCUL TIME LEFT SECONDS
+
+  // Calcul time left
   const timeLeft = (time) => {
     const timeCreated = dayjs(time);
     const timeLimit = dayjs(timeCreated).add(5, "minute").toString();

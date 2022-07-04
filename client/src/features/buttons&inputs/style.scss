@@ -10,7 +10,7 @@
   width: auto;
   background-color: transparent;
   margin: 0 1%;
-  z-index: 1000;
+  z-index: 5000;
 }
 
 // Button close user window
@@ -274,11 +274,6 @@
 
 /*******    RESPONSIVE > 1200px     *******/
 @media #{$laptop} {
-  // Button window user & window command
-  .button_pannelCommand,
-  .button_closeCommand {
-    display: none;
-  }
   // Buttons nav user & button socket action
   .buttonUser,
   .buttonAction {
@@ -295,6 +290,8 @@
 /*******    RESPONSIVE > 1600px     *******/
 @media #{$large} {
   // Button window user & window command
+  .button_pannelCommand,
+  .button_closeCommand,
   .button_pannelUser,
   .button_closeUser {
     display: none;

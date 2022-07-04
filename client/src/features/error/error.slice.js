@@ -75,6 +75,8 @@ export const errorSlice = createSlice({
       .addCase(rememberTiming, (state, action) => {
         state.error[action.payload.nameError] = true;
         state.errorMsg[action.payload.nameError] = action.payload.msgError;
+        state.error.shape = false;
+        state.errorMsg.shape = "";
       })
 
       // Change inputs errors

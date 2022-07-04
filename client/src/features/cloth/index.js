@@ -6,20 +6,25 @@ import UserCloth from "./UserCloth";
 /*******    CLOTHS CONTAINER     *******/
 
 const ClothsContainer = () => {
-  const command = useSelector((state) => state.nav.pannelCommand_open);
+  const command = useSelector((state) => state.nav.windows.pannelCommand_open);
+  console.log(command);
 
   return (
     <div
       className="clothsContainer"
-      style={{
-        transform:
-          window.innerWidth > 767
-            ? "translateY(0)"
-            : command
-            ? "translateY(-15%)"
-            : "translateY(0)",
-        height: window.innerWidth > 767 ? "auto" : command ? "65%" : "80%",
-      }}
+      style={
+        {
+          // transform:
+          //   // Translate -15% if pannel command open in mobile screen
+          //   window.innerWidth > 767
+          //     ? "translateY(0)"
+          //     : command
+          //     ? "translateY(-15%)"
+          //     : "translateY(0)",
+          // Height 65% if pannel command open in mobile screen
+          // height: window.innerWidth > 767 ? "auto" : command ? "65vh" : "80%",
+        }
+      }
     >
       <UserCloth />
       <ServerCloth />

@@ -7,6 +7,7 @@
 .pannelCommand {
   @include flex-mix(space-between, center, column);
   width: 100%;
+
   height: 25%;
   position: fixed;
   left: 0;
@@ -455,7 +456,7 @@
     left: initial;
     top: 0;
     right: 0;
-    width: 35%;
+    width: 30%;
     height: 100vh;
     transform: translate(100%, 0%);
     border-radius: 25px 0 0 25px;
@@ -482,6 +483,7 @@
   // Pannel command closed
   .pannelCommand {
     width: 33%;
+    max-width: 300px;
   }
   // Select shape buttons
   .selectShape-buttons {
@@ -592,12 +594,8 @@
 @media #{$laptop} {
   // Pannel command closed
   .pannelCommand {
-    position: relative;
-    transform: none;
-    width: 23%;
-    max-width: 300px;
+    width: 18%;
     height: 100%;
-    border-radius: 20px;
   }
   // Ranges inputs
   .configDisplay-inputs {
@@ -613,4 +611,10 @@
 }
 /*******    RESPONSIVE > 1600px    *******/
 @media #{$large} {
+  .pannelCommand {
+    position: relative;
+    transform: none;
+    max-width: 300px;
+    border-radius: 20px;
+  }
 }

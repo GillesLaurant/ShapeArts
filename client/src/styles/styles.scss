@@ -5,7 +5,7 @@
 /*******    APP     *******/
 
 .App {
-  @include flex-mix(flex-start, center);
+  @include flex-mix(_, center);
   width: 100%;
   position: fixed;
   height: 100vh;
@@ -15,8 +15,22 @@
     rgba(7, 3, 53, 1) 97.5%
   );
   padding: 1%;
-  overflow: auto;
+  overflow-x: auto;
   overflow-y: hidden;
+  transition: all 0.3s;
+}
+
+/*******    MAIN     *******/
+
+// Container cloths components
+.mainContainer {
+  max-height: 82vh;
+  color: $primary;
+  overflow-x: scroll !important;
+  overflow-y: auto;
+  margin: 0 auto;
+  transition: all 0.3s, margin 0.5s ease-out;
+  border: 1px solid red;
 }
 
 /*******    TITLE APP     *******/
@@ -66,11 +80,17 @@
   );
 }
 
+@media #{$tablett} {
+  .textApp {
+    margin-bottom: 1%;
+  }
+}
+
 /*******    RESPONSIVE > 1200px     *******/
 
 @media #{$laptop} {
   .App {
-    @include flex-mix(flex-end);
+    @include flex-mix(center);
     left: 50%;
     margin: 0 auto;
     transform: translateX(-50%);
@@ -93,5 +113,6 @@
 @media #{$large} {
   .App {
     @include flex-mix(space-around, center);
+    padding: 1% 4%;
   }
 }

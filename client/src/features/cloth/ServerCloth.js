@@ -15,7 +15,13 @@ const ServerCloth = () => {
   return (
     <div id="serverCloth" className="serverCloth">
       {cloth.content.map((shape, index) => (
-        <ShapeServerGenerator key={index} shape={shape} count={cloth.count} />
+        <ShapeServerGenerator
+          key={index}
+          num={index}
+          shape={shape}
+          count={cloth.count}
+          newCloth={cloth.newShape}
+        />
       ))}
     </div>
   );

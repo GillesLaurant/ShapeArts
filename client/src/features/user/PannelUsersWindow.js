@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import UserSection from "../user";
+import UserSection from ".";
 import RecentlyShapes from "../tableRecentlyPlayers";
-import ButtonUserNav from "../buttons&inputs/ButtonUserNav";
-import { toggleWindows, navigate } from "../user/nav.slice";
-import "./style.scss";
 import GeneratorSVG from "../svg/GeneratorSVG";
+import { toggleWindows } from "./nav.slice";
+import "./style.scss";
 
 const PannelUser = () => {
   const dispatch = useDispatch();

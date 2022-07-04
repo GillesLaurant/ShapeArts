@@ -16,7 +16,7 @@ export default class socketAPI {
     // console.log(this.socket);
     return new Promise((resolve, reject) => {
       this.socket.on("connect", () => {
-        console.log("receiv");
+        console.log("receiv", this.socket);
         resolve();
       });
       this.socket.on("connect_error", (error) => reject(error));

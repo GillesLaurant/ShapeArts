@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { deleteSuccess, loggoutSuccess } from "../user/user.slice";
 
 /*******     SHAPE     *******/
 
@@ -140,14 +141,43 @@ export const shapeSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // builder
-    //   .addCase(incrementAsync.pending, (state) => {
-    //     state.status = 'loading';
-    //   })
-    //   .addCase(incrementAsync.fulfilled, (state, action) => {
-    //     state.status = 'idle';
-    //     state.value += action.payload;
-    //   });
+    builder
+      .addCase(loggoutSuccess, (state) => {
+        state.name = "round";
+        state.pos_X = 450;
+        state.pos_Y = 350;
+        state.size = 10;
+        state.rotation = 0;
+        state.rotation_X = 0;
+        state.rotation_Y = 0;
+        state.opacity = 100;
+        state.color_primary = "#00b4cc";
+        state.color_secondary = "#e30fe6";
+        state.gradient_orientation = 0;
+        state.gradient_rayon = 1;
+        state.primary_opacity = 100;
+        state.secondary_opacity = 100;
+        state.is_active = false;
+        state.dateCreated = false;
+      })
+      .addCase(deleteSuccess, (state) => {
+        state.name = "round";
+        state.pos_X = 450;
+        state.pos_Y = 350;
+        state.size = 10;
+        state.rotation = 0;
+        state.rotation_X = 0;
+        state.rotation_Y = 0;
+        state.opacity = 100;
+        state.color_primary = "#00b4cc";
+        state.color_secondary = "#e30fe6";
+        state.gradient_orientation = 0;
+        state.gradient_rayon = 1;
+        state.primary_opacity = 100;
+        state.secondary_opacity = 100;
+        state.is_active = false;
+        state.dateCreated = false;
+      });
   },
 });
 
