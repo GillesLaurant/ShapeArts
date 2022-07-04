@@ -83,10 +83,48 @@ module.exports = {
           len: [1, 3],
         },
       },
-      opacity: {
-        defaultValue: 100,
+      rotation_x: {
+        defaultValue: 0,
         allowNull: true,
         type: Sequelize.INTEGER,
+        validate: {
+          isNumeric: true,
+          min: -720,
+          max: 720,
+          len: [1, 3],
+        },
+      },
+      rotation_y: {
+        defaultValue: 0,
+        allowNull: true,
+        type: Sequelize.INTEGER,
+        validate: {
+          isNumeric: true,
+          min: -720,
+          max: 720,
+          len: [1, 3],
+        },
+      },
+      color_primary: {
+        defaultValue: "#164d80",
+        allowNull: true,
+        type: Sequelize.STRING,
+        validate: {
+          notEmpty: true,
+        },
+      },
+      color_secondary: {
+        defaultValue: "#164d80",
+        allowNull: true,
+        type: Sequelize.STRING,
+        validate: {
+          notEmpty: true,
+        },
+      },
+      primary_opacity: {
+        defaultValue: 100,
+        allowNull: true,
+        type: Sequelize.FLOAT,
         validate: {
           isNumeric: true,
           min: 0,
@@ -94,13 +132,47 @@ module.exports = {
           len: [1, 3],
         },
       },
-      color: {
-        defaultValue: "#164d80",
+      secondary_opacity: {
+        defaultValue: 100,
         allowNull: true,
-        type: Sequelize.STRING,
+        type: Sequelize.FLOAT,
         validate: {
-          notEmpty: true,
+          isNumeric: true,
+          min: 0,
+          max: 100,
+          len: [1, 3],
         },
+      },
+      gradient_orientation: {
+        defaultValue: 0,
+        allowNull: true,
+        type: Sequelize.INTEGER,
+        validate: {
+          isNumeric: true,
+          min: 0,
+          max: 360,
+          len: [1, 3],
+        },
+      },
+      gradient_rayon: {
+        defaultValue: 1,
+        allowNull: true,
+        type: Sequelize.FLOAT,
+        validate: {
+          isNumeric: true,
+          min: 0,
+          max: 1,
+        },
+      },
+      gradient_selector: {
+        allowNull: false,
+        defaultValue: true,
+        type: Sequelize.BOOLEAN,
+      },
+      gradient_linear: {
+        allowNull: false,
+        defaultValue: true,
+        type: Sequelize.BOOLEAN,
       },
       createdAt: {
         allowNull: false,
