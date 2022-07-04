@@ -1,13 +1,25 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "./error.scss";
 
 /*******    SECTION ERROR     *******/
 
-const ErrorSection = () => {
+const ErrorSection = ({ errorTarget }) => {
+  const { error, errorMsg } = useSelector((state) => state.error);
+
+  const listTitles = {
+    shape: "Soyez patient...",
+    server: "Erreur système",
+  };
   return (
-    <section className="error-section">
-      <h5 className="error-section-title">Erreur système</h5>
-      <p className="error-section-msg">Veuillez réessayer plus tard svp.</p>
+    <section
+      className="error-section"
+      style={{
+        display: error[errorTarget] ? "flex" : "none",
+      }}
+    >
+      <h5 className="error-section-title">{listTitles[errorTarget]}</h5>
+      <p className="error-section-msg">{errorMsg[errorTarget]}</p>
     </section>
   );
 };

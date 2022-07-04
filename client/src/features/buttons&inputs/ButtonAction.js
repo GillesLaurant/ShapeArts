@@ -1,22 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SpinnerButton from "./SpinnerButton";
 import {
   register,
   loggin,
-  editUsername,
-  editMail,
-  editPwd,
-} from "../app/user.slice";
+  loggout,
+  deleteAccount,
+  edit,
+} from "../user/user.slice";
 import { setError } from "../error/error.slice";
 import "./style.scss";
+import { loaderButton, toggleLoader } from "../loaders/loader.slice";
+import { validShape } from "../PannelShape/shape.slice";
 
 /*******    ACTION BUTTONS     *******/
 
 const ButtonAction = ({ nameButton }) => {
   const buttonTarget = useRef();
   const dispatch = useDispatch();
-  const { error, user, loader } = useSelector((state) => state);
+  const user = useSelector((state) => state.user);
+  const error = useSelector((state) => state.error);
+  const loader = useSelector((state) => state.loader);
   const colorsEdit = {
     col1: "#30cdf0",
     col2: "#330867",
@@ -39,7 +44,7 @@ const ButtonAction = ({ nameButton }) => {
       inputs: ["mail", "password"],
       col1: "#6a11cb",
       col2: "#2575fc",
-      col3: "rgb(41, 77, 160, 0.01)",
+      col3: "rgb(255, 255, 242, 0.01)",
     },
     editUsername: {
       name: "editUsername",
@@ -73,7 +78,7 @@ const ButtonAction = ({ nameButton }) => {
       col2: "#5f72bd",
       col3: "rgb(95, 1, 183, 0.01)",
     },
-    delete: {
+    deleteAccount: {
       name: "deleteAccount",
       content: "Se désinscrire",
       inputs: [],
@@ -106,10 +111,6 @@ const ButtonAction = ({ nameButton }) => {
     };
     let failed = [];
 
-    // if (nameButton === "validShape") {
-    //   return console.log("validShape");
-    // }
-
     // If empty input => seterror
     button.inputs.forEach((input) => {
       if (!regex[input].test(user[input])) {
@@ -131,7 +132,6 @@ const ButtonAction = ({ nameButton }) => {
       if (!loader[nameButton]) {
         buttonTarget.current.disabled = false;
       }
-      // buttonTarget.current.style.boxShadow = "unset";
     } else {
       // If not animate
       const classList = [];
@@ -171,8 +171,10 @@ const ButtonAction = ({ nameButton }) => {
         dispatch(
           setError({
             nameError: input,
-            status: true,
-            msgError: error.listMsg[input],
+            msgError:
+              error.errorMsg[input] !== null
+                ? error.errorMsg[input]
+                : error.listMsg[input],
           })
         );
         echec = true;
@@ -187,22 +189,28 @@ const ButtonAction = ({ nameButton }) => {
         case "loggin":
           dispatch(loggin(nameButton));
           break;
-        case "editUsername":
-          dispatch(editUsername(nameButton));
-          break;
-        case "editMail":
-          dispatch(editMail(nameButton));
-          break;
-        case "editPwd":
-          dispatch(editPwd(nameButton));
+        case "loggout":
+          dispatch(loggout(nameButton));
           break;
         case "deleteAccount":
-          dispatch(editPwd(nameButton));
+          dispatch(deleteAccount(nameButton));
+          break;
+        case "editUsername":
+        case "editMail":
+        case "editPwd":
+          dispatch(edit(nameButton));
+          break;
+        case "validShape":
+          console.log("valid", user.isLoggin, nameButton);
+          if (user.isLoggin === true) {
+            dispatch(validShape());
+          }
           break;
 
         default:
           break;
       }
+      dispatch(toggleLoader(nameButton));
     }
   };
 
@@ -214,17 +222,25 @@ const ButtonAction = ({ nameButton }) => {
   useEffect(() => {
     // Add pulsing animation loader
     if (!loader[nameButton]) {
-      // buttonTarget.current.classList.remove(`pulse_${nameButton}`);
+      // console.log(loader[nameButton]);
+      // Remove pulsing animation loader
+      buttonTarget.current.animate(
+        [
+          { boxShadow: "0 0 0 0px rgba(0, 0, 0, 0)" },
+          { boxShadow: "0 0 0 0px rgba(0, 0, 0, 0)" },
+        ],
+        {
+          duration: 1000,
+          iterations: Infinity,
+        }
+      );
       buttonTarget.current.disabled = false;
-    }
-    // Remove pulsing animation loader
-
-    if (loader[nameButton]) {
-      // buttonTarget.current.classList.add(`pulse_${nameButton}`);
+    } else if (loader[nameButton]) {
       buttonTarget.current.disabled = true;
       buttonTarget.current.animate(
         [
-          { boxShadow: `0 0 0 -10px ${listButtons[nameButton].col1}` },
+          // { boxShadow: `0 0 0 -10px ${listButtons[nameButton].col3}` },
+          { boxShadow: `0 0 0 -10px rgba(255, 255, 255)` },
           { boxShadow: `0 0 0 10px ${listButtons[nameButton].col3}` },
         ],
         {
@@ -233,28 +249,25 @@ const ButtonAction = ({ nameButton }) => {
         }
       );
     }
-  }, [loader, error]);
+  }, [loader, error, nameButton, listButtons]);
 
   return (
     <button
       ref={buttonTarget}
       type="button"
-      className={`buttonAction button_${nameButton} pulse_${
-        loader[nameButton] ? nameButton : "out"
-      }`}
+      className={`buttonAction button_${nameButton} `}
       name={nameButton}
       onMouseEnter={checkValidity}
       onClick={handleClick}
       style={{
         background: `linear-gradient(to top, ${listButtons[nameButton].col1}, ${listButtons[nameButton].col2})`,
-        animation: `pulse_${nameButton} 1s infinite`,
       }}
     >
       {/* CONTENT BUTTON */}
       {!loader[nameButton] && listButtons[nameButton].content}
 
       {/* SPINNER BUTTON */}
-      {!!loader[nameButton] && <SpinnerButton />}
+      {loader[nameButton] && <SpinnerButton />}
     </button>
   );
 };

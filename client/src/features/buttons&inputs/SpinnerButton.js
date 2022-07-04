@@ -1,4 +1,7 @@
 import React from "react";
+import "./style.scss";
+
+/*******    SPINNER BUTTON     *******/
 
 const SpinnerButton = () => {
   return (

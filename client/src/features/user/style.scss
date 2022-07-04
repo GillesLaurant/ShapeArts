@@ -1,0 +1,440 @@
+@import "../../../scss/mixins";
+@import "../../../scss/variables";
+@import "../../../scss/reset";
+
+/*******    PANNEL USER WINDOW     *******/
+
+.pannelUser {
+  @include flex-mix(space-between, _, column);
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translateX(-100%);
+  z-index: 1000;
+  // background: linear-gradient(to top, #005c97, #363795);
+  // background: linear-gradient(to bottom, #136a8a, #267871);
+  background: linear-gradient(to top, #43cea2, #185a9d);
+  transition: transform 0.5s;
+  padding: 0.5% 0 0;
+  border-radius: 0 25px 25px 0;
+  overflow: hidden;
+
+  &-head {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 1% 1%;
+    min-height: 2.5%;
+  }
+}
+
+.pannelUser_open {
+  // @extend .pannelUser;
+  transform: translateX(0%);
+}
+
+.back_undefined {
+  display: none;
+}
+
+/*******    CONTAINER SECTION     *******/
+
+.userSection {
+  @include flex-mix(center, center, column);
+  flex-grow: 1;
+  animation: fadeIn 0.5s forwards;
+}
+
+/*******    PANNEL START     *******/
+
+.pannelStart {
+  @include displayUser;
+
+  &-head-title {
+    @include titleUser;
+  }
+  &-head-text {
+    @include subtitleUser;
+  }
+  // Container buttons
+  &-footer {
+    @include displayFooterUser(space-between, center);
+  }
+}
+
+/*******    PANNEL REGISTER     *******/
+
+.pannelRegister {
+  @include displayUser;
+
+  &-head {
+    @include textUser;
+    padding: 0 1%;
+  }
+  // Container buttons
+  &-footer {
+    @include displayFooterUser(space-between, center);
+  }
+}
+
+/*******    PANNEL LOGGIN     *******/
+
+.pannelLoggin {
+  @include displayUser;
+
+  &-head {
+    @include textUser;
+  }
+  // Container buttons
+  &-footer {
+    @include displayFooterUser(space-between, center);
+  }
+}
+
+/*******    PANNEL RULES     *******/
+
+.pannelRules {
+  @include displayUser;
+
+  &-head {
+    @include textUser;
+    // Username
+    &-user {
+      text-transform: capitalize;
+      font-family: $subtitle-pannel;
+    }
+  }
+  // Rules
+  &-content {
+    padding: 1% 1% 0;
+    &-text {
+      @include textUser;
+      @include font(1.2vmin, 10px);
+    }
+  }
+  // Container buttons
+  &-footer {
+    @include displayFooterUser(space-between, center);
+  }
+}
+
+/*******    PANNEL TIMING     *******/
+
+.pannelTiming {
+  @include displayUser;
+
+  &-head {
+    @include textUser;
+    // Username
+    &-user {
+      text-transform: capitalize;
+    }
+  }
+
+  &-content {
+    @extend .pannelRules-content;
+
+    &-text {
+      @extend .pannelRules-content-text;
+      margin-bottom: 5px;
+    }
+  }
+  // Container buttons
+  &-footer {
+    @include displayFooterUser(space-between, center);
+  }
+}
+
+// Text timer
+.timer {
+  @include flex-mix;
+  margin: 2% 0;
+
+  &-text {
+    @include font(1vmin, 17px);
+    padding: 3% 4%;
+    font-family: $text-time;
+    color: red;
+    background-color: #000;
+    border-radius: 5px;
+  }
+}
+
+/*******    PANNEL ACCOUNT     *******/
+
+.pannelAccount {
+  @include displayUser;
+
+  &-head {
+    @include textUser;
+  }
+
+  &-content {
+    @include flex-mix(space-around, flex-start, column);
+    width: auto;
+    flex-grow: 1;
+    @extend .pannelRules-content;
+    // User infos
+    &-text {
+      @extend .pannelRules-content-text;
+      margin-bottom: 5px;
+      text-transform: capitalize;
+    }
+  }
+  // Container buttons
+  &-footer {
+    @include displayFooterUser(space-around, center);
+
+    & button {
+      margin: 2%;
+    }
+  }
+}
+.account-item {
+  font-family: $subtitle-pannel;
+  font-weight: 600;
+}
+.account-data-mail,
+.account-item-shapes {
+  text-transform: none;
+}
+// Notif password modified
+.account-data-pwd {
+  color: green;
+}
+
+/*******    PANNEL NAV EDIT     *******/
+
+.pannelNavEdit {
+  @include displayUser;
+
+  &-head {
+    @include textUser;
+  }
+
+  &-content {
+    @include flex-mix(space-between, center, column);
+    width: 100%;
+    padding: 1% 15%;
+
+    & button {
+      width: 100%;
+      padding: 2% 3%;
+      margin: 3%;
+    }
+  }
+  // Container buttons
+  &-footer {
+    @include displayFooterUser;
+  }
+}
+
+/*******    PANNEL EDIT USERNAME & MAIL & PASSWORD    *******/
+
+.pannelEdit {
+  @include displayUser;
+
+  &-head {
+    @include textUser;
+    padding: 2% 0;
+    // User info
+    &-user {
+      text-transform: capitalize;
+      margin-top: 5%;
+    }
+    &-mail {
+      margin-top: 5%;
+    }
+  }
+  // Container buttons
+  &-footer {
+    @include displayFooterUser(space-between, center);
+  }
+}
+
+/*******    PANNEL DELETE     *******/
+
+.pannelDelete {
+  @include displayUser;
+
+  &-head {
+    @include textUser;
+    @include font(1vmin, 8px);
+  }
+
+  &-content {
+    @include flex-mix(space-between, center, column);
+    width: 100%;
+    padding: 1% 5%;
+
+    &-text {
+      @extend .pannelRules-content-text;
+    }
+  }
+  // Container buttons
+  &-footer {
+    @include displayFooterUser;
+  }
+}
+
+/*******    ANIMATION FADE     *******/
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*******    RESPONSIVE FIRST MOBIL     *******/
+@media #{$smart} {
+  // Window
+  .pannelUser {
+    width: 40%;
+  }
+  // Window open
+  .pannelUser_open {
+    box-shadow: 3px 0px 7px 2px rgb(0, 134, 139);
+  }
+  // Container pannel start
+  .pannelStart {
+    @include displayUser(space-around);
+    // Text pannel start
+    &-head-text {
+      @include font(1.2vmin, 10px);
+      margin-top: 3%;
+    }
+    // Container buttons
+    &-footer {
+      padding: 0 20%;
+      & button {
+        margin: 8% 0;
+      }
+    }
+  }
+  // Text pannel register
+  .pannelRegister {
+    &-head {
+      @include font(1.2vmin, 10px);
+      font-weight: 300;
+    }
+  }
+  .pannelRules {
+    // Title pannel rules
+    &-head-title {
+      @include font(1.5vmin, 20px);
+      font-weight: 400;
+    }
+    // Text rules
+    &-content-text {
+      font-weight: 200;
+    }
+    // Container buttons rules
+    &-footer {
+      padding: 0 15%;
+    }
+  }
+  .pannelTiming {
+    &-footer {
+      padding: 0 15%;
+    }
+  }
+  .pannelAccount {
+    // Row text info user
+    &-content-text {
+      margin-bottom: 0;
+    }
+    // Container buttons pannel account
+    &-footer {
+      padding: 2% 15%;
+    }
+  }
+  // Container nav edit
+  .pannelNavEdit {
+    justify-content: space-around;
+    // Container buttons nav edit
+    &-content button {
+      margin: 5% 0;
+    }
+    // Container button back
+    &-footer {
+      padding: 0 25%;
+    }
+  }
+  // 3 titles pannel edit
+  .pannelEdit {
+    &-head-text {
+      @include font(1.5vmin, 20px);
+      font-weight: 400;
+    }
+    // 3 texts pannel user
+    &-head-user {
+      @include font(1.5vmin, 15px);
+      font-weight: 200;
+    }
+    // 3 containers buttons pannel edit
+    &-footer {
+      padding: 0 15%;
+    }
+  }
+  // 3 forms edit
+  .form-edit {
+    justify-content: space-around;
+    padding: 0 5%;
+  }
+
+  .pannelDelete {
+    // Text delete pannel
+    &-content-text {
+      @include font(1vmin, 13px);
+      font-weight: 200;
+    }
+    // Conatiner buttons pannel delete
+    &-footer {
+      padding: 0 20%;
+    }
+  }
+}
+
+@media #{$tablett} {
+  .pannelUser {
+    max-width: 300px;
+  }
+}
+
+/*******    RESPONSIVE > 1200px     *******/
+@media #{$laptop} {
+  .pannelUser {
+    width: 22%;
+  }
+  // Container buttons pannel account
+  .pannelAccount-footer {
+    padding: 2% 18%;
+  }
+}
+
+/*******    RESPONSIVE > 1600px     *******/
+@media #{$large} {
+  .pannelUser {
+    position: relative;
+    transform: none;
+    width: 20%;
+    max-width: 300px;
+    height: 100%;
+    border-radius: 20px;
+    // margin-right: 2%;
+  }
+  // Text pannel start
+  .pannelStart-head-text {
+    padding: 0 1%;
+  }
+  // Text pannel rules
+  .pannelRules-content-text {
+    font-size: calc(1.1vmin + 10px);
+    margin-bottom: 3%;
+  }
+}

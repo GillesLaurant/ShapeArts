@@ -1,12 +1,14 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { changeFields } from "../app/user.slice";
-import { navigate } from "../app/navUser.slice";
+import { createSlice } from "@reduxjs/toolkit";
+import { changeFields } from "../user/user.slice";
+import { navigate, toggleWindows } from "../user/nav.slice";
+import { rememberTiming } from "../PannelShape/shape.slice";
 const PWD_REGEX = /^[A-Za-z0-9_-]{4,15}$/;
 const USERNAME_REGEX = /^[A-Za-z0-9_-]{3,15}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
 /*******    ERROR     *******/
 
+// State
 const initialState = {
   error: {
     username: false,
@@ -16,8 +18,12 @@ const initialState = {
     mailEdited: false,
     holdPwd: false,
     newPwd: false,
+    shape: false,
   },
-  errorMsg: {},
+  errorMsg: {
+    shape: "",
+    server: "",
+  },
   // List error messages for inputs
   listMsg: {
     username: "Veuillez entrer un pseudo entre 3 et 15 charactères.",
@@ -30,20 +36,15 @@ const initialState = {
   },
 };
 
+// Slice
 export const errorSlice = createSlice({
   name: "error",
   initialState,
   reducers: {
     // Set errors
     setError: (state, action) => {
-      state.error[action.payload.nameError] = action.payload.status;
+      state.error[action.payload.nameError] = true;
       state.errorMsg[action.payload.nameError] = action.payload.msgError;
-    },
-    registerError: (state, action) => {
-      for (const item of state) {
-        console.log(item);
-      }
-      state.id = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -53,7 +54,29 @@ export const errorSlice = createSlice({
         for (const item in state.error) {
           state.error[item] = false;
         }
-        state.errorMsg = {};
+        state.errorMsg = {
+          shape: false,
+          server: false,
+        };
+      })
+
+      // Reset all errors on toggle windows
+      .addCase(toggleWindows, (state) => {
+        for (const item in state.error) {
+          state.error[item] = false;
+        }
+        state.errorMsg = {
+          shape: false,
+          server: false,
+        };
+      })
+
+      // Set error on receiv timing
+      .addCase(rememberTiming, (state, action) => {
+        state.error[action.payload.nameError] = true;
+        state.errorMsg[action.payload.nameError] = action.payload.msgError;
+        state.error.shape = false;
+        state.errorMsg.shape = "";
       })
 
       // Change inputs errors
@@ -95,6 +118,8 @@ export const errorSlice = createSlice({
   },
 });
 
-export const { setError, registerError } = errorSlice.actions;
+// Actions
+export const { setError } = errorSlice.actions;
 
+// Reducer
 export default errorSlice.reducer;
