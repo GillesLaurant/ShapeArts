@@ -89,6 +89,9 @@ export const navSlice = createSlice({
         if (!state.windows.pannelCommand_open) {
           state.windows.pannelCommand_open = true;
         }
+        if (state.windows.pannelUser_open) {
+          state.windows.pannelUser_open = false;
+        }
       })
       // On receiv timing
       .addCase(createTiming, (state) => {

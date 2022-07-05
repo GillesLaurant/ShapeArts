@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProgressBar from "./features/timing/ProgressBar";
 import TitleApp from "./features/main/TitleApp";
@@ -15,6 +15,7 @@ function App() {
   const socket = useSelector((state) => state.socket.socket_connected);
   const command = useSelector((state) => state.nav.windows.pannelCommand_open);
 
+  // Start connect server
   useEffect(() => {
     !socket && dispatch(connectSocket());
   }, [dispatch, socket]);

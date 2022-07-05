@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addShape } from "../cloth/cloth.slice";
+import { addShape, getCloth } from "../cloth/cloth.slice";
 import { setError } from "../error/error.slice";
 import { rememberTiming } from "../PannelShape/shape.slice";
 import {
@@ -14,6 +14,7 @@ import {
 
 // State
 const initialState = {
+  cloth: true,
   register: false,
   loggin: false,
   loggout: false,
@@ -35,10 +36,15 @@ export const loaderSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(getCloth, (state) => {
+        state.cloth = false;
+      })
       // IF error stop loader
       .addCase(setError, (state) => {
         for (const [key] of Object.entries(state)) {
-          state[key] = false;
+          if (key !== "cloth") {
+            state[key] = false;
+          }
         }
       })
       // Register loader stop

@@ -17,6 +17,7 @@
   padding: 1%;
   overflow-x: auto;
   overflow-y: hidden;
+  scroll-behavior: smooth;
   transition: all 0.3s;
 }
 
@@ -30,7 +31,6 @@
   overflow-y: auto;
   margin: 0 auto;
   transition: all 0.3s, margin 0.5s ease-out;
-  border: 1px solid red;
 }
 
 /*******    TITLE APP     *******/

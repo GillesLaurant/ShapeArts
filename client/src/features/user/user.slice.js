@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { createTiming } from "../PannelShape/shape.slice";
 import { navigate } from "./nav.slice";
 
 /*******    USER     *******/
@@ -81,21 +82,25 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     // On back edit
-    builder.addCase(navigate, (state, action) => {
-      if (
-        action.payload === "nav_EditUsername" ||
-        action.payload === "nav_EditMail" ||
-        action.payload === "nav_EditPwd"
-      ) {
-        state.usernameEdited = "";
-        state.mailEdited = "";
-        state.holdPwd = "";
-        state.newPwd = "";
-      }
-      if (state.successPWDEdited) {
-        state.successPWDEdited = false;
-      }
-    });
+    builder
+      .addCase(navigate, (state, action) => {
+        if (
+          action.payload === "nav_EditUsername" ||
+          action.payload === "nav_EditMail" ||
+          action.payload === "nav_EditPwd"
+        ) {
+          state.usernameEdited = "";
+          state.mailEdited = "";
+          state.holdPwd = "";
+          state.newPwd = "";
+        }
+        if (state.successPWDEdited) {
+          state.successPWDEdited = false;
+        }
+      })
+      .addCase(createTiming, (state) => {
+        state.countShapes += 1;
+      });
   },
 });
 

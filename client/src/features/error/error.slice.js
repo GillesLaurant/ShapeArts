@@ -1,7 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { changeFields } from "../user/user.slice";
 import { navigate, toggleWindows } from "../user/nav.slice";
-import { rememberTiming } from "../PannelShape/shape.slice";
+import {
+  rememberTiming,
+  toggleDisplay,
+  toggleGradient,
+  toggleGradientType,
+  toggleLayout,
+  togglePosition,
+} from "../PannelShape/shape.slice";
 const PWD_REGEX = /^[A-Za-z0-9_-]{4,15}$/;
 const USERNAME_REGEX = /^[A-Za-z0-9_-]{3,15}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
@@ -19,6 +26,7 @@ const initialState = {
     holdPwd: false,
     newPwd: false,
     shape: false,
+    socket: false,
   },
   errorMsg: {
     shape: "",
@@ -48,22 +56,13 @@ export const errorSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // Navigate reset all errors
+    // Reset all errors on toggle windows || navigate
     builder
-      .addCase(navigate, (state) => {
+      .addCase(navigate || toggleWindows, (state) => {
         for (const item in state.error) {
-          state.error[item] = false;
-        }
-        state.errorMsg = {
-          shape: false,
-          server: false,
-        };
-      })
-
-      // Reset all errors on toggle windows
-      .addCase(toggleWindows, (state) => {
-        for (const item in state.error) {
-          state.error[item] = false;
+          if (item !== "socket") {
+            state.error[item] = false;
+          }
         }
         state.errorMsg = {
           shape: false,
@@ -75,9 +74,20 @@ export const errorSlice = createSlice({
       .addCase(rememberTiming, (state, action) => {
         state.error[action.payload.nameError] = true;
         state.errorMsg[action.payload.nameError] = action.payload.msgError;
-        state.error.shape = false;
-        state.errorMsg.shape = "";
       })
+
+      // Reset time error on config shape
+      .addCase(
+        togglePosition ||
+          toggleLayout ||
+          toggleDisplay ||
+          toggleGradient ||
+          toggleGradientType,
+        (state) => {
+          state.error.shape = false;
+          state.errorMsg.shape = "";
+        }
+      )
 
       // Change inputs errors
       .addCase(changeFields, (state, action) => {

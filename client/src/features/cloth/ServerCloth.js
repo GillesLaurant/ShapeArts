@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
-import { render, hydrateRoot } from "react-dom";
-import { createRoot } from "react-dom/client";
-import PropTypes from "prop-types";
-import "./style.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { getCloth } from "./cloth.slice";
+import React from "react";
+import { useSelector } from "react-redux";
 import ShapeServerGenerator from "../svg/ShapesServer";
+import "./style.scss";
 
 /*******    SERVER CLOTH     *******/
 

@@ -1,31 +1,24 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import ErrorLoading from "../error/ErrorLoading";
+import LoaderCloth from "../loaders/LoaderCloth";
 import ServerCloth from "./ServerCloth";
 import UserCloth from "./UserCloth";
 
 /*******    CLOTHS CONTAINER     *******/
 
 const ClothsContainer = () => {
-  const command = useSelector((state) => state.nav.windows.pannelCommand_open);
-  console.log(command);
+  const loading = useSelector((state) => state.loader.cloth);
+  const error = useSelector((state) => state.error.error.socket);
 
   return (
-    <div
-      className="clothsContainer"
-      style={
-        {
-          // transform:
-          //   // Translate -15% if pannel command open in mobile screen
-          //   window.innerWidth > 767
-          //     ? "translateY(0)"
-          //     : command
-          //     ? "translateY(-15%)"
-          //     : "translateY(0)",
-          // Height 65% if pannel command open in mobile screen
-          // height: window.innerWidth > 767 ? "auto" : command ? "65vh" : "80%",
-        }
-      }
-    >
+    <div className="clothsContainer">
+      {loading && (
+        <div className="loaderCloth">
+          {!error && <LoaderCloth />}
+          {error && <ErrorLoading />}
+        </div>
+      )}
       <UserCloth />
       <ServerCloth />
     </div>

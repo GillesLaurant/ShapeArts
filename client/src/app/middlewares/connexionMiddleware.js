@@ -4,7 +4,10 @@ import {
   createTiming,
   rememberTiming,
 } from "../../features/PannelShape/shape.slice";
-import { successConnect } from "../../features/socket/socket.slice";
+import {
+  successConnect,
+  failedConnect,
+} from "../../features/socket/socket.slice";
 
 /*******    CONNEXION MIDDLEWARE     *******/
 
@@ -20,13 +23,11 @@ export default function socketMiddleware(socket) {
           socket
             .connect()
             .then(() => {
-              console.log("connect");
+              console.log("essai");
               // IF socket connected get cloth
               if (socket.socket.connected) {
                 dispatch(successConnect());
                 socket.emit("connexion", {});
-              } else {
-                console.log("ERR NOT CONNECT");
               }
 
               // Receiv first cloth
@@ -47,25 +48,29 @@ export default function socketMiddleware(socket) {
             })
 
             // Error connexion server & try reconnect
-            .catch((errorConnect) => {
+            .catch(() => {
               console.log("ERROR SOCKET", socket.socket.connected);
-
-              // const wait = setTimeout(() => {
-              //   if (
-              //     !socket.socket.connected &&
-              //     getState().socket.connectAttemps < 5
-              //   ) {
-              //     const timing = setTimeout(() => {
-              //       console.log();
-              //       dispatch(connectSocket());
-              //     }, getState().socket.connectAttemps * 1000);
-              //     return () => {
-              //       clearTimeout(timing);
-              //       // clearTimeout(wait);
-              //     };
-              //   }
-              // }, 2000);
+              dispatch(failedConnect());
             });
+          break;
+
+        // Reconnect
+        case "socket/failedConnect":
+          socket
+            .connect()
+            .then(() => {
+              if (socket.socket.connected) {
+                console.log("reco");
+                dispatch(successConnect());
+                socket.emit("connexion", {});
+              }
+            })
+            .catch(() => {
+              console.log("ERR NOT CONNECT");
+              dispatch(setError({ nameError: "socket" }));
+              socket.disconnect();
+            });
+
           break;
 
         /*******    VALID SHAPE     *******/
@@ -78,13 +83,11 @@ export default function socketMiddleware(socket) {
 
           // Receiv date shape timing
           socket.on("successCreateShape", (dateShape) => {
-            console.log(dateShape);
             dispatch(createTiming(dateShape));
           });
 
           // If already play in less 5 minutes
           socket.on("alreadyPlay", (timePlayed) => {
-            console.log(timePlayed);
             dispatch(rememberTiming(timePlayed));
           });
           break;

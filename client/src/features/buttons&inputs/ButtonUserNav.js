@@ -1,16 +1,19 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { navigate } from "../user/nav.slice";
 
 /*******    NAV BUTTONS     *******/
 
 const ButtonUserNav = ({ nav }) => {
   const dispatch = useDispatch();
+  const error = useSelector((state) => state.error.error.socket);
+
   const buttonTarget = {
     func: nav.split("_")[0],
     name: nav.split("_")[1],
   };
 
+  // List buttons nav
   const arrayButtons = [
     {
       func: "back_",
@@ -98,6 +101,7 @@ const ButtonUserNav = ({ nav }) => {
                 buttonTarget.func === "back" ? `nav_${buttonTarget.name}` : nav
               }
               onClick={handleNav}
+              disabled={error}
               style={{
                 background: `linear-gradient(to bottom, ${
                   buttonTarget.func === "back"

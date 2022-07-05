@@ -16,28 +16,21 @@ export const socketSlice = createSlice({
     connectSocket: (state) => {
       state.connectAttemps += 1;
     },
-    successConnect: (state, action) => {
+    successConnect: (state) => {
       state.socket_connected = true;
       state.connectAttemps = 0;
     },
+    failedConnect: (state) => {
+      state.socket_connected = false;
+      state.connectAttemps = 0;
+    },
   },
-  extraReducers(builder) {
-    // builder
-    // .addCase(connectSocket.pending, (state, action) => {
-    //   console.log(state);
-    //   state.status = action.meta.requestStatus;
-    //   // state.status.push(action.payload.cloth);
-    // })
-    // .addCase(connectSocket.fulfilled, (state, action) => {
-    //   console.log(action);
-    //   state.status = action.meta.requestStatus;
-    //   state.socket = true;
-    // });
-  },
+  extraReducers(builder) {},
 });
 
 // ACTIONS
-export const { connectSocket, successConnect } = socketSlice.actions;
+export const { connectSocket, successConnect, failedConnect } =
+  socketSlice.actions;
 
 // REDUCER
 export default socketSlice.reducer;

@@ -1,7 +1,6 @@
 import { io } from "socket.io-client";
 // Example conf. You can move this to your config file.
 const host = "http://localhost:3003";
-// const socketPath = "/api/socket.io";
 export default class socketAPI {
   socket;
 
