@@ -14,6 +14,7 @@ const ValidShape = () => {
 
     dispatch(resetShape());
   };
+
   return (
     <section className="validShape">
       {/* RESET SHAPE */}

@@ -12,6 +12,7 @@ const PannelAccount = () => {
 
   return (
     <div className="pannelAccount">
+      {/* TITLE */}
       <header className="pannelAccount-head">
         <h2 className="pannelAccount-head-title">Mon compte</h2>
       </header>

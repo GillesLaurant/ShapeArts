@@ -27,12 +27,7 @@
   }
 }
 
-@font-face {
-  font-family: $text-time;
-  src: url("../public/fonts/DS-DIGI.TTF");
-  font-display: swap;
-}
-
+// Inputs range
 input[type="range"] {
   @include inputRange;
 }
@@ -48,16 +43,17 @@ input[type="range"]::-webkit-slider-thumb {
   transition: all 3s;
 }
 
-// WRAPPER NORMAL COLOR INPUT
+// Wrapper color input
 #{$colorInput}#{$colorWrapper} {
   padding: 0;
 }
-
+// Swatch color input
 #{$colorInput}#{$colorSwatch} {
   width: 100%;
   border: none;
 }
 
+// Forms
 form {
   appearance: none;
   width: 100%;
@@ -65,22 +61,22 @@ form {
   flex-direction: column;
   flex-grow: 1;
   margin: 2% 0;
-  // border: 1px solid cyan;
 }
-
+// Inputs text
 input[type="text"],
 input[type="mail"],
 input[type="password"] {
   @include resetInputs;
   @include font(1vmin, 13px);
-  // color: $dark;
 }
+// Placeholder
 input[type="text"]::-webkit-input-placeholder,
 input[type="mail"]::-webkit-input-placeholder,
 input[type="password"]::-webkit-input-placeholder {
   @include placeholder;
 }
 
+// Responsive < 768px
 @media #{$smart} {
   input[type="text"],
   input[type="mail"],
@@ -88,6 +84,7 @@ input[type="password"]::-webkit-input-placeholder {
     width: 90%;
   }
 }
+// Responsive < 1501px
 @media #{$laptop} {
   input[type="text"],
   input[type="mail"],

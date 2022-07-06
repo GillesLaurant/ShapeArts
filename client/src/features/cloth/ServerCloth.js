@@ -11,6 +11,7 @@ const ServerCloth = () => {
   return (
     <div id="serverCloth" className="serverCloth">
       {cloth.content.map((shape, index) => (
+        // SHAPES SERVER
         <ShapeServerGenerator
           key={index}
           num={index}

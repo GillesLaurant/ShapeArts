@@ -35,19 +35,13 @@ module.exports = (io, socket) => {
           }
         )
           // Success edit username
-          .then((successUpdate) => {
-            const wait = setTimeout(() => {
-              console.log("finish edit username", successUpdate);
-
-              // Send username edited
-              return socket.emit("successEdit", "usernameEdited");
-            }, 5000);
-            return () => clearTimeout(wait);
+          .then(() => {
+            // Send username edited
+            return socket.emit("successEdit", "usernameEdited");
           })
 
           // Error update username
-          .catch((errUpdate) => {
-            console.log(errUpdate);
+          .catch(() => {
             socket.emit("error_server", {
               nameError: "server",
               msgError: errorServer,
@@ -55,8 +49,7 @@ module.exports = (io, socket) => {
           });
       })
       // Error find by pk
-      .catch((errFind) => {
-        console.log(errFind);
+      .catch(() => {
         socket.emit("error_server", {
           nameError: "server",
           msgError: errorServer,
@@ -103,19 +96,13 @@ module.exports = (io, socket) => {
               }
             )
               // Success edit
-              .then((successUpdate) => {
-                const wait = setTimeout(() => {
-                  console.log("finish edit mail", successUpdate);
-
-                  // Send mail edited
-                  return socket.emit("successEdit", "mailEdited");
-                }, 5000);
-                return () => clearTimeout(wait);
+              .then(() => {
+                // Send mail edited
+                return socket.emit("successEdit", "mailEdited");
               })
 
               // Error update mail
-              .catch((errUpdate) => {
-                console.log(errUpdate);
+              .catch(() => {
                 socket.emit("error_server", {
                   nameError: "server",
                   msgError: errorServer,
@@ -123,8 +110,7 @@ module.exports = (io, socket) => {
               });
           })
           // Error find by pk
-          .catch((errFind) => {
-            console.log(errFind);
+          .catch(() => {
             socket.emit("error_server", {
               nameError: "server",
               msgError: errorServer,
@@ -132,8 +118,7 @@ module.exports = (io, socket) => {
           });
       })
       // Error check mail already use
-      .catch((errFind) => {
-        console.log(errFind);
+      .catch(() => {
         socket.emit("error_server", {
           nameError: "server",
           msgError: errorServer,
@@ -182,18 +167,12 @@ module.exports = (io, socket) => {
                   }
                 )
                   // Success update password
-                  .then((pwdUpdate) => {
-                    const wait = setTimeout(() => {
-                      console.log("finish edit pwd", pwdUpdate);
-
-                      // Send mail edited
-                      return socket.emit("successEdit", "pwdEdited");
-                    }, 5000);
-                    return () => clearTimeout(wait);
+                  .then(() => {
+                    // Send mail edited
+                    return socket.emit("successEdit", "pwdEdited");
                   })
                   // Error update password
-                  .catch((errUpdate) => {
-                    console.log(errUpdate);
+                  .catch(() => {
                     socket.emit("error_server", {
                       nameError: "server",
                       msgError: errorServer,
@@ -212,8 +191,7 @@ module.exports = (io, socket) => {
         );
       })
       // Error find by pk
-      .catch((errFind) => {
-        console.log(errFind);
+      .catch(() => {
         socket.emit("error_server", {
           nameError: "server",
           msgError: errorServer,

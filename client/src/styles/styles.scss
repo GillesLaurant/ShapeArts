@@ -1,6 +1,11 @@
 @import "../../scss/variables";
 @import "../../scss/mixins";
-@import "../../scss/placeholders";
+
+@font-face {
+  font-family: $text-time;
+  src: url("../../public/fonts/DS-DIGI.TTF");
+  font-display: swap;
+}
 
 /*******    APP     *******/
 
@@ -49,7 +54,6 @@
 }
 
 /*******    TEXT APP     *******/
-
 .textApp {
   @include font(1.5vmin, 15px);
   width: 100%;
@@ -79,6 +83,7 @@
   );
 }
 
+/*******    RESPONSIVE > 992px     *******/
 @media #{$tablett} {
   .textApp {
     margin-bottom: 1%;
@@ -86,7 +91,6 @@
 }
 
 /*******    RESPONSIVE > 1200px     *******/
-
 @media #{$laptop} {
   .App {
     @include flex-mix(center);
@@ -108,7 +112,6 @@
 }
 
 /*******    RESPONSIVE > 1600px     *******/
-
 @media #{$large} {
   .App {
     @include flex-mix(space-around, center);

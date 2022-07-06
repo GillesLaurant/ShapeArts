@@ -7,10 +7,12 @@ import { closeAllWindows } from "../user/nav.slice";
 const TextApp = () => {
   const dispatch = useDispatch();
 
+  // Close all windows
   const handleClick = (ev) => {
     ev.preventDefault();
     dispatch(closeAllWindows());
   };
+
   return (
     <p className="textApp" onClick={handleClick}>
       Une toile où tout le monde peut y laisser son Art !

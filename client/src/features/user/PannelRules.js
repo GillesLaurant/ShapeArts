@@ -1,7 +1,7 @@
 import React from "react";
 import ButtonUserNav from "../buttons&inputs/ButtonUserNav";
 import ButtonAction from "../buttons&inputs/ButtonAction";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const PannelRules = () => {
   const user = useSelector((state) => state.user.username);

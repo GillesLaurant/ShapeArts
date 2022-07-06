@@ -15,11 +15,18 @@ const ClothsContainer = () => {
     <div className="clothsContainer">
       {loading && (
         <div className="loaderCloth">
+          {/* LOADER CLOTH */}
           {!error && <LoaderCloth />}
+
+          {/* ERROR CLOTH */}
           {error && <ErrorLoading />}
         </div>
       )}
+
+      {/* CLOTH PLAYER */}
       <UserCloth />
+
+      {/* CLOTH SERVER */}
       <ServerCloth />
     </div>
   );

@@ -12,7 +12,6 @@ const errorServer = "Erreur, veuillez reéssayer plus tard.";
 
 module.exports = (io, socket) => {
   /*******    REGISTER     *******/
-
   const registerUser = (payload) => {
     const { username, mail, password } = payload;
 
@@ -39,11 +38,9 @@ module.exports = (io, socket) => {
     // TODO check already user exist
     models.User.findOne({ where: { mail } })
       .then((checkExist) => {
-        console.log("checkExist", checkExist);
-
         // IF already use
         if (checkExist !== null) {
-          console.log("ALREADY EXIST");
+          // Send error message
           return socket.emit("error_server", {
             nameError: "mail",
             msgError: "Cet utilisateur existe déjà.",
@@ -59,37 +56,22 @@ module.exports = (io, socket) => {
             password: hash,
             is_loggin: true,
           })
+            // IF succes create
             .then((successCreate) => {
-              console.log(successCreate);
-              // IF succes create
-              const date = new Date();
-              date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
-              const expires = date.toGMTString();
-
               // TODO generate token
               const jwtSign = jwtUtils.generateTokenForUser(
                 successCreate.dataValues
               );
-              // Set cookie
-              io.engine.on("headers", (headers, req) => {
-                headers[
-                  "set-cookie"
-                ] = `JWSToken=Bearer ${jwtSign}; expires=${expires}; httpOnly=true; path=/; secure=true`;
+
+              socket.handshake.auth.tokenId = jwtSign;
+
+              // Send success register
+              return socket.emit("successRegister", {
+                id: successCreate.dataValues.id,
               });
-
-              const wait = setTimeout(() => {
-                console.log("finish register", successCreate.dataValues);
-
-                // Send success register
-                return socket.emit("successRegister", {
-                  id: successCreate.dataValues.id,
-                });
-              }, 5000);
-              return () => clearTimeout(wait);
             })
             // Error user create
-            .catch((errCreate) => {
-              console.log(errCreate);
+            .catch(() => {
               return socket.emit("error_server", {
                 nameError: "server",
                 msgError: errorServer,
@@ -98,8 +80,7 @@ module.exports = (io, socket) => {
         });
       })
       // Error findOne user
-      .catch((errCheckExist) => {
-        console.log(errCheckExist);
+      .catch(() => {
         socket.emit("error_server", {
           nameError: "server",
           msgError: errorServer,
@@ -111,7 +92,6 @@ module.exports = (io, socket) => {
 
   const logginUser = (payload) => {
     const { mail, password } = payload;
-    let counterShapes;
 
     // TODO ckeck validity data user
     if (!MAIL_REGEX.test(mail)) {
@@ -157,39 +137,23 @@ module.exports = (io, socket) => {
 
                 // Success update user
                 .then(() => {
-                  // TODO generate token expiration
-                  const date = new Date();
-                  date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
-                  const expires = date.toGMTString();
-
                   // TODO generate new token
                   const jwtSign = jwtUtils.generateTokenForUser(
                     findUser.dataValues
                   );
 
-                  // TODO set cookie
-                  io.engine.on("headers", (headers, req) => {
-                    headers[
-                      "set-cookie"
-                    ] = `JWSToken=Bearer ${jwtSign}; expires=${expires}; path=/; secure=true`;
+                  socket.handshake.auth.tokenId = jwtSign;
+
+                  // Send success loggin
+                  return socket.emit("successLoggin", {
+                    id: findUser.dataValues.id,
+                    username: findUser.dataValues.user_name,
+                    counterShapes: findUser.dataValues.counter_shapes,
                   });
-
-                  const wait = setTimeout(() => {
-                    console.log("finish Loggin", findUser.dataValues);
-
-                    // Send success loggin
-                    return socket.emit("successLoggin", {
-                      id: findUser.dataValues.id,
-                      username: findUser.dataValues.user_name,
-                      counterShapes: findUser.dataValues.counter_shapes,
-                    });
-                  }, 5000);
-                  return () => clearTimeout(wait);
                 })
 
                 // Error updateUser
-                .catch((errUpdateUser) => {
-                  console.log(errUpdateUser);
+                .catch(() => {
                   socket.emit("error_server", {
                     nameError: "server",
                     msgError: errorServer,
@@ -207,8 +171,7 @@ module.exports = (io, socket) => {
         );
       })
       // Error find user
-      .catch((errFindUser) => {
-        console.log(errFindUser);
+      .catch(() => {
         socket.emit("error_server", {
           nameError: "server",
           msgError: errorServer,
@@ -233,19 +196,14 @@ module.exports = (io, socket) => {
           }
         )
           // Success update user
-          .then((userUpdated) => {
-            const wait = setTimeout(() => {
-              console.log("finish loggout", userUpdated);
-
-              // Send success loggout
-              return socket.emit("successLoggout");
-            }, 5000);
-            return () => clearTimeout(wait);
+          .then(() => {
+            socket.handshake.auth.tokenId = -1;
+            // Send success loggout
+            return socket.emit("successLoggout");
           })
 
           // Error update user
-          .catch((errUpdate) => {
-            console.log(errUpdate);
+          .catch(() => {
             socket.emit("error_server", {
               nameError: "server",
               msgError: errorServer,
@@ -254,8 +212,7 @@ module.exports = (io, socket) => {
       })
 
       // Error find by pk
-      .catch((errFind) => {
-        console.log(errFind);
+      .catch(() => {
         socket.emit("error_server", {
           nameError: "server",
           msgError: errorServer,
@@ -281,25 +238,14 @@ module.exports = (io, socket) => {
             },
           })
             // Success destroy
-            .then((userDestroy) => {
-              // TODO delete cookie
-              io.engine.on("headers", (headers, req) => {
-                headers[
-                  "set-cookie"
-                ] = `JWSToken=Bearer DELETED; expires=${new Date().toGMTString()}; path=/; secure=true`;
-              });
+            .then(() => {
+              socket.handshake.auth.tokenId = -1;
 
-              const wait = setTimeout(() => {
-                console.log("finish destroy", userDestroy);
-
-                // Send success delete
-                return socket.emit("successDelete");
-              }, 5000);
-              return () => clearTimeout(wait);
+              // Send success delete
+              return socket.emit("successDelete");
             })
             // Error destroy
-            .catch((errDestroy) => {
-              console.log(errDestroy);
+            .catch(() => {
               socket.emit("error_server", {
                 nameError: "server",
                 msgError: errorServer,
@@ -307,12 +253,15 @@ module.exports = (io, socket) => {
             });
         }
 
+        let date = new Date();
+        date = date.toGMTString();
+
         // IF user have shapes
         models.User.update(
           {
-            mail: `user_deleted_${userFind.dataValues.id}_${new Date()}`,
-            password: `user_deleted_${userFind.dataValues.id}_${new Date()}`,
-            isLoggin: false,
+            mail: `user_deleted_${userFind.dataValues.id}_${date}`,
+            password: `user_deleted_${userFind.dataValues.id}_${date}`,
+            is_loggin: false,
           },
           {
             where: {
@@ -321,25 +270,14 @@ module.exports = (io, socket) => {
           }
         )
           // Success update delete user
-          .then((userUpdate) => {
-            // TODO delete cookie
-            io.engine.on("headers", (headers, req) => {
-              headers[
-                "set-cookie"
-              ] = `JWSToken=Bearer DELETED; expires=${new Date().toGMTString()}; path=/; secure=true`;
-            });
+          .then(() => {
+            socket.handshake.auth.tokenId = -1;
 
-            const wait = setTimeout(() => {
-              console.log("finish destroy", userUpdate);
-
-              // Send success delete
-              return socket.emit("successDelete");
-            }, 5000);
-            return () => clearTimeout(wait);
+            // Send success delete
+            return socket.emit("successDelete");
           })
           // Error update delete user
-          .catch((errUpdate) => {
-            console.log(errUpdate);
+          .catch(() => {
             socket.emit("error_server", {
               nameError: "server",
               msgError: errorServer,
@@ -348,8 +286,7 @@ module.exports = (io, socket) => {
       })
 
       // Error find user
-      .catch((errFind) => {
-        console.log(errFind);
+      .catch(() => {
         socket.emit("error_server", {
           nameError: "server",
           msgError: errorServer,

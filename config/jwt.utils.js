@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 module.exports = {
+  // TOKEN GENERATOR
   generateTokenForUser: (userData) => {
     return jwt.sign(
       {
@@ -10,22 +11,24 @@ module.exports = {
       },
       JWT_SECRET_KEY,
       {
-        expiresIn: "1h",
+        expiresIn: 3600,
       }
     );
   },
 
+  // CHECK AUTHENTIFICATED
   parseAuthorisation: (token) => {
-    console.log("AUTH", token);
     return token.replace("Bearer ", "");
   },
 
+  // DECODE EXPIRATION TOKEN
   decodeToken: (authorization) => {
     let token = module.exports.parseAuthorisation(authorization);
     const decodeToken = jwt.decode(token, { complete: true });
     return decodeToken;
   },
 
+  // GET ID USER IN TOKEN
   getUserId: (authorization) => {
     let token = module.exports.parseAuthorisation(authorization);
 
@@ -33,7 +36,6 @@ module.exports = {
       const tokenVerify = jwt.verify(token, JWT_SECRET_KEY);
       return tokenVerify.userId;
     } catch (error) {
-      console.log("error JWS id", error);
       return false;
     }
   },

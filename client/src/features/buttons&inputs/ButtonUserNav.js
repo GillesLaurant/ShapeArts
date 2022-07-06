@@ -8,6 +8,7 @@ const ButtonUserNav = ({ nav }) => {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.error.error.socket);
 
+  // Sort name & function
   const buttonTarget = {
     func: nav.split("_")[0],
     name: nav.split("_")[1],
@@ -15,6 +16,7 @@ const ButtonUserNav = ({ nav }) => {
 
   // List buttons nav
   const arrayButtons = [
+    // All back
     {
       func: "back_",
       name: "back",
@@ -22,6 +24,7 @@ const ButtonUserNav = ({ nav }) => {
       col1: "#f9d423",
       col2: "#e14fad",
     },
+    // Register
     {
       func: "nav",
       name: "SignIn",
@@ -29,6 +32,7 @@ const ButtonUserNav = ({ nav }) => {
       col1: "#00ecbc",
       col2: "#007adf",
     },
+    // Loggin
     {
       func: "nav",
       name: "SignUp",
@@ -36,6 +40,7 @@ const ButtonUserNav = ({ nav }) => {
       col1: "#2575fc",
       col2: "#6a11cb",
     },
+    // Account
     {
       func: "nav",
       name: "Account",
@@ -43,6 +48,7 @@ const ButtonUserNav = ({ nav }) => {
       col1: "#00ecbc",
       col2: "#007adf",
     },
+    // Edit
     {
       func: "nav",
       name: "EditToggle",
@@ -50,6 +56,7 @@ const ButtonUserNav = ({ nav }) => {
       col2: "#0700b8",
       col1: "#00a1d6",
     },
+    // Edit username
     {
       func: "nav",
       name: "EditUsername",
@@ -57,6 +64,7 @@ const ButtonUserNav = ({ nav }) => {
       col1: "#3ab5c5",
       col2: "#469de7",
     },
+    // Edit mail
     {
       func: "nav",
       name: "EditMail",
@@ -64,6 +72,7 @@ const ButtonUserNav = ({ nav }) => {
       col1: "#5e8beb",
       col2: "#8f5ef0",
     },
+    // Edit password
     {
       func: "nav",
       name: "EditPwd",
@@ -71,6 +80,7 @@ const ButtonUserNav = ({ nav }) => {
       col1: "#9d52f3",
       col2: "#e612fc",
     },
+    // Delete account
     {
       func: "nav",
       name: "Delete",
@@ -80,6 +90,7 @@ const ButtonUserNav = ({ nav }) => {
     },
   ];
 
+  // Navigation action
   const handleNav = (ev) => {
     ev.preventDefault();
 

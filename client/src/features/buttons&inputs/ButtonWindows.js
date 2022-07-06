@@ -1,13 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import Svg from "../svg/GeneratorSVG";
-import { useDispatch, useSelector } from "react-redux";
 import { toggleWindows } from "../user/nav.slice";
 import "./style.scss";
 
 /*******    WINDOW TOGGLE BUTTONS     *******/
 
-export const ButtonWindows = ({ nameClass, name }) => {
+export const ButtonWindows = ({ name }) => {
   const dispatch = useDispatch();
 
   // List SVG buttons
@@ -63,4 +62,6 @@ export const ButtonWindows = ({ nameClass, name }) => {
   );
 };
 
-ButtonWindows.propTypes = {};
+ButtonWindows.propTypes = {
+  name: PropTypes.string.isRequired,
+};

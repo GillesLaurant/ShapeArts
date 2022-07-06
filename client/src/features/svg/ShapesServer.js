@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
 
 /*******    GENERATOR SHAPES CLOTH     *******/
 
@@ -24,6 +23,7 @@ const ShapeServerGenerator = ({ num, shape, count, newCloth }) => {
     gradient_linear,
   } = shape;
   const userShape = shape.User.user_name;
+
   // List paths "Round" & "Square" & "Triangle" & "Star"
   const listPaths = {
     round: {
@@ -84,9 +84,11 @@ const ShapeServerGenerator = ({ num, shape, count, newCloth }) => {
   };
 
   useEffect(() => {
+    // Random number rotate
     const randomRotation = () => {
       return Math.floor(Math.random() * id * (720 - 50 + 1)) + 50;
     };
+    // First cloth anime all shapes
     if (!newCloth) {
       svgTarget.current.animate(
         [
@@ -108,8 +110,9 @@ const ShapeServerGenerator = ({ num, shape, count, newCloth }) => {
           easing: "cubic-bezier(0.12, 0.61, 1, 0.64)",
         }
       );
-    } else if (newCloth && num === count - 1) {
-      console.log(count, num);
+    }
+    // New shape anime last shape
+    else if (newCloth && num === count - 1) {
       svgTarget.current.animate(
         [
           {

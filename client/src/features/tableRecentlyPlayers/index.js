@@ -1,8 +1,8 @@
 import React from "react";
 import dayjs from "dayjs";
-import "./style.scss";
 import GeneratorSVG from "../svg/GeneratorSVG";
 import { useSelector } from "react-redux";
+import "./style.scss";
 
 /*******    TABLE RECENTLY USERS     *******/
 
@@ -13,6 +13,7 @@ const RecentlyShapes = () => {
   return (
     <section className="recentlyShapes ">
       <h3 className="recentlyShapes-title">Joueurs récents</h3>
+      {/* IF SUCCESS GET CLOTH */}
       {!loading && (
         <table className="recentTable">
           <thead className="recentTable-head">

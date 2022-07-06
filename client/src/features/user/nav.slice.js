@@ -33,17 +33,18 @@ export const navSlice = createSlice({
   name: "nav",
   initialState,
   reducers: {
+    // Open or close windows
     toggleWindows: (state, action) => {
-      // Open or close windows
       state.windows[`${action.payload}_open`] =
         !state.windows[`${action.payload}_open`];
     },
+    // Close all windows
     closeAllWindows: (state) => {
       state.windows.pannelCommand_open = false;
       state.windows.pannelUser_open = false;
     },
+    // Close other all pannels on navigate
     navigate: (state, action) => {
-      // Close other all pannels
       for (const [key, value] of Object.entries(state)) {
         if (value && key !== action.payload && key !== "windows") {
           state[key] = false;
@@ -96,9 +97,6 @@ export const navSlice = createSlice({
       // On receiv timing
       .addCase(createTiming, (state) => {
         state.windows.pannelCommand_open = false;
-      })
-      .addCase(rememberTiming, (state) => {
-        // state.windows.pannelCommand_open = false;
       });
   },
 });

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { addShape, getCloth } from "../cloth/cloth.slice";
 import { setError } from "../error/error.slice";
 import { rememberTiming } from "../PannelShape/shape.slice";
@@ -36,6 +36,7 @@ export const loaderSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // Receiv cloth
       .addCase(getCloth, (state) => {
         state.cloth = false;
       })
@@ -83,10 +84,7 @@ export const loaderSlice = createSlice({
         }
       })
       // Valid shape loader stop
-      .addCase(addShape, (state) => {
-        state.validShape = false;
-      })
-      .addCase(rememberTiming, (state) => {
+      .addCase(addShape || rememberTiming, (state) => {
         state.validShape = false;
       });
   },
@@ -94,10 +92,6 @@ export const loaderSlice = createSlice({
 
 // Actions
 export const { toggleLoader } = loaderSlice.actions;
-
-export const loaderButton = (state, nameButton) => {
-  return state[nameButton];
-};
 
 // Reducer
 export default loaderSlice.reducer;

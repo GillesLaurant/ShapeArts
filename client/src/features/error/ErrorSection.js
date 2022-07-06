@@ -7,10 +7,12 @@ import "./error.scss";
 const ErrorSection = ({ errorTarget }) => {
   const { error, errorMsg } = useSelector((state) => state.error);
 
+  // List titles error
   const listTitles = {
     shape: "Soyez patient...",
     server: "Erreur système",
   };
+
   return (
     <section
       className="error-section"

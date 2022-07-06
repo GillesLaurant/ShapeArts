@@ -8,6 +8,7 @@
   transition: all 0.5s;
 }
 
+// User cloth
 .userCloth {
   position: absolute;
   width: 900px;
@@ -22,6 +23,7 @@
   }
 }
 
+// Server cloth
 .serverCloth {
   width: 900px;
   height: 700px;
@@ -31,11 +33,14 @@
   z-index: 0;
 }
 
+/*******    RESPONSIVE > 992px     *******/
 @media #{$tablett} {
   .clothsContainer {
     height: 80% !important;
   }
 }
+
+/*******    RESPONSIVE > 1201px     *******/
 @media #{$laptop} {
   .clothsContainer {
     @include flex-mix;

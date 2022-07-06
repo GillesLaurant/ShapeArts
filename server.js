@@ -18,37 +18,31 @@ const io = new Server(server, {
     origin: "http://localhost:3000",
     credentials: true,
   },
-  // serveClient: false,
-});
-
-// Initialisation header
-io.engine.on("initial_headers", (headers, req) => {
-  headers["set-cookie"] = "JWTCookie=";
 });
 
 // app.get("/", (req, res) => {
 //   res.sendFile(`${__dirname}/public/index.html`);
 // });
 
-// io.use((socket, next) => {
-//   // console.log(socket);
-// });
+// Socket middleware authenticated
+io.use((socket, next) => {
+  const clientKey = socket.handshake.headers["secure-header"];
+  if (clientKey === process.env.CLIENT_KEY) {
+    console.log("user connected", socket.id);
+
+    next();
+  } else {
+    console.log("APP UNKNOW", clientKey);
+
+    next(new Error());
+  }
+});
 
 // Controllers socket
 const onConnection = (socket) => {
-  const clientKey = socket.handshake.auth.key;
-  if (clientKey !== process.env.CLIENT_KEY) {
-    console.log("APP UNKNOW", clientKey);
-    return socket.emit("connect_error", {
-      error: new Error("APP NOT REGISTER"),
-    });
-  } else {
-    console.log("user connected", socket.id, socket.connected);
-
-    appController(io, socket);
-    userController(io, socket);
-    editUserController(io, socket);
-  }
+  appController(io, socket);
+  userController(io, socket);
+  editUserController(io, socket);
 };
 
 // Connection socket
