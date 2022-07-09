@@ -1,9 +1,171 @@
-/* html {
-  width: 100vh;
-  height: auto;
-  background-image: radial-gradient(
-    circle 610px at 5.2% 51.6%,
-    #050872 0%,
-    rgba(7, 3, 53, 1) 97.5%
-  );
-} */
+/*******    VARIABLES     *******/
+/*******    MIXINS    *******/
+/*******    FLEX    *******/
+/*******    DISPLAY PANNELS USER     *******/
+/*******    FOOTER PANNELS USER     *******/
+/*******    BUTTONS     *******/
+/*******    RANGE INPUTS     *******/
+/*******    RANGE INPUTS TRACKS    *******/
+/*******    RANGE INPUTS THUMBS    *******/
+/*******    RESET TEXT INPUTS     *******/
+/*******    PLACEHOLDER INPUTS     *******/
+/*******    FONTS     *******/
+/*******    TITLE PANNELS USER     *******/
+/*******    SUBTITLE PANNELS USER     *******/
+/*******    TEXT PANNELS USER     *******/
+/*******    BUTTON ANIMATION LOADER     *******/
+@font-face {
+  font-family: "DS_Digi";
+  src: url("../../public/fonts/DS-DIGI.TTF");
+  font-display: swap;
+}
+
+/*******    APP     *******/
+.App {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: _;
+      -ms-flex-pack: _;
+          justify-content: _;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  position: fixed;
+  height: 100vh;
+  background-image: radial-gradient(circle 610px at 5.2% 51.6%, #050872 0%, #070335 97.5%);
+  padding: 1%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+/*******    MAIN     *******/
+.mainContainer {
+  max-height: 82vh;
+  color: #18c9f5;
+  overflow-x: scroll !important;
+  overflow-y: auto;
+  margin: 0 auto;
+  -webkit-transition: all 0.3s, margin 0.5s ease-out;
+  transition: all 0.3s, margin 0.5s ease-out;
+}
+
+/*******    TITLE APP     *******/
+.titleApp {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  text-align: center;
+  font-family: "Biryani";
+  font-weight: 200;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(30%, #8c00ff), to(cyan));
+  background: linear-gradient(to top, #8c00ff 30%, cyan);
+  background-clip: text;
+  color: transparent;
+  margin: 0 auto;
+}
+
+/*******    TEXT APP     *******/
+.textApp {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  font-family: "Quicksand";
+  line-height: auto;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(10%, #8c00ff), to(cyan));
+  background: linear-gradient(to top, #8c00ff 10%, cyan);
+  background-clip: text;
+  color: transparent;
+  margin: 0 auto 3%;
+}
+
+/*******    PROGRESS BAR     *******/
+.progressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1%;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 0, 217, 0.98)), color-stop(90%, rgba(174, 0, 255, 0.98)), to(rgba(7, 3, 53, 0.1)));
+  background: linear-gradient(to right, rgba(255, 0, 217, 0.98) 0%, rgba(174, 0, 255, 0.98) 90%, rgba(7, 3, 53, 0.1) 100%);
+}
+
+/*******    RESPONSIVE > 992px     *******/
+@media only screen and (min-width: 992px) {
+  .textApp {
+    margin-bottom: 1%;
+  }
+}
+
+/*******    RESPONSIVE > 1200px     *******/
+@media only screen and (min-width: 1201px) {
+  .App {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    left: 50%;
+    margin: 0 auto;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+  .titleApp {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    font-size: calc(2.5vmin + 35px);
+  }
+  .textApp {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    font-size: calc(1.2vmin + 15px);
+    margin-bottom: 1.5%;
+  }
+}
+
+/*******    RESPONSIVE > 1600px     *******/
+@media only screen and (min-width: 1600px) {
+  .App {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    padding: 1% 4%;
+  }
+}
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,1025 @@
+/*******    MIXINS    *******/
+/*******    FLEX    *******/
+/*******    DISPLAY PANNELS USER     *******/
+/*******    FOOTER PANNELS USER     *******/
+/*******    BUTTONS     *******/
+/*******    RANGE INPUTS     *******/
+/*******    RANGE INPUTS TRACKS    *******/
+/*******    RANGE INPUTS THUMBS    *******/
+/*******    RESET TEXT INPUTS     *******/
+/*******    PLACEHOLDER INPUTS     *******/
+/*******    FONTS     *******/
+/*******    TITLE PANNELS USER     *******/
+/*******    SUBTITLE PANNELS USER     *******/
+/*******    TEXT PANNELS USER     *******/
+/*******    BUTTON ANIMATION LOADER     *******/
+/*******    VARIABLES     *******/
+/*******    RESET     *******/
+* {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+* svg {
+  pointer-events: none;
+}
+
+* button {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+* button:disabled {
+  opacity: 0.5;
+  color: #050872;
+  pointer-events: inherit;
+}
+
+* h1,
+* h2,
+* h3,
+* h4,
+* h5 {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  font-weight: normal;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: transparent;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+          appearance: none;
+  outline: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  background: transparent;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  border-style: solid;
+}
+
+#thumb {
+  -webkit-transition: all 3s;
+  transition: all 3s;
+}
+
+input[type=color]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type=color]::-webkit-color-swatch {
+  width: 100%;
+  border: none;
+}
+
+form {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin: 2% 0;
+}
+
+input[type="text"],
+input[type="mail"],
+input[type="password"] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 70%;
+  padding: 3% 3%;
+  border: none;
+  border-radius: 0.4em;
+  outline: 0;
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+}
+
+input[type="text"]::-webkit-input-placeholder,
+input[type="mail"]::-webkit-input-placeholder,
+input[type="password"]::-webkit-input-placeholder {
+  -webkit-appearance: none;
+          appearance: none;
+  color: #3a3838;
+  font-family: "Quicksand";
+}
+
+@media only screen and (min-width: 768px) {
+  input[type="text"],
+  input[type="mail"],
+  input[type="password"] {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  input[type="text"],
+  input[type="mail"],
+  input[type="password"] {
+    font-size: calc(1vmin + 11px);
+  }
+}
+
+/*******    PANNEL USER WINDOW     *******/
+.pannelUser {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: _;
+      -ms-flex-align: _;
+          align-items: _;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  z-index: 1000;
+  background: -webkit-gradient(linear, left bottom, left top, from(#43cea2), to(#185a9d));
+  background: linear-gradient(to top, #43cea2, #185a9d);
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  padding: 0.5% 0 0;
+  border-radius: 0 25px 25px 0;
+  overflow: hidden;
+}
+
+.pannelUser-head {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 0 1% 1%;
+  min-height: 2.5%;
+}
+
+.pannelUser_open {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+/*******    CONTAINER SECTION     *******/
+.userSection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-animation: fadeIn 0.5s forwards;
+          animation: fadeIn 0.5s forwards;
+}
+
+/*******    PANNEL START     *******/
+.pannelStart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  -webkit-animation: fadeIn 0.3s forwards;
+          animation: fadeIn 0.3s forwards;
+}
+
+.pannelStart-head-title {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  font-family: "Biryani";
+}
+
+.pannelStart-head-text {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  font-family: "Quicksand";
+}
+
+.pannelStart-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 0 25%;
+}
+
+/*******    PANNEL REGISTER     *******/
+.pannelRegister {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  -webkit-animation: fadeIn 0.3s forwards;
+          animation: fadeIn 0.3s forwards;
+}
+
+.pannelRegister-head {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  font-family: "Quicksand";
+  padding: 0 1%;
+}
+
+.pannelRegister-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 0 25%;
+}
+
+/*******    PANNEL LOGGIN     *******/
+.pannelLoggin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  -webkit-animation: fadeIn 0.3s forwards;
+          animation: fadeIn 0.3s forwards;
+}
+
+.pannelLoggin-head {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  font-family: "Quicksand";
+}
+
+.pannelLoggin-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 0 25%;
+}
+
+/*******    PANNEL RULES     *******/
+.pannelRules {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  -webkit-animation: fadeIn 0.3s forwards;
+          animation: fadeIn 0.3s forwards;
+}
+
+.pannelRules-head {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  font-family: "Quicksand";
+}
+
+.pannelRules-head-user {
+  text-transform: capitalize;
+  font-family: "Exo";
+}
+
+.pannelRules-content, .pannelTiming-content, .pannelAccount-content {
+  padding: 1% 1% 0;
+}
+
+.pannelRules-content-text, .pannelTiming-content-text, .pannelAccount-content-text, .pannelDelete-content-text {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  font-family: "Quicksand";
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+}
+
+.pannelRules-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 0 25%;
+}
+
+/*******    PANNEL TIMING     *******/
+.pannelTiming {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  -webkit-animation: fadeIn 0.3s forwards;
+          animation: fadeIn 0.3s forwards;
+}
+
+.pannelTiming-head {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  font-family: "Quicksand";
+}
+
+.pannelTiming-head-user {
+  text-transform: capitalize;
+}
+
+.pannelTiming-content-text {
+  margin-bottom: 5px;
+}
+
+.pannelTiming-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 0 25%;
+}
+
+.timer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 2% 0;
+}
+
+.timer-text {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  padding: 3% 4%;
+  font-family: "DS_Digi";
+  color: red;
+  background-color: #000;
+  border-radius: 5px;
+}
+
+/*******    PANNEL ACCOUNT     *******/
+.pannelAccount {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  -webkit-animation: fadeIn 0.3s forwards;
+          animation: fadeIn 0.3s forwards;
+}
+
+.pannelAccount-head {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  font-family: "Quicksand";
+}
+
+.pannelAccount-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: auto;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.pannelAccount-content-text {
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+.pannelAccount-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 0 25%;
+}
+
+.pannelAccount-footer button {
+  margin: 2%;
+}
+
+.account-item {
+  font-family: "Exo";
+  font-weight: 600;
+}
+
+.account-data-mail,
+.account-item-shapes {
+  text-transform: none;
+}
+
+.account-data-pwd {
+  color: green;
+}
+
+/*******    PANNEL NAV EDIT     *******/
+.pannelNavEdit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  -webkit-animation: fadeIn 0.3s forwards;
+          animation: fadeIn 0.3s forwards;
+}
+
+.pannelNavEdit-head {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  font-family: "Quicksand";
+}
+
+.pannelNavEdit-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 1% 15%;
+}
+
+.pannelNavEdit-content button {
+  width: 100%;
+  padding: 2% 3%;
+  margin: 3%;
+}
+
+.pannelNavEdit-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 0 25%;
+}
+
+/*******    PANNEL EDIT USERNAME & MAIL & PASSWORD    *******/
+.pannelEdit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  -webkit-animation: fadeIn 0.3s forwards;
+          animation: fadeIn 0.3s forwards;
+}
+
+.pannelEdit-head {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  font-family: "Quicksand";
+  padding: 2% 0;
+}
+
+.pannelEdit-head-user {
+  text-transform: capitalize;
+  margin-top: 5%;
+}
+
+.pannelEdit-head-mail {
+  margin-top: 5%;
+}
+
+.pannelEdit-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 0 25%;
+}
+
+/*******    PANNEL DELETE     *******/
+.pannelDelete {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  -webkit-animation: fadeIn 0.3s forwards;
+          animation: fadeIn 0.3s forwards;
+}
+
+.pannelDelete-head {
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  font-family: "Quicksand";
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+}
+
+.pannelDelete-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 1% 5%;
+}
+
+.pannelDelete-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 0 25%;
+}
+
+/*******    ANIMATION FADE     *******/
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*******    RESPONSIVE > 768px     *******/
+@media only screen and (min-width: 768px) {
+  .pannelUser {
+    width: 40%;
+  }
+  .pannelUser_open {
+    -webkit-box-shadow: 3px 0px 7px 2px #00868b;
+            box-shadow: 3px 0px 7px 2px #00868b;
+  }
+  .pannelStart {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    width: 100%;
+    text-align: center;
+    -webkit-animation: fadeIn 0.3s forwards;
+            animation: fadeIn 0.3s forwards;
+  }
+  .pannelStart-head-text {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #00fff2;
+    margin-top: 3%;
+  }
+  .pannelStart-footer {
+    padding: 0 20%;
+  }
+  .pannelStart-footer button {
+    margin: 8% 0;
+  }
+  .pannelRegister-head {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #00fff2;
+    font-weight: 300;
+  }
+  .pannelRules-head-title {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #00fff2;
+    font-weight: 400;
+  }
+  .pannelRules-content-text, .pannelTiming-content-text, .pannelAccount-content-text, .pannelDelete-content-text {
+    font-weight: 200;
+  }
+  .pannelRules-footer {
+    padding: 0 15%;
+  }
+  .pannelTiming-footer {
+    padding: 0 15%;
+  }
+  .pannelAccount-content-text {
+    margin-bottom: 0;
+  }
+  .pannelAccount-footer {
+    padding: 2% 15%;
+  }
+  .pannelNavEdit {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .pannelNavEdit-content button {
+    margin: 5% 0;
+  }
+  .pannelNavEdit-footer {
+    padding: 0 25%;
+  }
+  .pannelEdit-head-text {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #00fff2;
+    font-weight: 400;
+  }
+  .pannelEdit-head-user {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #00fff2;
+    font-weight: 200;
+  }
+  .pannelEdit-footer {
+    padding: 0 15%;
+  }
+  .form-edit {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    padding: 0 5%;
+  }
+  .pannelDelete-content-text {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #00fff2;
+    font-weight: 200;
+  }
+  .pannelDelete-footer {
+    padding: 0 20%;
+  }
+}
+
+/*******    RESPONSIVE > 992px     *******/
+@media only screen and (min-width: 992px) {
+  .pannelUser {
+    max-width: 300px;
+  }
+}
+
+/*******    RESPONSIVE > 1200px     *******/
+@media only screen and (min-width: 1201px) {
+  .pannelUser {
+    width: 22%;
+  }
+  .pannelAccount-footer {
+    padding: 2% 18%;
+  }
+}
+
+/*******    RESPONSIVE > 1600px     *******/
+@media only screen and (min-width: 1600px) {
+  .pannelUser {
+    position: relative;
+    -webkit-transform: none;
+            transform: none;
+    width: 20%;
+    max-width: 300px;
+    height: 100%;
+    border-radius: 20px;
+  }
+  .pannelStart-head-text {
+    padding: 0 1%;
+  }
+  .pannelRules-content-text, .pannelTiming-content-text, .pannelAccount-content-text, .pannelDelete-content-text {
+    font-size: calc(1.1vmin + 10px);
+    margin-bottom: 3%;
+  }
+}
+/*# sourceMappingURL=style.css.map */

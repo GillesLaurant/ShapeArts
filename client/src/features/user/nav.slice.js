@@ -1,9 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  createTiming,
-  rememberTiming,
-  togglePosition,
-} from "../PannelShape/shape.slice";
+import { createTiming, togglePosition } from "../PannelShape/shape.slice";
 import {
   registerSuccess,
   logginSuccess,

@@ -1,28 +1,36 @@
 // Imports
 require("dotenv").config();
-const app = require("express")();
-const http = require("http");
+const express = require("express");
+const { createServer } = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
+const path = require("path");
+
+// Controllers
 const appController = require("./controllers/app.controller");
 const userController = require("./controllers/user.controller");
 const editUserController = require("./controllers/editUser.controller");
 
+const app = express();
 app.use(cors());
+
+app.use(express.static("client/build/static"));
+
+app.get("/*", (_, res) => {
+  res.sendFile(path.join(__dirname, "client/build/index.html"));
+});
+
+const httpServer = createServer(app);
 // Instantiate server
-const server = http.createServer(app);
-const io = new Server(server, {
+const io = new Server(httpServer, {
   cors: {
     // origin: [process.env.CLIENT_HOST, process.env.SOCKET_UI_HOST],
     methods: ["GET", "POST"],
-    origin: "http://localhost:3000",
+    origin: "http://localhost:3003",
     credentials: true,
   },
+  serveClient: false,
 });
-
-// app.get("/", (req, res) => {
-//   res.sendFile(`${__dirname}/public/index.html`);
-// });
 
 // Socket middleware authenticated
 io.use((socket, next) => {
@@ -49,6 +57,6 @@ const onConnection = (socket) => {
 io.on("connection", onConnection);
 
 // Listener server
-server.listen(process.env.SERVER_PORT, () => {
+httpServer.listen(process.env.SERVER_PORT, () => {
   console.log(`SERVER listen => ${process.env.SERVER_PORT}`);
 });
