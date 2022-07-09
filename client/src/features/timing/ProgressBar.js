@@ -20,9 +20,10 @@ const ProgressBar = () => {
         [{ with: `${timeLeft(dateShape) / 3}vw` }, { width: "0vw" }],
         {
           duration: timeLeft(dateShape) * 1000,
-          fill: "forwards",
         }
       );
+    } else {
+      progressBar.current.style.width = "100vw";
     }
   }, [dateShape]);
 

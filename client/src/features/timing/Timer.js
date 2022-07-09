@@ -50,6 +50,7 @@ const Timer = () => {
 
   return (
     <p className="timer-text">
+      {/* MINUTES & SECONDS */}
       {(timer.min < 10 ? "0" : "") +
         timer.min +
         " : " +

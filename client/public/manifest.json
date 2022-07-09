@@ -1,19 +1,19 @@
 {
-  "short_name": "ShapeArts",
+  "short_name": "ShapeArts.fr",
   "name": "ShapeArts",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "48x48",
       "type": "image/x-icon"
     },
     {
-      "src": "shapeArts_logo192_text.png",
+      "src": "images/shapeArts_logo192_text.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "shapeArts_logo512_text.png",
+      "src": "images/shapeArts_logo512_text.png",
       "type": "image/png",
       "sizes": "512x512"
     }

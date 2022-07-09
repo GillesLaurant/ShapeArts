@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import SpinnerButton from "./SpinnerButton";
 import {
   register,
   loggin,
@@ -11,17 +10,20 @@ import {
 } from "../user/user.slice";
 import { setError } from "../error/error.slice";
 import "./style.scss";
-import { loaderButton, toggleLoader } from "../loaders/loader.slice";
+import { toggleLoader } from "../loaders/loader.slice";
 import { validShape } from "../PannelShape/shape.slice";
+import SpinnerButton from "./SpinnerButton";
 
 /*******    ACTION BUTTONS     *******/
 
 const ButtonAction = ({ nameButton }) => {
   const buttonTarget = useRef();
   const dispatch = useDispatch();
+  // State
   const user = useSelector((state) => state.user);
   const error = useSelector((state) => state.error);
   const loader = useSelector((state) => state.loader);
+  // Colors edit buttons
   const colorsEdit = {
     col1: "#30cdf0",
     col2: "#330867",
@@ -38,6 +40,7 @@ const ButtonAction = ({ nameButton }) => {
       col2: "#00ecbc",
       col3: "rgb(41, 77, 160, 0.1)",
     },
+
     loggin: {
       name: "loggin",
       content: "Se connecter",
@@ -46,6 +49,7 @@ const ButtonAction = ({ nameButton }) => {
       col2: "#2575fc",
       col3: "rgb(255, 255, 242, 0.01)",
     },
+
     editUsername: {
       name: "editUsername",
       content: "Modifer",
@@ -54,6 +58,7 @@ const ButtonAction = ({ nameButton }) => {
       col2: colorsEdit.col2,
       col3: colorsEdit.col3,
     },
+
     editMail: {
       name: "editMail",
       content: "Modifier",
@@ -62,6 +67,7 @@ const ButtonAction = ({ nameButton }) => {
       col2: colorsEdit.col2,
       col3: colorsEdit.col3,
     },
+
     editPwd: {
       name: "editPwd",
       content: "Modifier",
@@ -70,6 +76,7 @@ const ButtonAction = ({ nameButton }) => {
       col2: colorsEdit.col2,
       col3: colorsEdit.col3,
     },
+
     loggout: {
       name: "loggout",
       content: "Se déconnecter",
@@ -78,6 +85,7 @@ const ButtonAction = ({ nameButton }) => {
       col2: "#5f72bd",
       col3: "rgb(95, 1, 183, 0.01)",
     },
+
     deleteAccount: {
       name: "deleteAccount",
       content: "Se désinscrire",
@@ -86,6 +94,7 @@ const ButtonAction = ({ nameButton }) => {
       col2: "#cc208e",
       col3: "rgb(147, 27, 83, 0.01)",
     },
+
     validShape: {
       name: "validShape",
       content: "Valider",
@@ -100,6 +109,7 @@ const ButtonAction = ({ nameButton }) => {
   const checkValidity = (ev) => {
     ev.preventDefault();
     const button = listButtons[nameButton];
+    // Regex list
     const regex = {
       username: /^[A-Za-z0-9_-]{3,15}$/,
       usernameEdited: /^[A-Za-z0-9_-]{3,15}$/,
@@ -139,6 +149,7 @@ const ButtonAction = ({ nameButton }) => {
         classList.push(item);
       });
       if (classList.every((classValid) => classValid !== "formNoValid")) {
+        // Animate negative
         buttonTarget.current.animate(
           [
             { transform: "translateX(-10px)" },
@@ -182,6 +193,7 @@ const ButtonAction = ({ nameButton }) => {
     });
     // If any errors dispatch button action
     if (!echec) {
+      // Dispatch actions
       switch (nameButton) {
         case "register":
           dispatch(register(nameButton));
@@ -201,7 +213,6 @@ const ButtonAction = ({ nameButton }) => {
           dispatch(edit(nameButton));
           break;
         case "validShape":
-          console.log("valid", user.isLoggin, nameButton);
           if (user.isLoggin === true) {
             dispatch(validShape());
           }

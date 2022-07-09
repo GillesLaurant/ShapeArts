@@ -11,7 +11,6 @@ import "./style.scss";
 
 const ConfigColors = () => {
   const dispatch = useDispatch();
-  // Shape
   const shape = useSelector((state) => state.shape);
 
   // Handle type Normal || Gradient colors
@@ -34,7 +33,7 @@ const ConfigColors = () => {
 
   return (
     <section className="configColors">
-      <label htmlFor="" className="configColors-label">
+      <label className="configColors-label">
         Couleur<span style={{ opacity: shape.selector_gradient && 1 }}>s</span>
       </label>
 
@@ -120,7 +119,7 @@ const ConfigColors = () => {
           </div>
           {/* RANGE ORIENTATION || RAYON */}
           <div className="gradient-orientation">
-            <label htmlFor="" className="gradient-orientation-label">
+            <label className="gradient-orientation-label">
               {shape.selector_linear ? "Orientation" : "Rayon"}
             </label>
 

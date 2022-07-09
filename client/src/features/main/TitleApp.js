@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { closeAllWindows } from "../user/nav.slice";
 
 /*******    TITLE APP     *******/
@@ -7,6 +7,7 @@ import { closeAllWindows } from "../user/nav.slice";
 const TitleApp = () => {
   const dispatch = useDispatch();
 
+  // Close all windows
   const handleClick = (ev) => {
     ev.preventDefault();
     dispatch(closeAllWindows());
@@ -17,7 +18,5 @@ const TitleApp = () => {
     </h1>
   );
 };
-
-TitleApp.propTypes = {};
 
 export default TitleApp;

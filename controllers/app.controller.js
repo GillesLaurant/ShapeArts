@@ -20,22 +20,16 @@ module.exports = (io, socket) => {
       .then((clothFind) => {
         // IF new cloth
         if (clothFind[1]) {
-          console.log("CREATE CLOTH");
-
           responseConnexion = {
             clothId: clothFind[0].dataValues.id,
             cloth: [],
             count: clothFind[0].dataValues.total_shapes,
             newShape: false,
           };
-          // const wait = setTimeout(() => {
           // Send new cloth virgin
           socket.emit("sendCloth", responseConnexion);
-          // }, 5000);
-          // return () => clearTimeout(wait);
         }
 
-        // console.log("success cloth find", clothFind);
         // IF not new cloth to do find shapes
         models.Shape.findAll({
           where: {
@@ -69,8 +63,6 @@ module.exports = (io, socket) => {
         })
           // Success find shapes
           .then((shapesFind) => {
-            // console.log("shapes findn", shapesFind);
-
             responseConnexion = {
               clothId: clothFind[0].dataValues.id,
               cloth:
@@ -78,16 +70,11 @@ module.exports = (io, socket) => {
               count: clothFind[0].dataValues.total_shapes,
               newShape: false,
             };
-            const wait = setTimeout(() => {
-              // Send cloth
-              socket.emit("sendCloth", responseConnexion);
-            }, 5000);
-            return () => clearTimeout(wait);
+            // Send cloth
+            socket.emit("sendCloth", responseConnexion);
           })
           // Error find shapes
-          .catch((errShapes) => {
-            console.log("error find shapes", errShapes);
-
+          .catch(() => {
             socket.emit("error_server", {
               nameError: "server",
               msgError: errorServer,
@@ -95,9 +82,7 @@ module.exports = (io, socket) => {
           });
       })
       // Error find or create cloth
-      .catch((errFind) => {
-        console.log("error find cloth", errFind);
-
+      .catch(() => {
         socket.emit("error_server", {
           nameError: "server",
           msgError: errorServer,
@@ -106,67 +91,53 @@ module.exports = (io, socket) => {
   };
 
   /*******    DISCONNEXION     *******/
-  const disconnect = (reason) => {
+  const disconnect = () => {
     // PARAMS
-    let cookieReceiv = socket.handshake.headers.cookie;
-    let newCookieUserId;
+    const tokenId = socket.handshake.auth.tokenId;
 
     // TODO check cookie
-    if (!cookieReceiv) {
+    if (tokenId === -1) {
       return;
     }
 
-    // TODO check token in cookie
-    let jwsToken = cookieReceiv.match("JWSToken=Bearer ");
+    // TODO find user
+    const cookieUserId = jwtUtils.getUserId(tokenId);
 
-    // IF token in cookie
-    if (jwsToken !== null) {
-      const startToken = jwsToken["index"] + 9;
-      // TODO egt token
-      jwsToken = jwsToken["input"].substring(startToken, startToken + 151);
-      console.log(jwsToken);
-      // TODO find user
-      const cookieUserId = jwtUtils.getUserId(jwsToken);
+    // IF expired token
+    if (!cookieUserId) {
+      // TODO decode token
+      let newCookieUserId = jwtUtils.decodeToken(tokenId);
 
-      // IF expired token
-      if (!cookieUserId) {
-        console.log("decode");
-        // TODO decode token
-        newCookieUserId = jwtUtils.decodeToken(jwsToken);
+      if (newCookieUserId !== null) {
         newCookieUserId = newCookieUserId.payload.userId;
       }
-      // TODO find user
-      models.User.findByPk(!cookieUserId ? newCookieUserId : cookieUserId)
-        // Success find
-        .then((userFind) => {
-          // TODO update user
-          models.User.update(
-            { is_loggin: false },
-            {
-              where: {
-                id: userFind.dataValues.id,
-              },
-            }
-          )
-            // Success update loggout user
-            .then((successUpdate) => {
-              return console.log(
-                "success DISCO UPDATE user",
-                userFind.dataValues.id,
-                successUpdate,
-                reason
-              );
-            })
-            // Error update loggout user
-            .catch((errUpdate) => {
-              return console.log("error DISCO UPDATE user", errUpdate);
-            });
-        })
-        // Error find by pk
-        .catch((errFK) => {
-          return console.log("error FINDBYPK user", errFK);
-        });
     }
+    // TODO find user
+    models.User.findByPk(!cookieUserId ? newCookieUserId : cookieUserId)
+      // Success find
+      .then((userFind) => {
+        // TODO update user
+        models.User.update(
+          { is_loggin: false },
+          {
+            where: {
+              id: userFind.dataValues.id,
+            },
+          }
+        )
+          // Success update loggout user
+          .then(() => {
+            return;
+          })
+          // Error update loggout user
+          .catch(() => {
+            return;
+          });
+      })
+      // Error find by pk
+      .catch(() => {
+        return;
+      });
   };
 
   /*******    ADD SHAPE     *******/
@@ -223,10 +194,7 @@ module.exports = (io, socket) => {
                 { where: { id: userId } }
               )
                 // Success increment shapes user
-                .then((addedShape) => {
-                  console.log("INCREMENT", addedShape);
-                  console.log("success FINDALLCOUNT newshape", addedShape);
-
+                .then(() => {
                   models.Shape.findAndCountAll({
                     where: {
                       ClothId: clothId,
@@ -259,22 +227,21 @@ module.exports = (io, socket) => {
                   })
                     // Success findAll
                     .then((findAll) => {
-                      const waitAgain = setTimeout(() => {
-                        io.emit("successNewShape", {
-                          cloth: findAll.rows,
-                          count: findAll.count,
-                        });
-                        socket.emit(
-                          "successCreateShape",
-                          shapeResulted[0].createdAt
-                        );
-                      }, 5000);
-                      return () => clearTimeout(wait, waitAgain);
+                      // Send new shape all clients
+                      io.emit("successNewShape", {
+                        cloth: findAll.rows,
+                        count: findAll.count,
+                      });
+
+                      // Send date create shape
+                      socket.emit(
+                        "successCreateShape",
+                        shapeResulted[0].createdAt
+                      );
                     });
                 })
                 // Error increment shapes user
-                .catch((errIncre) => {
-                  console.log("errIncre", errIncre);
+                .catch(() => {
                   socket.emit("error_server", {
                     nameError: "shape",
                     msgError: "Erreur, veuillez réessayer plus tard.",
@@ -282,8 +249,7 @@ module.exports = (io, socket) => {
                 });
             })
             // Error increment cloth
-            .catch((errCloth) => {
-              console.log("errCloth", errCloth);
+            .catch(() => {
               socket.emit("error_server", {
                 nameError: "shape",
                 msgError: "Erreur, veuillez réessayer plus tard.",
@@ -292,6 +258,7 @@ module.exports = (io, socket) => {
         }
         // IF shape not create
         else if (!shapeResulted[1]) {
+          // Send remember time
           return socket.emit("alreadyPlay", {
             date: shapeResulted[0].dataValues.createdAt,
             nameError: "shape",
@@ -301,8 +268,7 @@ module.exports = (io, socket) => {
       })
 
       // Error sequelize model;
-      .catch((errModel) => {
-        console.log("errModel", errModel);
+      .catch(() => {
         socket.emit("error_server", {
           nameError: "shape",
           msgError: "Erreur, veuillez réessayer plus tard.",

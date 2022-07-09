@@ -15,7 +15,6 @@ export default function socketMiddleware(socket) {
   return ({ dispatch, getState }) =>
     (next) =>
     (action) => {
-      // console.log("test1", socket.socket);
       switch (action.type) {
         /*******    START ACTION     *******/
         case "socket/connectSocket":
@@ -23,7 +22,6 @@ export default function socketMiddleware(socket) {
           socket
             .connect()
             .then(() => {
-              console.log("essai");
               // IF socket connected get cloth
               if (socket.socket.connected) {
                 dispatch(successConnect());
@@ -37,7 +35,6 @@ export default function socketMiddleware(socket) {
 
               // Receiv all errors server
               socket.on("error_server", (err) => {
-                console.log("ERROR", err);
                 dispatch(setError(err));
               });
 
@@ -47,9 +44,8 @@ export default function socketMiddleware(socket) {
               });
             })
 
-            // Error connexion server & try reconnect
+            // Error connexion server
             .catch(() => {
-              console.log("ERROR SOCKET", socket.socket.connected);
               dispatch(failedConnect());
             });
           break;
@@ -60,15 +56,13 @@ export default function socketMiddleware(socket) {
             .connect()
             .then(() => {
               if (socket.socket.connected) {
-                console.log("reco");
                 dispatch(successConnect());
                 socket.emit("connexion", {});
               }
             })
             .catch(() => {
-              console.log("ERR NOT CONNECT");
               dispatch(setError({ nameError: "socket" }));
-              socket.disconnect();
+              socket.close();
             });
 
           break;
@@ -79,6 +73,8 @@ export default function socketMiddleware(socket) {
           const userId = getState().user.id;
           const username = getState().user.username;
           const clothId = getState().cloth.cloth_id;
+
+          // Emit shape
           socket.emit("validShape", { shape, userId, username, clothId });
 
           // Receiv date shape timing

@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-/*******    PANNEL MAIL EDIT     *******/
+/*******    SVG GENERATOR     *******/
 
 const GeneratorSVG = ({ nameSvg }) => {
   const normalView = "0 0 512 512";
+
+  // List svgs
   const listSVGs = {
     closeWindows: {
       view: normalView,
@@ -60,6 +62,7 @@ const GeneratorSVG = ({ nameSvg }) => {
       ),
     },
   };
+
   return (
     <svg
       className="svg_model"

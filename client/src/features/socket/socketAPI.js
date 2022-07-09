@@ -1,26 +1,34 @@
 import { io } from "socket.io-client";
-// Example conf. You can move this to your config file.
-const host = "http://localhost:3003";
+
+/*******    SOCKET     *******/
 export default class socketAPI {
   socket;
 
+  /*******    CONNECT     *******/
   connect() {
+    // SOCKET
     this.socket = io.connect("http://localhost:3003", {
       withCredentials: true,
+      extraHeaders: {
+        "secure-header": "ShApEsArTsSeRvEr",
+      },
       auth: {
-        key: "ShApEsArTsSeRvEr",
+        tokenId: -1,
       },
       reconnectionAttempts: 5,
     });
-    // console.log(this.socket);
+
     return new Promise((resolve, reject) => {
+      // Success connect
       this.socket.on("connect", () => {
-        console.log("receiv", this.socket);
         resolve();
       });
+      // Error connect
       this.socket.on("connect_error", (error) => reject(error));
     });
   }
+
+  /*******    DISCONNECT     *******/
   disconnect() {
     return new Promise((resolve) => {
       this.socket.disconnect(() => {
@@ -29,12 +37,12 @@ export default class socketAPI {
       });
     });
   }
+
+  /*******    EMITER     *******/
   emit(event, data) {
-    console.log("emited");
     return new Promise((resolve, reject) => {
       if (!this.socket) return reject("No socket connection.");
       return this.socket.emit(event, data, (response) => {
-        // Response is the optional callback that you can use with socket.io in every request. See 1 above.
         if (response.error) {
           console.error(response.error);
           return reject(response.error);
@@ -43,8 +51,9 @@ export default class socketAPI {
       });
     });
   }
+
+  /*******    LISTENER     *******/
   on(event, fun) {
-    // No promise is needed here, but we're expecting one in the middleware.
     return new Promise((resolve, reject) => {
       if (!this.socket) return reject("No socket connection.");
       this.socket.on(event, fun);

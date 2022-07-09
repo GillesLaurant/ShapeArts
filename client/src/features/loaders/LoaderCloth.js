@@ -6,6 +6,7 @@ import "./style.scss";
 const LoaderCloth = () => {
   const loader = useRef();
 
+  // Auto scroll
   useEffect(() => {
     loader.current.scrollIntoView({
       behavior: "smooth",

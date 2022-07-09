@@ -3,12 +3,15 @@ import { changeFields } from "../user/user.slice";
 import { navigate, toggleWindows } from "../user/nav.slice";
 import {
   rememberTiming,
+  resetTiming,
   toggleDisplay,
   toggleGradient,
   toggleGradientType,
   toggleLayout,
   togglePosition,
 } from "../PannelShape/shape.slice";
+
+// REGEXS
 const PWD_REGEX = /^[A-Za-z0-9_-]{4,15}$/;
 const USERNAME_REGEX = /^[A-Za-z0-9_-]{3,15}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
@@ -28,6 +31,7 @@ const initialState = {
     shape: false,
     socket: false,
   },
+  // Messages error
   errorMsg: {
     shape: "",
     server: "",
@@ -76,9 +80,10 @@ export const errorSlice = createSlice({
         state.errorMsg[action.payload.nameError] = action.payload.msgError;
       })
 
-      // Reset time error on config shape
+      // Reset time error on config shape || finish wait
       .addCase(
-        togglePosition ||
+        resetTiming ||
+          togglePosition ||
           toggleLayout ||
           toggleDisplay ||
           toggleGradient ||

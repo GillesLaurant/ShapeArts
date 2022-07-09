@@ -6,9 +6,9 @@ import ConfigLayout from "./ConfigLayout";
 import ConfigDisplay from "./ConfigDisplay";
 import ConfigColors from "./ConfigColors";
 import ValidShape from "./ValidShape";
+import GeneratorSVG from "../../features/svg/GeneratorSVG";
 import { toggleWindows } from "../user/nav.slice";
 import "./style.scss";
-import GeneratorSVG from "../../features/svg/GeneratorSVG";
 
 /*******    PANNEL CONFIG SHAPE     *******/
 
@@ -59,7 +59,5 @@ const PannelCommand = () => {
     </section>
   );
 };
-
-PannelCommand.propTypes = {};
 
 export default PannelCommand;

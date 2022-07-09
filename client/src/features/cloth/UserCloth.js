@@ -16,6 +16,7 @@ const UserCloth = (props) => {
   const handleLayout = (ev) => {
     ev.preventDefault();
     let position;
+
     // If click on SVG
     if (ev.target.nodeName === "path" || ev.target.nodeName === "svg") {
       position = {
@@ -35,6 +36,7 @@ const UserCloth = (props) => {
     <div className="userCloth">
       <div
         className="userCloth-container-shape"
+        // If not logged open window user
         onClick={
           logged
             ? handleLayout

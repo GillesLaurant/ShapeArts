@@ -1,10 +1,9 @@
 import React from "react";
 import InputRange from "../buttons&inputs/InputRange";
-import PropTypes from "prop-types";
 
 /*******    CONFIG DISPLAY SHAPE     *******/
 
-const ConfigDisplay = (props) => {
+const ConfigDisplay = () => {
   // List inputs pos_z & size & rotation & rotation_x & rotation_y
   const inputs = [
     {
@@ -52,7 +51,5 @@ const ConfigDisplay = (props) => {
     </section>
   );
 };
-
-ConfigDisplay.propTypes = {};
 
 export default ConfigDisplay;

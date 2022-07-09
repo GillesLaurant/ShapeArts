@@ -6,13 +6,12 @@ import {
   editSuccess,
 } from "../../features/user/user.slice";
 
-/*******    USER MIDDLEWARE     *******/
+/*******    USER ACTIONS MIDDLEWARE     *******/
 
 export default function userMiddleware(socket) {
   return ({ dispatch, getState }) =>
     (next) =>
     (action) => {
-      // console.log("test2");
       // User state
       const user = getState().user;
 
@@ -31,7 +30,6 @@ export default function userMiddleware(socket) {
           socket.emit("loggin", user);
 
           socket.on("successLoggin", (logged) => {
-            console.log(logged);
             dispatch(logginSuccess(logged));
           });
           break;
@@ -56,7 +54,6 @@ export default function userMiddleware(socket) {
 
         /*******    EDITS     *******/
         case "user/edit":
-          console.log(action.payload);
           switch (action.payload) {
             // Edit username
             case "editUsername":

@@ -5,7 +5,6 @@ import { createSlice } from "@reduxjs/toolkit";
 // STATE
 const initialState = {
   socket_connected: false,
-  connectAttemps: 0,
 };
 
 // SLICE
@@ -13,19 +12,17 @@ export const socketSlice = createSlice({
   name: "socket",
   initialState,
   reducers: {
-    connectSocket: (state) => {
-      state.connectAttemps += 1;
-    },
+    // Start action
+    connectSocket: () => {},
+    // Success connect server
     successConnect: (state) => {
       state.socket_connected = true;
-      state.connectAttemps = 0;
     },
+    // Error connect server
     failedConnect: (state) => {
       state.socket_connected = false;
-      state.connectAttemps = 0;
     },
   },
-  extraReducers(builder) {},
 });
 
 // ACTIONS

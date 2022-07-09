@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 /*******    CLOTH     *******/
 
 // State
@@ -29,19 +30,10 @@ export const clothSlice = createSlice({
       state.newShape = true;
     },
   },
-  extraReducers(builder) {
-    // builder
-    // .addCase(requestCloth.pending, (state, action) => {
-    //   console.log("pending", action);
-    //   state.status = action.meta.requestStatus;
-    //   // state.status.push(action.payload.cloth);
-    // })
-  },
 });
 
 // Actions
 export const { getCloth, addShape } = clothSlice.actions;
-export const getRecently = (state) => state;
 
 // Reducer
 export default clothSlice.reducer;

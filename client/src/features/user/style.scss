@@ -13,8 +13,6 @@
   top: 0;
   transform: translateX(-100%);
   z-index: 1000;
-  // background: linear-gradient(to top, #005c97, #363795);
-  // background: linear-gradient(to bottom, #136a8a, #267871);
   background: linear-gradient(to top, #43cea2, #185a9d);
   transition: transform 0.5s;
   padding: 0.5% 0 0;
@@ -31,12 +29,7 @@
 }
 
 .pannelUser_open {
-  // @extend .pannelUser;
   transform: translateX(0%);
-}
-
-.back_undefined {
-  display: none;
 }
 
 /*******    CONTAINER SECTION     *******/
@@ -290,7 +283,7 @@
   }
 }
 
-/*******    RESPONSIVE FIRST MOBIL     *******/
+/*******    RESPONSIVE > 768px     *******/
 @media #{$smart} {
   // Window
   .pannelUser {
@@ -400,6 +393,7 @@
   }
 }
 
+/*******    RESPONSIVE > 992px     *******/
 @media #{$tablett} {
   .pannelUser {
     max-width: 300px;
@@ -426,7 +420,6 @@
     max-width: 300px;
     height: 100%;
     border-radius: 20px;
-    // margin-right: 2%;
   }
   // Text pannel start
   .pannelStart-head-text {

@@ -1,0 +1,516 @@
+/*******    MIXINS    *******/
+/*******    FLEX    *******/
+/*******    DISPLAY PANNELS USER     *******/
+/*******    FOOTER PANNELS USER     *******/
+/*******    BUTTONS     *******/
+/*******    RANGE INPUTS     *******/
+/*******    RANGE INPUTS TRACKS    *******/
+/*******    RANGE INPUTS THUMBS    *******/
+/*******    RESET TEXT INPUTS     *******/
+/*******    PLACEHOLDER INPUTS     *******/
+/*******    FONTS     *******/
+/*******    TITLE PANNELS USER     *******/
+/*******    SUBTITLE PANNELS USER     *******/
+/*******    TEXT PANNELS USER     *******/
+/*******    BUTTON ANIMATION LOADER     *******/
+/*******    VARIABLES     *******/
+/*******    BUTTONS     *******/
+.buttonsWindow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  width: 100%;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  padding: 2%;
+  font-family: "Quicksand";
+  word-wrap: none;
+  min-height: 30px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  width: auto;
+  background-color: transparent;
+  margin: 0 1%;
+  z-index: 5000;
+}
+
+.buttonsWindow:hover {
+  -webkit-filter: brightness(130%) drop-shadow(0px 0px 5px #18c9f5);
+          filter: brightness(130%) drop-shadow(0px 0px 5px #18c9f5);
+}
+
+.buttonsWindow:hover:disabled {
+  -webkit-filter: brightness(90%) drop-shadow(0px 0px 1px #18c9f5);
+          filter: brightness(90%) drop-shadow(0px 0px 1px #18c9f5);
+  pointer-events: none;
+}
+
+.buttonsWindow:active {
+  -webkit-box-shadow: inset 0px 0px 5px 1px #f9f9fa;
+          box-shadow: inset 0px 0px 5px 1px #f9f9fa;
+}
+
+.button_closeUser {
+  fill: #8e0f57;
+  border-radius: 50%;
+}
+
+.button_closeUser:hover {
+  fill: #18c9f5;
+}
+
+.button_closeUser:active {
+  fill: #8e0f57;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.button_closeCommand {
+  fill: #18c9f5;
+}
+
+.button_closeCommand:hover {
+  fill: #8e0f57;
+}
+
+.button_closeCommand:active {
+  fill: #18c9f5;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.buttons_windows {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: fixed;
+  top: 0;
+  background: transparent;
+  padding: 1%;
+  border-radius: 50%;
+  margin: 3% 0 0 0;
+  cursor: pointer;
+  border: none;
+  -webkit-transition: all 0.3s, border none;
+  transition: all 0.3s, border none;
+}
+
+.button_pannelUser {
+  color: #cc26fe;
+  left: 0;
+  margin-left: 2%;
+}
+
+.button_pannelUser:hover {
+  -webkit-box-shadow: 0 0 10px 1px #cc26fe;
+          box-shadow: 0 0 10px 1px #cc26fe;
+}
+
+.button_pannelUser:active {
+  color: #cc26fe;
+  -webkit-box-shadow: 0 0 10px 3px #cc26fe;
+          box-shadow: 0 0 10px 3px #cc26fe;
+  background: transparent;
+}
+
+.button_pannelCommand {
+  color: rgba(2, 222, 204, 0.792);
+  right: 0;
+  margin-right: 2%;
+}
+
+.button_pannelCommand:hover {
+  -webkit-box-shadow: 0 0 10px 1px rgba(2, 222, 204, 0.792);
+          box-shadow: 0 0 10px 1px rgba(2, 222, 204, 0.792);
+}
+
+.button_pannelCommand:active {
+  color: rgba(2, 222, 204, 0.792);
+  -webkit-box-shadow: 0 0 10px 3px rgba(2, 222, 204, 0.792);
+          box-shadow: 0 0 10px 3px rgba(2, 222, 204, 0.792);
+  background: transparent;
+}
+
+.svg_window {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-miterlimit: 10;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+.svg_model {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.buttonUser {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  width: 100%;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  padding: 2%;
+  font-family: "Quicksand";
+  word-wrap: none;
+  min-height: 30px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  margin: 3% 0;
+  color: white;
+}
+
+.buttonUser:hover {
+  -webkit-filter: brightness(130%) drop-shadow(0px 0px 5px #18c9f5);
+          filter: brightness(130%) drop-shadow(0px 0px 5px #18c9f5);
+}
+
+.buttonUser:hover:disabled {
+  -webkit-filter: brightness(90%) drop-shadow(0px 0px 1px #18c9f5);
+          filter: brightness(90%) drop-shadow(0px 0px 1px #18c9f5);
+  pointer-events: none;
+}
+
+.buttonUser:active {
+  -webkit-box-shadow: inset 0px 0px 5px 1px #f9f9fa;
+          box-shadow: inset 0px 0px 5px 1px #f9f9fa;
+}
+
+.buttonUser:hover {
+  -webkit-filter: brightness(100%) drop-shadow(0px 0px 5px #18c9f5);
+          filter: brightness(100%) drop-shadow(0px 0px 5px #18c9f5);
+}
+
+.buttonAction {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: calc($vmin + $px);
+  font-weight: normal;
+  text-align: center;
+  color: #00fff2;
+  width: 100%;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  padding: 2%;
+  font-family: "Quicksand";
+  word-wrap: none;
+  min-height: 30px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  margin: 2% 0;
+  color: white;
+}
+
+.buttonAction:hover {
+  -webkit-filter: brightness(130%) drop-shadow(0px 0px 5px #18c9f5);
+          filter: brightness(130%) drop-shadow(0px 0px 5px #18c9f5);
+}
+
+.buttonAction:hover:disabled {
+  -webkit-filter: brightness(90%) drop-shadow(0px 0px 1px #18c9f5);
+          filter: brightness(90%) drop-shadow(0px 0px 1px #18c9f5);
+  pointer-events: none;
+}
+
+.buttonAction:active {
+  -webkit-box-shadow: inset 0px 0px 5px 1px #f9f9fa;
+          box-shadow: inset 0px 0px 5px 1px #f9f9fa;
+}
+
+.buttonAction:hover {
+  -webkit-filter: brightness(100%) drop-shadow(0px 0px 5px #00fff2);
+          filter: brightness(100%) drop-shadow(0px 0px 5px #00fff2);
+}
+
+.buttonAction:active {
+  -webkit-box-shadow: inset 0px 0px 8px 3px #00fff2;
+          box-shadow: inset 0px 0px 8px 3px #00fff2;
+}
+
+/*******    INPUTS     *******/
+.inputUser, .inputUser_error {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  width: 100%;
+  color: #050872;
+  padding: 1% 0%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  margin: 2% 0;
+}
+
+.inputUser_error {
+  margin: 0;
+}
+
+.inputUser-input_invalid {
+  background: #fa99999e;
+  color: #c00000 !important;
+}
+
+.inputUser-input:valid {
+  background: #cffdcf;
+  color: #25a294 !important;
+}
+
+.inputUser-input {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  color: #050872;
+}
+
+.inputUser-error, .inputUser-error_visible {
+  width: 90%;
+  font-family: "Exo";
+  text-align: center;
+  background: -webkit-gradient(linear, left top, left bottom, from(#7a1e1a), to(#973500));
+  background: linear-gradient(to bottom, #7a1e1a, #973500);
+  background-clip: text;
+  color: transparent;
+  z-index: 3;
+  border-radius: 0 0 5px 5px;
+  opacity: 0;
+  margin: 0 auto;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+
+.inputUser-error_visible {
+  opacity: 1;
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+  margin-top: 1%;
+}
+
+/*******    ANIMATIONS BUTTON     *******/
+.formNoValid {
+  -webkit-filter: none !important;
+          filter: none !important;
+  color: #8e0f57 !important;
+  -webkit-animation: formNoValid 1.8s linear forwards;
+          animation: formNoValid 1.8s linear forwards;
+}
+
+.spinnerButton {
+  height: 30px;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+  pointer-events: none;
+}
+
+.spinnerButton-spinner {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  -webkit-animation: loaderButton 1s linear infinite;
+          animation: loaderButton 1s linear infinite;
+}
+
+.spinner1 {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+.spinner2 {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+.spinner3 {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+
+@-webkit-keyframes loaderButton {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    -webkit-filter: brightness(200%);
+            filter: brightness(200%);
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes loaderButton {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    -webkit-filter: brightness(200%);
+            filter: brightness(200%);
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/*******    RESPONSIVE FIRST MOBIL     *******/
+@media only screen and (min-width: 768px) {
+  .buttonsWindow {
+    padding: 1%;
+  }
+  .buttons_windows {
+    margin-top: 2%;
+  }
+  .buttonUser,
+  .buttonAction {
+    margin: 4% 0;
+    padding: 3%;
+  }
+  .inputUser, .inputUser_error {
+    margin: 1% 0;
+  }
+}
+
+/*******    RESPONSIVE TABLETT     *******/
+@media only screen and (min-width: 992px) {
+  .buttons_windows {
+    margin-top: 1%;
+  }
+  .button_pannelUser {
+    margin-left: 1%;
+  }
+  .button_pannelCommand {
+    margin-right: 1%;
+  }
+}
+
+/*******    RESPONSIVE > 1200px     *******/
+@media only screen and (min-width: 1201px) {
+  .buttonUser,
+  .buttonAction {
+    margin: 3% 0;
+    padding: 2%;
+    font-size: calc(1vmin + 11px);
+  }
+  .inputUser, .inputUser_error {
+    padding: 1% 5%;
+  }
+}
+
+/*******    RESPONSIVE > 1600px     *******/
+@media only screen and (min-width: 1600px) {
+  .button_pannelCommand,
+  .button_closeCommand,
+  .button_pannelUser,
+  .button_closeUser {
+    display: none;
+  }
+}
+/*# sourceMappingURL=style.css.map */

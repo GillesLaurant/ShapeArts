@@ -13,6 +13,8 @@ const InputRange = ({ name, label, min, max, step }) => {
     ev.preventDefault();
     dispatch(toggleDisplay({ name: ev.target.name, value: ev.target.value }));
   };
+
+  // SIZE || ROTATION || ROTATION X || ROTATION Y || ORIENTATION || RAYON || OPACITY
   return (
     <div className="configDisplay-inputs">
       {/* LABEL */}

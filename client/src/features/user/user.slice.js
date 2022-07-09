@@ -57,12 +57,12 @@ export const userSlice = createSlice({
     // Delete actions
     deleteAccount: () => {},
     deleteSuccess: (state) => {
-      state.password = "";
-      state.isLoggin = false;
       state.id = -1;
       state.username = "";
       state.mail = "";
+      state.password = "";
       state.countShapes = 0;
+      state.isLoggin = false;
     },
     // Edit actions
     edit: () => {},
