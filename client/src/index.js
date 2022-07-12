@@ -5,7 +5,6 @@ import store from "./app/store";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-// import * as serviceWorker from "./service-worker";
 import "./styles/styles.css";
 
 const container = document.getElementById("root");

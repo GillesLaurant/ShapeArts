@@ -16,11 +16,19 @@
     "dialect": "mysql"
   },
   "production": {
-    "database": "u742297579_shapearts_DB",
-    "host": "sql836.main-hosting.eu",
+    "database": "shap_shapeArts_bdd",
+    "host": "194.31.150.245",
     "port": "3306",
-    "username": "u742297579_root",
-    "password": "ShapeArts_BDD_01",
+    "username": "shap_shapeArts_client",
+    "password": "shapeArtsGilou*171921",
+    "dialect": "mysql"
+  },
+  "production_bis": {
+    "database": "shap_shapeArts_bdd",
+    "host": "194.31.150.245",
+    "port": "8090",
+    "username": "shap_shapeArts_client",
+    "password": "shapeArtsGilou*171921",
     "dialect": "mysql"
   }
 }
