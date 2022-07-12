@@ -7,16 +7,19 @@ export default class socketAPI {
   /*******    CONNECT     *******/
   connect() {
     // SOCKET
-    this.socket = io.connect("http://localhost:3003", {
-      withCredentials: true,
-      extraHeaders: {
-        "secure-header": "ShApEsArTsSeRvEr",
-      },
-      auth: {
-        tokenId: -1,
-      },
-      reconnectionAttempts: 5,
-    });
+    this.socket = io.connect(
+      `${process.env.REACT_APP_API_HOST}${process.env.REACT_APP_API_PORT_PROD}`,
+      {
+        withCredentials: true,
+        extraHeaders: {
+          "secure-header": process.env.REACT_APP_SECURE_HEADER,
+        },
+        auth: {
+          tokenId: -1,
+        },
+        reconnectionAttempts: 5,
+      }
+    );
 
     return new Promise((resolve, reject) => {
       // Success connect

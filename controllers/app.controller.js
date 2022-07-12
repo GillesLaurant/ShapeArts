@@ -7,6 +7,7 @@ module.exports = (io, socket) => {
   /*******    CONNEXION APP     *******/
   const connectApp = () => {
     let responseConnexion;
+    const errorServer = "Erreur, veuillez reéssayer plus tard.";
 
     // TODO find cloth
     models.Cloth.findOrCreate({
@@ -82,7 +83,8 @@ module.exports = (io, socket) => {
           });
       })
       // Error find or create cloth
-      .catch(() => {
+      .catch((error) => {
+        console.log(error);
         socket.emit("error_server", {
           nameError: "server",
           msgError: errorServer,
