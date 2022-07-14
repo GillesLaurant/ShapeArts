@@ -27,7 +27,7 @@ console.log(process.env);
 // Instantiate server
 const io = new Server(httpServer, {
   cors: {
-    origin: [process.env.CLIENT_HOST, process.env.SOCKET_UI_HOST],
+    origin: [process.env.CLIENT_HOST_PROD, process.env.SOCKET_UI_HOST],
     methods: ["GET", "POST"],
     credentials: true,
   },
