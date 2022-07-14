@@ -62,7 +62,7 @@ export default function socketMiddleware(socket) {
             })
             .catch(() => {
               dispatch(setError({ nameError: "socket" }));
-              socket.close();
+              // socket.close();
             });
 
           break;
