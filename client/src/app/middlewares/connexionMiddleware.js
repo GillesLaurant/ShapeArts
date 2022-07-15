@@ -35,6 +35,7 @@ export default function socketMiddleware(socket) {
 
               // Receiv all errors server
               socket.on("error_server", (err) => {
+                console.log(err);
                 dispatch(setError(err));
               });
 

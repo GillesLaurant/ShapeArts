@@ -23,7 +23,7 @@ app.get("/*", (_, res) => {
 
 const httpServer = createServer(app);
 
-console.log(process.env);
+console.log(process.env, location);
 // Instantiate server
 const io = new Server(httpServer, {
   cors: {
