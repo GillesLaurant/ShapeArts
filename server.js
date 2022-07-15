@@ -17,13 +17,14 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, "client/build")));
 app.use(express.static("static"));
 
-app.get("/*", (_, res) => {
+app.get("/*", (req, res) => {
+  console.log(req);
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 const httpServer = createServer(app);
 
-console.log(process.env, location);
+console.log(process.env, app);
 // Instantiate server
 const io = new Server(httpServer, {
   cors: {
