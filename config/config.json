@@ -17,7 +17,7 @@
   },
   "production": {
     "database": "shap_shapeArts_bdd",
-    "host": "127.0.0.1",
+    "host": "http://localhost:",
     "port": "3306",
     "username": "shap_shapeArts_client",
     "password": "shapeArtsGilou*171921",
