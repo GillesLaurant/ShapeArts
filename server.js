@@ -28,7 +28,7 @@ console.log(process.env);
 // Instantiate server
 const io = new Server(httpServer, {
   cors: {
-    origin: [process.env.CLIENT_HOST_PROD, process.env.SOCKET_UI_HOST],
+    origin: ['194.31.150.245', process.env.SOCKET_UI_HOST],
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -37,7 +37,7 @@ const io = new Server(httpServer, {
 
 // Socket middleware authenticated
 io.use((socket, next) => {
-  console.log(socket);
+  // console.log('SOCKET', socket);
   const clientKey = socket.handshake.headers["secure-header"];
   if (clientKey === process.env.CLIENT_KEY) {
     console.log("user connected", socket.id);
@@ -61,6 +61,6 @@ const onConnection = (socket) => {
 io.on("connection", onConnection);
 
 // Listener server
-httpServer.listen(process.env.SERVER_PORT, () => {
-  console.log(`SERVER listen => ${process.env.SERVER_PORT}`);
+httpServer.listen(process.env.SERVER_PORT_PROD, () => {
+  console.log(`SERVER listen => 194.31.150.245:${process.env.SERVER_PORT_PROD}`);
 });
