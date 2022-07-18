@@ -54,6 +54,7 @@ module.exports = (io, socket) => {
             user_name: username,
             mail,
             password: hash,
+            counter_shapes: 0,
             is_loggin: true,
           })
             // IF succes create
