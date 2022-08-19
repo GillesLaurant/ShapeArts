@@ -38,9 +38,9 @@
           transform: translateY(100%);
   z-index: 1000;
   font-family: "Quicksand";
-  color: #00fff2;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(1.1%, #150d6b), color-stop(130.5%, #bc1050));
-  background-image: linear-gradient(180deg, #150d6b 1.1%, #bc1050 130.5%);
+  color: #1018e9;
+  background: -webkit-gradient(linear, left bottom, left top, from(#43cea2), to(#185a9d));
+  background: linear-gradient(to top, #43cea2, #185a9d);
   padding: 0.5%;
   border-radius: 25px 25px 0 0;
   overflow-y: auto;
@@ -132,9 +132,14 @@
   font-weight: normal;
   text-align: center;
   color: #00fff2;
+  background: -webkit-gradient(linear, left top, left bottom, from(#050872), color-stop(49%, #12087c), color-stop(51%, #070335), to(#0c0554));
+  background: linear-gradient(180deg, #050872 0%, #12087c 49%, #070335 51%, #0c0554 100%);
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 3px #070335;
+          box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 3px #070335;
   width: 90%;
   min-height: 35px;
-  fill: #18c9f5;
+  fill: #1018e9;
   margin: 0 auto;
 }
 
@@ -156,22 +161,6 @@
 
 .selectShape-buttons svg {
   pointer-events: none;
-}
-
-.selectShape-buttons:nth-child(1) {
-  background-image: linear-gradient(144deg, #af40ff, #5b42f3 55%, #00ddeb);
-}
-
-.selectShape-buttons:nth-child(2) {
-  background-image: linear-gradient(210deg, #af40ff, #5b42f3 55%, #00ddeb);
-}
-
-.selectShape-buttons:nth-child(3) {
-  background-image: linear-gradient(40deg, #af40ff, #5b42f3 55%, #00ddeb);
-}
-
-.selectShape-buttons:nth-child(4) {
-  background-image: linear-gradient(320deg, #af40ff, #5b42f3 55%, #00ddeb);
 }
 
 /*******    CONFIG LAYOUT     *******/
@@ -257,6 +246,7 @@
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  color: #1018e9;
 }
 
 .configLayout-buttons:hover {
@@ -281,17 +271,23 @@
   text-align: center;
   color: #00fff2;
   font-family: "DS_Digi";
+  color: #1018e9;
 }
 
 .pos_add {
   border-radius: 0 5px 5px 0;
-  background-image: radial-gradient(circle at left, #00b0eb 5%, #5b42f3 30%, #8913dd 80%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#050872), color-stop(49%, #12087c), color-stop(51%, #070335), to(#0c0554));
+  background: linear-gradient(180deg, #050872 0%, #12087c 49%, #070335 51%, #0c0554 100%);
+  -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 3px #070335;
+          box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 3px #070335;
 }
 
 .pos_sub {
-  border-right: 0.5px solid #00b0eb;
   border-radius: 5px 0 0 5px;
-  background-image: radial-gradient(circle at right, #00b0eb 5%, #5b42f3 30%, #8913dd 80%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#050872), color-stop(49%, #12087c), color-stop(51%, #070335), to(#0c0554));
+  background: linear-gradient(180deg, #050872 0%, #12087c 49%, #070335 51%, #0c0554 100%);
+  -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 3px #070335;
+          box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 3px #070335;
 }
 
 /*******    CONFIG DISPLAY     *******/

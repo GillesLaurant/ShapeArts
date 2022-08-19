@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "nodemon server.js",
+    "start-dev": " (cd ./client && npm run start-client && cd ./ ) && nodemon server.js",
     "start": "(cd ./client && npm run build) && pm2 start server.js --name shapeArts"
   },
   "keywords": [

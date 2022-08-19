@@ -28,7 +28,10 @@ console.log(process.env);
 // Instantiate server
 const io = new Server(httpServer, {
   cors: {
-    origin: ['194.31.150.245', process.env.SOCKET_UI_HOST],
+    origin:
+      process.env.NODE_ENV != "production"
+        ? [process.env.CLIENT_HOST, process.env.SOCKET_UI_HOST]
+        : "194.31.150.245/7721",
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -61,6 +64,17 @@ const onConnection = (socket) => {
 io.on("connection", onConnection);
 
 // Listener server
-httpServer.listen(process.env.SERVER_PORT_PROD, () => {
-  console.log(`SERVER listen => 194.31.150.245:${process.env.SERVER_PORT_PROD}`);
-});
+httpServer.listen(
+  process.env.NODE_ENV != "production"
+    ? process.env.SERVER_PORT
+    : process.env.SERVER_PORT_PROD,
+  () => {
+    console.log(
+      `SERVER listen => ${
+        process.env.NODE_ENV != "production"
+          ? process.env.CLIENT_HOST
+          : process.env.CLIENT_HOST_PROD
+      }`
+    );
+  }
+);
