@@ -41,7 +41,7 @@
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   background: -webkit-gradient(linear, left top, left bottom, from(#ce0000), to(#f86833));
   background: linear-gradient(to bottom, #ce0000, #f86833);
   background-clip: text;
@@ -56,7 +56,7 @@
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   background: -webkit-gradient(linear, left bottom, left top, color-stop(30%, #ed0000), to(#f86833));
   background: linear-gradient(to top, #ed0000 30%, #f86833);
   background-clip: text;
@@ -112,7 +112,7 @@
 }
 
 /*******    RESPONSIVE > 768px     *******/
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 765px) {
   .error-section-title, .errorLoading_title {
     font-size: calc(1.3vmin + 15px);
   }

@@ -39,19 +39,18 @@
   word-wrap: none;
   min-height: $hei;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease-out;
 
   &:hover {
-    filter: brightness(130%) drop-shadow(0px 0px 5px $primary);
-
-    &:disabled {
-      filter: brightness(90%) drop-shadow(0px 0px 1px $primary);
-      pointer-events: none;
-    }
+    box-shadow: inset 0px 0px 5px 1px rgb(249, 249, 250);
+  }
+  &:disabled {
+    filter: brightness(90%);
+    pointer-events: none;
   }
 
   &:active {
-    box-shadow: inset 0px 0px 5px 1px rgb(249, 249, 250);
+    filter: brightness(130%) drop-shadow(0px 0px 5px $shapePannel);
   }
 }
 
@@ -73,8 +72,8 @@
 @mixin rangeTrack(
   $height: 50%,
   $radius: 20px,
-  $color1: rgba(152, 235, 250, 0.208),
-  $color2: rgb(0, 47, 142)
+  $color1: $shapePannel,
+  $color2: $violet
 ) {
   height: $height;
   border-radius: $radius;
@@ -93,8 +92,8 @@
   $color:
     radial-gradient(
       circle farthest-corner at 10% 20%,
-      rgba(0, 221, 214, 1) 0%,
-      rgba(51, 102, 255, 1) 90%
+      $userPannel 0%,
+      $dark 90%
     )
 ) {
   width: $size;
@@ -137,7 +136,7 @@
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: $secondary-light;
+  color: #fff;
 }
 
 /*******    TITLE PANNELS USER     *******/

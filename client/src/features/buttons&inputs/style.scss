@@ -10,13 +10,13 @@
   width: auto;
   background-color: transparent;
   margin: 0 1%;
+  border-radius: 50%;
   z-index: 5000;
 }
 
 // Button close user window
 .button_closeUser {
-  fill: $secondary;
-  border-radius: 50%;
+  fill: $userPannel;
   &:hover {
     fill: $primary;
   }
@@ -28,7 +28,7 @@
 
 // Button colse command window
 .button_closeCommand {
-  fill: $primary;
+  fill: $shapePannel;
   &:hover {
     fill: $secondary;
   }
@@ -55,30 +55,30 @@
 }
 // Button window user on main
 .button_pannelUser {
-  color: rgb(204, 38, 254);
+  color: $userPannel;
   left: 0;
   margin-left: 2%;
 
   &:hover {
-    box-shadow: 0 0 10px 1px rgb(204, 38, 254);
+    box-shadow: 0 0 10px 1px $userPannel;
   }
   &:active {
-    color: rgb(204, 38, 254);
-    box-shadow: 0 0 10px 3px rgb(204, 38, 254);
+    color: $userPannel;
+    box-shadow: 0 0 10px 3px $userPannel;
     background: transparent;
   }
 }
 // Button window command
 .button_pannelCommand {
-  color: rgba(2, 222, 204, 0.792);
+  color: $shapePannel;
   right: 0;
   margin-right: 2%;
   &:hover {
-    box-shadow: 0 0 10px 1px rgba(2, 222, 204, 0.792);
+    box-shadow: 0 0 10px 1px $shapePannel;
   }
   &:active {
-    color: rgba(2, 222, 204, 0.792);
-    box-shadow: 0 0 10px 3px rgba(2, 222, 204, 0.792);
+    color: $shapePannel;
+    box-shadow: 0 0 10px 3px $shapePannel;
     background: transparent;
   }
 }
@@ -115,10 +115,6 @@
   @include button;
   margin: 2% 0;
   color: white;
-
-  &:hover {
-    filter: brightness(100%) drop-shadow(0px 0px 5px $secondary-light);
-  }
 
   &:active {
     box-shadow: inset 0px 0px 8px 3px $secondary-light;

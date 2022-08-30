@@ -3,16 +3,21 @@
 
 // Container cloth || error cloth
 .loaderCloth {
-  height: 700px;
+  height: 100%;
   width: 900px;
   position: absolute;
-  background-image: radial-gradient(
-    circle farthest-corner at 22.4% 21.7%,
-    rgba(4, 189, 228, 1) 0%,
-    rgba(2, 83, 185, 1) 100.2%
-  );
+  background: linear-gradient(
+      135deg,
+      $shapePannel,
+      rgba(123, 235, 255, 0) 70.71%
+    ),
+    linear-gradient(45deg, $userPannel, rgba(162, 41, 199, 0) 70.71%),
+    linear-gradient(225deg, #007cf0cb, rgba(0, 4, 255, 0) 70.71%),
+    linear-gradient(315deg, $violet, rgba(105, 66, 211, 0) 70.71%);
+  background-size: 150% 150%;
   z-index: 5000;
   transition: all 0.3s;
+  animation: loadBackground 10s ease infinite;
 }
 
 // Loader cloth
@@ -68,5 +73,23 @@
   }
   to {
     opacity: 0;
+  }
+}
+
+@keyframes loadBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 100%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  75% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
   }
 }

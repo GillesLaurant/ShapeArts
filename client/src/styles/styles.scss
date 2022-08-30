@@ -13,14 +13,11 @@
   @include flex-mix(_, center);
   width: 100%;
   position: fixed;
-  height: 100vh;
-  background-image: radial-gradient(
-    circle 610px at 5.2% 51.6%,
-    #050872 0%,
-    rgba(7, 3, 53, 1) 97.5%
-  );
+  height: 100%;
+  flex-grow: 1;
+  background-color: #000;
   padding: 1%;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   scroll-behavior: smooth;
   transition: all 0.3s;
