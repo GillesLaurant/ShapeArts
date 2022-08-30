@@ -37,10 +37,13 @@
           flex-direction: row;
   width: 100%;
   position: fixed;
-  height: 100vh;
-  background-image: radial-gradient(circle 610px at 5.2% 51.6%, #050872 0%, #070335 97.5%);
+  height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  background-color: #000;
   padding: 1%;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   scroll-behavior: smooth;
   -webkit-transition: all 0.3s;
@@ -63,7 +66,7 @@
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   width: 100%;
   position: fixed;
   top: 0;
@@ -82,7 +85,7 @@
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   width: 100%;
   position: fixed;
   bottom: 0;

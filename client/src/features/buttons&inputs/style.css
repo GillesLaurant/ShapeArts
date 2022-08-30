@@ -32,7 +32,7 @@
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   width: 100%;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
@@ -47,37 +47,37 @@
   word-wrap: none;
   min-height: 30px;
   cursor: pointer;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   width: auto;
   background-color: transparent;
   margin: 0 1%;
+  border-radius: 50%;
   z-index: 5000;
 }
 
 .buttonsWindow:hover {
-  -webkit-filter: brightness(130%) drop-shadow(0px 0px 5px #18c9f5);
-          filter: brightness(130%) drop-shadow(0px 0px 5px #18c9f5);
-}
-
-.buttonsWindow:hover:disabled {
-  -webkit-filter: brightness(90%) drop-shadow(0px 0px 1px #18c9f5);
-          filter: brightness(90%) drop-shadow(0px 0px 1px #18c9f5);
-  pointer-events: none;
-}
-
-.buttonsWindow:active {
   -webkit-box-shadow: inset 0px 0px 5px 1px #f9f9fa;
           box-shadow: inset 0px 0px 5px 1px #f9f9fa;
 }
 
+.buttonsWindow:disabled {
+  -webkit-filter: brightness(90%);
+          filter: brightness(90%);
+  pointer-events: none;
+}
+
+.buttonsWindow:active {
+  -webkit-filter: brightness(130%) drop-shadow(0px 0px 5px #00ccff);
+          filter: brightness(130%) drop-shadow(0px 0px 5px #00ccff);
+}
+
 .button_closeUser {
-  fill: #8e0f57;
-  border-radius: 50%;
+  fill: #cb12cb;
 }
 
 .button_closeUser:hover {
@@ -91,7 +91,7 @@
 }
 
 .button_closeCommand {
-  fill: #18c9f5;
+  fill: #00ccff;
 }
 
 .button_closeCommand:hover {
@@ -121,7 +121,7 @@
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -138,38 +138,38 @@
 }
 
 .button_pannelUser {
-  color: #cc26fe;
+  color: #cb12cb;
   left: 0;
   margin-left: 2%;
 }
 
 .button_pannelUser:hover {
-  -webkit-box-shadow: 0 0 10px 1px #cc26fe;
-          box-shadow: 0 0 10px 1px #cc26fe;
+  -webkit-box-shadow: 0 0 10px 1px #cb12cb;
+          box-shadow: 0 0 10px 1px #cb12cb;
 }
 
 .button_pannelUser:active {
-  color: #cc26fe;
-  -webkit-box-shadow: 0 0 10px 3px #cc26fe;
-          box-shadow: 0 0 10px 3px #cc26fe;
+  color: #cb12cb;
+  -webkit-box-shadow: 0 0 10px 3px #cb12cb;
+          box-shadow: 0 0 10px 3px #cb12cb;
   background: transparent;
 }
 
 .button_pannelCommand {
-  color: rgba(2, 222, 204, 0.792);
+  color: #00ccff;
   right: 0;
   margin-right: 2%;
 }
 
 .button_pannelCommand:hover {
-  -webkit-box-shadow: 0 0 10px 1px rgba(2, 222, 204, 0.792);
-          box-shadow: 0 0 10px 1px rgba(2, 222, 204, 0.792);
+  -webkit-box-shadow: 0 0 10px 1px #00ccff;
+          box-shadow: 0 0 10px 1px #00ccff;
 }
 
 .button_pannelCommand:active {
-  color: rgba(2, 222, 204, 0.792);
-  -webkit-box-shadow: 0 0 10px 3px rgba(2, 222, 204, 0.792);
-          box-shadow: 0 0 10px 3px rgba(2, 222, 204, 0.792);
+  color: #00ccff;
+  -webkit-box-shadow: 0 0 10px 3px #00ccff;
+          box-shadow: 0 0 10px 3px #00ccff;
   background: transparent;
 }
 
@@ -217,7 +217,7 @@
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   width: 100%;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
@@ -232,26 +232,26 @@
   word-wrap: none;
   min-height: 30px;
   cursor: pointer;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
   margin: 3% 0;
   color: white;
 }
 
 .buttonUser:hover {
-  -webkit-filter: brightness(130%) drop-shadow(0px 0px 5px #18c9f5);
-          filter: brightness(130%) drop-shadow(0px 0px 5px #18c9f5);
+  -webkit-box-shadow: inset 0px 0px 5px 1px #f9f9fa;
+          box-shadow: inset 0px 0px 5px 1px #f9f9fa;
 }
 
-.buttonUser:hover:disabled {
-  -webkit-filter: brightness(90%) drop-shadow(0px 0px 1px #18c9f5);
-          filter: brightness(90%) drop-shadow(0px 0px 1px #18c9f5);
+.buttonUser:disabled {
+  -webkit-filter: brightness(90%);
+          filter: brightness(90%);
   pointer-events: none;
 }
 
 .buttonUser:active {
-  -webkit-box-shadow: inset 0px 0px 5px 1px #f9f9fa;
-          box-shadow: inset 0px 0px 5px 1px #f9f9fa;
+  -webkit-filter: brightness(130%) drop-shadow(0px 0px 5px #00ccff);
+          filter: brightness(130%) drop-shadow(0px 0px 5px #00ccff);
 }
 
 .buttonUser:hover {
@@ -276,7 +276,7 @@
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   width: 100%;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
@@ -291,31 +291,26 @@
   word-wrap: none;
   min-height: 30px;
   cursor: pointer;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
   margin: 2% 0;
   color: white;
 }
 
 .buttonAction:hover {
-  -webkit-filter: brightness(130%) drop-shadow(0px 0px 5px #18c9f5);
-          filter: brightness(130%) drop-shadow(0px 0px 5px #18c9f5);
-}
-
-.buttonAction:hover:disabled {
-  -webkit-filter: brightness(90%) drop-shadow(0px 0px 1px #18c9f5);
-          filter: brightness(90%) drop-shadow(0px 0px 1px #18c9f5);
-  pointer-events: none;
-}
-
-.buttonAction:active {
   -webkit-box-shadow: inset 0px 0px 5px 1px #f9f9fa;
           box-shadow: inset 0px 0px 5px 1px #f9f9fa;
 }
 
-.buttonAction:hover {
-  -webkit-filter: brightness(100%) drop-shadow(0px 0px 5px #00fff2);
-          filter: brightness(100%) drop-shadow(0px 0px 5px #00fff2);
+.buttonAction:disabled {
+  -webkit-filter: brightness(90%);
+          filter: brightness(90%);
+  pointer-events: none;
+}
+
+.buttonAction:active {
+  -webkit-filter: brightness(130%) drop-shadow(0px 0px 5px #00ccff);
+          filter: brightness(130%) drop-shadow(0px 0px 5px #00ccff);
 }
 
 .buttonAction:active {
@@ -461,7 +456,7 @@
 }
 
 /*******    RESPONSIVE FIRST MOBIL     *******/
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 765px) {
   .buttonsWindow {
     padding: 1%;
   }

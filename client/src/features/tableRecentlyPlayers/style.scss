@@ -27,11 +27,11 @@
     position: relative;
     height: 8%;
     & th {
-      border-bottom: 2px solid $secondary;
+      border-bottom: 2px solid $borderTable;
 
       & svg {
         margin: 0 auto;
-        fill: $secondary;
+        fill: $borderTable;
         filter: contrast(40%);
       }
     }
@@ -39,7 +39,7 @@
     &-player {
       @include font(1.5vmin, 23px);
       width: 60%;
-      border-right: 1px solid $secondary;
+      border-right: 1px solid $borderTable;
     }
     // Shape head column
     &-shape {
@@ -57,7 +57,6 @@
     @include font(1.2vmin, 15px);
     position: relative;
     font-weight: normal;
-    color: $secondary-light;
     font-family: $subtitle-pannel;
     overflow: hidden;
     transition: all 1s;
@@ -73,29 +72,34 @@
 }
 
 .recentBody-rows:nth-child(even) {
-  background-color: rgba(38, 38, 181, 0.147);
+  background-color: rgb(28, 0, 34);
 }
 
 // Players column
 .col-player {
   width: 60%;
-  border-bottom: 0.5px solid $secondary;
-  border-right: 0.5px solid $secondary;
+  border-bottom: 0.5px solid $borderTable;
+  border-right: 0.5px solid $borderTable;
   padding: 1%;
 
   transition: all 0.5s cubic-bezier(0.86, 0, 0.07, 1);
 }
 .row-player {
   text-transform: capitalize;
+  position: absolute;
+  height: 100%;
+  width: 60%;
+  overflow-wrap: break-word;
+  transition: opacity 0.3s linear;
 }
 // Shapes column
 .col-shape {
   position: relative;
   width: 100%;
   height: 100%;
-  border-bottom: 0.5px solid $secondary;
+  border-bottom: 0.5px solid $borderTable;
   padding: 2%;
-  transition: opacity 0.3s linear;
+  transition: background-color 0.3s linear;
 
   & svg {
     position: relative;
@@ -121,11 +125,9 @@
   position: absolute;
   width: 60%;
   height: 100%;
-  transform: translateY(-100%);
   opacity: 0;
-  color: $secondary;
   padding-right: 2%;
-  transition: all 0.3s linear;
+  transition: opacity 0.3s linear;
 }
 
 /*******    ANIMATION     *******/

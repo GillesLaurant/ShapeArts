@@ -51,6 +51,10 @@
   font-weight: normal;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 input[type="range"] {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -137,7 +141,7 @@ input[type="password"] {
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
 }
 
 input[type="text"]::-webkit-input-placeholder,
@@ -149,7 +153,7 @@ input[type="password"]::-webkit-input-placeholder {
   font-family: "Quicksand";
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 765px) {
   input[type="text"],
   input[type="mail"],
   input[type="password"] {
@@ -188,8 +192,7 @@ input[type="password"]::-webkit-input-placeholder {
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
   z-index: 1000;
-  background: -webkit-gradient(linear, left bottom, left top, from(#43cea2), to(#185a9d));
-  background: linear-gradient(to top, #43cea2, #185a9d);
+  background: radial-gradient(circle, #cb12cb 0%, #000 60%);
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
@@ -266,7 +269,7 @@ input[type="password"]::-webkit-input-placeholder {
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   font-family: "Biryani";
 }
 
@@ -274,7 +277,7 @@ input[type="password"]::-webkit-input-placeholder {
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   font-family: "Quicksand";
 }
 
@@ -324,7 +327,7 @@ input[type="password"]::-webkit-input-placeholder {
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   font-family: "Quicksand";
   padding: 0 1%;
 }
@@ -375,7 +378,7 @@ input[type="password"]::-webkit-input-placeholder {
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   font-family: "Quicksand";
 }
 
@@ -425,7 +428,7 @@ input[type="password"]::-webkit-input-placeholder {
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   font-family: "Quicksand";
 }
 
@@ -442,12 +445,12 @@ input[type="password"]::-webkit-input-placeholder {
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   font-family: "Quicksand";
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
 }
 
 .pannelRules-footer {
@@ -496,7 +499,7 @@ input[type="password"]::-webkit-input-placeholder {
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   font-family: "Quicksand";
 }
 
@@ -547,7 +550,7 @@ input[type="password"]::-webkit-input-placeholder {
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   padding: 3% 4%;
   font-family: "DS_Digi";
   color: red;
@@ -583,7 +586,7 @@ input[type="password"]::-webkit-input-placeholder {
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   font-family: "Quicksand";
 }
 
@@ -674,7 +677,7 @@ input[type="password"]::-webkit-input-placeholder {
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   font-family: "Quicksand";
 }
 
@@ -748,7 +751,7 @@ input[type="password"]::-webkit-input-placeholder {
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   font-family: "Quicksand";
   padding: 2% 0;
 }
@@ -808,12 +811,12 @@ input[type="password"]::-webkit-input-placeholder {
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
   font-family: "Quicksand";
   font-size: calc($vmin + $px);
   font-weight: normal;
   text-align: center;
-  color: #00fff2;
+  color: #fff;
 }
 
 .pannelDelete-content {
@@ -871,13 +874,13 @@ input[type="password"]::-webkit-input-placeholder {
 }
 
 /*******    RESPONSIVE > 768px     *******/
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 765px) {
   .pannelUser {
     width: 40%;
   }
   .pannelUser_open {
-    -webkit-box-shadow: 3px 0px 7px 2px #00868b;
-            box-shadow: 3px 0px 7px 2px #00868b;
+    -webkit-box-shadow: 3px 0px 13px 3px #71085e;
+            box-shadow: 3px 0px 13px 3px #71085e;
   }
   .pannelStart {
     display: -webkit-box;
@@ -904,7 +907,7 @@ input[type="password"]::-webkit-input-placeholder {
     font-size: calc($vmin + $px);
     font-weight: normal;
     text-align: center;
-    color: #00fff2;
+    color: #fff;
     margin-top: 3%;
   }
   .pannelStart-footer {
@@ -917,14 +920,14 @@ input[type="password"]::-webkit-input-placeholder {
     font-size: calc($vmin + $px);
     font-weight: normal;
     text-align: center;
-    color: #00fff2;
+    color: #fff;
     font-weight: 300;
   }
   .pannelRules-head-title {
     font-size: calc($vmin + $px);
     font-weight: normal;
     text-align: center;
-    color: #00fff2;
+    color: #fff;
     font-weight: 400;
   }
   .pannelRules-content-text, .pannelTiming-content-text, .pannelAccount-content-text, .pannelDelete-content-text {
@@ -956,14 +959,14 @@ input[type="password"]::-webkit-input-placeholder {
     font-size: calc($vmin + $px);
     font-weight: normal;
     text-align: center;
-    color: #00fff2;
+    color: #fff;
     font-weight: 400;
   }
   .pannelEdit-head-user {
     font-size: calc($vmin + $px);
     font-weight: normal;
     text-align: center;
-    color: #00fff2;
+    color: #fff;
     font-weight: 200;
   }
   .pannelEdit-footer {
@@ -978,7 +981,7 @@ input[type="password"]::-webkit-input-placeholder {
     font-size: calc($vmin + $px);
     font-weight: normal;
     text-align: center;
-    color: #00fff2;
+    color: #fff;
     font-weight: 200;
   }
   .pannelDelete-footer {
@@ -1013,6 +1016,8 @@ input[type="password"]::-webkit-input-placeholder {
     max-width: 300px;
     height: 100%;
     border-radius: 20px;
+    -webkit-box-shadow: 3px 0px 25px 5px #71085e;
+            box-shadow: 3px 0px 25px 5px #71085e;
   }
   .pannelStart-head-text {
     padding: 0 1%;

@@ -1,19 +1,20 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ProgressBar from "./features/timing/ProgressBar";
-import TitleApp from "./features/main/TitleApp";
-import TextApp from "./features/main/TextApp";
-import PannelUser from "./features/user/PannelUsersWindow";
-import PannelCommand from "./features/PannelShape";
-import ClothsContainer from "./features/cloth";
 import { ButtonWindows } from "./features/buttons&inputs/ButtonWindows";
+import ClothsContainer from "./features/cloth";
+import TextApp from "./features/main/TextApp";
+import TitleApp from "./features/main/TitleApp";
+import PannelCommand from "./features/PannelShape";
 import { connectSocket } from "./features/socket/socket.slice";
+import ProgressBar from "./features/timing/ProgressBar";
+import PannelUser from "./features/user/PannelUsersWindow";
 import "./styles/styles.scss";
 
 function App() {
   const dispatch = useDispatch();
   const socket = useSelector((state) => state.socket.socket_connected);
   const command = useSelector((state) => state.nav.windows.pannelCommand_open);
+  const userConnected = useSelector((state) => state.user.id);
 
   // Start connect server
   useEffect(() => {
@@ -47,6 +48,7 @@ function App() {
               : "auto",
           // Height 65% if pannel command open in mobile screen
           height: window.innerWidth > 767 ? "auto" : command ? "65vh" : "80%",
+          borderRadius: userConnected !== -1 ? 0 : "20px",
         }}
       >
         <ClothsContainer />

@@ -7,6 +7,9 @@ $secondary: #8e0f57;
 $dark: #050872;
 $purple: rgb(238, 0, 238);
 $violet: rgb(160, 36, 255);
+$userPannel: #cb12cb;
+$shapePannel: #00ccff;
+$borderTable: rgb(183, 183, 183);
 // COMPONENTS
 
 // FONTS
@@ -27,7 +30,7 @@ $colorSwatch: "::-webkit-color-swatch";
 
 // RESPONSIVE
 // $smart > 768px;
-$smart: "only screen and (min-width:768px)";
+$smart: "only screen and (min-width:765px)";
 // $tablett > 992px;
 $tablett: "only screen and (min-width:992px)";
 // $laptop > 1201px;

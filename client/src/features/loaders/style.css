@@ -15,13 +15,16 @@
 /*******    TEXT PANNELS USER     *******/
 /*******    BUTTON ANIMATION LOADER     *******/
 .loaderCloth {
-  height: 700px;
+  height: 100%;
   width: 900px;
   position: absolute;
-  background-image: radial-gradient(circle farthest-corner at 22.4% 21.7%, #04bde4 0%, #0253b9 100.2%);
+  background: linear-gradient(135deg, #00ccff, rgba(123, 235, 255, 0) 70.71%), linear-gradient(45deg, #cb12cb, rgba(162, 41, 199, 0) 70.71%), linear-gradient(225deg, #007cf0cb, rgba(0, 4, 255, 0) 70.71%), linear-gradient(315deg, #a024ff, rgba(105, 66, 211, 0) 70.71%);
+  background-size: 150% 150%;
   z-index: 5000;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  -webkit-animation: loadBackground 10s ease infinite;
+          animation: loadBackground 10s ease infinite;
 }
 
 .loaders {
@@ -98,6 +101,42 @@
   }
   to {
     opacity: 0;
+  }
+}
+
+@-webkit-keyframes loadBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 100%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  75% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes loadBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 100%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  75% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
   }
 }
 /*# sourceMappingURL=style.css.map */

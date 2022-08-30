@@ -25,6 +25,10 @@
     appearance: none;
     font-weight: normal;
   }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 // Inputs range

@@ -1,5 +1,5 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 /*******    SVG GENERATOR     *******/
 
@@ -59,6 +59,12 @@ const GeneratorSVG = ({ nameSvg }) => {
       view: normalView,
       path: (
         <path d="M496 203.3H312.36L256 32l-56.36 171.3H16l150.21 105.4-58.5 171.3L256 373.84 404.29 480l-58.61-171.3z" />
+      ),
+    },
+    arrow: {
+      view: "0, 0, 96, 96",
+      path: (
+        <path d="M39.3756,48.0022l30.47-25.39a6.0035,6.0035,0,0,0-7.6878-9.223L26.1563,43.3906a6.0092,6.0092,0,0,0,0,9.2231L62.1578,82.615a6.0035,6.0035,0,0,0,7.6878-9.2231Z" />
       ),
     },
   };
