@@ -31,7 +31,7 @@ const io = new Server(httpServer, {
     origin:
       process.env.NODE_ENV !== "production"
         ? [process.env.CLIENT_HOST, process.env.SOCKET_UI_HOST]
-        : "194.31.150.245/7721",
+        : process.env.CLIENT_HOST_PROD,
     methods: ["GET", "POST"],
     credentials: true,
   },
