@@ -110,7 +110,6 @@
 .row-player {
   text-transform: capitalize;
   position: absolute;
-  height: 100%;
   width: 100%;
   top: 50%;
   left: 50%;
@@ -124,17 +123,10 @@
 .col-shape {
   position: relative;
   width: 40%;
-  height: 100%;
   border-bottom: 0.5px solid #b7b7b7;
   padding: 2%;
   -webkit-transition: background-color 0.3s linear;
   transition: background-color 0.3s linear;
-}
-
-.col-shape svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
 }
 
 .recentBody-rows:hover .row-player {
@@ -239,7 +231,7 @@
 /*******    RESPONSIVE > 1600px     *******/
 @media only screen and (min-width: 1600px) {
   .row-time {
-    font-size: calc(0.8vmin + 8px);
+    font-size: calc(0.6vmin + 8px);
   }
 }
 /*# sourceMappingURL=style.css.map */
