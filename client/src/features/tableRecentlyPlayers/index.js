@@ -1,7 +1,7 @@
-import React from "react";
 import dayjs from "dayjs";
-import GeneratorSVG from "../svg/GeneratorSVG";
+import React from "react";
 import { useSelector } from "react-redux";
+import GeneratorSVG from "../svg/GeneratorSVG";
 import "./style.scss";
 
 /*******    TABLE RECENTLY USERS     *******/
@@ -53,7 +53,7 @@ const RecentlyShapes = () => {
                       xmlns="http://www.w3.org/2000/svg"
                       style={{
                         position: "relative",
-                        transform: `scale(1.${shape.size}) rotate(${shape.rotation}deg) rotateX(${shape.rotation_x}deg) rotateY(${shape.rotation_y}deg)`,
+                        transform: `scale(1.${shape.size}) rotate(${shape.rotation}deg) rotateX(${shape.rotation_x}deg) rotateY(${shape.rotation_y}deg) translate(-50%, -50%)`,
                       }}
                     >
                       <use xlinkHref={`#recent_${shape.id}`} />

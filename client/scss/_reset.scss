@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-width: none;
 
   & svg {
     pointer-events: none;
@@ -32,6 +33,7 @@
 }
 
 html {
+  // height: 100vh;
   min-height: -webkit-fill-available;
   background-color: #000;
 }

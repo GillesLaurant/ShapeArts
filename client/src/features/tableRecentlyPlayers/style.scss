@@ -71,9 +71,9 @@
   animation: newArrivate 1.2s ease-out;
 }
 
-.recentBody-rows:nth-child(even) {
-  background-color: rgb(37, 24, 40);
-}
+// .recentBody-rows:nth-child(even) {
+//   background-color: rgb(37, 24, 40);
+// }
 
 // Players column
 .col-player {
@@ -89,23 +89,26 @@
   text-transform: capitalize;
   position: absolute;
   height: 100%;
-  width: 60%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   overflow-wrap: break-word;
   transition: opacity 0.3s linear;
 }
 // Shapes column
 .col-shape {
   position: relative;
-  width: 100%;
+  width: 40%;
   height: 100%;
   border-bottom: 0.5px solid $borderTable;
   padding: 2%;
   transition: background-color 0.3s linear;
 
   & svg {
-    position: relative;
+    position: absolute;
     top: 50%;
-    align-self: center;
+    left: 50%;
   }
 }
 
@@ -124,10 +127,13 @@
   @include flex-mix(space-around, center);
   @include font(1vmin, 10px);
   position: absolute;
-  width: 60%;
+  width: 100%;
   height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   opacity: 0;
-  padding-right: 2%;
+  // padding-right: 2%;
   transition: opacity 0.3s linear;
 }
 
@@ -180,6 +186,6 @@
 /*******    RESPONSIVE > 1600px     *******/
 @media #{$large} {
   .row-time {
-    font-size: calc(0.5vmin + 8px);
+    font-size: calc(0.8vmin + 8px);
   }
 }

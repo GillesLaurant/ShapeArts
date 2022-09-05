@@ -40,7 +40,6 @@ const io = new Server(httpServer, {
 
 // Socket middleware authenticated
 io.use((socket, next) => {
-  // console.log('SOCKET', socket);
   const clientKey = socket.handshake.headers["secure-header"];
   if (clientKey === process.env.CLIENT_KEY) {
     console.log("user connected", socket.id);
