@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Server ShapeArts App to drawing based on community geometric shape",
   "main": "server.js",
+  "proxy": "http://localhost:3000",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-dev": " (cd client && npm run start-client && cd ./ ) && nodemon server.js",
