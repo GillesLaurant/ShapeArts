@@ -53,7 +53,7 @@ const RecentlyShapes = () => {
                       xmlns="http://www.w3.org/2000/svg"
                       style={{
                         position: "relative",
-                        transform: `scale(1.${shape.size}) rotate(${shape.rotation}deg) rotateX(${shape.rotation_x}deg) rotateY(${shape.rotation_y}deg) translate(-50%, -50%)`,
+                        transform: `scale(1.${shape.size}) rotate(${shape.rotation}deg) rotateX(${shape.rotation_x}deg) rotateY(${shape.rotation_y}deg)`,
                       }}
                     >
                       <use xlinkHref={`#recent_${shape.id}`} />

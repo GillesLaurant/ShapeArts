@@ -71,10 +71,6 @@
   animation: newArrivate 1.2s ease-out;
 }
 
-// .recentBody-rows:nth-child(even) {
-//   background-color: rgb(37, 24, 40);
-// }
-
 // Players column
 .col-player {
   width: 60%;
@@ -88,7 +84,6 @@
 .row-player {
   text-transform: capitalize;
   position: absolute;
-  height: 100%;
   width: 100%;
   top: 50%;
   left: 50%;
@@ -100,15 +95,13 @@
 .col-shape {
   position: relative;
   width: 40%;
-  height: 100%;
   border-bottom: 0.5px solid $borderTable;
   padding: 2%;
   transition: background-color 0.3s linear;
 
   & svg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    // position: absolute;
+    // top: 50%;
   }
 }
 
@@ -186,6 +179,6 @@
 /*******    RESPONSIVE > 1600px     *******/
 @media #{$large} {
   .row-time {
-    font-size: calc(0.8vmin + 8px);
+    font-size: calc(0.6vmin + 8px);
   }
 }
