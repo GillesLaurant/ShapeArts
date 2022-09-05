@@ -103,8 +103,7 @@
   &-content {
     padding: 1% 1% 0;
     &-text {
-      @include textUser;
-      @include font(1.2vmin, 10px);
+      @include textUser(1.2vmin, 10px);
     }
   }
   // Container buttons
@@ -253,8 +252,7 @@
   @include displayUser;
 
   &-head {
-    @include textUser;
-    @include font(1vmin, 8px);
+    @include textUser(1vmin, 8px);
   }
 
   &-content {
@@ -405,9 +403,56 @@
   .pannelUser {
     width: 22%;
   }
-  // Container buttons pannel account
-  .pannelAccount-footer {
-    padding: 2% 18%;
+  // Start pannel
+  .pannelStart {
+    &-head-title {
+      @include titleUser(1.3vmin);
+    }
+    &-head-text {
+      @include subtitleUser(1vmin, 10px);
+    }
+  }
+  // Register pannel
+  .pannelRegister-head {
+    @include textUser(1vmin, 10px);
+  }
+  // Loggin pannel
+  .pannelLoggin-head {
+    @include textUser(1vmin, 15px);
+  }
+  // Rules pannel
+  .pannelRules {
+    &-head {
+      @include textUser(1vmin, 12px);
+    }
+    &-content-text {
+      @include textUser(1vmin, 10px);
+    }
+  }
+  // Timing pannel
+  .pannelTiming-head {
+    @include textUser(1vmin, 12px);
+  }
+  .timer-text {
+    @include font(1vmin, 12px);
+  }
+  // Account pannel
+  .pannelAccount {
+    &-head {
+      @include textUser(1vmin, 10px);
+    }
+    // Container buttons pannel account
+    &-footer {
+      padding: 2% 18%;
+    }
+  }
+  // Edit pannel
+  .pannelEdit-head {
+    @include textUser(1vmin, 12px);
+  }
+  // Delete pannel
+  .pannelDelete-head {
+    @include textUser(1vmin, 7px);
   }
 }
 
@@ -428,7 +473,7 @@
   }
   // Text pannel rules
   .pannelRules-content-text {
-    font-size: calc(1.1vmin + 10px);
+    font-size: calc(0.5vmin + 10px);
     margin-bottom: 3%;
   }
 }

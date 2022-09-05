@@ -1,3 +1,4 @@
+/*******    VARIABLES     *******/
 /*******    MIXINS    *******/
 /*******    FLEX    *******/
 /*******    DISPLAY PANNELS USER     *******/
@@ -53,6 +54,11 @@
 
 *::-webkit-scrollbar {
   display: none;
+}
+
+html {
+  min-height: -webkit-fill-available;
+  background-color: #000;
 }
 
 input[type="range"] {
@@ -142,6 +148,7 @@ input[type="password"] {
   font-weight: normal;
   text-align: center;
   color: #fff;
+  color: #000;
 }
 
 input[type="text"]::-webkit-input-placeholder,
@@ -165,7 +172,7 @@ input[type="password"]::-webkit-input-placeholder {
   input[type="text"],
   input[type="mail"],
   input[type="password"] {
-    font-size: calc(1vmin + 11px);
+    font-size: calc(1vmin + 10px);
   }
 }
 
@@ -447,10 +454,6 @@ input[type="password"]::-webkit-input-placeholder {
   text-align: center;
   color: #fff;
   font-family: "Quicksand";
-  font-size: calc($vmin + $px);
-  font-weight: normal;
-  text-align: center;
-  color: #fff;
 }
 
 .pannelRules-footer {
@@ -813,10 +816,6 @@ input[type="password"]::-webkit-input-placeholder {
   text-align: center;
   color: #fff;
   font-family: "Quicksand";
-  font-size: calc($vmin + $px);
-  font-weight: normal;
-  text-align: center;
-  color: #fff;
 }
 
 .pannelDelete-content {
@@ -1001,8 +1000,84 @@ input[type="password"]::-webkit-input-placeholder {
   .pannelUser {
     width: 22%;
   }
+  .pannelStart-head-title {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+    font-family: "Biryani";
+  }
+  .pannelStart-head-text {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+    font-family: "Quicksand";
+  }
+  .pannelRegister-head {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+    font-family: "Quicksand";
+  }
+  .pannelLoggin-head {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+    font-family: "Quicksand";
+  }
+  .pannelRules-head {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+    font-family: "Quicksand";
+  }
+  .pannelRules-content-text, .pannelTiming-content-text, .pannelAccount-content-text, .pannelDelete-content-text {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+    font-family: "Quicksand";
+  }
+  .pannelTiming-head {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+    font-family: "Quicksand";
+  }
+  .timer-text {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+  }
+  .pannelAccount-head {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+    font-family: "Quicksand";
+  }
   .pannelAccount-footer {
     padding: 2% 18%;
+  }
+  .pannelEdit-head {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+    font-family: "Quicksand";
+  }
+  .pannelDelete-head {
+    font-size: calc($vmin + $px);
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+    font-family: "Quicksand";
   }
 }
 
@@ -1023,7 +1098,7 @@ input[type="password"]::-webkit-input-placeholder {
     padding: 0 1%;
   }
   .pannelRules-content-text, .pannelTiming-content-text, .pannelAccount-content-text, .pannelDelete-content-text {
-    font-size: calc(1.1vmin + 10px);
+    font-size: calc(0.5vmin + 10px);
     margin-bottom: 3%;
   }
 }

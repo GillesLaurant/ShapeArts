@@ -72,12 +72,13 @@
 }
 
 .recentBody-rows:nth-child(even) {
-  background-color: rgb(28, 0, 34);
+  background-color: rgb(37, 24, 40);
 }
 
 // Players column
 .col-player {
   width: 60%;
+  position: relative;
   border-bottom: 0.5px solid $borderTable;
   border-right: 0.5px solid $borderTable;
   padding: 1%;
@@ -144,6 +145,12 @@
 
 /*******    RESPONSIVE > 992px     *******/
 @media #{$tablett} {
+  .recentlyShapes-title {
+    font-size: calc(1vmin + 20px);
+  }
+  .recentBody-rows {
+    font-size: calc(1vmin + 10px);
+  }
   .row-time {
     font-size: calc(1vmin + 6px);
   }
@@ -152,7 +159,7 @@
 /*******    RESPONSIVE > 1200px     *******/
 @media #{$laptop} {
   .recentlyShapes-title {
-    font-size: calc(1.5vmin + 17px);
+    font-size: calc(1vmin + 17px);
   }
   .recentTable-head {
     &-player {
@@ -166,7 +173,7 @@
     font-size: calc(1vmin + 10px);
   }
   .row-time {
-    font-size: calc(0.5vmin + 8px);
+    font-size: calc(1vmin + 8px);
   }
 }
 

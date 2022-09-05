@@ -5,8 +5,8 @@ import {
   rememberTiming,
 } from "../../features/PannelShape/shape.slice";
 import {
-  successConnect,
   failedConnect,
+  successConnect,
 } from "../../features/socket/socket.slice";
 
 /*******    CONNEXION MIDDLEWARE     *******/
@@ -64,7 +64,6 @@ export default function socketMiddleware(socket) {
             })
             .catch(() => {
               dispatch(setError({ nameError: "socket" }));
-              // socket.close();
             });
 
           break;

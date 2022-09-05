@@ -1,3 +1,4 @@
+/*******    VARIABLES     *******/
 /*******    MIXINS    *******/
 /*******    FLEX    *******/
 /*******    DISPLAY PANNELS USER     *******/
@@ -287,8 +288,8 @@
 }
 
 .pos_add_y svg {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
 }
 
 .pos_sub {
@@ -300,8 +301,8 @@
 }
 
 .pos_sub_y svg {
-  -webkit-transform: rotate(270deg);
-          transform: rotate(270deg);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 
 /*******    CONFIG DISPLAY     *******/

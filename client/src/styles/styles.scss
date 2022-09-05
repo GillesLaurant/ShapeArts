@@ -12,13 +12,15 @@
 .App {
   @include flex-mix(_, center);
   width: 100%;
-  position: fixed;
-  height: 100%;
-  flex-grow: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 1fr;
+  min-height: -webkit-fill-available;
   background-color: #000;
   padding: 1%;
-  overflow-x: hidden;
-  overflow-y: hidden;
   scroll-behavior: smooth;
   transition: all 0.3s;
 }
@@ -82,6 +84,9 @@
 
 /*******    RESPONSIVE > 992px     *******/
 @media #{$tablett} {
+  .mainContainer {
+    margin-top: 2%;
+  }
   .textApp {
     margin-bottom: 1%;
   }
@@ -113,5 +118,9 @@
   .App {
     @include flex-mix(space-around, center);
     padding: 1% 4%;
+  }
+
+  .titleApp {
+    font-size: calc(4vmin + 40px);
   }
 }
