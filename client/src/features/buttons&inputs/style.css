@@ -1,3 +1,4 @@
+/*******    VARIABLES     *******/
 /*******    MIXINS    *******/
 /*******    FLEX    *******/
 /*******    DISPLAY PANNELS USER     *******/
@@ -235,7 +236,7 @@
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   margin: 3% 0;
-  color: white;
+  color: #fff;
 }
 
 .buttonUser:hover {
@@ -255,8 +256,8 @@
 }
 
 .buttonUser:hover {
-  -webkit-filter: brightness(100%) drop-shadow(0px 0px 5px #18c9f5);
-          filter: brightness(100%) drop-shadow(0px 0px 5px #18c9f5);
+  -webkit-filter: brightness(100%) drop-shadow(0px 0px 5px #fff);
+          filter: brightness(100%) drop-shadow(0px 0px 5px #fff);
 }
 
 .buttonAction {
@@ -294,7 +295,7 @@
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   margin: 2% 0;
-  color: white;
+  color: #fff;
 }
 
 .buttonAction:hover {
@@ -314,8 +315,8 @@
 }
 
 .buttonAction:active {
-  -webkit-box-shadow: inset 0px 0px 8px 3px #00fff2;
-          box-shadow: inset 0px 0px 8px 3px #00fff2;
+  -webkit-box-shadow: inset 0px 0px 8px 3px #fff;
+          box-shadow: inset 0px 0px 8px 3px #fff;
 }
 
 /*******    INPUTS     *******/
@@ -350,7 +351,7 @@
 .inputUser-input {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  color: #050872;
+  color: #000;
 }
 
 .inputUser-error, .inputUser-error_visible {

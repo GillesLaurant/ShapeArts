@@ -1,3 +1,4 @@
+/*******    VARIABLES     *******/
 /*******    MIXINS    *******/
 /*******    FLEX    *******/
 /*******    DISPLAY PANNELS USER     *******/
@@ -97,11 +98,12 @@
 }
 
 .recentBody-rows:nth-child(even) {
-  background-color: #1c0022;
+  background-color: #251828;
 }
 
 .col-player {
   width: 60%;
+  position: relative;
   border-bottom: 0.5px solid #b7b7b7;
   border-right: 0.5px solid #b7b7b7;
   padding: 1%;
@@ -203,6 +205,12 @@
 
 /*******    RESPONSIVE > 992px     *******/
 @media only screen and (min-width: 992px) {
+  .recentlyShapes-title {
+    font-size: calc(1vmin + 20px);
+  }
+  .recentBody-rows {
+    font-size: calc(1vmin + 10px);
+  }
   .row-time {
     font-size: calc(1vmin + 6px);
   }
@@ -211,7 +219,7 @@
 /*******    RESPONSIVE > 1200px     *******/
 @media only screen and (min-width: 1201px) {
   .recentlyShapes-title {
-    font-size: calc(1.5vmin + 17px);
+    font-size: calc(1vmin + 17px);
   }
   .recentTable-head-player {
     font-size: calc(1.5vmin + 20px);
@@ -223,7 +231,7 @@
     font-size: calc(1vmin + 10px);
   }
   .row-time {
-    font-size: calc(0.5vmin + 8px);
+    font-size: calc(1vmin + 8px);
   }
 }
 

@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useRef, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  register,
-  loggin,
-  loggout,
-  deleteAccount,
-  edit,
-} from "../user/user.slice";
 import { setError } from "../error/error.slice";
-import "./style.scss";
 import { toggleLoader } from "../loaders/loader.slice";
 import { validShape } from "../PannelShape/shape.slice";
+import {
+  deleteAccount,
+  edit,
+  loggin,
+  loggout,
+  register,
+} from "../user/user.slice";
 import SpinnerButton from "./SpinnerButton";
+import "./style.scss";
 
 /*******    ACTION BUTTONS     *******/
 
@@ -170,7 +170,7 @@ const ButtonAction = ({ nameButton }) => {
     }
   };
 
-  // Handle button action "Register" & "Loggin" & "Loggout" & "Edits" & "Delete"
+  // Handle button action "Register" & "Loggin" & "Loggout" & "Edits" & "Delete" & "ValidShape"
   const handleClick = (ev) => {
     ev.preventDefault();
     const button = listButtons[nameButton];
@@ -213,15 +213,18 @@ const ButtonAction = ({ nameButton }) => {
           dispatch(edit(nameButton));
           break;
         case "validShape":
-          if (user.isLoggin === true) {
+          if (user.isLoggin === true && user.id !== -1) {
             dispatch(validShape());
+            dispatch(toggleLoader(nameButton));
           }
           break;
 
         default:
           break;
       }
-      dispatch(toggleLoader(nameButton));
+      if (nameButton !== "validShape") {
+        dispatch(toggleLoader(nameButton));
+      }
     }
   };
 
@@ -250,7 +253,6 @@ const ButtonAction = ({ nameButton }) => {
       buttonTarget.current.disabled = true;
       buttonTarget.current.animate(
         [
-          // { boxShadow: `0 0 0 -10px ${listButtons[nameButton].col3}` },
           { boxShadow: `0 0 0 -10px rgba(255, 255, 255)` },
           { boxShadow: `0 0 0 10px ${listButtons[nameButton].col3}` },
         ],

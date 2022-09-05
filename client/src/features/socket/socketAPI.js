@@ -8,7 +8,7 @@ export default class socketAPI {
   connect() {
     // SOCKET
     this.socket = io.connect(
-      `${process.env.REACT_APP_API_HOST_PROD}${process.env.REACT_APP_API_PORT_PROD}`,
+      // `${process.env.REACT_APP_API_HOST_PROD}${process.env.REACT_APP_API_PORT_PROD}`,
       // "http://localhost:3000",
       {
         withCredentials: true,

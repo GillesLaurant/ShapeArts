@@ -1,5 +1,4 @@
-/*******    MIXINS    *******/
-
+@import "./variables"; /*******    MIXINS    *******/
 /*******    FLEX    *******/
 @mixin flex-mix($just: center, $align: center, $flex: row) {
   display: flex;
@@ -140,18 +139,18 @@
 }
 
 /*******    TITLE PANNELS USER     *******/
-@mixin titleUser {
-  @include font(1.8vmin, 25px);
+@mixin titleUser($vmin: 1.8vmin, $px: 25px) {
+  @include font($vmin, $px);
   font-family: $title-app;
 }
 /*******    SUBTITLE PANNELS USER     *******/
-@mixin subtitleUser {
-  @include font(1.5vmin, 15px);
+@mixin subtitleUser($vmin: 1.5vmin, $px: 13px) {
+  @include font($vmin, $px);
   font-family: $text-pannel;
 }
 /*******    TEXT PANNELS USER     *******/
-@mixin textUser {
-  @include font(1.2vmin, 13px);
+@mixin textUser($vmin: 1.2vmin, $px: 13px) {
+  @include font($vmin, $px);
   font-family: $text-pannel;
 }
 
