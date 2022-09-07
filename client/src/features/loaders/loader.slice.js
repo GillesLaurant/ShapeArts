@@ -3,11 +3,11 @@ import { addShape, getCloth } from "../cloth/cloth.slice";
 import { setError } from "../error/error.slice";
 import { rememberTiming } from "../PannelShape/shape.slice";
 import {
-  registerSuccess,
-  logginSuccess,
-  loggoutSuccess,
   deleteSuccess,
   editSuccess,
+  logginSuccess,
+  loggoutSuccess,
+  registerSuccess,
 } from "../user/user.slice";
 
 /*******    LOADER     *******/
@@ -84,7 +84,11 @@ export const loaderSlice = createSlice({
         }
       })
       // Valid shape loader stop
-      .addCase(addShape || rememberTiming, (state) => {
+      .addCase(addShape, (state) => {
+        state.validShape = false;
+      })
+      // Remember time shape loader stop
+      .addCase(rememberTiming, (state) => {
         state.validShape = false;
       });
   },
