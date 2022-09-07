@@ -67,6 +67,7 @@ httpServer.listen(
   process.env.NODE_ENV !== "production"
     ? process.env.SERVER_PORT
     : process.env.SERVER_PORT_PROD,
+  "194.31.150.245",
   () => {
     console.log(
       `SERVER listen => ${

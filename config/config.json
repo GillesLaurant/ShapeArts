@@ -1,26 +1,26 @@
 {
   "development": {
-    "database": "u742297579_SArts_DB_Dev",
+    "database": "shap_bdd_dev",
     "host": "sql836.main-hosting.eu",
     "port": "3306",
-    "username": "u742297579_root",
-    "password": "u742297579Root",
+    "username": "shap_gilou",
+    "password": "AJSD@171921",
     "dialect": "mysql"
   },
   "test": {
     "database": "u742297579_shapearts_DB",
-    "host": "sql836.main-hosting.eu",
+    "host": "194.31.150.245",
     "port": "3306",
     "username": "u742297579_root",
     "password": "ShapeArts_BDD_01",
     "dialect": "mysql"
   },
   "production": {
-    "database": "shap_shapeArts_bdd",
-    "host": "http://localhost:",
+    "database": "shap_bdd_dev",
+    "host": "194.31.150.245",
     "port": "3306",
-    "username": "shap_shapeArts_client",
-    "password": "shapeArtsGilou*171921",
+    "username": "shap_gilou",
+    "password": "AJSD@171921",
     "dialect": "mysql"
   },
   "production_bis": {
