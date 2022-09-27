@@ -120,10 +120,8 @@
 }
 // buttons subtract
 .pos_sub {
-  // border-right: 0.5px solid #00b0eb;
   border-radius: 5px 0 0 5px;
   background: linear-gradient(to bottom, $shapePannel, $violet);
-  // border-radius: 5px;
   box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5),
     0px 1px 3px rgba(7, 3, 53, 1);
 
@@ -136,7 +134,6 @@
 // container containers ranges
 .configDisplay {
   width: 100%;
-  // border: 1px solid red;
 
   // Containers range
   &-inputs {
@@ -158,11 +155,17 @@
 }
 
 // range track
-#{$rangeInput}.configDisplay-range#{$rangeTrack} {
+#{$rangeInput}.configDisplay-range::-moz-range-track {
+  @include rangeTrack;
+}
+#{$rangeInput}.configDisplay-range#{$rangeTrack}::-moz-range-track {
   @include rangeTrack;
 }
 // range thumb
 .configDisplay-range#{$rangeThumb} {
+  @include rangeThumb;
+}
+.configDisplay-range::-moz-range-thumb {
   @include rangeThumb;
 }
 
@@ -173,7 +176,6 @@
   width: 100%;
   border-bottom: none;
   padding: 1% 5%;
-  // border: 1px solid blue;
 
   // title color
   &-label {
@@ -268,8 +270,14 @@
 #{$rangeInput}.normal-range-opacity#{$rangeTrack} {
   @include rangeTrack(50%, 25px, rgba(255, 255, 255, 0.5), rgb(0, 0, 0));
 }
+#{$rangeInput}.normal-range-opacity::-moz-range-track {
+  @include rangeTrack(50%, 25px, rgba(255, 255, 255, 0.5), rgb(0, 0, 0));
+}
 // Range thumb opacity
 .normal-range-opacity#{$rangeThumb} {
+  @include rangeThumb(20px);
+}
+.normal-range-opacity::-moz-range-thumb {
   @include rangeThumb(20px);
 }
 
@@ -346,8 +354,14 @@
 #{$rangeInput}.gradient-orientation-input#{$rangeTrack} {
   @include rangeTrack(20px, 10px);
 }
+#{$rangeInput}.gradient-orientation-input::-moz-range-track {
+  @include rangeTrack(20px, 10px);
+}
 // Range thumb "Orientation" || "Rayon"
 #{$rangeInput}.gradient-orientation-input#{$rangeThumb} {
+  @include rangeThumb(20px);
+}
+#{$rangeInput}.gradient-orientation-input::-moz-range-thumb {
   @include rangeThumb(20px);
 }
 
@@ -380,9 +394,15 @@
 #{$rangeInput}.gradient-range-opacity#{$rangeTrack} {
   @include rangeTrack(15px, 10px, rgba(255, 255, 255, 0.5), rgb(0, 0, 0));
 }
+#{$rangeInput}.gradient-range-opacity::-moz-range-track {
+  @include rangeTrack(15px, 10px, rgba(255, 255, 255, 0.5), rgb(0, 0, 0));
+}
 
 // Range opacity thumbs
 #{$rangeInput}.gradient-range-opacity#{$rangeThumb} {
+  @include rangeThumb(15px);
+}
+#{$rangeInput}.gradient-range-opacity::-moz-range-thumb {
   @include rangeThumb(15px);
 }
 
@@ -439,9 +459,9 @@
 .button_validShape {
   width: 45%;
 
-  &:hover {
-    // filter: brightness(110%) drop-shadow(0px 0px 5px rgb(189, 254, 242));
-  }
+  // &:hover {
+  //   // filter: brightness(110%) drop-shadow(0px 0px 5px rgb(189, 254, 242));
+  // }
 }
 
 /*******    RESPONSIVE MOBIL FIRST     *******/
@@ -475,7 +495,6 @@
   .configDisplay {
     @include flex-mix(space-around, _, column);
     flex-grow: 0.5;
-    // border: 1px solid cyan;
   }
   // Container valid shape
   .validShape {
@@ -561,8 +580,14 @@
   #{$rangeInput}.normal-range-opacity#{$rangeTrack} {
     @include rangeTrack(15px);
   }
+  #{$rangeInput}.normal-range-opacity::-moz-range-track {
+    @include rangeTrack(15px);
+  }
   // Range height normal opacity thumb
   .normal-range-opacity#{$rangeThumb} {
+    @include rangeThumb(15px);
+  }
+  .normal-range-opacity::-moz-range-thumb {
     @include rangeThumb(15px);
   }
   // Label orientation || rayon
@@ -573,16 +598,28 @@
   #{$rangeInput}.gradient-orientation-input#{$rangeTrack} {
     @include rangeTrack(15px, 10px);
   }
+  #{$rangeInput}.gradient-orientation-input::-moz-range-track {
+    @include rangeTrack(15px, 10px);
+  }
   // Range height thumb "Orientation" || "Rayon"
   #{$rangeInput}.gradient-orientation-input#{$rangeThumb} {
+    @include rangeThumb(15px);
+  }
+  #{$rangeInput}.gradient-orientation-input::-moz-range-thumb {
     @include rangeThumb(15px);
   }
   // Range height opacity tracks
   #{$rangeInput}.gradient-range-opacity#{$rangeTrack} {
     @include rangeTrack(10px, 10px, rgba(255, 255, 255, 0.5), rgb(0, 0, 0));
   }
+  #{$rangeInput}.gradient-range-opacity::-moz-range-track {
+    @include rangeTrack(10px, 10px, rgba(255, 255, 255, 0.5), rgb(0, 0, 0));
+  }
   // Range height opacity thumbs
   #{$rangeInput}.gradient-range-opacity#{$rangeThumb} {
+    @include rangeThumb(10px);
+  }
+  #{$rangeInput}.gradient-range-opacity::-moz-range-thumb {
     @include rangeThumb(10px);
   }
   // Color inputs
@@ -596,6 +633,7 @@
     }
     // Button reset
     &-reset {
+      font-size: calc(1vmin + 11px);
       padding: 2%;
     }
   }
@@ -627,10 +665,12 @@
 /*******    RESPONSIVE > 1600px    *******/
 @media #{$large} {
   .pannelCommand {
-    position: relative;
+    position: fixed;
     transform: none;
     max-width: 300px;
     border-radius: 20px;
-    box-shadow: 3px 0px 25px 5px #0e99bc;
+    height: 98%;
+    box-shadow: 3px 0px 25px 3px #0e99bc;
+    margin: 0.5% 2%;
   }
 }

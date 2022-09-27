@@ -10,17 +10,12 @@
 /*******    APP     *******/
 
 .App {
-  @include flex-mix(_, center);
+  @include flex-mix(space-between, stretch, column);
+  position: relative;
+  flex-grow: 1;
   width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  min-height: -webkit-fill-available;
   background-color: #000;
-  padding: 1%;
+  padding: 1% 2% 0;
   scroll-behavior: smooth;
   transition: all 0.3s;
 }
@@ -29,7 +24,9 @@
 
 // Container cloths components
 .mainContainer {
-  max-height: 82vh;
+  display: block;
+  position: relative;
+  max-width: 95vw;
   color: $primary;
   overflow-x: scroll !important;
   overflow-y: auto;
@@ -41,30 +38,25 @@
 .titleApp {
   @include font(3vmin, 35px);
   width: 100%;
-  position: fixed;
-  top: 0;
   text-align: center;
   font-family: "Biryani";
   font-weight: 200;
   background: linear-gradient(to top, rgb(140, 0, 255) 30%, cyan);
   background-clip: text;
   color: transparent;
-  margin: 0 auto;
+  margin-top: 2%;
 }
 
 /*******    TEXT APP     *******/
 .textApp {
   @include font(1.5vmin, 15px);
   width: 100%;
-  position: fixed;
-  bottom: 0;
   text-align: center;
   font-family: "Quicksand";
   line-height: auto;
   background: linear-gradient(to top, rgb(140, 0, 255) 10%, cyan);
   background-clip: text;
   color: transparent;
-  margin: 0 auto 3%;
 }
 
 /*******    PROGRESS BAR     *******/
@@ -84,30 +76,41 @@
 
 /*******    RESPONSIVE > 992px     *******/
 @media #{$tablett} {
+  .App {
+    justify-content: space-between;
+    flex-grow: 1;
+  }
   .mainContainer {
-    margin-top: 2%;
+    max-height: 70%;
+    margin: 2% auto;
+  }
+  .titleApp {
+    margin-top: 0.5%;
   }
   .textApp {
-    margin-bottom: 1%;
+    position: relative;
+    width: 100%;
+    margin: 1% 0;
   }
 }
 
 /*******    RESPONSIVE > 1200px     *******/
 @media #{$laptop} {
   .App {
-    @include flex-mix(center);
-    left: 50%;
+    @include flex-mix(space-between, center, column);
+    height: 100vh;
     margin: 0 auto;
-    transform: translateX(-50%);
+  }
+
+  .mainContainer {
+    max-width: 900px;
+    max-height: 700px;
+    margin: 0.5% auto 0;
   }
   .titleApp {
-    left: 50%;
-    transform: translateX(-50%);
     font-size: calc(2.5vmin + 35px);
   }
   .textApp {
-    left: 50%;
-    transform: translateX(-50%);
     font-size: calc(1.2vmin + 15px);
     margin-bottom: 1.5%;
   }
@@ -116,7 +119,7 @@
 /*******    RESPONSIVE > 1600px     *******/
 @media #{$large} {
   .App {
-    @include flex-mix(space-around, center);
+    height: 100%;
     padding: 1% 4%;
   }
 

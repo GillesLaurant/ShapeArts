@@ -254,6 +254,10 @@
 
 /*******    RESPONSIVE TABLETT     *******/
 @media #{$tablett} {
+  .buttonUser,
+  .buttonAction {
+    font-size: calc(1vmin + 11px);
+  }
   // Buttons Open windows
   .buttons_windows {
     margin-top: 1%;
@@ -275,7 +279,7 @@
   .buttonAction {
     margin: 3% 0;
     padding: 2%;
-    font-size: calc(1vmin + 11px);
+    font-size: calc(1vmin + 10px);
   }
   // Inputs text container
   .inputUser {

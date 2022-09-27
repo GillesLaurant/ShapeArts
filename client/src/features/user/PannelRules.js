@@ -1,16 +1,17 @@
 import React from "react";
-import ButtonUserNav from "../buttons&inputs/ButtonUserNav";
-import ButtonAction from "../buttons&inputs/ButtonAction";
 import { useSelector } from "react-redux";
+import ButtonAction from "../buttons&inputs/ButtonAction";
+import ButtonUserNav from "../buttons&inputs/ButtonUserNav";
 
 const PannelRules = () => {
   const user = useSelector((state) => state.user.username);
   return (
     <div className="pannelRules">
       <header className="pannelRules-head">
-        <h2 className="pannelRules-head-title">A vous de jouer !</h2>
-
-        <h4 className="pannelRules-head-user">{user}</h4>
+        <h2 className="pannelRules-head-title">
+          A vous de jouer <span className="pannelRules-head-user">{user}</span>
+          <span className="pannelRules-head-user-space">_</span>!
+        </h2>
       </header>
       <div className="pannelRules-content">
         <p className="pannelRules-content-text">

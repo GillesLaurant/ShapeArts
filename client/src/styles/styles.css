@@ -26,26 +26,23 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: _;
-      -ms-flex-pack: _;
-          justify-content: _;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  min-height: -webkit-fill-available;
   background-color: #000;
-  padding: 1%;
+  padding: 1% 2% 0;
   scroll-behavior: smooth;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -53,7 +50,9 @@
 
 /*******    MAIN     *******/
 .mainContainer {
-  max-height: 82vh;
+  display: block;
+  position: relative;
+  max-width: 95vw;
   color: #18c9f5;
   overflow-x: scroll !important;
   overflow-y: auto;
@@ -69,8 +68,6 @@
   text-align: center;
   color: #fff;
   width: 100%;
-  position: fixed;
-  top: 0;
   text-align: center;
   font-family: "Biryani";
   font-weight: 200;
@@ -78,7 +75,7 @@
   background: linear-gradient(to top, #8c00ff 30%, cyan);
   background-clip: text;
   color: transparent;
-  margin: 0 auto;
+  margin-top: 2%;
 }
 
 /*******    TEXT APP     *******/
@@ -88,8 +85,6 @@
   text-align: center;
   color: #fff;
   width: 100%;
-  position: fixed;
-  bottom: 0;
   text-align: center;
   font-family: "Quicksand";
   line-height: auto;
@@ -97,7 +92,6 @@
   background: linear-gradient(to top, #8c00ff 10%, cyan);
   background-clip: text;
   color: transparent;
-  margin: 0 auto 3%;
 }
 
 /*******    PROGRESS BAR     *******/
@@ -113,11 +107,25 @@
 
 /*******    RESPONSIVE > 992px     *******/
 @media only screen and (min-width: 992px) {
+  .App {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
   .mainContainer {
-    margin-top: 2%;
+    max-height: 70%;
+    margin: 2% auto;
+  }
+  .titleApp {
+    margin-top: 0.5%;
   }
   .textApp {
-    margin-bottom: 1%;
+    position: relative;
+    width: 100%;
+    margin: 1% 0;
   }
 }
 
@@ -127,31 +135,28 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -webkit-box-orient: horizontal;
+    -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    left: 50%;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100vh;
     margin: 0 auto;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+  }
+  .mainContainer {
+    max-width: 900px;
+    max-height: 700px;
+    margin: 0.5% auto 0;
   }
   .titleApp {
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
     font-size: calc(2.5vmin + 35px);
   }
   .textApp {
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
     font-size: calc(1.2vmin + 15px);
     margin-bottom: 1.5%;
   }
@@ -160,18 +165,7 @@
 /*******    RESPONSIVE > 1600px     *******/
 @media only screen and (min-width: 1600px) {
   .App {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
+    height: 100%;
     padding: 1% 4%;
   }
   .titleApp {

@@ -25,6 +25,8 @@
   h5 {
     appearance: none;
     font-weight: normal;
+    line-height: 100%;
+    padding-top: 1%;
   }
 
   &::-webkit-scrollbar {
@@ -33,19 +35,40 @@
 }
 
 html {
-  // height: 100vh;
+  height: 101vh;
   min-height: -webkit-fill-available;
+  position: relative;
   background-color: #000;
+}
+
+#root {
+  position: absolute;
+  inset: 0;
+  height: 100vh;
+  min-height: -webkit-fill-available;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: stretch;
 }
 
 // Inputs range
 input[type="range"] {
   @include inputRange;
 }
+input[type="range"]::-moz-range-track {
+  @include inputRange;
+}
 input[type="range"]::-webkit-slider-runnable-track {
   @include inputRange;
 }
+input[type="range"]::-moz-range-track {
+  @include inputRange;
+}
 input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  border-style: solid;
+}
+input[type="range"]::-moz-range-thumb {
   appearance: none;
   border-style: solid;
 }
@@ -98,6 +121,10 @@ input[type="password"]::-webkit-input-placeholder {
 }
 // Responsive < 1501px
 @media #{$laptop} {
+  html {
+    height: 100%;
+    overflow: hidden;
+  }
   input[type="text"],
   input[type="mail"],
   input[type="password"] {

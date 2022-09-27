@@ -476,6 +476,10 @@
 
 /*******    RESPONSIVE TABLETT     *******/
 @media only screen and (min-width: 992px) {
+  .buttonUser,
+  .buttonAction {
+    font-size: calc(1vmin + 11px);
+  }
   .buttons_windows {
     margin-top: 1%;
   }
@@ -493,7 +497,7 @@
   .buttonAction {
     margin: 3% 0;
     padding: 2%;
-    font-size: calc(1vmin + 11px);
+    font-size: calc(1vmin + 10px);
   }
   .inputUser, .inputUser_error {
     padding: 1% 5%;
