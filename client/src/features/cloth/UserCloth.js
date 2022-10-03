@@ -1,9 +1,9 @@
 import React from "react";
-import ShapeUserGenerator from "../svg/ShapeUserGenerator";
-import "./style.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { togglePosition } from "../PannelShape/shape.slice";
+import ShapeUserGenerator from "../svg/ShapeUserGenerator";
 import { toggleWindows } from "../user/nav.slice";
+import "./style.scss";
 
 /*******    CLOTH USER SHAPE     *******/
 
@@ -29,6 +29,7 @@ const UserCloth = (props) => {
         posY: ev.nativeEvent.offsetY,
       };
     }
+    console.log(ev, position.posX, position.posY);
     dispatch(togglePosition(position));
   };
 

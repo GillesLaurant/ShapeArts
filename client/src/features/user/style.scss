@@ -97,6 +97,11 @@
     &-user {
       text-transform: capitalize;
       font-family: $subtitle-pannel;
+      word-break: none;
+
+      &-space {
+        opacity: 0;
+      }
     }
   }
   // Rules
@@ -396,6 +401,16 @@
   .pannelUser {
     max-width: 300px;
   }
+  .pannelRules {
+    &-head-title {
+      // @include font(1.2vmin, 12px);
+      margin-bottom: 3%;
+    }
+
+    &-content-text {
+      @include font(1vmin, 10px);
+    }
+  }
 }
 
 /*******    RESPONSIVE > 1200px     *******/
@@ -459,13 +474,14 @@
 /*******    RESPONSIVE > 1600px     *******/
 @media #{$large} {
   .pannelUser {
-    position: relative;
+    position: fixed;
     transform: none;
     width: 20%;
     max-width: 300px;
-    height: 100%;
+    height: 98%;
     border-radius: 20px;
-    box-shadow: 3px 0px 25px 5px #71085e;
+    box-shadow: 3px 0px 25px 3px #71085e;
+    margin: 0.5% 2%;
   }
   // Text pannel start
   .pannelStart-head-text {

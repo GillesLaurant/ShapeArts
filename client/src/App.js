@@ -26,9 +26,9 @@ function App() {
       <TitleApp />
       <ButtonWindows name={"pannelUser"} />
       <ButtonWindows name={"pannelCommand"} />
-      <TextApp />
       <ProgressBar />
       <PannelUser />
+      <PannelCommand />
       <div
         className="mainContainer"
         style={{
@@ -41,7 +41,7 @@ function App() {
               : "translateY(0)",
           // Add margin to open pannel command
           marginRight:
-            window.innerWidth > 767 && window.innerWidth < 1200
+            window.innerWidth > 767 && window.innerWidth < 1416
               ? command
                 ? "31%"
                 : "auto"
@@ -49,12 +49,18 @@ function App() {
           // Height 65% if pannel command open in mobile screen
           height: window.innerWidth > 767 ? "auto" : command ? "65vh" : "80%",
           borderRadius: userConnected !== -1 ? 0 : "20px",
+          width:
+            window.innerWidth > 767 && window.innerWidth < 1416
+              ? command
+                ? "68%"
+                : "auto"
+              : "auto",
         }}
       >
         <ClothsContainer />
       </div>
 
-      <PannelCommand />
+      <TextApp />
     </div>
   );
 }
