@@ -11,6 +11,7 @@
   }
   & button {
     transition: all 0.3s;
+    outline: none;
 
     &:disabled {
       opacity: 0.5;
@@ -55,20 +56,12 @@ html {
 input[type="range"] {
   @include inputRange;
 }
-input[type="range"]::-moz-range-track {
-  @include inputRange;
-}
-input[type="range"]::-webkit-slider-runnable-track {
-  @include inputRange;
-}
-input[type="range"]::-moz-range-track {
-  @include inputRange;
-}
-input[type="range"]::-webkit-slider-thumb {
+
+input[type="range"]::-moz-range-thumb {
   appearance: none;
   border-style: solid;
 }
-input[type="range"]::-moz-range-thumb {
+input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   border-style: solid;
 }
@@ -83,6 +76,11 @@ input[type="range"]::-moz-range-thumb {
 }
 // Swatch color input
 #{$colorInput}#{$colorSwatch} {
+  width: 100%;
+  border: none;
+}
+
+#{$colorInput}::-moz-color-swatch {
   width: 100%;
   border: none;
 }

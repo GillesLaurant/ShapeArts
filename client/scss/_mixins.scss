@@ -59,12 +59,11 @@
 
 /*******    RANGE INPUTS     *******/
 @mixin inputRange {
-  appearance: none;
   outline: none;
   cursor: pointer;
   display: flex;
   align-items: center;
-  background: transparent;
+  background: rgba(0, 0, 0, 0);
 }
 
 /*******    RANGE INPUTS TRACKS    *******/

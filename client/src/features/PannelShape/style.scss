@@ -158,7 +158,7 @@
 #{$rangeInput}.configDisplay-range::-moz-range-track {
   @include rangeTrack;
 }
-#{$rangeInput}.configDisplay-range#{$rangeTrack}::-moz-range-track {
+#{$rangeInput}.configDisplay-range#{$rangeTrack} {
   @include rangeTrack;
 }
 // range thumb
@@ -166,6 +166,9 @@
   @include rangeThumb;
 }
 .configDisplay-range::-moz-range-thumb {
+  @include rangeThumb;
+}
+.configDisplay-range::-webkit-slider-thumb {
   @include rangeThumb;
 }
 
@@ -291,6 +294,10 @@
 
 // Input normal color swatch
 #{$colorInput}.normal-color-input#{$colorSwatch} {
+  border-radius: 15px;
+  min-height: 35px;
+}
+#{$colorInput}.normal-color-input::-moz-color-swatch {
   border-radius: 15px;
   min-height: 35px;
 }
@@ -421,8 +428,14 @@
 #{$colorInput}.primary-color#{$colorSwatch} {
   border-radius: 15px 0 0 15px;
 }
+#{$colorInput}.primary-color::-moz-color-swatch {
+  border-radius: 15px 0 0 15px;
+}
 // Input swatch secondary color
 #{$colorInput}.secondary-color#{$colorSwatch} {
+  border-radius: 0 15px 15px 0;
+}
+#{$colorInput}.secondary-color::-moz-color-swatch {
   border-radius: 0 15px 15px 0;
 }
 
@@ -580,16 +593,11 @@
   #{$rangeInput}.normal-range-opacity#{$rangeTrack} {
     @include rangeTrack(15px);
   }
-  #{$rangeInput}.normal-range-opacity::-moz-range-track {
-    @include rangeTrack(15px);
-  }
   // Range height normal opacity thumb
   .normal-range-opacity#{$rangeThumb} {
     @include rangeThumb(15px);
   }
-  .normal-range-opacity::-moz-range-thumb {
-    @include rangeThumb(15px);
-  }
+
   // Label orientation || rayon
   .gradient-orientation-label {
     font-size: calc(1vmin + 10px);
@@ -598,16 +606,12 @@
   #{$rangeInput}.gradient-orientation-input#{$rangeTrack} {
     @include rangeTrack(15px, 10px);
   }
-  #{$rangeInput}.gradient-orientation-input::-moz-range-track {
-    @include rangeTrack(15px, 10px);
-  }
+
   // Range height thumb "Orientation" || "Rayon"
   #{$rangeInput}.gradient-orientation-input#{$rangeThumb} {
     @include rangeThumb(15px);
   }
-  #{$rangeInput}.gradient-orientation-input::-moz-range-thumb {
-    @include rangeThumb(15px);
-  }
+
   // Range height opacity tracks
   #{$rangeInput}.gradient-range-opacity#{$rangeTrack} {
     @include rangeTrack(10px, 10px, rgba(255, 255, 255, 0.5), rgb(0, 0, 0));

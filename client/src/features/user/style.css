@@ -34,6 +34,7 @@
 * button {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  outline: none;
 }
 
 * button:disabled {
@@ -83,9 +84,6 @@ html {
 }
 
 input[type="range"] {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
   outline: none;
   cursor: pointer;
   display: -webkit-box;
@@ -94,50 +92,18 @@ input[type="range"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: transparent;
-}
-
-input[type="range"]::-moz-range-track {
-  -moz-appearance: none;
-       appearance: none;
-  outline: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  background: transparent;
-}
-
-input[type="range"]::-webkit-slider-runnable-track {
-  -webkit-appearance: none;
-          appearance: none;
-  outline: none;
-  cursor: pointer;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: center;
-          align-items: center;
-  background: transparent;
-}
-
-input[type="range"]::-moz-range-track {
-  -moz-appearance: none;
-       appearance: none;
-  outline: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  background: transparent;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-          appearance: none;
-  border-style: solid;
+  background: rgba(0, 0, 0, 0);
 }
 
 input[type="range"]::-moz-range-thumb {
   -moz-appearance: none;
        appearance: none;
+  border-style: solid;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
   border-style: solid;
 }
 
@@ -151,6 +117,11 @@ input[type=color]::-webkit-color-swatch-wrapper {
 }
 
 input[type=color]::-webkit-color-swatch {
+  width: 100%;
+  border: none;
+}
+
+input[type=color]::-moz-color-swatch {
   width: 100%;
   border: none;
 }
